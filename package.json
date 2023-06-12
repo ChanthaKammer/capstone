@@ -1,0 +1,13 @@
+
+  {
+    "name": "capstone",
+    "version": "1.0.0",
+    "scripts": {
+      "build": "npm run setup:server",
+      "setup:app": "npm run setup:server && npm run setup:client",
+      "setup:client": "cd Capstone.client && npm i",
+      "setup:server": "cd Capstone && npm i",
+      "start": "node Capstone/index.js"
+    }
+  }
+  
