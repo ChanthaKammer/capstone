@@ -1,32 +1,20 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
-        class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
-      <button @click="getGraphicCardHTML()"> Get newegg graphic HTML</button>
-    </div>
-  </div>
+
+  <button @click="scrapePage()" class="m-2"> Get dropzones</button>
 </template>
 
 <script>
 import { AppState } from '../AppState';
-import { Cheerio } from "cheerio";
-import { CheerioAPI } from "cheerio";
-import { CheerioOptions } from "cheerio";
-import * as cheerio from 'cheerio';
-import * as fs from 'fs';
+import axios from 'axios';
 export default {
   setup() {
-function getGraphicCardHTML(){
-const url = 'https://www.newegg.com/p/pl?N=100007709&d=graphics+card&PageSize=96'
-}
-getGraphicCardHTML.
-    return {}
-  }
-}
+
+    return {
+      scrapePage,
+      // ... other properties from AppState if needed
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">
