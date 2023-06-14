@@ -6,25 +6,14 @@ export const api = Axios.create({
   timeout: 8000,
 });
 
-export const twitchAuth = Axios.create({
-  baseURL: "https://id.twitch.tv/oauth2/token",
-  headers: { 
-    client_ID: "0ersnxqxjdpp7w6ntqt4205zwwqe5w",
-    client_secret: 'bdwxnfw6fsaef4531t1ormipyrj8lw',
-    grant_type: 'client-credentials'
+export const rawgApi = Axios.create({
+  baseURL: 'https://cors-anywhere.herokuapp.com/https://api.rawg.io/api/games',
+  params: {
+    key: 'c10295c7f83d492e8e80760440925e07'
   },
-
+  timeout: 8000
 });
 
-export const gameDb = Axios.create({
-  baseURL: "https://api.igdb.com/v4",
-  headers: { 
-    client_ID: "0ersnxqxjdpp7w6ntqt4205zwwqe5w",
-    Authorization: 'Bearer 3m8ok67y3z3seyvrw6rh79zldus9tr',
-    
-  }
-
-});
 
 
 api.interceptors.request.use((config) => config, handleAxiosError);
