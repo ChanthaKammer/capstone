@@ -1,6 +1,797 @@
 <template>
 
-  <button @click="scrapePage()" class="m-2"> Get dropzones</button>
+  <section class="container-fluid bg-background">
+      
+    <!-- <section class="row bg-navbar justify-content-center align-items-center" style="height: 20px;">
+
+    </section> -->
+
+    <section class="row bg-nav-options shadow ps-5" style="">
+      <div class="col-3 d-flex justify-content-center align-items-center">
+        <h2 class="text-white mt-3">PLAY</h2>
+      </div>
+      <div class="col-1" style="border-right: 5px double #ffffff99;"></div>
+      <div class="col-3 d-flex justify-content-center align-items-center">
+        <h2 class="text-white mt-3">HOST</h2>
+      </div>
+      <div class="col-1" style="border-left: 5px double #ffffff99;"></div>
+      <div class="col-3 d-flex justify-content-center align-items-center">
+        <h2 class="text-white mt-3">COMPETE</h2>
+      </div>
+    </section>
+
+    <!-- <section class="row bg-nav-accent">
+      
+    </section> -->
+
+    <section class="row">
+      <div class="col-12">
+        
+        <!-- NOTE BACKGROUND BORDER FOR CAROUSEL ----------------------------->
+        <div class="row bg-carousel justify-content-center align-items-center shadow-lg elevation-5">
+
+          <!-- NOTE CAROUSEL FOR 'PC BUILD' PARTS IMAGES ------------------------------>
+          <div class="bg-games p-5">
+            <div id="carouselExampleIndicators" class="carousel slide">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="https://th.bing.com/th/id/R.f645b78e51a192cb4e9caa4aac6c0875?rik=ZTglhfD9mmwNIA&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fgod-of-war-image.jpg&ehk=D%2bfse8wLp7FcFA%2bqBBv%2bCP0fIUGXa8YSkuFKGmU83yk%3d&risl=&pid=ImgRaw&r=0" class="d-block w-75 game-img rounded-3" style="position: relative; right: 12%; left: 12%;" alt="...">
+                  <div class="carousel-caption d-none d-md-block mb-5" style="font-weight: 550; text-shadow: 0 2px 3px black;">
+                    <h1 class="caption-text-1" style="filter: brightness(1.5)">GOD OF WAR</h1>
+                    <h5 class="caption-text-1" style="filter: brightness(1.5);"><b>Join the battle with others that are slaying their way to the top of Olympus.</b></h5>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="https://th.bing.com/th/id/R.4c1438a6790709e13fedec0919ab9262?rik=vuldbqZ%2fyCjFpA&pid=ImgRaw&r=0" class="d-block w-75 game-img rounded-3" style="position: relative; right: 12%; left: 12%;" alt="...">
+                  <div class="carousel-caption d-none d-md-block mb-5" style="font-weight: 550; text-shadow: 0 2px 3px black;">
+                    <h1 class="caption-text-2" style="filter: brightness(1.5)">Star Citizen</h1>
+                    <h5 class="caption-text-2" style="filter: brightness(1.5);"><b>#1 game for anyone looking to explore a creative universe built around cosmic destruction.</b></h5>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="https://cdn.mos.cms.futurecdn.net/Goqyz5GacSCWcBHT522gJ9-970-80.jpg.webp" class="d-block w-75 game-img rounded-3" style="position: relative; right: 12%; left: 12%;" alt="...">
+                  <div class="carousel-caption d-none d-md-block mb-5" style="font-weight: 550; text-shadow: 0 2px 3px black;">
+                    <h1 class="caption-text-3" style="filter: brightness(1.5)">Elden Ring</h1>
+                    <h5 class="caption-text-3" style="filter: brightness(1.5);"><b>Up for something extra challenging? See the kind of dedication brought to the table by checking out our Most OP monster slayers!</b></h5>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="row py-3 accent-row shadow-lg">
+      <div class="col-6 mb-5 pe-5" style="position: absolute; top: -3.5vh; left: 20%;">
+        <div class="btn-group">
+          <button type="button" class="btn btn-info">Highlights</button>
+          <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-6 mb-5 ps-5" style="position: absolute; top: -3.5vh; right: -17%">
+        <div class="btn-group">
+        <button type="button" class="btn btn-info">Top Gamers</button>
+          <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTE GAME INFO / DETAIL CARDS ------------------------------------------------------->
+    <section class="row justify-content-center align-items-center bg-games-info px-2 pb-2">
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://www.hdwallpaper.nu/wp-content/uploads/2015/11/call_of_duty_black_ops_3-4k-wallpaper-3840x2160.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Call of Duty</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.C2SaVMhsQzQSxfL97RN5ZwHaEK?pid=ImgDet&rs=1);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Star Citizen</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.0fa6cee8f8d5474d4003a6da91a6b97c?rik=93Zo7hIH2YYFSw&pid=ImgRaw&r=0);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">God of War</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Diablo 4</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.23facc28b5ef08a65e1aeed996637cd0?rik=mVuLNekN1kTFfA&pid=ImgRaw&r=0);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Super Smash Bros</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.81usBOaz0sLSdWXI2b6XTAHaEK?w=333&h=187&c=7&r=0&o=5&pid=1.7);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Minecraft</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.048feb6b845e0916e8f55bb0aadee7e6?rik=029BrTQaIJB5cw&pid=ImgRaw&r=0);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Fortnite</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Diablo 4</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://www.hdwallpaper.nu/wp-content/uploads/2015/11/call_of_duty_black_ops_3-4k-wallpaper-3840x2160.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Call of Duty</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.C2SaVMhsQzQSxfL97RN5ZwHaEK?pid=ImgDet&rs=1);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Star Citizen</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.0fa6cee8f8d5474d4003a6da91a6b97c?rik=93Zo7hIH2YYFSw&pid=ImgRaw&r=0);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">God of War</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Diablo 4</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://www.hdwallpaper.nu/wp-content/uploads/2015/11/call_of_duty_black_ops_3-4k-wallpaper-3840x2160.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Call of Duty</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.C2SaVMhsQzQSxfL97RN5ZwHaEK?pid=ImgDet&rs=1);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Star Citizen</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.0fa6cee8f8d5474d4003a6da91a6b97c?rik=93Zo7hIH2YYFSw&pid=ImgRaw&r=0);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">God of War</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Diablo 4</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://www.hdwallpaper.nu/wp-content/uploads/2015/11/call_of_duty_black_ops_3-4k-wallpaper-3840x2160.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Call of Duty</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.C2SaVMhsQzQSxfL97RN5ZwHaEK?pid=ImgDet&rs=1);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Star Citizen</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.0fa6cee8f8d5474d4003a6da91a6b97c?rik=93Zo7hIH2YYFSw&pid=ImgRaw&r=0);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">God of War</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Diablo 4</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://www.hdwallpaper.nu/wp-content/uploads/2015/11/call_of_duty_black_ops_3-4k-wallpaper-3840x2160.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Call of Duty</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.C2SaVMhsQzQSxfL97RN5ZwHaEK?pid=ImgDet&rs=1);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Star Citizen</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.0fa6cee8f8d5474d4003a6da91a6b97c?rik=93Zo7hIH2YYFSw&pid=ImgRaw&r=0);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">God of War</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 my-3">
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Diablo 4</h4>
+            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
+            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
+          </div>
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <section>
+        
+        <!-- NOTE MEETUP / TOURNAMENT CARDS -->
+        <div class="card battle-card elevation-5 mt-5 mb-3" style="opacity: .7;">
+          <div class="row" style="max-height: 35vh; min-height: 35vh;">
+            <div class="col-md-3" style="">
+              <div class="card-body">
+                <h4 class="card-title text-white" style="filter: brightness(5)">Mario Kart 8</h4>
+                <h4 class="card-title text-white" style="filter: brightness(5)">Boise CodeWorks</h4>
+                <h5 class="card-subtitle text-muted text-white" style="filter: brightness(5)">June 19th, 2023</h5>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <img src="https://thewiredfish.files.wordpress.com/2013/01/super-smash-bros-all-stars-battle-royal-super-smash-bros-brawl-32729474-2000-11841.jpg" class="img-fluid py-3" style="max-height: 35vh; min-height: 35vh; max-width: 23vw; min-width: 23vw; filter: brightness(1.3)" alt="...">
+            </div>
+            <div class="col-md-5" style="">
+              <div class="card-body">
+                <p class="card-text fs-5" style="filter: brightness(50); font-weight: 600;">Hopefully you've been dedicating yourself because losing this tournament is worth 3 strikes! Apply what you've learned on the circuit and start your engines, racers!!!!!!!!!!!!!!!!!!!</p>
+                <p class="card-text" style="filter: brightness(50); font-weight: 600;"><small class="text-body-secondary">Last updated 3 days ago</small></p>
+                <div class="row">
+                  <div class="col-8">
+                    <i class="mdi mdi-account-circle rounded-circle sub-member" style="font-size: 4rem; color: #67cbe7;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                  </div>
+                  <div class="col-4">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="card battle-card elevation-5 mt-5 mb-3" style="opacity: .7;">
+          <div class="row" style="max-height: 35vh; min-height: 35vh;">
+            <div class="col-md-3" style="">
+              <div class="card-body">
+                <h4 class="card-title text-white" style="filter: brightness(5)">Overwatch</h4>
+                <h4 class="card-title text-white" style="filter: brightness(5)">Boise CodeWorks</h4>
+                <h5 class="card-subtitle text-muted text-white" style="filter: brightness(5)">June 21st, 2023</h5>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <img src="https://cdn1.dotesports.com/wp-content/uploads/2018/08/12034254/70c206f9-d605-4344-a70a-e89a71af45f3-1024x512.png" class="img-fluid py-3" style="max-height: 35vh; min-height: 35vh; max-width: 23vw; min-width: 23vw; filter: brightness(1.3)" alt="...">
+            </div>
+            <div class="col-md-5" style="">
+              <div class="card-body">
+                <p class="card-text fs-5" style="filter: brightness(50); font-weight: 600;">Who wins? Europe or North America? While we won’t see the regions face off against each other, North American and European Overwatch teams will put their skill on display.</p>
+                <p class="card-text" style="filter: brightness(50); font-weight: 600;"><small class="text-body-secondary">Last updated 13 days ago</small></p>
+                <div class="row">
+                  <div class="col-8">
+                    <i class="mdi mdi-account-circle rounded-circle sub-member" style="font-size: 4rem; color: #67cbe7;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                  </div>
+                  <div class="col-4">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card battle-card elevation-5 mt-5 mb-3" style="opacity: .7;">
+          <div class="row" style="max-height: 35vh; min-height: 35vh;">
+            <div class="col-md-3" style="">
+              <div class="card-body">
+                <h4 class="card-title text-white" style="filter: brightness(5)">Halo</h4>
+                <h4 class="card-title text-white" style="filter: brightness(5)">Boise CodeWorks</h4>
+                <h5 class="card-subtitle text-muted text-white" style="filter: brightness(5)">July 2nd, 2023</h5>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <img src="https://i.ytimg.com/vi/jtTWpLl5jAE/maxresdefault.jpg" class="img-fluid py-3" style="max-height: 35vh; min-height: 35vh; max-width: 23vw; min-width: 23vw; filter: brightness(1.3)" alt="...">
+            </div>
+            <div class="col-md-5" style="">
+              <div class="card-body">
+                <p class="card-text fs-5" style="filter: brightness(50); font-weight: 600;"> in one year this game sell-out three million copies all around the world. This game also gets positive reviews and scores from critics. There are reasons why companies like Metacritic gave it a score of 97/100.</p>
+                <p class="card-text" style="filter: brightness(50); font-weight: 600;"><small class="text-body-secondary">Last updated 9 days ago</small></p>
+                <div class="row">
+                  <div class="col-8">
+                    <i class="mdi mdi-account-circle rounded-circle sub-member" style="font-size: 4rem; color: #67cbe7;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
+                  </div>
+                  <div class="col-4">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <!-- <div class="col-12 col-md-3 my-3">
+            <div class="card info-card elevation-5">
+              <div class="card-header info-header text-center" style="font-size: 1.25rem; font-weight: 625;">
+                CPU
+              </div>
+              <div class="card-body info-body">
+                <p class="card-text info-textbox">The Ryzen 5 5600G is an APU, which can adequately serve the role of both CPU and GPU. It has 6 cores and 12 threads, with a boost clock of 4.4 GHz.
+                  The Ryzen 5 5600G includes a stock cooler, so a 3rd-party cooler isn't necessary.</p>
+                </div>
+              </div>
+            </div> -->
+            
+          </section>
+        </section>
+        
+        
+        
+        
+        
+        
+        <footer class="row bg-footer justify-content-center align-items-center">
+          
+        </footer>
+        
 </template>
 
 <script>
@@ -18,23 +809,333 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
 
-  .home-card {
-    width: 50vw;
+.btn-group {
+  opacity: .8;
+  animation: colorChange 15s infinite;
+  border: 2px solid #00000000;
+  color: white;
+  text-shadow: 0 1px 1px #000000;
+  filter: brightness(1.5);
+}
 
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
+.bg-background {
+  background-color: #374466;
+  filter: drop-shadow(0 0 15px 15px #152A6108);
+  box-shadow: 0 0 15px #152A6108;
+  animation: colorChange 15s infinite;
+}
+
+.bg-nav-options {
+  background-color: #0e2241;
+  filter: drop-shadow( 0 15px 15px #0e224170);
+  box-shadow: 0 5px 5px #0e224170;
+}
+
+.bg-nav-accent {
+  color: #ffffff;
+  background-color: #1a407a4d;
+  filter: drop-shadow(0 0 15px 15px #1A417A70);
+  box-shadow: 0 0 15px #1A417A70;
+}
+
+.bg-carousel {
+  background-color: #26553442;
+  padding-bottom: 6rem;
+  filter: drop-shadow(0 0 3rem #561287fd);
+  animation: colorChange2 30s infinite;
+}
+
+.caption-text-1 {
+  color: #000000;
+  text-decoration: 3px solid red;
+  text-shadow: 0 3px 3px #ff9c9c;
+  animation: fadeIn 1.5s forwards;
+}
+
+.caption-text-2 {
+  color: #32c1f5fe;
+  text-decoration: 3px solid #000000;
+  text-shadow: 0 3px 3px #130324;
+  animation: fadeIn 1.5s forwards;
+}
+
+.caption-text-3 {
+  color: #b9b9b9;
+  text-shadow: 0 3px 3px #a80000;
+  animation: fadeIn 1.5s forwards;
+}
+
+.bg-games {
+  background-color: #34265599;
+  filter: drop-shadow(0 0 15px 15px #4EFE7F90);
+  opacity: .85;
+  box-shadow: 0px 0px 30px 30px inset #000000;
+}
+
+.game-img {
+  aspect-ratio: 1/.5;
+  box-shadow: 0 0 15px 15px #000000;
+  filter: drop-shadow(0 0 15px 15px #000000);
+}
+
+.accent-row {
+  background-color: #1f5b7b45;
+  box-shadow: 0px 0px 150px 15px inset outset #1a407a;
+  filter: drop-shadow(0px 0px 30px #682f2f);
+  border-top: 5px double #1a407a;
+  border-bottom: 5px double #1a407a;
+  border-style: inset groove;
+}
+
+.card-custom {
+  color: #efefef;
+  text-shadow: 0 1px 5px #998ce2;
+  overflow: hidden;
+  min-height: 450px;
+  background-color: #0a0b14f3;
+  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+  transition: .5 ease-in-out;
+}
+
+.card-custom-img {
+  height: 200px;
+  min-height: 200px;
+  background-color: #00000090;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: .8;
+  filter: brightness(1.3);
+  border-color: inherit;
+}
+
+/* First border-left-width setting is a fallback */
+.card-custom-img::after {
+  position: absolute;
+  content: '';
+  top: 161px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-top-width: 40px;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 545px;
+  border-left-width: calc(575px - 5vw);
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: #0b0d12ef;
+}
+
+.card-custom-avatar img {
+  border-radius: 50%;
+  box-shadow: 0 0 15px #0a0a0a9a;
+  position: absolute;
+  top: 100px;
+  left: 1.25rem;
+  width: 100px;
+  height: 100px;
+}
+
+.card-custom:hover {
+  transform: scale(1.01);
+  filter: brightness(1.1);
+  transition: .5s ease-in-out;
+}
+
+.battle-card {
+  background-image: url(https://wallpaper.dog/large/20391959.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #00000000;
+  border-radius: .25rem;
+  filter: drop-shadow(0 0 15px 15px #000000);
+  margin-right: 23.5rem;
+  box-shadow: 0 0 15px #000000;
+  transition: 1s ease-in-out;
+}
+
+.battle-card:hover {
+  transform: scale(1.01);
+  filter: brightness(1.1);
+  animation: returnMargin 1s forwards;
+  transition: 1s ease-in-out;
+}
+
+
+.sub-member {
+  color: #67cbe7;
+  margin-left: -1.5rem;
+}
+
+i.sub-member:hover {
+  color: #67cbe7;
+  animation: returnUserMargin 1s forwards;
+  filter: brightness(1.1) scale(1.1);
+  transition: 1s ease-in-out;
+}
+
+@keyframes returnMargin {
+  0% {
+    margin-right: 23.5rem;
+  }
+  100% {
+    margin-right: 0rem;
   }
 }
+
+@keyframes returnUserMargin {
+  0% {
+    margin-left: -1.5rem;
+  }
+  100% {
+    margin-left: 0rem;
+    color: #18113e;
+  }
+}
+
+
+::-webkit-scrollbar {
+  background-color: #2d288cc6;
+  width: .85rem;
+  border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #8b8b8b5f;
+  border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(32, 20, 12, 0.512);
+  border-radius: 0.25rem;
+  border-style: ridge; 
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #2d288c;
+  border-radius: 0.5rem;
+  border-style: groove; 
+}
+
+.bg-games-info {
+  background-color: #BFBFBF60;
+}
+
+.bg-footer {
+  background-color: #152A6108; 
+  filter: drop-shadow(0 0 15px 15px #152A6108);
+  box-shadow: 0 0 15px #152A6108;
+  place-content: center;
+  height: 32px;
+}
+
+.info-header {
+  background-color: D9D9D9;
+  border: 14px solid #2f486d4a;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+  border-bottom-left-radius: .25rem;
+  border-bottom-right-radius: .25rem;
+  filter: drop-shadow(0 0 6px #242a31);
+}
+
+.info-card {
+  background-color: #00000005;
+}
+
+.info-body {
+  fill: #000000;
+  border: .7rem solid #00000020;
+  border-bottom-left-radius: .75rem;
+  border-bottom-right-radius: .75rem;
+  filter: drop-shadow(0 0 6px #000000);
+}
+
+.info-textbox {
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #000000;
+  text-shadow: 2px 4px 3px #152A6129;
+}
+
+
+@keyframes colorChange {
+  0% {
+    background-color: #374466;
+    box-shadow: 0 0 15px #152A6108;
+  }
+  25% {
+    background-color: #123c86;
+    box-shadow: 0 0 15px #30156143;
+  }
+  50% {
+    background-color: #22112e;
+    box-shadow: 0 0 15px #6a81ba3b;
+  }
+  75% {
+    background-color: #124e86;
+    box-shadow: 0 0 15px #106e932a;
+  }
+  100% {
+    background-color: #374466;
+    box-shadow: 0 0 15px #293c6d08;
+  }
+}
+
+@keyframes colorChange2 {
+  0% {
+    background-color: #561287fd;
+    box-shadow: 0 0 15px #152A6108;
+  }
+  25% {
+    background-color: #123c86;
+    box-shadow: 0 0 15px #30156143;
+  }
+  50% {
+    background-color: #22112e;
+    box-shadow: 0 0 15px #6a81ba3b;
+  }
+  75% {
+    background-color: #124e86;
+    box-shadow: 0 0 15px #106e932a;
+  }
+  100% {
+    background-color: #561287fd;
+    box-shadow: 0 0 15px #293c6d08;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-custom-img::after {
+    border-top-width: 20px;
+    border-left-width: 300px;
+    border-left-width: calc(300px - 5vw);
+  }
+}
+
 </style>
+
+
+  
+
+
+
+
