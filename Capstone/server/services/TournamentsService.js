@@ -57,8 +57,9 @@ class TournamentsService{
        if (tournament.creatorId != userId){
         throw new Forbidden("Not your Tournament!")
     }
-    tournament.isFinished = true
+    tournament.isFinished = !tournament.isFinished 
     await tournament.save()
+    return tournament
     }
 }
 
