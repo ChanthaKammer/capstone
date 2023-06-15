@@ -37,6 +37,7 @@ class TournamentsService{
         originalTourney.gameImg = tournamentData.gameImg || originalTourney.gameImg
         originalTourney.gameName = tournamentData.gameName || originalTourney.gameName
         originalTourney.gameSlug = tournamentData.gameSlug || originalTourney.gameSlug
+        originalTourney.totalRounds = tournamentData.totalRounds|| originalTourney.totalRounds
 
         await originalTourney.save()
         return originalTourney
