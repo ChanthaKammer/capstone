@@ -1,18 +1,28 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { tournamentsService } from "../services/TournamentsService.js";
 import BaseController from "../utils/BaseController.js";
-import { Auth0Provider } from "@bcwdev/auth0provider";
+import { dbContext } from "../db/DbContext.js";
+
 
 export class TournamentsController extends BaseController{
     constructor(){
         super('api/tournaments')
         this.router
             .get('', this.getAllTournaments)
+            .get('/:id', this.getTournamentById)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createTournament)
     }
 
-    
+    async getTournamentById(req, res, next){
+        try {
+            const tournamentId = req.params.id
+            const tournament = await tournamentsService.getTournamentById(tournamentId)
+            return res.send(tournament)
+        } catch (error) {
+            next(error)
+        }
+    }
     
     async getAllTournaments(req, res, next){
         try {
@@ -32,4 +42,5 @@ export class TournamentsController extends BaseController{
             next(error)
         }
     }
+
 }
