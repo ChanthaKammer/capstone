@@ -49,6 +49,7 @@ class TournamentsService{
         }
         tournament.isCancelled = !tournament.isCancelled
         await tournament.save()
+        return tournament
     }
    
     async tournamentFinished(tournamentId, userId) {
