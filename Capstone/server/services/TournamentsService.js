@@ -4,7 +4,7 @@ import { BadRequest } from "../utils/Errors.js"
 class TournamentsService{
     async createTournament(tournamentData) {
         const tournament = await dbContext.Tournaments.create(tournamentData)
-        await tournament.populate('creator particpantCount')
+        await tournament.populate('creator participantCount')
         return tournament
     }
     async getTournamentById(tournamentId) {
