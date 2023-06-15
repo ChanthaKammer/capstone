@@ -2,6 +2,7 @@ import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class TournamentsService{
+   
     async createTournament(tournamentData) {
         const tournament = await dbContext.Tournaments.create(tournamentData)
         await tournament.populate('creator participantCount')
@@ -43,12 +44,20 @@ class TournamentsService{
     async tournamentCancelled(tournamentId, userId) {
         const tournament = await this.getTournamentById(tournamentId)
         if (tournament.creatorId != userId){
-            throw new Forbidden("Not your Event!")   
+            throw new Forbidden("Not your Tournament!")
         }
         tournament.isCancelled = true
         await tournament.save()
     }
    
+    async tournamentFinished(tournamentId, userId) {
+       const tournament = await this.getTournamentById(tournamentId)
+       if (tournament.creatorId != userId){
+        throw new Forbidden("Not your Tournament!")
+    }
+    tournament.isFinished = true
+    await tournament.save()
+    }
 }
 
 export const tournamentsService = new TournamentsService()

@@ -18,7 +18,9 @@ export class TournamentsController extends BaseController {
             .post('', this.createTournament)
             .put('/:id', this.editTournament)
             .delete('/:id', this.tournamentCancelled)
+            .delete('/:id', this.tournamentFinished)
     }
+
     async getTournamentParticipants(req, res, next) {
         try {
             const tournamentId = req.params.tournamentId
@@ -87,4 +89,12 @@ export class TournamentsController extends BaseController {
         }
     }
 
+    async tournamentFinished(req, res, next) {
+        try {
+            const tournament = await tournamentsService.tournamentFinished(req.params.id, req.userInfo.id)
+            return res.send(tournament)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
