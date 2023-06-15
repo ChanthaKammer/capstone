@@ -13,9 +13,9 @@ export class ParticipantsController extends BaseController{
 
     async getParticipation(req, res, next){
         try {
-            const participationId = req.params.id
-            const participation = await participantsService.getParticipation(participationId)
-            return res.send(participation)
+            const participantId = req.params.id
+            const participant = await participantsService.getParticipation(participantId)
+            return res.send(participant)
         } catch (error) {
             next(error)
         }
@@ -24,8 +24,8 @@ export class ParticipantsController extends BaseController{
     async createParticipant(req, res, next){
         try {
             req.body.creatorId = req.userInfo.id
-            const participation = await participantsService.createParticipant(req.body)
-            return res.send(participation)
+            const participant = await participantsService.createParticipant(req.body)
+            return res.send(participant)
         } catch (error) {
             next(error)
         }

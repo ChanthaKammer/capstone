@@ -3,19 +3,21 @@ import { BadRequest } from "../utils/Errors.js"
 
 
 class ParticipantsService{
-    createParticipant(participationData) {
-        throw new Error("Method not implemented.")
+    async createParticipant(participantData) {
+        const participant = await dbContext.Participants.create(participantData)
+        await participant.populate('profile tournament')
+        return participant
     }
-    async getParticipation(participationId) {
-        const participation = await dbContext.Participants.findById(participationId)
+    async getParticipation(participantId) {
+        const participation = await dbContext.Participants.findById(participantId)
         if(!participation){
-            throw new BadRequest(`There is no participation @ ${participationId}`)
+            throw new BadRequest(`There is no participation @ ${participantId}`)
         }
         return participation
     }
     async getTournamentParticipants(tournamentId) {
-        const participations = await dbContext.Participants.find({ tournamentId }).populate('profile tournament')
-        return participations
+        const participants = await dbContext.Participants.find({ tournamentId }).populate('profile tournament')
+        return participants
     }
     
 }
