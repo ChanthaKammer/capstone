@@ -5,8 +5,11 @@
   <main>
     <router-view />
   </main>
-   <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
+  <footer class="row bg-black g-0 sticky-bottom " style="width: 100%;">
+    <marquee behavior="scroll" direction="right" scrollamount="10" class="text-light" style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
+      <img src="https://media.giphy.com/media/pjb1HPZ41i5BS/source.gif" class="img-fluid" style="max-height: 80px; margin-top" alt="mario">
+    </marquee>
+    <img src='../src/assets/img/mario-level.psd' class="" style="background-size: cover; background-repeat: norepeat; background-position: center; max-height: 50px; margin-bottom: 5rem;" alt="">
   </footer>
 </template>
 
@@ -33,8 +36,6 @@ export default {
 
 
 footer {
-  display: grid;
-  place-content: center;
-  height: 32px;
+  max-height: 100px;
 }
 </style>

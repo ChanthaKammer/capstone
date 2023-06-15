@@ -4,7 +4,8 @@
     <div class="container-fluid bg-navbar">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <div class="d-flex flex-column align-items-center">
-          <DIV><img alt="logo" src="src/assets/img/gamePursuitLogo.png" class="rounded-pill elevation-2 shadow-lg me-3" style="" height="65" /><b>Game Pursuit</b></DIV>
+          <div>
+            <img alt="logo" src="src/assets/img/gamePursuitLogo.png" class="rounded-pill elevation-2 shadow-lg me-3" style="" height="65" /><b>Game Pursuit</b></div>
         </div>
       </router-link>
       

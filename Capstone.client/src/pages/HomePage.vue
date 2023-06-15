@@ -24,6 +24,20 @@
       
     </section> -->
 
+      <!-- SECTION my tournaments -->
+      <section class="row pt-5">
+        <div class="col-12">
+          <h3 class="ps-5 fw-bold"></h3>
+        </div>
+  
+        <!-- SECTION filter buttons -->
+        <div class="d-flex justify-content-around my-3 bg-categories rounded p-3">
+          <button @click="filterBy = ''" class="btn btn-outline-light w-25 mx-2">All</button>
+          <button @click="filterBy = 'online'" class="btn btn-outline-light w-25 mx-2">Online</button>
+          <button @click="filterBy = 'local'" class="btn btn-outline-light w-25 mx-2">Local</button>
+        </div>
+      </section>
+
     <section class="row">
       <div class="col-12">
         
@@ -75,10 +89,10 @@
       </div>
     </section>
 
-    <div class="row py-3 accent-row shadow-lg">
+    <div class="row mb-5 py-3 accent-row shadow-lg">
       <div class="col-6 mb-5 pe-5" style="position: absolute; top: -3.5vh; left: 20%;">
         <div class="btn-group">
-          <button type="button" class="btn btn-info">Highlights</button>
+          <button type="button" class="btn btn-info neon-button">Highlights</button>
           <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
@@ -94,7 +108,7 @@
 
       <div class="col-6 mb-5 ps-5" style="position: absolute; top: -3.5vh; right: -17%">
         <div class="btn-group">
-        <button type="button" class="btn btn-info">Top Gamers</button>
+        <button type="button" class="btn btn-info neon-button">Top Gamers</button>
           <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
@@ -110,559 +124,13 @@
     </div>
 
     <!-- NOTE GAME INFO / DETAIL CARDS ------------------------------------------------------->
-    <section class="row justify-content-center align-items-center bg-games-info px-2 pb-2">
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://www.hdwallpaper.nu/wp-content/uploads/2015/11/call_of_duty_black_ops_3-4k-wallpaper-3840x2160.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Call of Duty</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
+    <section class="row justify-content-center align-items-center accent-row px-2 pb-2">
+      <div class="col-12 col-md-3 my-3" v-for="t in tournaments" :key="t.id">
+        <!-- STUB tournament card template -->
+        <TournamentCard :tournament="t" />
       </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.C2SaVMhsQzQSxfL97RN5ZwHaEK?pid=ImgDet&rs=1);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Star Citizen</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.0fa6cee8f8d5474d4003a6da91a6b97c?rik=93Zo7hIH2YYFSw&pid=ImgRaw&r=0);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">God of War</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Diablo 4</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.23facc28b5ef08a65e1aeed996637cd0?rik=mVuLNekN1kTFfA&pid=ImgRaw&r=0);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Super Smash Bros</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.81usBOaz0sLSdWXI2b6XTAHaEK?w=333&h=187&c=7&r=0&o=5&pid=1.7);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Minecraft</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.048feb6b845e0916e8f55bb0aadee7e6?rik=029BrTQaIJB5cw&pid=ImgRaw&r=0);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Fortnite</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Diablo 4</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://www.hdwallpaper.nu/wp-content/uploads/2015/11/call_of_duty_black_ops_3-4k-wallpaper-3840x2160.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Call of Duty</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.C2SaVMhsQzQSxfL97RN5ZwHaEK?pid=ImgDet&rs=1);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Star Citizen</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.0fa6cee8f8d5474d4003a6da91a6b97c?rik=93Zo7hIH2YYFSw&pid=ImgRaw&r=0);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">God of War</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Diablo 4</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://www.hdwallpaper.nu/wp-content/uploads/2015/11/call_of_duty_black_ops_3-4k-wallpaper-3840x2160.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Call of Duty</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.C2SaVMhsQzQSxfL97RN5ZwHaEK?pid=ImgDet&rs=1);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Star Citizen</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.0fa6cee8f8d5474d4003a6da91a6b97c?rik=93Zo7hIH2YYFSw&pid=ImgRaw&r=0);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">God of War</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Diablo 4</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://www.hdwallpaper.nu/wp-content/uploads/2015/11/call_of_duty_black_ops_3-4k-wallpaper-3840x2160.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Call of Duty</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.C2SaVMhsQzQSxfL97RN5ZwHaEK?pid=ImgDet&rs=1);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Star Citizen</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.0fa6cee8f8d5474d4003a6da91a6b97c?rik=93Zo7hIH2YYFSw&pid=ImgRaw&r=0);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">God of War</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Diablo 4</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://www.hdwallpaper.nu/wp-content/uploads/2015/11/call_of_duty_black_ops_3-4k-wallpaper-3840x2160.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Call of Duty</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/OIP.C2SaVMhsQzQSxfL97RN5ZwHaEK?pid=ImgDet&rs=1);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Star Citizen</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://th.bing.com/th/id/R.0fa6cee8f8d5474d4003a6da91a6b97c?rik=93Zo7hIH2YYFSw&pid=ImgRaw&r=0);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">God of War</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-3 my-3">
-        <div class="card card-custom border-white border-0" style="height: 500px">
-          <div class="card-custom-img" style="background-image: url(https://cdn.segmentnextimages.com/wp-content/uploads/2023/06/Diablo-4-Sorcerer-Best-Aspects.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="https://cdn.dribbble.com/users/3876860/screenshots/6839899/gammers_community_high_resolution-05.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Diablo 4</h4>
-            <p class="card-text">Interested in testing your skill sets? Here is your chance.</p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash price!</p>
-            <p class="card-text">The champion remains AJ Vancattenburch as he spanked a bunch of other noobs and sent them crying home to mama. Sign up for the competition for a shot at a cash prize, a spot on the leaderboard, and; of course, bragging rights!</p>
-          </div>
-          <div class="card-footer row" style="background: inherit; border-color: inherit;">
-            <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
-            </div>
-            <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
-            </div>
-          </div>
-        </div>
-      </div>
+    </section>
+    
 
       
       <section>
@@ -768,21 +236,10 @@
         </div>
       </section>
   
-      <!-- <div class="col-12 col-md-3 my-3">
-            <div class="card info-card elevation-5">
-              <div class="card-header info-header text-center" style="font-size: 1.25rem; font-weight: 625;">
-                CPU
-              </div>
-              <div class="card-body info-body">
-                <p class="card-text info-textbox">The Ryzen 5 5600G is an APU, which can adequately serve the role of both CPU and GPU. It has 6 cores and 12 threads, with a boost clock of 4.4 GHz.
-                  The Ryzen 5 5600G includes a stock cooler, so a 3rd-party cooler isn't necessary.</p>
-                </div>
-              </div>
-            </div> -->
             
-          </section>
-        </section>
-        
+    </section>
+
+  
         
         
         
@@ -795,32 +252,72 @@
 </template>
 
 <script>
-import { logger } from "../utils/Logger.js"
-import { onMounted, ref, computed } from "vue"
-import { AppState } from '../AppState';
-import axios from 'axios';
-import { rawgService } from "../services/RawgService.js";
+import { computed, onMounted, ref } from 'vue'
+import { tournamentsService } from '../services/TournamentsService.js'
+import { logger } from '../utils/Logger.js'
+import Pop from '../utils/Pop.js'
+import { AppState } from '../AppState.js'
+import TournamentCard from '../components/TournamentCard.vue'
+
 export default {
+
+  name: 'HomePage',
+
+  components: {
+    TournamentCard,
+},
   setup() {
 
-    onMounted(() => getGames())
+    const filterBy = ref ('')
 
-    async function getGames(){
+      // async findEventBg() {
+      //   try {
+      //     logger.log('getting event bg')
+      //     await eventsService.findEventBg()
+      //   } catch (error) {
+      //     Pop.error(error.message)
+      //     logger.log(error)
+      //   }
+      // }
+      
+      async function getAllTournaments() {
       try {
-        await rawgService.getGames()
+        logger.log('getting events')
+        await tournamentsService.getAllTournaments()
       } catch (error) {
-        logger.log(error);
+        Pop.error(error.message)
+        logger.log(error)
       }
     }
-    return {
     
-      // ... other properties from AppState if needed
-    };
-  },
+    onMounted(() => {
+      getAllTournaments()
+    })
+  
+    
+    return {
+      filterBy,
+      tournaments: computed(() => {
+        if (filterBy.value == '') {
+          return AppState.tournaments
+        } else {
+          return AppState.tournaments.filter ( 
+            t => filterBy.value ? 
+            t.type == filterBy.value : true 
+            )
+        }}),
+      }
+  }
 };
+
 </script>
 
 <style scoped lang="scss">
+
+* {
+  border: 1px solid green;
+  
+}
 
 .btn-group {
   opacity: .8;
@@ -839,6 +336,7 @@ export default {
 }
 
 .bg-nav-options {
+
   background-color: #0e2241;
   filter: drop-shadow( 0 15px 15px #0e224170);
   box-shadow: 0 5px 5px #0e224170;
@@ -876,6 +374,26 @@ export default {
   color: #b9b9b9;
   text-shadow: 0 3px 3px #a80000;
   animation: fadeIn 1.5s forwards;
+}
+
+.neon-button, .dropdown-toggle {
+  border: #71acff57 .125em solid;
+  text-shadow: .5px .5px .125em rgba(15, 0, 68, 0.827);
+  box-shadow: 0 0 20px 1px #49bfffe7;
+  animation: pulse 3s infinite;
+}
+
+.neon-button::before {
+  content: '';
+  position: absolute;
+  display: block;
+  background: #2bbcff;
+  top: 120%;
+  left: 0;
+  width: 130%;
+  height: 100%;
+  transform: perspective(1em) rotateX(40deg) scale(1, .35);
+  filter: blur(1em);
 }
 
 .bg-games {
@@ -978,19 +496,6 @@ export default {
   transition: 1s ease-in-out;
 }
 
-
-.sub-member {
-  color: #67cbe7;
-  margin-left: -1.5rem;
-}
-
-i.sub-member:hover {
-  color: #67cbe7;
-  animation: returnUserMargin 1s forwards;
-  filter: brightness(1.1) scale(1.1);
-  transition: 1s ease-in-out;
-}
-
 @keyframes returnMargin {
   0% {
     margin-right: 23.5rem;
@@ -1010,6 +515,18 @@ i.sub-member:hover {
   }
 }
 
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 20px 1px #49bfffe7;
+  }
+  50% {
+    box-shadow: 0 0 40px 2px #49bfffe7;
+    filter: brightness(1.3);
+  }
+  100% {
+    box-shadow: 0 0 20px 1px #49bfffe7;
+  }
+}
 
 ::-webkit-scrollbar {
   background-color: #2d288cc6;
