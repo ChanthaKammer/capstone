@@ -1,7 +1,7 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { tournamentsService } from "../services/TournamentsService.js";
 import BaseController from "../utils/BaseController.js";
-import { Auth0Provider } from "@bcwdev/auth0provider";
+
 
 export class TournamentsController extends BaseController{
     constructor(){
