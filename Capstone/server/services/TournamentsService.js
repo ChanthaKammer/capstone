@@ -18,7 +18,25 @@ class TournamentsService{
         const tournaments = await dbContext.Tournaments.find().populate('participantCount creator')
         return tournaments
     }
-
+    async editTournament(tournamentId, tournamentData, userId) {
+        const originalTourney = await this.getTournamentById(tournamentId)
+        if(originalTourney.creatorId != userId){
+            throw new Forbidden('You are not the creator of this tournament.')
+        }
+        if(originalTourney.isCancelled){
+            throw new BadRequest('This tournament is cancelled.')
+        }
+        originalTourney.name = tournamentData.name || originalTourney.name
+        originalTourney.description = tournamentData.description || originalTourney.description
+        originalTourney.coverImg = tournamentData.coverImg || originalTourney.coverImg
+        originalTourney.location = tournamentData.location || originalTourney.location
+        originalTourney.capacity = tournamentData.capacity || originalTourney.capacity
+        originalTourney.startDate = tournamentData.startDate || originalTourney.startDate
+        originalTourney.type = tournamentData.type || originalTourney.type
+        originalTourney.gameImg = tournamentData.gameImg || originalTourney.gameImg
+        originalTourney.gameName = tournamentData.gameName || originalTourney.gameName
+        originalTourney.gameSlug = tournamentData.gameSlug || originalTourney.gameSlug
+    }
     async tournamentCancelled(tournamentId, userId) {
         const tournament = await this.getTournamentById(tournamentId)
         if (tournament.creatorId != userId) throw new Forbidden("Not your Event!")
