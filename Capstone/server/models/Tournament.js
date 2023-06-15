@@ -1,7 +1,6 @@
 import { Schema } from "mongoose";
 const ObjectId = Schema.Types.ObjectId
 export const TournamentSchema = new Schema({
-    id: { type: ObjectId, required: true},
     creatorId: { type: ObjectId, required: true, ref: 'Account'},
     name: { type: String, required: true, maxLength: 100, minLength: 3},
     description: {type: String, required: true, maxLength: 1500, minLength: 10},
