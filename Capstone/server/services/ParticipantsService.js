@@ -8,7 +8,7 @@ class ParticipantsService{
         await participant.populate('profile tournament')
         return participant
     }
-    async getParticipation(participantId) {
+    async getParticipant(participantId) {
         const participation = await dbContext.Participants.findById(participantId)
         if(!participation){
             throw new BadRequest(`There is no participation @ ${participantId}`)
