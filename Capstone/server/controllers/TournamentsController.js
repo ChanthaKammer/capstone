@@ -1,3 +1,4 @@
+import { Auth0Provider } from "@bcwdev/auth0provider";
 import { tournamentsService } from "../services/TournamentsService.js";
 import BaseController from "../utils/BaseController.js";
 import { Auth0Provider } from "@bcwdev/auth0provider";
@@ -11,6 +12,8 @@ export class TournamentsController extends BaseController{
             .post('', this.createTournament)
     }
 
+    
+    
     async getAllTournaments(req, res, next){
         try {
             const tournaments = await tournamentsService.getAllTournaments()
