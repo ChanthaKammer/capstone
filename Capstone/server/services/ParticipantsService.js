@@ -9,7 +9,7 @@ class ParticipantsService{
         return participant
     }
     async getParticipant(participantId) {
-        const participation = await dbContext.Participants.findById(participantId)
+        const participation = await dbContext.Participants.findById(participantId).populate('profile tournament')
         if(!participation){
             throw new BadRequest(`There is no participation @ ${participantId}`)
         }
@@ -18,6 +18,14 @@ class ParticipantsService{
     async getTournamentParticipants(tournamentId) {
         const participants = await dbContext.Participants.find({ tournamentId }).populate('profile tournament')
         return participants
+    }
+    async deleteParticipant(userId, participantId) {
+        const participant = await this.getParticipant(participantId)
+        if(participant.accountId != userId){
+            throw new BadRequest("This is not your comment")
+        }
+        await participant.remove()
+        return participant
     }
     
 }
