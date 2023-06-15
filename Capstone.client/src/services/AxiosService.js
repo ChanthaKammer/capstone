@@ -6,8 +6,16 @@ export const api = Axios.create({
   timeout: 8000,
 });
 
+// export const rawgApi = Axios.create({
+//   baseURL: 'https://cors-anywhere.herokuapp.com/https://api.rawg.io/',
+//   params: {
+//     key: 'c10295c7f83d492e8e80760440925e07',
+//     // search: 'search=diablo'
+//   },
+//   timeout: 8000
+// });
 export const rawgApi = Axios.create({
-  baseURL: 'https://cors-anywhere.herokuapp.com/https://api.rawg.io/api',
+  baseURL: 'https://api.rawg.io/api/games',
   params: {
     key: 'c10295c7f83d492e8e80760440925e07',
     // search: 'search=diablo'
