@@ -19,6 +19,10 @@ class ParticipantsService{
         const participants = await dbContext.Participants.find({ tournamentId }).populate('profile tournament')
         return participants
     }
+    async getAccountParticipations(accountId) {
+      const participations = await dbContext.Participants.find({ accountId }).populate('profile tournament')
+      return participations
+    }
     async deleteParticipant(userId, participantId) {
         const participant = await this.getParticipant(participantId)
         if(participant.accountId != userId){
