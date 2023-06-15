@@ -9,7 +9,7 @@ class DbContext {
   Values = mongoose.model('Value', ValueSchema);
   Account = mongoose.model('Account', AccountSchema);
   Comments = mongoose.model('Comment', CommentSchema);
-  Particpants = mongoose.model('Participant', ParticipantSchema);
+  Participants = mongoose.model('Participant', ParticipantSchema);
   Tournaments = mongoose.model('Tournament', TournamentSchema);
 }
 
