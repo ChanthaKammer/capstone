@@ -5,20 +5,30 @@ import { commentsService } from "../services/CommentsService.js";
 
 
 
-export class TournamentsController extends BaseController{
-    constructor(){
+export class TournamentsController extends BaseController {
+    constructor() {
         super('api/tournaments')
         this.router
             .get('', this.getAllTournaments)
             .get('/:id', this.getTournamentById)
             .get('/:id/comments', this.getCommentsByTournamentId)
+            .get('/:id/participants', this.getTournamentParticipants)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createTournament)
             .put('/:id', this.editTournament)
             .delete('/:id', this.tournamentCancelled)
     }
-    
-    async getTournamentById(req, res, next){
+    async getTournamentParticipants(req, res, next) {
+        try {
+            const tournamentId = req.params.tournamentId
+            const participants = await participantsService.getTournamentParticipants(tournamentId)
+            return res.send(participants)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getTournamentById(req, res, next) {
         try {
             const tournamentId = req.params.id
             const tournament = await tournamentsService.getTournamentById(tournamentId)
@@ -27,8 +37,8 @@ export class TournamentsController extends BaseController{
             next(error)
         }
     }
-    
-    async getAllTournaments(req, res, next){
+
+    async getAllTournaments(req, res, next) {
         try {
             const tournaments = await tournamentsService.getAllTournaments()
             return res.send(tournaments)
@@ -36,8 +46,8 @@ export class TournamentsController extends BaseController{
             next(error)
         }
     }
-    
-    async createTournament(req, res, next){
+
+    async createTournament(req, res, next) {
         try {
             req.body.creatorId = req.userInfo.id
             const tournament = await tournamentsService.createTournament(req.body)
@@ -46,8 +56,8 @@ export class TournamentsController extends BaseController{
             next(error)
         }
     }
-    
-    async getCommentsByTournamentId(req, res, next){
+
+    async getCommentsByTournamentId(req, res, next) {
         try {
             const tournamentId = req.params.id
             const comments = await commentsService.getCommentsByTournamentId(tournamentId)
@@ -56,7 +66,7 @@ export class TournamentsController extends BaseController{
             next(error)
         }
     }
-    async editTournament(req, res, next){
+    async editTournament(req, res, next) {
         try {
             const tournamentData = req.body
             const userId = req.userInfo.id
@@ -68,12 +78,12 @@ export class TournamentsController extends BaseController{
         }
     }
     async tournamentCancelled(req, res, next) {
-      try {
-        const tournament = await tournamentsService.tournamentCancelled(req.params.id, req.userInfo.id)
-        return res.send(tournament)
-      } catch (error) {
-        next(error)
-      }
+        try {
+            const tournament = await tournamentsService.tournamentCancelled(req.params.id, req.userInfo.id)
+            return res.send(tournament)
+        } catch (error) {
+            next(error)
+        }
     }
 
 }

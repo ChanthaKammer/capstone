@@ -135,8 +135,8 @@
       </div>
    </section>
    <section class="container-fluid pt-3">
-      <div class="row justify-content-center py-2">
-         <div class="col-md-8">
+      <div class="row justify-content-center py-2 ">
+         <div class="col-md-8 bg-dark text-white">
             <div class="row justify-content-between">
                <div class="col-md-3">
                   <h1>Overwatch</h1>
@@ -160,7 +160,7 @@
          </div>
       </div>
       <div class="row justify-content-center py-2">
-         <div class="col-md-8">
+         <div class="col-md-8 bg-dark text-white">
             <div class="row justify-content-between">
                <div class="col-md-3">
                   <h1>Overwatch</h1>
@@ -295,6 +295,6 @@
 
 <style scoped lang="scss">
 * {
-   border: 1px solid green;
+   border: 0px solid green;
 }
 </style>
