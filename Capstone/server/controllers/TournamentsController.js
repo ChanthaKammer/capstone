@@ -17,7 +17,7 @@ export class TournamentsController extends BaseController {
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createTournament)
             .put('/:id', this.editTournament)
-            .put('/:id', this.tournamentFinished)
+            .delete('/finished/:id', this.tournamentFinished)
             .delete('/:id', this.tournamentCancelled)
     }
 
