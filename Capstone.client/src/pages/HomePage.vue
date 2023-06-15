@@ -795,13 +795,25 @@
 </template>
 
 <script>
+import { logger } from "../utils/Logger.js"
+import { onMounted, ref, computed } from "vue"
 import { AppState } from '../AppState';
 import axios from 'axios';
+import { rawgService } from "../services/RawgService.js";
 export default {
   setup() {
 
+    onMounted(() => getGames())
+
+    async function getGames(){
+      try {
+        await rawgService.getGames()
+      } catch (error) {
+        logger.log(error);
+      }
+    }
     return {
-      scrapePage,
+    
       // ... other properties from AppState if needed
     };
   },
