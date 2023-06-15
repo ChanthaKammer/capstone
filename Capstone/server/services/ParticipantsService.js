@@ -13,6 +13,10 @@ class ParticipantsService{
         }
         return participation
     }
+    async getTournamentParticipants(tournamentId) {
+        const participations = await dbContext.Participants.find({ tournamentId }).populate('profile tournament')
+        return participations
+    }
     
 }
 
