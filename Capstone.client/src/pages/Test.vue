@@ -70,6 +70,7 @@
          </div>
       </div>
    </section>
+   <h1 class="text-center text-success">Home Page</h1>
    <section class="container-fluid pt-3">
       <div class="row">
          <div class="col-md-3 pt-2 pb-2 px-2" style="">
@@ -134,6 +135,7 @@
          </div>
       </div>
    </section>
+   <h1 class="text-center text-success">Example Tournaments</h1>
    <section class="container-fluid pt-3">
       <div class="row justify-content-center py-2 ">
          <div class="col-md-8 bg-dark text-white">
@@ -182,7 +184,7 @@
          </div>
       </div>
    </section>
-   <h1 class="text-center">END HOME PAGE</h1>
+   <h1 class="text-center text-success">Example Forms</h1>
    <section class="container-fluid">
       <div class="row justify-content-center mt-3">
          <div class="col-md-6 card shadow">
@@ -227,6 +229,7 @@
          </div>
       </div>
    </section>
+   <h1 class="text-center text-success">Sorting Example</h1>
    <section class="container-fluid">
       <div class="row justify-content-center mb-3">
          <ul class="col-6 nav justify-content-center">
@@ -260,6 +263,7 @@
          </ul>
       </div>
    </section>
+   <h1 class="text-center text-success">Example Footer</h1>
    <section class="container-fluid bg-dark text-white">
       <div class="row justify-content-around">
          <div class="col-2">
@@ -269,14 +273,36 @@
                <h4>Phone</h4>
             </div>
          </div>
-         <div class="col-5 text-center">
-            <h1>Placeholder Title</h1>
+         <div class="col-5 text-center align-self-center">
+            <h1>Logo Title</h1>
          </div>
          <div class="col-2">
             <div class="row text-end">
                <h4>Terms and Conditions</h4>
                <h4>Privacy Policy</h4>
                <h4>Jobs</h4>
+            </div>
+         </div>
+      </div>
+   </section>
+   <h1 class="text-center text-success">Search Results</h1>
+   <section class="container-fluid">
+      <div class="row">
+         <div class="col-md-6 bg-dark">
+            <div class="col-md-6 pt-2 pb-2 px-2" style="">
+               <img src="https://th.bing.com/th/id/R.f645b78e51a192cb4e9caa4aac6c0875?rik=ZTglhfD9mmwNIA&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fgod-of-war-image.jpg&ehk=D%2bfse8wLp7FcFA%2bqBBv%2bCP0fIUGXa8YSkuFKGmU83yk%3d&risl=&pid=ImgRaw&r=0" class="img-fluid rounded-3" alt="...">
+            </div>
+            <div class="col-md-6 pt-2">
+               <h1>Game Title</h1>
+            </div>
+         </div>
+         
+         <div class="col-md-6 bg-dark">
+            <div class="col-md-6 pt-2 pb-2 px-2" style="">
+               <img src="https://th.bing.com/th/id/R.f645b78e51a192cb4e9caa4aac6c0875?rik=ZTglhfD9mmwNIA&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fgod-of-war-image.jpg&ehk=D%2bfse8wLp7FcFA%2bqBBv%2bCP0fIUGXa8YSkuFKGmU83yk%3d&risl=&pid=ImgRaw&r=0" class="img-fluid rounded-3" alt="...">
+            </div>
+            <div class="col-md-6 pt-2">
+               <h1>Game Title</h1>
             </div>
          </div>
       </div>
@@ -295,6 +321,6 @@
 
 <style scoped lang="scss">
 * {
-   border: 0px solid green;
+   border: 1px dotted purple;
 }
 </style>
