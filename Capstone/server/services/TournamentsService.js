@@ -39,11 +39,11 @@ class TournamentsService{
     }
     async tournamentCancelled(tournamentId, userId) {
         const tournament = await this.getTournamentById(tournamentId)
-        if (tournament.creatorId != userId) throw new Forbidden("Not your Event!")
-
-  tournament.isCancelled = true
-   await tournament.save()
-
+        if (tournament.creatorId != userId){
+            throw new Forbidden("Not your Event!")   
+        }
+        tournament.isCancelled = true
+        await tournament.save()
     }
    
 }
