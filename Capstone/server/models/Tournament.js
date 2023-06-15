@@ -1,7 +1,6 @@
 import { Schema } from "mongoose";
 const ObjectId = Schema.Types.ObjectId
 export const TournamentSchema = new Schema({
-    id: { type: ObjectId, required: true},
     creatorId: { type: ObjectId, required: true, ref: 'Account'},
     name: { type: String, required: true, maxLength: 100, minLength: 3},
     description: {type: String, required: true, maxLength: 1500, minLength: 10},
@@ -10,6 +9,9 @@ export const TournamentSchema = new Schema({
     capacity: { type: Number, required: true},
     startDate: { type: Date, required: true},
     isCancelled: { type: Boolean, required: true, default: false},
+    isFinished: {type: Boolean, required: true, default: false},
+    totalRounds: {type: Number, required: true},
+    currentRound: {type: Number, required: true, default: 1},
     type: { type: String, required: true, enum: ['local', 'online']},
     gameSlug: { type: String, required: true},
     gameName: { type: String, required: true},
@@ -25,7 +27,7 @@ TournamentSchema.virtual('creator', {
     justOne: true
 })
 
-TournamentSchema.virtual('parcipantCount', {
+TournamentSchema.virtual('participantCount', {
     localField: '_id',
     foreignField: 'tournamentId',
     ref: 'Participant',

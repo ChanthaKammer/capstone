@@ -8,7 +8,6 @@ export const AppState = reactive({
 
   videoCardHTML: {},
 
-  tournaments: [],
-
-  activeTournament: {},
+  nextPageUrl: null,
+  previousPageUrl: null,
 })

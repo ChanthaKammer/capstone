@@ -36,8 +36,7 @@
         <form class="d-flex" role="search" style="width: 40%;">
           <input class="form-control me-2" type="search" placeholder="Search Games..." aria-label="Search">
           <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
-        </form>
-         <!-- LOGIN COMPONENT HERE -->
+        </form> <!-- LOGIN COMPONENT HERE -->
         <Login />
       </div>
 

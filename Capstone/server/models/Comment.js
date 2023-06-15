@@ -5,12 +5,12 @@ export const CommentSchema = new Schema({
     id: { type: ObjectId, required: true},
     creatorId: { type: ObjectId, required: true, ref: 'Account'},
     tournamentId: {type: ObjectId, required: true},
-    body: {type: String, required: true, maxLength: 300}
+    body: {type: String, required: true, maxLength: 500}
 },
     {timestamps: true, toJSON: {virtuals: true}}
 )
 
-CommentSchema.virtual('commenter', {
+CommentSchema.virtual('creator', {
     localField: 'creatorId',
     foreignField: '_id',
     ref: 'Account',
