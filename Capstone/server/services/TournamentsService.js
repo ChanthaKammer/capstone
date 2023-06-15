@@ -47,7 +47,7 @@ class TournamentsService{
         if (tournament.creatorId != userId){
             throw new Forbidden("Not your Tournament!")
         }
-        tournament.isCancelled = true
+        tournament.isCancelled = !tournament.isCancelled
         await tournament.save()
     }
    
