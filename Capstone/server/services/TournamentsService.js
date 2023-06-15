@@ -36,6 +36,9 @@ class TournamentsService{
         originalTourney.gameImg = tournamentData.gameImg || originalTourney.gameImg
         originalTourney.gameName = tournamentData.gameName || originalTourney.gameName
         originalTourney.gameSlug = tournamentData.gameSlug || originalTourney.gameSlug
+
+        await originalTourney.save()
+        return originalTourney
     }
     async tournamentCancelled(tournamentId, userId) {
         const tournament = await this.getTournamentById(tournamentId)
