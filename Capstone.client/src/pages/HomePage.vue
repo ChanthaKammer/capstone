@@ -801,7 +801,6 @@ export default {
   setup() {
 
     return {
-      scrapePage,
       // ... other properties from AppState if needed
     };
   },
