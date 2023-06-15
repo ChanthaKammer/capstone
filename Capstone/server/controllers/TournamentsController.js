@@ -1,6 +1,7 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { tournamentsService } from "../services/TournamentsService.js";
 import BaseController from "../utils/BaseController.js";
+import { commentsService } from "../services/CommentsService.js";
 
 
 
@@ -10,6 +11,7 @@ export class TournamentsController extends BaseController{
         this.router
             .get('', this.getAllTournaments)
             .get('/:id', this.getTournamentById)
+            .get('/:id/comments', this.getCommentsByTournamentId)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createTournament)
     }
@@ -43,4 +45,13 @@ export class TournamentsController extends BaseController{
         }
     }
 
+    async getCommentsByTournamentId(req, res, next){
+        try {
+            const tournamentId = req.params.id
+            const comments = await commentsService.getCommentsByTournamentId(tournamentId)
+            return res.send(comments)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
