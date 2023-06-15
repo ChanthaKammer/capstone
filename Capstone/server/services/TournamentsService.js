@@ -1,5 +1,5 @@
 import { dbContext } from "../db/DbContext.js"
-import { BadRequest } from "../utils/Errors.js"
+import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class TournamentsService{
     async createTournament(tournamentData) {
@@ -19,6 +19,14 @@ class TournamentsService{
         return tournaments
     }
 
+    async tournamentCancelled(tournamentId, userId) {
+        const tournament = await this.getTournamentById(tournamentId)
+        if (tournament.creatorId != userId) throw new Forbidden("Not your Event!")
+
+  tournament.isCancelled = true
+   await tournament.save()
+
+    }
    
 }
 
