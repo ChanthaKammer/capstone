@@ -14,6 +14,7 @@ export class TournamentsController extends BaseController{
             .get('/:id/comments', this.getCommentsByTournamentId)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createTournament)
+            .put('/:id', this.editTournament)
     }
 
     async getTournamentById(req, res, next){
@@ -50,6 +51,18 @@ export class TournamentsController extends BaseController{
             const tournamentId = req.params.id
             const comments = await commentsService.getCommentsByTournamentId(tournamentId)
             return res.send(comments)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async editTournament(req, res, next){
+        try {
+            const tournamentData = req.body
+            const userId = req.userInfo.id
+            const tournamentId = req.params.id
+            const tournament = await tournamentsService.editTournament(tournamentId, tournamentData, userId)
+            return res.send(tournament)
         } catch (error) {
             next(error)
         }
