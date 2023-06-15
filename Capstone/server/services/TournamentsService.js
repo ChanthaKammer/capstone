@@ -6,6 +6,12 @@ class TournamentsService{
         return events
     }
 
+    async createTournament(tournamentData){
+        const tournament = await dbContext.Tournaments.create(tournamentData)
+        await tournament.populate('creator participantCount')
+        return tournament
+    }
+
 }
 
 export const tournamentsService = new TournamentsService()

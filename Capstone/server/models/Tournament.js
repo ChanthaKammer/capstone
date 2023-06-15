@@ -25,7 +25,7 @@ TournamentSchema.virtual('creator', {
     justOne: true
 })
 
-TournamentSchema.virtual('parcipantCount', {
+TournamentSchema.virtual('participantCount', {
     localField: '_id',
     foreignField: 'tournamentId',
     ref: 'Participant',
