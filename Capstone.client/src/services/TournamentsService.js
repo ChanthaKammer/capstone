@@ -12,16 +12,6 @@ class TournamentsService {
     logger.log(AppState.tournaments)
   }
 
-  async searchTournaments(searchTerm) {
-    const res = await api.get('api/tournaments', {
-      params: {
-        query: searchTerm
-      }
-    })
-    AppState.query = searchTerm
-    AppState.searchTournaments = res.data.map(t => new Tournament(t))
-  }
-
   async getTournamentById(tournamentId) {
     const res = await api.get(`api/tournaments/${tournamentId}`)
     AppState.activeTournament = res.data

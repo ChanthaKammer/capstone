@@ -27,12 +27,12 @@ const routes = [
     name: 'TournamentDetails',
     component: loadPage('TournamentDetailsPage')
   },
-  {
-    path: '/tournaments/search',
-    name: 'Search',
-    //ANCHOR CHANGE NAME OF SEARCH COMPONENT LOADPAGE LATER JUST SENDING TO ABOUT PAGE TO TEST SEARCH FUNCTIONALITY
-    component: loadPage('AboutPage')
-  },
+  // {
+  //   path: '/tournaments/search',
+  //   name: 'Search',
+  //   //ANCHOR CHANGE NAME OF SEARCH COMPONENT LOADPAGE LATER JUST SENDING TO ABOUT PAGE TO TEST SEARCH FUNCTIONALITY
+  //   component: loadPage('SearchResultPage')
+  // },
   {
     path: '/test',
     name: 'Test',
@@ -40,7 +40,7 @@ const routes = [
   },
   {
     path: '/searchresultpage',
-    name: 'SearchResultPage',
+    name: 'Search',
     component: loadPage('SearchResultPage')
   }
 ]
