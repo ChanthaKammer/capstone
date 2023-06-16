@@ -4,6 +4,7 @@ export class Game{
       this.name = data.name
       this.platform = data.platform
       this.images = data.short_screenshots
+      this.backgroundImg = data.background_image
       this.genres = data.genres
       this.released = data.released
       this.rating = data.rating
