@@ -4,6 +4,9 @@
   </header>
   <main>
     <router-view />
+
+    
+
   </main>
   <footer class="row bg-black g-0 sticky-bottom " style="width: 100%;">
     <marquee behavior="scroll" direction="right" scrollamount="10" class="text-light" style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
