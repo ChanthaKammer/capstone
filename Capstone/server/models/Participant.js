@@ -10,6 +10,8 @@ export const ParticipantSchema = new Schema({
     {timestamps: true, toJSON: {virtuals: true}}
 )
 
+ParticipantSchema.index({ tournamentId: 1, accountId: 1}, { unique: true})
+
 ParticipantSchema.virtual('profile', {
     localField: 'accountId',
     foreignField: '_id',

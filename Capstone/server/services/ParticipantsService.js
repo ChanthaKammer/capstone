@@ -1,20 +1,11 @@
 import { dbContext } from "../db/DbContext.js"
 import { BadRequest } from "../utils/Errors.js"
 
-async function _checkParticipant(accId, tourId){
-    const participant = await dbContext.Participants.find({ accountId: accId, tournamentId: tourId})
-    return participant
-}
 class ParticipantsService{
     async createParticipant(participantData) {
-        const partic = await _checkParticipant(participantData.accountId, participantData.tournamentId)
-        if(!partic){
             const participant = await dbContext.Participants.create(participantData)
             await participant.populate('profile tournament')
             return participant
-        } else {
-            throw new BadRequest("You are already participating.")
-        }
     }
     async getParticipant(participantId) {
         const participation = await dbContext.Participants.findById(participantId).populate('profile tournament')
