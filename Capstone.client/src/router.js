@@ -27,6 +27,11 @@ const routes = [
     name: 'TournamentDetails',
     component: loadPage('TournamentDetailsPage')
   },
+  {
+    path: '/games/:slug',
+    name: 'GameDetails',
+    component: loadPage('GameDetailsPage')
+  },
   // {
   //   path: '/tournaments/search',
   //   name: 'Search',
