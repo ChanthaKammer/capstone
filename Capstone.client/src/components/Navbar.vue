@@ -33,7 +33,7 @@
             </ul>
           </li>
         </ul>
-        <form @submit.prevent="searchTournaments()" class="d-flex" role="search" style="width: 40%;">
+        <form @submit.prevent="searchGames()" class="d-flex" role="search" style="width: 40%;">
           <input class="form-control me-2" type="search" placeholder="Search Games..." aria-label="Search" v-model="search">
           <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
         </form> <!-- LOGIN COMPONENT HERE -->
@@ -49,7 +49,7 @@ import { ref } from 'vue';
 import { useRouter } from "vue-router";
 import Login from './Login.vue';
 import { logger } from "../utils/Logger.js";
-import { tournamentsService } from "../services/TournamentsService.js";
+import { rawgService } from "../services/RawgService.js";
 import Pop from "../utils/Pop.js";
 
 export default {
@@ -61,11 +61,14 @@ export default {
     return {
       search,
 
-      async searchTournaments() {
+      async searchGames() {
         try {
           const searchTerm = search.value
-          logger.log(`Searching tournaments containing ${searchTerm}`)
-          await tournamentsService.searchTournaments(searchTerm)
+
+          const parts = searchTerm.split(' ');
+          const modifiedSearch = parts.join('+')
+          logger.log(`Searching tournaments containing ${modifiedSearch}`)
+          await rawgService.searchGames(searchTerm)
           router.push(
             { name: 'Search' }
           )
