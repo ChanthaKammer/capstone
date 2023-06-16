@@ -138,18 +138,32 @@
 
 <script>
 
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
 import { tournamentsService } from '../services/TournamentsService';
 import { participantsService } from '../services/ParticipantsService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
+import { useRoute } from 'vue-router'
 
 export default {
 
 
 
 setup() {
+  const route = useRoute()
+
+  onMounted(() => setActiveTournament())
+    async function setActiveTournament() {
+      try {
+        const tournamentId = route.params.tournamentId
+        await TournamentsService.setActiveTournament(tournamentId)
+
+      } catch (error) {
+        Pop.error(error)
+      }
+
+    }
   
   return { 
     account: computed(() => AppState.account),
