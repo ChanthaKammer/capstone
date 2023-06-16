@@ -32,7 +32,7 @@
 
 <template>
 
-  <section class="container-fluid bg-img g-0">
+  <section class="container-fluid bg-img">
     <div class="row">
       <div v-if="!tournament.isCancelled" class="col-12 col-md-6 mt-4 text-light text-uppercase">
         <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;"> {{ tournament.type }} MATCH </p>
@@ -114,24 +114,25 @@
         </div>
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 500px;" alt="StarShipCitizen"> 
+        <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 40vw;" alt="StarShipCitizen"> 
       </div>
     </div>
-    <footer class="row bg-black g-0 sticky-bottom" style="width: 100%; max-height: 60px;">
-      <marquee 
-        behavior="scroll" 
-        direction="right" 
-        scrollamount="5" 
-        class="text-light" 
-        style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
-        <img 
-          src="https://th.bing.com/th/id/R.2bc5a9822d665e72c81b61d4b4bb005e?rik=QzK0idJb9fJMqw&riu=http%3a%2f%2ffiles.gamebanana.com%2fimg%2fico%2fsprays%2fkoopa.gif&ehk=P%2bR6goQOAICNSQF%2barcUljvK1EsIlBzWRDFrzjXORa0%3d&risl=&pid=ImgRaw&r=0" 
-          class="img-fluid pb-3" 
-          style="max-height: 80px;" 
-          alt="mario">
-      </marquee>
-    </footer>
   </section>
+  
+  <footer class="row bg-black g-0 sticky-bottom" style="width: 100%; max-height: 60px;">
+    <marquee 
+      behavior="scroll" 
+      direction="right" 
+      scrollamount="5" 
+      class="text-light" 
+      style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
+      <img 
+        src="https://th.bing.com/th/id/R.2bc5a9822d665e72c81b61d4b4bb005e?rik=QzK0idJb9fJMqw&riu=http%3a%2f%2ffiles.gamebanana.com%2fimg%2fico%2fsprays%2fkoopa.gif&ehk=P%2bR6goQOAICNSQF%2barcUljvK1EsIlBzWRDFrzjXORa0%3d&risl=&pid=ImgRaw&r=0" 
+        class="img-fluid pb-3" 
+        style="max-height: 80px;" 
+        alt="mario">
+    </marquee>
+  </footer>
 
 </template>
 
@@ -206,6 +207,8 @@ setup() {
 
 <style scoped lang="scss">
 
+
+
 h1, h2, h3, h4, h5, h6 {
   text-shadow: 0 3px 5px #ffffff;
 }
@@ -247,7 +250,7 @@ h1, h2, h3, h4, h5, h6 {
 .pizza-img {
   opacity: .98;
   filter: brightness(1.2);
-  animation: slideIn 2s forwards;
+  
 }
 
 .starship-img:hover {

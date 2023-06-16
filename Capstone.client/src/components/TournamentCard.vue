@@ -11,7 +11,7 @@
           <div class="card-body" style="overflow-y: auto">
             <h4 class="card-title"> {{ tournament.name }} </h4>
             <p class="card-text">{{ tournament.category }}</p>
-            <p class="card-text text-end" style="font-weight: 650;">Remaining Players: {{ remainingParticipantCount }} </p>
+            <p class="card-text text-end" style="font-weight: 650;">Spots Left: {{ remainingParticipantCount }} / {{ participantCount }} </p>
             <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash prize!</p>
             <p class="card-text">{{ tournament.description }}</p>
           </div>
@@ -107,6 +107,9 @@ export default {
     return {
 
         props,
+        participantCount: computed(() =>{
+          return AppState.activeTournament.capacity
+        }),
         remainingParticipantCount: computed(()=>{
         return AppState.activeTournament.capacity - AppState.activeTournament.participantCount
         }),
@@ -134,7 +137,7 @@ export default {
   overflow: hidden;
   min-height: 450px;
   background-color: #0a0b14f3;
-  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+  box-shadow: 0 0 15px 2px #0a0a0a4d;
   transition: .5 ease-in-out;
 }
 
@@ -147,6 +150,7 @@ export default {
   background-position: center;
   opacity: .8;
   filter: brightness(1.3);
+  box-shadow: 0 10px 0 10px #0a0a0a4d;
   border-color: inherit;
 }
 
@@ -172,8 +176,9 @@ export default {
 
 .card-custom-avatar img {
   border-radius: 50%;
-  box-shadow: 0 0 15px #0a0a0a9a;
+  box-shadow: 0 0 15px 3px #0a0a0a9a;
   position: absolute;
+  border: 2.5px solid #000000;
   top: 100px;
   left: 1.25rem;
   width: 100px;
