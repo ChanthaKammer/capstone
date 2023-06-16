@@ -1,97 +1,134 @@
+<!-- NOTE the commented out JSON below is just here for my own personal reference. I will remove once I'm done with the page.
+
+
+\  { "_id"
+   "creatorId"
+    "name": "Code Works - Puzzle Fighter", 
+    "description": "A bracket style tournament to see who is the greatest puzzle fighter of all time", 
+    "coverImg": "https://codeworks.blob.core.windows.net/public/assets/img/cw-logo-circle.png",
+    "location": "Boise Codework campus", 
+    "capacity": 16, 
+    "startDate": "2023-06-28T06:00:00.000Z", 
+    "isCancelled": false, 
+    "isFinished": false, 
+    "totalRounds": 4, 
+    "currentRound": 1, 
+    "type": "local", 
+    "gameName"
+    "gameImg"
+    "createdAt": "2023-06-15T21:28:56.216Z", 
+    "updatedAt": "2023-06-15T22:50:46.944Z", "__v": 0, 
+
+  "creator": { "_id": "648b6d84e289b1b37944ac30",
+    "subs": [ "auth0|648b6d845d6cbd4d6d27c8d2" ], 
+    "email": "durzo@codeworks.com",
+    "name": "durzo", 
+    "picture": "https://s.gravatar.com/avatar/569da06bb0b0f1eb563dc04de8b91576?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fdu.png", 
+    "createdAt": "2023-06-15T21:11:03.683Z", 
+    "updatedAt": "2023-06-15T21:11:03.683Z", "__v": 0, 
+    "id": "648b6d84e289b1b37944ac30" },
+    "participantCount": 0 } -->
+
+
 <template>
 
   <section class="container-fluid bg-img g-0">
     <div class="row">
-      <div v-if="!tournament.isCancelled" class="col-4 mt-4 text-light">
-        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 5rem; font-weight: 750; font-style: italic;">LOCATION</p>
+      <div v-if="!tournament.isCancelled" class="col-12 col-md-6 mt-4 text-light text-uppercase">
+        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;"> {{ tournament.type }} MATCH </p>
         <div class="row">
           <div class="col-12">
-            <p class="ms-5 ps-3 mt-0 pb-3" style="font-size: 3.5rem; font-weight: 650; font-style: italic;"> {{ tournament.location }} </p>
-            <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2.75rem; font-weight: 650; font-style: italic;">ADDRESS</p>
-            <p class="ms-5 ps-2 my-0" style="font-size: 2rem; font-weight: 650; font-style: italic;">1234 MAIN ST BOISE, ID</p>
+            <p class="ms-5 ps-3 mt-0 pb-3" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{ tournament.location }} </p>
+            <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 650; font-style: italic;">BE THERE ON</p>
+            <p class="ms-5 ps-2 my-0" style="font-size: 2rem; font-weight: 650; font-style: italic;"> {{ new Date(tournament.startDate) }}</p>
           </div>
         </div>
       </div>
-      <div class="col-8 pt-5 px-5 d-flex justify-content-end">
-        <img src="https://res.cloudinary.com/teepublic/image/private/s--umyiOn8Z--/t_Preview/t_watermark_lock/b_rgb:262c3a,c_lpad,f_jpg,h_630,q_90,w_1200/v1607894822/production/designs/17315339_1.jpg" class="img-fluid pizza-img rounded-2 h-75 shadow-lg elevation-5" alt="PizzaImg">
+      <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end">
+        <img :src="tournament.coverImg" class="img-fluid" style="max-height: 50vh;">
       </div>
     </div>
-    <div class="row bg-status">
-      <div class="col-12 d-flex justify-content-center align-items-center">
-        <p style="font-style: italic;">ACTIVE</p>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <div class="col-12 col-md-6 order-2-sm text-light">
-        <p class="ms-5 mt-4 mb-0 my-0" style="font-size: 4rem; font-weight: 750; font-style: italic;">TOP PLAYER</p>
-        <div class="row ps-5">
-          <div class="col-3">
-            <i class="mdi mdi-account-circle" style="font-size: 9rem;"></i>
-          </div>
-          <div class="col-9">
-            <div class="row">
-              <div class="col-12">
-                <p style="font-size: 3rem; font-weight: 750; font-style: italic;">Top Player Name</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <p style="font-size: 3rem; font-weight: 750; font-style: italic;">Top Player's Team</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row ms-5 ps-5">
-          <div class="col-5 d-flex ps-5 ms-5">
-            <p style="font-size: 2rem; font-weight: 650; font-style: italic;">Round 3/4</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 d-flex align-items-baseline">
-            <i class="mdi mdi-account-multiple" style="font-size: 5rem; color: green;"></i>
-            <i class="mdi mdi-account-multiple" style="font-size: 5rem; color: green;"></i>
-            <i class="mdi mdi-account-multiple" style="font-size: 5rem; color: green;"></i>
-            <i class="mdi mdi-account-multiple" style="font-size: 5rem; color: green;"></i>
-            <i class="mdi mdi-account-multiple" style="font-size: 5rem; color: red;"></i>
-            <i class="mdi mdi-account-multiple" style="font-size: 5rem; color: red;"></i>
+
+    <!--NOTE This section conditionally renders the status of the tournament
+      * If cancelled, displays red banner reading "CANCELLED"
+      * If active, green banner reads "ACTIVE"
+      * If finished, light blue banner reads "FINISHED"
+      * If pending, yellow banner reads "PENDING" -->
+    <!--NOTE Expand further on card methodology once minimum requirements are met elsewhere -->
+    <section>
+      <div class="row bg-pending">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+          <div v-if="!tournament.isFinished">
+            <p class="pending" style="font-style: italic;">PENDING</p>
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-6 order-1-sm pt-5 pe-5">
-        <img src="https://th.bing.com/th/id/OIP.W78c51LqpoCxKRIVJJIIXwHaEK?pid=ImgDet&w=3840&h=2160&rs=1" class="img-fluid starship-img rounded-2" style="min-width: 500px;" alt="StarShipCitizen">
+      <div class="row bg-active">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+          <div v-if="tournament.startDate >= Date.now() && !tournament.isFinished">
+            <p style="font-style: italic;">ACTIVE</p>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="row bg-finished">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+          <div v-if="tournament.isFinished">
+            <p class="finished" style="font-style: italic;">FINISHED</p>
+          </div>
+        </div>
+      </div>
+      <div class="row bg-cancelled">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+          <div v-if="tournament.isCancelled">
+            <p style="font-style: italic;">CANCELLED</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="row">
-      <div class="col-6">
+      <div class="col-12 col-md-6 order-2 order-md-1">
         <div class="row justify-content-around p-4">
-          <div class="col-3 text-center">
-            <i class="mdi mdi-account-circle" style="font-size: 9rem;"></i>
-            <h1>1st Place</h1>
+          <div class="col-6 text-center">
+            <h1>1st Place:</h1>
+            <!-- NOTE MAKE ICON FOR CURRENT LEADER BY THEIR USER IMAGE USING THE :TITLE V-BIND METHOD ON ACTIVE TOURNAMENT WHEN LESS TIRED -->
+            <i class="mdi mdi-account-circle top-player" style="font-size: 5rem;"></i>
+            <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 2px 2px #ffffff;">Top Player Name</p>
+            <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 2px 2px #ffffff;">Top Player Team</p>
           </div>
-          <div class="col-6">
-            <h1>Top Player Name</h1>
-            <h1>Top Player Team</h1>
-            <h1>Round 3/4</h1>
+          <div class="col-6 col-md-3">
+            <h1>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h1>
+          </div>
+          <div>
             <div class="row">
               <div class="col-12 d-flex align-items-baseline">
-                <i class="mdi mdi-account-multiple" style="font-size: 3.5rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3.5rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3.5rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3.5rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3.5rem; color: red;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3.5rem; color: red;"></i>
+                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
+                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
+                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
+                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
+                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: red;"></i>
+                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: red;"></i>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-6 p-4">
-        <img src="https://th.bing.com/th/id/OIP.W78c51LqpoCxKRIVJJIIXwHaEK?pid=ImgDet&w=3840&h=2160&rs=1" class="img-fluid starship-img rounded-2" style="min-width: 500px;" alt="StarShipCitizen">
+      <div class="col-12 col-md-6 p-4 order-1 order-md-2">
+        <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 500px;" alt="StarShipCitizen"> 
       </div>
     </div>
-    <footer class="row bg-black g-0 sticky-bottom" style="width: 100%;">
-      <marquee behavior="scroll" direction="right" scrollamount="10" class="text-light" style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
-        <img src="https://media.giphy.com/media/pjb1HPZ41i5BS/source.gif" class="img-fluid" style="max-height: 50px;" alt="mario">
+    <footer class="row bg-black g-0 sticky-bottom" style="width: 100%; max-height: 60px;">
+      <marquee 
+        behavior="scroll" 
+        direction="right" 
+        scrollamount="5" 
+        class="text-light" 
+        style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
+        <img 
+          src="https://th.bing.com/th/id/R.2bc5a9822d665e72c81b61d4b4bb005e?rik=QzK0idJb9fJMqw&riu=http%3a%2f%2ffiles.gamebanana.com%2fimg%2fico%2fsprays%2fkoopa.gif&ehk=P%2bR6goQOAICNSQF%2barcUljvK1EsIlBzWRDFrzjXORa0%3d&risl=&pid=ImgRaw&r=0" 
+          class="img-fluid pb-3" 
+          style="max-height: 80px;" 
+          alt="mario">
       </marquee>
     </footer>
   </section>
@@ -108,6 +145,8 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 
 export default {
+
+
 
 setup() {
   
@@ -167,6 +206,37 @@ setup() {
 
 <style scoped lang="scss">
 
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: 0 3px 5px #ffffff;
+}
+
+.top-player {
+  color: #ffd900ad;
+  max-height: 3rem;
+  text-shadow: 0 3px 2px #f5ff8cb7;
+  animation: goldShimmer 2s infinite;
+}
+
+@keyframes goldShimmer {
+
+  0% {
+    filter: drop-shadow(0 0 30px 30px #ffd900ad) brightness(1);
+    border-radius: 3rem;
+    max-height: 3rem;
+  }
+
+  50% {
+    filter: drop-shadow(0 0 30px 30px #ffd900e3) brightness(1.3);
+    border-radius: 3rem;
+    max-height: 3rem;
+  }
+
+  100% {
+    filter: drop-shadow(0 0 30px 30px #ffd900ad) brightness(1);
+    border-radius: 3rem;
+    max-height: 3rem;
+  }
+}
 .bg-img {
   background-image: url(https://th.bing.com/th/id/R.86e62bb1ffccef76ceac5690808e9bb0?rik=FSe9PVtGZLmmfw&pid=ImgRaw&r=0);
   background-size: cover;
@@ -186,7 +256,17 @@ setup() {
   box-shadow: 0px 0px 10px 10px #000000;
 }
 
-.bg-status {
+.bg-pending {
+  color: #f0f0f0e9;
+  font-size: 3rem;
+  font-weight: 700;
+  background-color: #ffb134;
+  text-shadow: 0 3px 5px #000000;
+  box-shadow: 0 0 50px 5px #ffb134;
+  animation: pulse 3s infinite;
+}
+
+.bg-active {
   color: #f0f0f0e9;
   font-size: 3rem;
   font-weight: 700;
@@ -195,6 +275,28 @@ setup() {
   box-shadow: 0 0 50px 5px #00ff4cd6;
   animation: pulse 3s infinite;
 }
+
+.bg-finished {
+  color: #f0f0f0e9;
+  font-size: 3rem;
+  font-weight: 700;
+  background-color: #21d6ffd6;
+  text-shadow: 0 3px 5px #000000;
+  box-shadow: 0 0 50px 5px #21d6ffd6;
+  animation: pulse 3s infinite;
+}
+
+.bg-cancelled {
+  color: #f0f0f0e9;
+  font-size: 3rem;
+  font-weight: 700;
+  background-color: #9a0000d6;
+  text-shadow: 0 3px 5px #000000;
+  box-shadow: 0 0 50px 5px #9a0000d6;
+  animation: pulse 3s infinite;
+}
+
+
 
 @keyframes pulse {
   0% {

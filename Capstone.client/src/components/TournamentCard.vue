@@ -5,11 +5,11 @@
         <div class="card card-custom border-white border-0" style="height: 500px">
           <div class="card-custom-img" :style="`background-image: url(${tournament.gameImg})`"></div>
           <div class="card-custom-avatar">
-            <img class="img-fluid" :src="tournament.coverImg" :alt="tournament.name" />
+            <img class="img-fluid" :src="tournament.creator.picture" :alt="tournament.creator.name" />
           </div>
           <!--SECTION * * * CARD BODY * * * ------------->
           <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Call of Duty</h4>
+            <h4 class="card-title"> {{ tournament.name }} </h4>
             <p class="card-text">{{ tournament.category }}</p>
             <p class="card-text text-end" style="font-weight: 650;">Remaining Players: {{ remainingParticipantCount }} </p>
             <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash prize!</p>
@@ -17,6 +17,19 @@
           </div>
           <!--SECTION * * * CARD FOOTER * * * -------------------------------------------->
           <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-12">
+              <p class="card-text">
+                <small class="card-text" style="font-weight: 650;">
+                  Last Updated on: {{ 
+                    new Date( tournament.updatedAt )
+                    .toLocaleDateString('en-US', {
+                      year: 'numeric', 
+                      month: 'short', 
+                      day: 'numeric'
+                    }) }}
+                </small>
+              </p>
+            </div>
             <div class="col-6 ps-4 py-1">
               <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
             </div>
@@ -33,18 +46,18 @@
           
 
 
-              <!-- DISPLAYS FORMATTED DATE OF WHEN THE EVENT IS OCCURRING -->
+              <!-- DISPLAYS FORMATTED DATE OF WHEN THE TOURNAMENT IS OCCURRING -->
               <!-- <p class="card-text" style="font-weight: 650;">
-                Date of Event: {{ 
+                Date of Tournament: {{ 
                   new Date( tournament.startDate )
                   .toLocaleDateString('en-US', {
                     year: 'numeric', 
                     month: 'short', 
-                    day: 'numeric'
+                    day: 'numeric
                   }) }} 
               </p> -->
 
-              <!-- DISPLAYS FORMATTED DATE FOR PREVIOUS UPDATE BY EVENT CREATOR -->
+              <!-- DISPLAYS FORMATTED DATE FOR PREVIOUS UPDATE BY TOURNAMENT CREATOR -->
               <!-- <p class="card-text">
                 <small class="card-text" style="font-weight: 650;">
                   Last Updated on: {{ 

@@ -21,6 +21,7 @@ class ParticipantsService {
 
   async deleteParticipant(participantId) {
     const res = await api.delete(`api/participants/${participantId}`)
+    logger.log(res.data)
     AppState.participants = AppState.participants.filter(p => p.id != participantId)
     logger.log(AppState.participants)
     Pop.confirm(`${AppState.account.name} deleted participant.`)

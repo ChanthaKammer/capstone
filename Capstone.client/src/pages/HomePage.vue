@@ -269,10 +269,11 @@ export default {
 
     const filterBy = ref ('')
 
-      // async findEventBg() {
+      //NOTE If we want to randomize between an array of set background colors / images this is how we can do that
+      // async getTournamentBg() {
       //   try {
-      //     logger.log('getting event bg')
-      //     await eventsService.findEventBg()
+      //     logger.log('getting tournament bg')
+      //     await tournamentsService.getTournamentBg()
       //   } catch (error) {
       //     Pop.error(error.message)
       //     logger.log(error)
