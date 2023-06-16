@@ -1,5 +1,5 @@
 <template>
-<router-link :to="{ name: 'TournamentDetails', params: { tournamentId: tournament.id } }">
+
   <section class="container-fluid">
         <!--SECTION  * * * CARD IMAGE HEADER * * * ------------------------------>
         <div class="card card-custom border-white border-0" style="height: 500px">
@@ -34,13 +34,14 @@
               <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
             </div>
             <div class="col-6 ps-5 py-1">
-              <a href="#" class="btn btn-outline-primary">Battle</a>
+              <router-link :to="{ name: 'TournamentDetails', params: { tournamentId: tournament.id } }">
+                <a href="#" class="btn btn-outline-primary">Battle</a>
+              </router-link>
             </div>
           </div>
         </div>
      
   </section>
-</router-link>
 
 
           
