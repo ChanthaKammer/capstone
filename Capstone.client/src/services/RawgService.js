@@ -12,7 +12,7 @@ class RawgService {
     })
     AppState.nextPage = res.data.next
     AppState.previousPage = res.data.previous
-    AppState.games = res.data.result.map(g => new Game(g))
+    AppState.games = res.data.results.map(g => new Game(g))
     logger.log('[SEARCH RESULTS]', AppState.games)
   }
 }
