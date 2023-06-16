@@ -42,6 +42,11 @@ const routes = [
     path: '/searchresultpage',
     name: 'Search',
     component: loadPage('SearchResultPage')
+  },
+  {
+    path: '/gamedetailspage',
+    name: 'GameDetailsPage',
+    component: loadPage('GameDetailsPage')
   }
 ]
 
