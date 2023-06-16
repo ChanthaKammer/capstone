@@ -16,7 +16,7 @@ class TournamentsService{
         return tournament
     }
     async getAllTournaments() {
-        const tournaments = await dbContext.Tournaments.find().populate('participantCount creator ')
+        const tournaments = await dbContext.Tournaments.find().populate('participantCount creator')
         return tournaments
     }
     async editTournament(tournamentId, tournamentData, userId) {
