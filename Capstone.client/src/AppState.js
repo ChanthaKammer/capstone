@@ -18,8 +18,7 @@ export const AppState = reactive({
   query: '',
   searchTournaments: [],
 
-  videoCardHTML: {},
 
-  nextPageUrl: null,
-  previousPageUrl: null,
+  previousPage: null,
+  nextPage: null,
 })
