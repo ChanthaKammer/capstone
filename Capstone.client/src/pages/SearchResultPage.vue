@@ -138,7 +138,7 @@ import { computed, ref } from "vue";
                   Pop.toast(error.message, 'error')
                   
                }
-            }
+            },
             
             getDetailsBySlug,
             game: computed(() => AppState.games),
