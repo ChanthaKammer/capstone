@@ -37,6 +37,6 @@ export default {
 
 
 footer {
-  max-height: 100px;
+  max-height: 80px;
 }
 </style>

@@ -58,7 +58,7 @@ export default {
 
 .bg-navbar {
   background-color: #1a657aad;
-  filter: drop-shadow(0px 4rem 2rem #0b0d12e8);
+  filter: drop-shadow(0px .5rem 1rem #0b0d12e8);
 } 
 
 a:hover {
@@ -80,4 +80,5 @@ a:hover {
     height: 64px;
   }
 }
+
 </style>

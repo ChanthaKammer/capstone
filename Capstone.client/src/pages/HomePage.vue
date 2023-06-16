@@ -1,12 +1,13 @@
 <template>
 
+
   <section class="container-fluid bg-background">
       
     <!-- <section class="row bg-navbar justify-content-center align-items-center" style="height: 20px;">
 
     </section> -->
 
-    <section class="row bg-nav-options shadow ps-5" style="">
+    <section class="row bg-nav-options shadow" style="padding-left: 5rem;">
       <div class="col-3 d-flex justify-content-center align-items-center">
         <h2 class="text-white mt-3">PLAY</h2>
       </div>
@@ -15,7 +16,7 @@
         <h2 class="text-white mt-3">HOST</h2>
       </div>
       <div class="col-1" style="border-left: 5px double #ffffff99;"></div>
-      <div class="col-3 d-flex justify-content-center align-items-center">
+      <div class="col-3 ps-5 d-flex justify-content-center align-items-center">
         <h2 class="text-white mt-3">COMPETE</h2>
       </div>
     </section>
@@ -106,7 +107,7 @@
         </div>
       </div>
 
-      <div class="col-6 mb-5 ps-5" style="position: absolute; top: -3.5vh; right: -17%">
+      <div class="col-6 mb-5 ps-5" style="position: absolute; top: -3.5vh;">
         <div class="btn-group">
         <button type="button" class="btn btn-info neon-button">Top Gamers</button>
           <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -131,123 +132,13 @@
       </div>
     </section>
   </section>
-      
-      <section>
-        
-        <!-- NOTE MEETUP / TOURNAMENT CARDS -->
-        <!-- <div class="card battle-card elevation-5 mt-5 mb-3" style="opacity: .7;">
-          <div class="row" style="max-height: 35vh; min-height: 35vh;">
-            <div class="col-md-3" style="">
-              <div class="card-body">
-                <h4 class="card-title text-white" style="filter: brightness(5)">Mario Kart 8</h4>
-                <h4 class="card-title text-white" style="filter: brightness(5)">Boise CodeWorks</h4>
-                <h5 class="card-subtitle text-muted text-white" style="filter: brightness(5)">June 19th, 2023</h5>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <img src="https://thewiredfish.files.wordpress.com/2013/01/super-smash-bros-all-stars-battle-royal-super-smash-bros-brawl-32729474-2000-11841.jpg" class="img-fluid py-3" style="max-height: 35vh; min-height: 35vh; max-width: 23vw; min-width: 23vw; filter: brightness(1.3)" alt="...">
-            </div>
-            <div class="col-md-5" style="">
-              <div class="card-body">
-                <p class="card-text fs-5" style="filter: brightness(50); font-weight: 600;">Hopefully you've been dedicating yourself because losing this tournament is worth 3 strikes! Apply what you've learned on the circuit and start your engines, racers!!!!!!!!!!!!!!!!!!!</p>
-                <p class="card-text" style="filter: brightness(50); font-weight: 600;"><small class="text-body-secondary">Last updated 3 days ago</small></p>
-                <div class="row">
-                  <div class="col-8">
-                    <i class="mdi mdi-account-circle rounded-circle sub-member" style="font-size: 4rem; color: #67cbe7;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                  </div>
-                  <div class="col-4">
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
   
-        <div class="card battle-card elevation-5 mt-5 mb-3" style="opacity: .7;">
-          <div class="row" style="max-height: 35vh; min-height: 35vh;">
-            <div class="col-md-3" style="">
-              <div class="card-body">
-                <h4 class="card-title text-white" style="filter: brightness(5)">Overwatch</h4>
-                <h4 class="card-title text-white" style="filter: brightness(5)">Boise CodeWorks</h4>
-                <h5 class="card-subtitle text-muted text-white" style="filter: brightness(5)">June 21st, 2023</h5>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <img src="https://cdn1.dotesports.com/wp-content/uploads/2018/08/12034254/70c206f9-d605-4344-a70a-e89a71af45f3-1024x512.png" class="img-fluid py-3" style="max-height: 35vh; min-height: 35vh; max-width: 23vw; min-width: 23vw; filter: brightness(1.3)" alt="...">
-            </div>
-            <div class="col-md-5" style="">
-              <div class="card-body">
-                <p class="card-text fs-5" style="filter: brightness(50); font-weight: 600;">Who wins? Europe or North America? While we won’t see the regions face off against each other, North American and European Overwatch teams will put their skill on display.</p>
-                <p class="card-text" style="filter: brightness(50); font-weight: 600;"><small class="text-body-secondary">Last updated 13 days ago</small></p>
-                <div class="row">
-                  <div class="col-8">
-                    <i class="mdi mdi-account-circle rounded-circle sub-member" style="font-size: 4rem; color: #67cbe7;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                  </div>
-                  <div class="col-4">
+  <section>
+    
+    <!-- NOTE MEETUP / TOURNAMENT CARDS -->
+    
+  </section>
 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card battle-card elevation-5 mt-5 mb-3" style="opacity: .7;">
-          <div class="row" style="max-height: 35vh; min-height: 35vh;">
-            <div class="col-md-3" style="">
-              <div class="card-body">
-                <h4 class="card-title text-white" style="filter: brightness(5)">Halo</h4>
-                <h4 class="card-title text-white" style="filter: brightness(5)">Boise CodeWorks</h4>
-                <h5 class="card-subtitle text-muted text-white" style="filter: brightness(5)">July 2nd, 2023</h5>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <img src="https://i.ytimg.com/vi/jtTWpLl5jAE/maxresdefault.jpg" class="img-fluid py-3" style="max-height: 35vh; min-height: 35vh; max-width: 23vw; min-width: 23vw; filter: brightness(1.3)" alt="...">
-            </div>
-            <div class="col-md-5" style="">
-              <div class="card-body">
-                <p class="card-text fs-5" style="filter: brightness(50); font-weight: 600;"> in one year this game sell-out three million copies all around the world. This game also gets positive reviews and scores from critics. There are reasons why companies like Metacritic gave it a score of 97/100.</p>
-                <p class="card-text" style="filter: brightness(50); font-weight: 600;"><small class="text-body-secondary">Last updated 9 days ago</small></p>
-                <div class="row">
-                  <div class="col-8">
-                    <i class="mdi mdi-account-circle rounded-circle sub-member" style="font-size: 4rem; color: #67cbe7;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                    <i class="mdi mdi-account-circle sub-member" style="font-size: 4rem;"></i>
-                  </div>
-                  <div class="col-4">
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
-  
-            
-    </section>
-
-  
-        
-        
-        
-        
-        
-        <footer class="row bg-footer justify-content-center align-items-center">
-          
-        </footer>
-        
 </template>
 
 <script>
@@ -265,6 +156,7 @@ export default {
   components: {
     TournamentCard,
 },
+
   setup() {
 
     const filterBy = ref ('')
@@ -282,7 +174,7 @@ export default {
       
       async function getAllTournaments() {
       try {
-        logger.log('getting events')
+        logger.log('[GETTING TOURNAMENTS]')
         await tournamentsService.getAllTournaments()
       } catch (error) {
         Pop.error(error.message)
@@ -314,11 +206,6 @@ export default {
 
 <style scoped lang="scss">
 
-* {
-  border: 1px solid green;
-  
-}
-
 .btn-group {
   opacity: .8;
   animation: colorChange 15s infinite;
@@ -336,17 +223,16 @@ export default {
 }
 
 .bg-nav-options {
-
   background-color: #0e2241;
-  filter: drop-shadow( 0 15px 15px #0e224170);
-  box-shadow: 0 5px 5px #0e224170;
+  filter: drop-shadow( 0 0 15px 15px #0e224170);
+  box-shadow: 0 15px 15px #0e2241;
 }
 
 .bg-nav-accent {
   color: #ffffff;
   background-color: #1a407a4d;
   filter: drop-shadow(0 0 15px 15px #1A417A70);
-  box-shadow: 0 0 15px #1A417A70;
+  box-shadow: 0 0 15px 15px #1A417A70;
 }
 
 .bg-carousel {
@@ -463,6 +349,7 @@ export default {
 .card-custom-avatar img {
   border-radius: 50%;
   box-shadow: 0 0 15px #0a0a0a9a;
+  border: solid 3px black;
   position: absolute;
   top: 100px;
   left: 1.25rem;
@@ -559,6 +446,7 @@ export default {
   background-color: #152A6108; 
   filter: drop-shadow(0 0 15px 15px #152A6108);
   box-shadow: 0 0 15px #152A6108;
+  width: 100vw;
   place-content: center;
   height: 32px;
 }
