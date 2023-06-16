@@ -32,7 +32,7 @@ export class Tournament {
     this.gameName = data.gameName
     this.gameImg = data.gameImg
     this.participantCount = data.participantCount
-
+    // new Date(data.createdAt).toLocaleTimeString('en-US', { timeStyle: 'short' })
     
   }
 }
