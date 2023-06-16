@@ -105,7 +105,7 @@ import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
 import { useRoute } from "vue-router";
 import { rawgService } from "../services/RawgService.js";
-import { onMounted, computed } from "vue";
+import { computed } from "vue";
    export default {
       setup() {
          const route = useRoute();
@@ -132,6 +132,6 @@ import { onMounted, computed } from "vue";
 
 <style>
 * {
-   border: 1px solid green
+   border: 1px solid green;
 }
 </style>
