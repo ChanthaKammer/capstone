@@ -1,12 +1,13 @@
 <template>
 
+
   <section class="container-fluid bg-background">
       
     <!-- <section class="row bg-navbar justify-content-center align-items-center" style="height: 20px;">
 
     </section> -->
 
-    <section class="row bg-nav-options shadow ps-5" style="margin-top: 5rem; opacity:">
+    <section class="row bg-nav-options shadow" style="padding-left: 5rem;">
       <div class="col-3 d-flex justify-content-center align-items-center">
         <h2 class="text-white mt-3">PLAY</h2>
       </div>
@@ -15,7 +16,7 @@
         <h2 class="text-white mt-3">HOST</h2>
       </div>
       <div class="col-1" style="border-left: 5px double #ffffff99;"></div>
-      <div class="col-3 d-flex justify-content-center align-items-center">
+      <div class="col-3 ps-5 d-flex justify-content-center align-items-center">
         <h2 class="text-white mt-3">COMPETE</h2>
       </div>
     </section>
