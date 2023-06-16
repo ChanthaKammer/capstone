@@ -43,6 +43,7 @@ import Pop from '../utils/Pop.js';
 import { ref } from 'vue';
 import { tournamentsService } from '../services/TournamentsService.js';
 import { useRouter } from "vue-router";
+import { Modal } from "bootstrap";
    export default {
       setup(){
          const editable = ref({});
@@ -51,8 +52,17 @@ import { useRouter } from "vue-router";
             editable,
             async createTournament(){
                try {
-                  await tournamentsService.createTournament(editable.value)
-                  router.push({ name: '' })
+                  const tournamentData = editable.value
+                  const newTournament = await tournamentsService.createTournament(tournamentData)
+                  Modal.getOrCreateInstance('#tournamentModal').hide()
+                  editable.value = {}
+                  router.push(
+                     { name: 
+                        'TournamentDetails', 
+                       params: {
+                         tournamentId: newTournament.id 
+                        }}
+                        )
                } catch (error) {
                   Pop.error(error)
                }
