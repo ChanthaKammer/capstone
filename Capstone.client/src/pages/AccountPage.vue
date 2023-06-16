@@ -43,8 +43,9 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <TournamentCard/>
+    <div class="row justify-content-center text-center">
+      <h1>Active Tournaments</h1>
+      <h1>V-For TounamentCard</h1>
     </div>
   </section>
 </template>
