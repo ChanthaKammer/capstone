@@ -7,8 +7,18 @@
       </div>
       <div class="col-md-6 pt-2 align-self-center">
          <h1>{{ game.name }}</h1>
-         <h1>{{ game.released }}</h1>
-         <h1>{{ game.genre }}</h1>
+         <h1>{{game.released}}</h1>
+         <h1>{{game.genre}}</h1>
+
+         
+         <router-link :to="{ name: 'GameDetails', params: { slug: game.slug } }">
+            <button class="btn btn-success">
+               Game Info
+            </button>
+         </router-link>
+               
+
+
          <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#eventModal">Create
             Tournament</button>
          <div class="row justify-content-center">
@@ -61,9 +71,9 @@
 </template>
 
 <script>
-import Pop from '../utils/Pop.js';
-import { AppState } from '../AppState.js';
-import { logger } from '../utils/Logger.js';
+// import Pop from '../utils/Pop.js';
+// import { AppState } from '../AppState.js';
+// import { logger } from '../utils/Logger.js';
 import { Game } from "../models/Game.js";
 export default {
    props: {
