@@ -24,14 +24,14 @@
                       </div>
                       <div class="modal-body justify-content-center">
                           <form @submit.prevent="editAccount" class="col-12">
-                            <input class="form-control mb-3" type="text" placeholder="Name" aria-label="name">
-                            <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image">
-                            <input class="form-control mb-3" type="text" id="coverImg" placeholder="Cover Image">
+                            <input class="form-control mb-3" type="text" placeholder="Name" aria-label="name" v-model="editable.name">
+                            <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image" v-model="editable.avatarImg">
+                            <input class="form-control mb-3" type="text" id="coverImg" placeholder="Cover Image" v-model="editable.coverImg">
                             <div class="row mb-3">
-                                <div class="col-6"><input class="form-control" type="number" id="name" placeholder="Age"></div>
-                                <div class="col-6"><input class="form-control" type="text" id="gamertag" placeholder="Gamertag"></div>
+                                <div class="col-6"><input class="form-control" type="number" id="name" placeholder="Age" v-model="editable.age"></div>
+                                <div class="col-6"><input class="form-control" type="text" id="gamertag" placeholder="Gamertag" v-model="editable.gamertag"></div>
                             </div>
-                            <textarea class="form-control mb-3" id="bio" rows="3" placeholder="Bio"></textarea>
+                            <textarea class="form-control mb-3" id="bio" rows="3" placeholder="Bio" v-model="editable.bio"></textarea>
                           <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
                           </form>
                       </div>
@@ -53,11 +53,27 @@
 <script>
 import { computed } from 'vue';
 import { AppState } from '../AppState';
+import { logger } from '../utils/Logger.js';
+import {ref, watchEffect} from 'vue';
 import TournamentCard from '../components/TournamentCard.vue';
+import Pop from '../utils/Pop.js';
+import { accountService } from '../services/AccountService.js';
 export default {
     setup() {
+      const editable = ref({})
+      watchEffect(() => {
+        editable.value = AppState.account
+      })
         return {
-            account: computed(() => AppState.account)
+          editable,
+            // account: computed(() => AppState.account)
+        async editAccount(){
+          try {
+            await accountService.updateAccount(editable.value)
+          } catch (error) {
+            Pop.error(error)
+          }
+        }
         };
     },
     components: { TournamentCard }

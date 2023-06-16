@@ -1,5 +1,4 @@
 <template>
-
   <section class="container-fluid">
         <!--SECTION  * * * CARD IMAGE HEADER * * * ------------------------------>
         <div class="card card-custom border-white border-0" style="height: 500px">
@@ -39,8 +38,7 @@
               </router-link>
             </div>
           </div>
-        </div>
-     
+        </div>   
   </section>
 
 
