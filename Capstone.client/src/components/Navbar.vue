@@ -33,8 +33,8 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex" role="search" style="width: 40%;">
-          <input class="form-control me-2" type="search" placeholder="Search Games..." aria-label="Search">
+        <form @submit.prevent="searchTournaments()" class="d-flex" role="search" style="width: 40%;">
+          <input class="form-control me-2" type="search" placeholder="Search Games..." aria-label="Search" v-model="search">
           <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
         </form> <!-- LOGIN COMPONENT HERE -->
         <Login />
@@ -45,12 +45,37 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+import { useRouter } from "vue-router";
 import Login from './Login.vue';
+import { logger } from "../utils/Logger.js";
+import { tournamentsService } from "../services/TournamentsService.js";
+import Pop from "../utils/Pop.js";
+
 export default {
+  components: { Login },
   setup() {
-    return {}
+    const router = useRouter()
+    const search = ref('')
+
+    return {
+      search,
+
+      async searchTournaments() {
+        try {
+          const searchTerm = search.value
+          logger.log(`Searching tournaments containing ${searchTerm}`)
+          await tournamentsService.searchTournaments(searchTerm)
+          router.push(
+            { name: 'Search' }
+          )
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      }
+    }
   },
-  components: { Login }
 }
 </script>
 
