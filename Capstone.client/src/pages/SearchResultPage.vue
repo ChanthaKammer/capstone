@@ -134,15 +134,14 @@ import { Modal } from "bootstrap";
             editable,
             async handleSubmit() {
                try {
-                  const tournamentData = editable.value
-                  const newTournament = await tournamentsService.createTournament(tournamentData)
+                  const newTournament = await tournamentsService.createTournament(editable.value)
                   Modal.getOrCreateInstance
                } catch (error) {
                   logger.error(error)
                   Pop.toast(error.message, 'error')
 
                }
-            }
+            },
             
             getDetailsBySlug,
             game: computed(() => AppState.games),
