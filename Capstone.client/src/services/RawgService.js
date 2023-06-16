@@ -10,9 +10,10 @@ class RawgService {
     const res = await rawgApi.get(``, {
       params: {search: `${searchTerm}`}
     })
-    logger.log('[SEARCH RESULTS]', res.data)
     AppState.nextPage = res.data.next
     AppState.previousPage = res.data.previous
+    AppState.games = res.data.result.map(g => new Game(g))
+    logger.log('[SEARCH RESULTS]', AppState.games)
   }
 }
 export const rawgService = new RawgService();
