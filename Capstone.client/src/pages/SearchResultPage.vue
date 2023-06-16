@@ -15,7 +15,7 @@
                         <!-- Modal -->
                         
                                  
-                                       <NewTournamentForm />
+                                       
                            
                                   </div>
                                 </div>
@@ -52,13 +52,10 @@ import { useRoute } from "vue-router";
 import { rawgService } from "../services/RawgService.js";
 // import { tournamentsService } from "../services/TournamentsService.js"
 import { computed } from "vue";
-import NewTournamentForm from "../components/NewTournamentForm.vue"
 
    export default {
 
-      components: {
-         NewTournamentForm
-      },
+      
 
       setup() {
 

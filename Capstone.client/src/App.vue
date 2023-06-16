@@ -8,6 +8,11 @@
     
 
   </main>
+
+  <div>
+    <NewTournamentForm />
+  </div>
+
   <footer class="row bg-black g-0 sticky-bottom " style="width: 100%;">
     <marquee behavior="scroll" direction="right" scrollamount="10" class="text-light" style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
       <img src="https://media.giphy.com/media/pjb1HPZ41i5BS/source.gif" class="img-fluid" style="max-height: 80px; margin-top" alt="mario">
@@ -21,6 +26,8 @@
 import { computed } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
+import NewTournamentForm from "./components/NewTournamentForm.vue"
+
 
 export default {
   setup() {
@@ -28,7 +35,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar }
+  components: { Navbar, NewTournamentForm }
 }
 </script>
 <style lang="scss">

@@ -147,8 +147,6 @@ export default {
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
-
-
     }
 
 
