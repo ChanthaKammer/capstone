@@ -1,12 +1,12 @@
 <template>
-   <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#eventModal">Create Tournament</button>
+   <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#tournamentModal">Create Tournament</button>
                      <div class="row justify-content-center">
                         <!-- Modal -->
-                        <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="true">
+                        <div class="modal fade" id="tournamentModal" tabindex="-1" aria-labelledby="tournamentModal" aria-hidden="true">
                            <div class="modal-dialog">
                            <div class="modal-content">
                               <div class="modal-header">
-                                 <h1 class="modal-title fs-5" id="createEventLabel">Create a Tournament</h1>
+                                 <h1 class="modal-title fs-5" id="createTournamentLabel">Create a Tournament</h1>
                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body justify-content-center">

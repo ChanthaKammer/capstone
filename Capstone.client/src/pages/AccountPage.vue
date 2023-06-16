@@ -12,14 +12,14 @@
             <h1>Platform</h1>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#eventModal">Edit Account</button>
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
               <div class="row justify-content-center">
                 <!-- Modal -->
-                <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="true">
+                <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModal" aria-hidden="true">
                     <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="createEventLabel">Edit Account</h1>
+                          <h1 class="modal-title fs-5" id="editAccountLabel">Edit Account</h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body justify-content-center">
