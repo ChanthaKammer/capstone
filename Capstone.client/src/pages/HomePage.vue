@@ -205,11 +205,6 @@ export default {
 
 <style scoped lang="scss">
 
-* {
-  border: 1px solid;
-  
-}
-
 .btn-group {
   opacity: .8;
   animation: colorChange 15s infinite;
@@ -228,7 +223,7 @@ export default {
 
 .bg-nav-options {
   background-color: #0e2241;
-  filter: drop-shadow( 0 15px 15px #0e224170);
+  filter: drop-shadow( 0 0 15px 15px #0e224170);
   box-shadow: 0 15px 15px #0e2241;
 }
 
