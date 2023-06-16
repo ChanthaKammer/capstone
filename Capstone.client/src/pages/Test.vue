@@ -321,6 +321,6 @@
 
 <style scoped lang="scss">
 * {
-   border: 1px dotted purple;
+   border: 1px solid green;
 }
 </style>
