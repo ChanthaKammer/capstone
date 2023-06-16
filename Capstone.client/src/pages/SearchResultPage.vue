@@ -11,7 +11,7 @@
                      <h1>Diablo 4</h1>
                      <h1>Released: 2017-04-04</h1>
                      <h1>Game Genre</h1>
-                     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#eventModal">Create Tournament</button>
+                     <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#eventModal">Create Tournament</button>
                      <div class="row justify-content-center">
                         <!-- Modal -->
                         <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="true">
@@ -57,7 +57,7 @@
                      <h1>Diablo 4</h1>
                      <h1>Released: 2017-04-04</h1>
                      <h1>Game Genre</h1>
-                     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#eventModal">Create Tournament</button>
+                     <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#eventModal">Create Tournament</button>
                      <div class="row justify-content-center">
                         <!-- Modal -->
                         <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="true">
