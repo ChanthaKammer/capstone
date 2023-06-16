@@ -1,9 +1,9 @@
 <template>
-   <section class="container-fluid">
+   <section class="container-fluid pt-3">
       <h1 class="text-center">Search Results for "Diablo 4"</h1>
-      <div class="row">
-         <div class="col-md-6 bg-dark p-4">
-            <div class="row">
+      <div class="row p-4">
+         <div class="col-md-6 p-4">
+            <div class="row bg-dark rounded-3">
                <div class="col-md-6 pt-2 pb-2 px-2" style="">
                   <img src="https://th.bing.com/th/id/R.f645b78e51a192cb4e9caa4aac6c0875?rik=ZTglhfD9mmwNIA&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fgod-of-war-image.jpg&ehk=D%2bfse8wLp7FcFA%2bqBBv%2bCP0fIUGXa8YSkuFKGmU83yk%3d&risl=&pid=ImgRaw&r=0" class="img-fluid rounded-3" alt="...">
                </div>
@@ -11,7 +11,7 @@
                      <h1>Diablo 4</h1>
                      <h1>Released: 2017-04-04</h1>
                      <h1>Game Genre</h1>
-                     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#eventModal">Create Tournament</button>
+                     <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#eventModal">Create Tournament</button>
                      <div class="row justify-content-center">
                         <!-- Modal -->
                         <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="true">
@@ -48,8 +48,8 @@
                </div>
             </div>
          </div>  
-         <div class="col-md-6 bg-dark p-4">
-            <div class="row">
+         <div class="col-md-6 p-4">
+            <div class="row bg-dark rounded-3">
                <div class="col-md-6 pt-2 pb-2 px-2" style="">
                   <img src="https://th.bing.com/th/id/R.f645b78e51a192cb4e9caa4aac6c0875?rik=ZTglhfD9mmwNIA&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fgod-of-war-image.jpg&ehk=D%2bfse8wLp7FcFA%2bqBBv%2bCP0fIUGXa8YSkuFKGmU83yk%3d&risl=&pid=ImgRaw&r=0" class="img-fluid rounded-3" alt="...">
                </div>
@@ -57,7 +57,7 @@
                      <h1>Diablo 4</h1>
                      <h1>Released: 2017-04-04</h1>
                      <h1>Game Genre</h1>
-                     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#eventModal">Create Tournament</button>
+                     <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#eventModal">Create Tournament</button>
                      <div class="row justify-content-center">
                         <!-- Modal -->
                         <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="true">
