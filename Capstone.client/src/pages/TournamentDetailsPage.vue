@@ -131,6 +131,7 @@ export default {
     });
 
     onMounted(() => setActiveTournament())
+    
     async function setActiveTournament() {
       try {
         const tournamentId = route.params.tournamentId
