@@ -1,30 +1,32 @@
 <template>
 <router-link :to="{ name: 'TournamentDetails', params: { tournamentId: tournament.id } }">
-  <div class="col-12 col-md-3 my-3">
-    <div class="card card-custom border-white border-0" style="height: 500px">
-      <div class="card-custom-img" :style="{backgroundImage: url('https://www.hdwallpaper.nu/wp-content/uploads/2015/11/call_of_duty_black_ops_3-4k-wallpaper-3840x2160.jpg')}"></div>
-      <div class="card-custom-avatar">
-        <img class="img-fluid" :src="tournament.coverImg" :alt="tournament.name" />
-      </div>
-      <!-- * * * CARD BODY * * * ------------------------------------------------------------->
-      <div class="card-body" style="overflow-y: auto">
-        <h4 class="card-title">Call of Duty</h4>
-        <p class="card-text">{{ tournament.category }}</p>
-        <p class="card-text text-end" style="font-weight: 650;">Remaining Players: {{ remainingParticipantCount }} </p>
-        <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash prize!</p>
-        <p class="card-text">{{ tournament.description }}</p>
-      </div>
-      <!-- * * * CARD FOOTER * * * --------------------------------------------------->
-      <div class="card-footer row" style="background: inherit; border-color: inherit;">
-        <div class="col-6 ps-4 py-1">
-          <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+  <section class="container-fluid">
+        <!--SECTION  * * * CARD IMAGE HEADER * * * ------------------------------>
+        <div class="card card-custom border-white border-0" style="height: 500px">
+          <div class="card-custom-img" :style="`background-image: url(${tournament.gameImg})`"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" :src="tournament.coverImg" :alt="tournament.name" />
+          </div>
+          <!--SECTION * * * CARD BODY * * * ------------->
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">Call of Duty</h4>
+            <p class="card-text">{{ tournament.category }}</p>
+            <p class="card-text text-end" style="font-weight: 650;">Remaining Players: {{ remainingParticipantCount }} </p>
+            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash prize!</p>
+            <p class="card-text">{{ tournament.description }}</p>
+          </div>
+          <!--SECTION * * * CARD FOOTER * * * -------------------------------------------->
+          <div class="card-footer row" style="background: inherit; border-color: inherit;">
+            <div class="col-6 ps-4 py-1">
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+            </div>
+            <div class="col-6 ps-5 py-1">
+              <a href="#" class="btn btn-outline-primary">Battle</a>
+            </div>
+          </div>
         </div>
-        <div class="col-6 ps-5 py-1">
-          <a href="#" class="btn btn-outline-primary">Battle</a>
-        </div>
-      </div>
-    </div>
-  </div>
+     
+  </section>
 </router-link>
 
 
@@ -76,7 +78,7 @@ import { AppState } from '../AppState.js'
 export default {
 
   props: {
-    event: {type: Object, required: true}
+    tournament: {type: Object, required: true},
   },
 
   setup(props) {
@@ -105,21 +107,12 @@ export default {
 
 </script>
 
-<style>
+<style scoped lang="scss">
 
 .game-img {
   aspect-ratio: 1/.5;
   box-shadow: 0 0 15px 15px #000000;
   filter: drop-shadow(0 0 15px 15px #000000);
-}
-
-.accent-row {
-  background-color: #1f5b7b45;
-  box-shadow: 0px 0px 150px 15px inset outset #1a407a;
-  filter: drop-shadow(0px 0px 30px #682f2f);
-  border-top: 5px double #1a407a;
-  border-bottom: 5px double #1a407a;
-  border-style: inset groove;
 }
 
 .card-custom {

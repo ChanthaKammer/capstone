@@ -23,6 +23,17 @@ const routes = [
     beforeEnter: authGuard
   },
   {
+    path: '/tournament/:tournamentId',
+    name: 'TournamentDetails',
+    component: loadPage('TournamentDetailsPage')
+  },
+  {
+    path: '/tournaments/search',
+    name: 'Search',
+    //ANCHOR CHANGE NAME OF SEARCH COMPONENT LOADPAGE LATER. JUST SENDING TO ABOUT PAGE TO TEST SEARCH FUNCTIONALITY
+    component: loadPage('AboutPage')
+  },
+  {
     path: '/test',
     name: 'Test',
     component: loadPage('Test')

@@ -126,17 +126,16 @@
     <!-- NOTE GAME INFO / DETAIL CARDS ------------------------------------------------------->
     <section class="row justify-content-center align-items-center accent-row px-2 pb-2">
       <div class="col-12 col-md-3 my-3" v-for="t in tournaments" :key="t.id">
-        <!-- STUB tournament card template -->
+        <!-- STUB Tournament Cards ------>
         <TournamentCard :tournament="t" />
       </div>
     </section>
-    
-
+  </section>
       
       <section>
         
         <!-- NOTE MEETUP / TOURNAMENT CARDS -->
-        <div class="card battle-card elevation-5 mt-5 mb-3" style="opacity: .7;">
+        <!-- <div class="card battle-card elevation-5 mt-5 mb-3" style="opacity: .7;">
           <div class="row" style="max-height: 35vh; min-height: 35vh;">
             <div class="col-md-3" style="">
               <div class="card-body">
@@ -234,7 +233,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
   
             
     </section>

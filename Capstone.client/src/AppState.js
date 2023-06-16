@@ -6,6 +6,18 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account} */
   account: {},
 
+  /** @type {import('./models/Tournament.js').Tournament} */
+  tournaments: [],
+
+  activeTournament: {},
+
+  participants: [],
+  activeParticipant: {},
+  myParticipants: [],
+
+  query: '',
+  searchTournaments: [],
+
   videoCardHTML: {},
 
   nextPageUrl: null,
