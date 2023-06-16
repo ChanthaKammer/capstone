@@ -66,8 +66,8 @@ export default {
           const searchTerm = search.value
 
           const parts = searchTerm.split(' ');
-          const modifiedSearch = parts.join('+')
-          logger.log(`Searching tournaments containing ${modifiedSearch}`)
+          const modifiedSearch = parts.join('+');
+          logger.log(`Searching games containing ${modifiedSearch}`)
           await rawgService.searchGames(searchTerm)
           router.push(
             { name: 'Search' }

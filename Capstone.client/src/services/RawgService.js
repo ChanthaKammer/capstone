@@ -1,6 +1,7 @@
 import { rawgApi } from "./AxiosService.js";
 import { logger } from "../utils/Logger.js"
 import { AppState } from "../AppState.js";
+import { Game } from "../models/Game.js";
 class RawgService {
   // async getGames() {
   //   const res = await rawgApi.get(``)
