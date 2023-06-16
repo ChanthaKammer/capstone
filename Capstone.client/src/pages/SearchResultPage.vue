@@ -48,11 +48,10 @@
 import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import { rawgService } from "../services/RawgService.js";
-import { tournamentsService } from "../services/TournamentsService.js"
-import { computed, ref } from "vue";
-import { Modal } from "bootstrap";
+// import { tournamentsService } from "../services/TournamentsService.js"
+import { computed } from "vue";
 import NewTournamentForm from "../components/NewTournamentForm.vue"
 
    export default {
@@ -62,9 +61,9 @@ import NewTournamentForm from "../components/NewTournamentForm.vue"
       },
 
       setup() {
-         const editable = ref({});
+
          const route = useRoute();
-         const router = useRouter();
+         // const router = useRouter();
 
          async function getDetailsBySlug() {
             try {
@@ -78,24 +77,6 @@ import NewTournamentForm from "../components/NewTournamentForm.vue"
          }
 
          return {
-            editable,
-            async createTournament(){
-               try {
-                  const tournamentData = editable.value
-                  const newTournament = await tournamentsService.createTournament(tournamentData)
-                  Modal.getOrCreateInstance('#tournamentModal').hide()
-                  editable.value = {}
-                  router.push(
-                     { name: 
-                        'TournamentDetails', 
-                       params: {
-                         tournamentId: newTournament.id 
-                        }}
-                        )
-               } catch (error) {
-                  Pop.error(error)
-               }
-            },
             getDetailsBySlug,
             game: computed(() => AppState.games),
          }
