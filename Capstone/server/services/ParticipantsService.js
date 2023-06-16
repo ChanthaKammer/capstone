@@ -25,7 +25,7 @@ class ParticipantsService{
     }
     
     async getTournamentParticipants(tournamentId) {
-        const participants = await dbContext.Participants.find({ tournamentId }).populate('profile tournament')
+        const participants = await dbContext.Participants.find({ tournamentId: tournamentId }).populate('profile tournament')
         return participants
     }
     async getAccountParticipations(accountId) {

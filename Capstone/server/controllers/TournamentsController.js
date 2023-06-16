@@ -23,8 +23,7 @@ export class TournamentsController extends BaseController {
 
     async getTournamentParticipants(req, res, next) {
         try {
-            const tournamentId = req.params.id
-            const participants = await participantsService.getTournamentParticipants(tournamentId)
+            const participants = await participantsService.getTournamentParticipants(req.params.id)
             return res.send(participants)
         } catch (error) {
             next(error)
