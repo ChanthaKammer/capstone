@@ -24,7 +24,7 @@ export class ParticipantsController extends BaseController{
     
     async createParticipant(req, res, next){
         try {
-            req.body.creatorId = req.userInfo.id
+            req.body.accountId = req.userInfo.id
             const participant = await participantsService.createParticipant(req.body)
             return res.send(participant)
         } catch (error) {
