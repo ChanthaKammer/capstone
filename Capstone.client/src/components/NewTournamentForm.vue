@@ -45,15 +45,41 @@
          </div>
       </div>
    </div>
+
 </template>
 
 <script>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { Modal } from "bootstrap";
+import { tournamentsService } from "../services/TournamentsService.js";
+import Pop from "../utils/Pop.js";
 
    export default {
       setup(){
+         const editable = ref({});
+         const router = useRouter();
          
          
          return {
+            editable,
+            async createTournament(){
+               try {
+                  const tournamentData = editable.value
+                  const newTournament = await tournamentsService.createTournament(tournamentData)
+                  Modal.getOrCreateInstance('#tournamentModal').hide()
+                  editable.value = {}
+                  router.push(
+                     { name: 
+                        'TournamentDetails', 
+                       params: {
+                         tournamentId: newTournament.id 
+                        }}
+                        )
+               } catch (error) {
+                  Pop.error(error)
+               }
+            },
             
          }
       }
