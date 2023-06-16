@@ -2,7 +2,6 @@ import { Schema } from "mongoose";
 const ObjectId = Schema.Types.ObjectId
 
 export const ParticipantSchema = new Schema({
-    id: { type: ObjectId, required: true},
     tournamentId: { type: ObjectId, required: true, ref: 'Tournament'},
     accountId: { type: ObjectId, required: true, ref: 'Account'},
     status: { type: String, required: true, enum: ['eliminated', 'active', 'first', 'second', 'third']},
