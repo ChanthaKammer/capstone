@@ -106,6 +106,8 @@ import { logger } from '../utils/Logger.js';
 import { useRoute, useRouter } from "vue-router";
 import { rawgService } from "../services/RawgService.js";
 import { computed, ref } from "vue";
+import { tournamentsService } from "../services/TournamentsService.js";
+import { Modal } from "bootstrap";
    export default {
       setup() {
 
@@ -132,11 +134,13 @@ import { computed, ref } from "vue";
             editable,
             async handleSubmit() {
                try {
-                  
+                  const tournamentData = editable.value
+                  const newTournament = await tournamentsService.createTournament(tournamentData)
+                  Modal.getOrCreateInstance
                } catch (error) {
                   logger.error(error)
                   Pop.toast(error.message, 'error')
-                  
+
                }
             }
             

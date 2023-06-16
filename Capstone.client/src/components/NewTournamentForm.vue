@@ -38,18 +38,21 @@
 
 <script>
 import Pop from '../utils/Pop.js';
-import { AppState } from '../AppState.js';
-import { logger } from '../utils/Logger.js';
+// import { AppState } from '../AppState.js';
+// import { logger } from '../utils/Logger.js';
 import { ref } from 'vue';
 import { tournamentsService } from '../services/TournamentsService.js';
+import { useRouter } from "vue-router";
    export default {
       setup(){
-         const editable = ref({})
+         const editable = ref({});
+         const router = useRouter();
          return {
             editable,
             async createTournament(){
                try {
                   await tournamentsService.createTournament(editable.value)
+                  router.push({ name: '' })
                } catch (error) {
                   Pop.error(error)
                }

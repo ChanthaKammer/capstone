@@ -10,7 +10,7 @@
           <div class="card-body" style="overflow-y: auto">
             <h4 class="card-title"> {{ tournament.name }} </h4>
             <p class="card-text">{{ tournament.category }}</p>
-            <p class="card-text text-end" style="font-weight: 650;">Spots Left: {{ remainingParticipantCount }} / {{ participantCount }} </p>
+            <p class="card-text text-end" style="font-weight: 650;">Spots Left: {{ remainingParticipantCount }} / {{ tournament.participantCount }} </p>
             <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash prize!</p>
             <p class="card-text">{{ tournament.description }}</p>
           </div>
@@ -107,7 +107,7 @@ export default {
 
         props,
         participantCount: computed(() =>{
-          return AppState.activeTournament.capacity
+        return AppState.activeTournament.capacity
         }),
         remainingParticipantCount: computed(()=>{
         return AppState.activeTournament.capacity - AppState.activeTournament.participantCount
