@@ -94,14 +94,6 @@ export default {
   },
 
   setup(props) {
-  //   const bgs = [
-  //       'bg-1',
-  //       'bg-2',
-  //       'bg-3',
-  //       'bg-4',
-  //       'bg-5',
-  //       'bg-6'
-  //   ]
 
     return {
 

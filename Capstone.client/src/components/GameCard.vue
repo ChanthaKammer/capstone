@@ -7,11 +7,14 @@
       </div>
       <div class="col-md-6 pt-2 align-self-center">
          <h1>{{ game.name }}</h1>
-         <h1>{{game.released}}</h1>
-         <h1>{{game.genre}}</h1>
+         <h1>{{ game.released }}</h1>
+         <h1>{{ game.genre }}</h1>
          <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#eventModal">Create
             Tournament</button>
          <div class="row justify-content-center">
+
+
+
             <!-- Modal -->
             <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="true">
                <div class="modal-dialog">
@@ -66,7 +69,7 @@ export default {
    props: {
       game: { type: Game, required: true },
    },
-   setup() {
+   setup(props) {
       return {
 
       }
