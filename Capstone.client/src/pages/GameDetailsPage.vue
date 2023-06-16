@@ -1,7 +1,7 @@
 <template>
    <section class="container-fluid">
       <div class="row justify-content-center pt-5">
-         <div class="col-md-9 pt-3 bg-dark text-white">
+         <div class="col-md-9 pt-3 bg-dark text-white rounded-3">
             <div class="row">
                <div class="col-md-4 text-center">
                   <h1>Grand Theft Auto V</h1>
@@ -19,7 +19,10 @@
                   <p>Platforms</p>
                   <div class="row">
                      <div class="col-6">
-                        <h2>Xbox</h2>
+                        <h2><i class="mdi mdi-microsoft-xbox"></i></h2>
+                     </div>
+                     <div class="col-6">
+                        <h2><i class="mdi mdi-sony-playstation"></i></h2>
                      </div>
                      <div class="col-6">
                         <h2>PC</h2>
