@@ -8,18 +8,18 @@ export const AppState = reactive({
 
   /** @type {import('./models/Tournament.js').Tournament} */
   tournaments: [],
-  games: [],
-
   activeTournament: {},
-  activeGame:{},
-
+  
   participants: [],
   activeParticipant: {},
   myParticipants: [],
-
+  
+  /** @type {import('./models/Game.js').Game} */
+  games: [],
+  activeGame:{},
+  searchGames: [],
+  
   query: '',
-  searchTournaments: [],
-
 
   previousPage: null,
   nextPage: null,

@@ -1,16 +1,16 @@
 <template>
-   <section class="container-fluid pt-3">
+   <section v-if="game" class="container-fluid pt-3">
       <h1 class="text-center">Search Results</h1>
       <div class="row p-4">
          <div class="col-md-6 p-4">
             <div class="row bg-dark rounded-3">
                <div class="col-md-6 pt-2 pb-2 px-2" style="">
-                  <img :src="game.gameImg" class="img-fluid rounded-3" :alt="game.name">
+                  <img :src="game.backgroundImg" class="img-fluid rounded-3" :alt="game.name">
                </div>
                <div class="col-md-6 pt-2 align-self-center">
                      <h1> {{ game.name }} </h1>
                      <h1> {{ game.released }} </h1>
-                     <h1> {{ game.genre }} </h1>
+                     <h1> {{ game.genres }} </h1>
                      <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#eventModal">Create Tournament</button>
                      <div class="row justify-content-center">
                         <!-- Modal -->
@@ -30,13 +30,13 @@
                                        <div class="col-6"><input class="form-control" type="text" id="tournamentState" placeholder="State"></div>
                                     </div>
                                     <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" placeholder="Tournament Description"></textarea>
-                                    <select class="form-select mb-3" aria-label="Default select example">
+                                    <select name="esrb_rating" id="esrb_rating" class="form-select mb-3" aria-label="Default select example" v-model="editable.esrb_rating">
                                        <option selected>Group Age Rating</option>
                                        <option value="Everyone">Everyone</option>
                                        <option value="Teen">Teen</option>
                                        <option value="Adult">Adult</option>
                                     </select>
-                                    <input class="form-control mb-3" type="number" placeholder="Max Teams" aria-label="maxTeams" min="1">
+                                    <input class="form-control mb-3" type="number" placeholder="Max Teams" aria-label="maxTeams" min="1" v-model="editable.capacity">
                                     <input class="form-control mb-3" type="text" id="tournamentMoney" placeholder="Tournament Money Prize">
                                  <button class="btn btn-success text-end" type="submit" role="button">Create Event</button>
                                  </form>
@@ -70,13 +70,13 @@
                               <div class="modal-body justify-content-center">
                                  <form @submit.prevent="createEvent" class="col-12">
                                     <input class="form-control mb-3" type="text" placeholder="Tournament Name" aria-label="groupName">
-                                    <input class="form-control mb-3" type="text" id="groupAvatarImage" placeholder="Tournament Avatar Image">
-                                    <input class="form-control mb-3" type="text" id="groupAvatarImage" placeholder="Tournament Cover Image">
+                                    <input class="form-control mb-3" type="url" id="groupAvatarImage" placeholder="Tournament Avatar Image">
+                                    <input class="form-control mb-3" type="url" id="coverImg" placeholder="Tournament Cover Image" v-model="editable.coverImg">
                                     <div class="row mb-3">
-                                       <div class="col-6"><input class="form-control" type="text" id="tournamentCity" placeholder="City"></div>
+                                       <div class="col-6"><input class="form-control" type="text" id="location" placeholder="City" v-model="editable.location"></div>
                                        <div class="col-6"><input class="form-control" type="text" id="tournamentState" placeholder="State"></div>
                                     </div>
-                                    <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" placeholder="Tournament Description"></textarea>
+                                    <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" placeholder="Tournament Description" v-model="editable.description"></textarea>
                                     <select class="form-select mb-3" aria-label="Default select example">
                                        <option selected>Group Age Rating</option>
                                        <option value="Everyone">Everyone</option>
@@ -103,12 +103,18 @@
 import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { rawgService } from "../services/RawgService.js";
-import { computed } from "vue";
+import { computed, ref } from "vue";
    export default {
       setup() {
+
+         //NOTE * * * 'editable = ref({});' NEEDS TO BE BROUGHT TO THE 'CreateTournamentForm.vue' COMPONENT * * *
+         const editable = ref({});
          const route = useRoute();
+
+         //NOTE * * * 'const router = useRouter();' NEEDS TO BE BROUGHT TO THE 'CreateTournamentForm.vue' COMPONENT * * *
+         const router = useRouter();
 
          async function getDetailsBySlug() {
             try {
@@ -122,8 +128,20 @@ import { computed } from "vue";
          }
 
          return {
+            //NOTE * * * 'editable' AND 'async handleSubmit()' NEEDS TO BE 'RETURNED' IN THE 'CreateTournamentForm.vue' COMPONENT'S SETUP * * *
+            editable,
+            async handleSubmit() {
+               try {
+                  
+               } catch (error) {
+                  logger.error(error)
+                  Pop.toast(error.message, 'error')
+                  
+               }
+            }
+            
             getDetailsBySlug,
-            game: computed(() => AppState.games)
+            game: computed(() => AppState.games),
          }
       }
    }
