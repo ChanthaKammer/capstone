@@ -21,18 +21,20 @@
                   <h1>M</h1>
                   <p>Platforms</p>
                   <div class="row">
-                     <div class="col-6">
+                     <div class="col-4">
                         <h2><i class="mdi mdi-microsoft-xbox"></i></h2>
                      </div>
-                     <div class="col-6">
+                     <div class="col-4">
                         <h2><i class="mdi mdi-sony-playstation"></i></h2>
                      </div>
-                     <div class="col-6">
+                     <div class="col-4">
                         <h2>PC</h2>
                      </div>
                   </div>
-                  <div class="row">
+                  <div class="col-12">
                      <p>Genre</p>
+                  </div>
+                  <div class="row">
                      <div class="col-6">
                         <h2>Action</h2>
                      </div>

@@ -21,7 +21,7 @@
                         <div class="col-6"><input class="form-control" type="text" id="tournamentState" placeholder="State" v-model="editable.state"></div>
                      </div>
                      <select class="form-select mb-3" aria-label="Default select example" v-model="editable.type">
-                        <option selected>Event Type</option>
+                        <option selected>Match Type</option>
                         <option value="Online">Online</option>
                         <option value="Local">Local</option>
                      </select>
@@ -37,7 +37,7 @@
                      <input class="form-control mb-3" type="text" id="firstPlaceBadge" placeholder="First Place Badge" v-model="editable.firstPlaceBadge">
                      <input class="form-control mb-3" type="text" id="secondPlaceBadge" placeholder="Second Place Badge" v-model="editable.secondPlaceBadge">
                      <input class="form-control mb-3" type="text" id="thirdPlaceBadge" placeholder="Third Place Badge" v-model="editable.thirdPlaceBadge">
-                     <button class="btn btn-success text-end" type="submit" role="button">Create Event</button>
+                     <button class="btn btn-success text-end" type="submit" role="button">Create Tournament</button>
                   </form>
                </div>
             </div>
