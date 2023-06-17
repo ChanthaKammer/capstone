@@ -7,11 +7,11 @@
 
     
 
+    <div>
+      
+    </div>
   </main>
 
-  <div>
-    <NewTournamentForm />
-  </div>
 
   <footer class="row bg-black g-0 sticky-bottom " style="width: 100%;">
     <marquee behavior="scroll" direction="right" scrollamount="10" class="text-light" style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
@@ -26,8 +26,6 @@
 import { computed } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
-import NewTournamentForm from "./components/NewTournamentForm.vue"
-
 
 export default {
   setup() {
@@ -35,7 +33,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar, NewTournamentForm }
+  components: { Navbar, }
 }
 </script>
 <style lang="scss">

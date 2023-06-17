@@ -36,8 +36,8 @@
                         <h1>Game Genre</h1> -->
                         
                            
-                        <div v-for="s in games" :key="s">
-                           <GameCard :game="s" />
+                        <div v-for="g in games" :key="g.slug">
+                           <GameCard :game="g" />
                         </div>
                      <!-- </div>
                   </div>
@@ -92,7 +92,5 @@ import GameCard from "../components/GameCard.vue"
 
 
 <style>
-* {
-   border: 1px solid green;
-}
+
 </style>

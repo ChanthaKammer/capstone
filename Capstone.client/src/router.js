@@ -49,8 +49,8 @@ const routes = [
     component: loadPage('SearchResultPage')
   },
   {
-    path: '/gamedetailspage',
-    name: 'GameDetailsPage',
+    path: '/games/:slug',
+    name: 'GameDetails',
     component: loadPage('GameDetailsPage')
   }
 ]

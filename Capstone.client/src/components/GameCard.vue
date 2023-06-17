@@ -2,7 +2,7 @@
    <div class="row bg-dark rounded-3">
       <div class="col-md-6 pt-2 pb-2 px-2" style="">
          <img
-            src="https://th.bing.com/th/id/R.f645b78e51a192cb4e9caa4aac6c0875?rik=ZTglhfD9mmwNIA&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fgod-of-war-image.jpg&ehk=D%2bfse8wLp7FcFA%2bqBBv%2bCP0fIUGXa8YSkuFKGmU83yk%3d&risl=&pid=ImgRaw&r=0"
+            :src="game.backgroundImg"
             class="img-fluid rounded-3" alt="...">
       </div>
       <div class="col-md-6 pt-2 align-self-center">
@@ -19,22 +19,22 @@
                
 
 
-         <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#eventModal">Create
+         <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#tournamentModal">Create
             Tournament</button>
          <div class="row justify-content-center">
 
 
 
             <!-- Modal -->
-            <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModal" aria-hidden="true">
+            <div class="modal fade" id="tournamentModal" tabindex="-1" aria-labelledby="tournamentModal" aria-hidden="true">
                <div class="modal-dialog">
                   <div class="modal-content">
                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="createEventLabel">Create an Event</h1>
+                        <h1 class="modal-title fs-5" id="createTournamentLabel">Create an tournament</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                      </div>
                      <div class="modal-body justify-content-center">
-                        <form @submit.prevent="createEvent" class="col-12">
+                        <form @submit.prevent="createTournament" class="col-12">
                            <input class="form-control mb-3" type="text" placeholder="Tournament Name"
                               aria-label="groupName">
                            <input class="form-control mb-3" type="text" id="groupAvatarImage"
@@ -79,7 +79,8 @@ export default {
    props: {
       game: { type: Game, required: true },
    },
-   setup(props) {
+   setup() {
+
       return {
 
       }
