@@ -93,7 +93,7 @@ export default {
     tournament: {type: Tournament, required: true},
   },
 
-  setup(props) {
+  setup() {
 
     return {
 
