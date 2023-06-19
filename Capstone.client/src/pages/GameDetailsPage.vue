@@ -35,10 +35,10 @@
                      <p>Genre</p>
                   </div>
                   <div class="row">
-                     <div class="col-6">
+                     <div class="col-12">
                         <h2>Action</h2>
                      </div>
-                     <div class="col-6">
+                     <div class="col-12">
                         <h2>Adventure</h2>
                      </div>
                   </div>
@@ -172,8 +172,8 @@ import NewTournamentForm from "../components/NewTournamentForm.vue"
    @media (min-width: 1200px) {
       .polygon {
          width: 30%;
-         height: 46.5vh;
-         top: 12%
+         height: 46.25vh;
+         top: 12%;
       }
    }
 
@@ -181,12 +181,10 @@ import NewTournamentForm from "../components/NewTournamentForm.vue"
       .polygon {
          visibility: hidden;
       }
+
+
    }
 
-   @media (max-width: 992px) {
-      .polygon {
-         visibility: hidden;
-      }
-   }
+
 
 </style>
