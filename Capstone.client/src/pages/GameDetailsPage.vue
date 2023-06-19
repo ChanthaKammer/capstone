@@ -35,10 +35,10 @@
                      <p>Genre</p>
                   </div>
                   <div class="row">
-                     <div class="col-12">
+                     <div class="col-6">
                         <h2>Action</h2>
                      </div>
-                     <div class="col-12">
+                     <div class="col-6">
                         <h2>Adventure</h2>
                      </div>
                   </div>
@@ -95,11 +95,13 @@
 </template>
 
 <script>
-// import Pop from '../utils/Pop.js';
+import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
-// import { logger } from '../utils/Logger.js';
+import { logger } from '../utils/Logger.js';
 import { computed } from "vue";
 import NewTournamentForm from "../components/NewTournamentForm.vue"
+import { rawgService } from "../services/RawgService.js";
+import { useRoute } from "vue-router";
 
    export default {
 
@@ -109,8 +111,8 @@ import NewTournamentForm from "../components/NewTournamentForm.vue"
 
       setup(){
          return {
-            game: computed(() => AppState.activeGame),
-            user: computed(() => AppState.user),
+            async function getGameDetails(){
+            }
          }
       }
    }
@@ -172,8 +174,8 @@ import NewTournamentForm from "../components/NewTournamentForm.vue"
    @media (min-width: 1200px) {
       .polygon {
          width: 30%;
-         height: 46.25vh;
-         top: 12%;
+         height: 46.5vh;
+         top: 12%
       }
    }
 
@@ -181,10 +183,12 @@ import NewTournamentForm from "../components/NewTournamentForm.vue"
       .polygon {
          visibility: hidden;
       }
-
-
    }
 
-
+   @media (max-width: 992px) {
+      .polygon {
+         visibility: hidden;
+      }
+   }
 
 </style>
