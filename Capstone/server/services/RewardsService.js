@@ -15,6 +15,16 @@ class RewardsService {
         }
         return reward
     }
+    async getTourneyRewards(tournamentId) {
+        const rewards = await dbContext.Rewards.find({tournamentId}).populate('account tournament')
+        return rewards
+    }
+    async getAccountRewards(accountId) {
+      const rewards = await dbContext.Rewards.find({accountId}).populate('account tournament')
+      return rewards
+    }
+    
+
 
 }
 

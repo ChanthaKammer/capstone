@@ -3,6 +3,7 @@ import { tournamentsService } from "../services/TournamentsService.js";
 import BaseController from "../utils/BaseController.js";
 import { commentsService } from "../services/CommentsService.js";
 import { participantsService } from "../services/ParticipantsService.js";
+import { rewardsService } from "../services/RewardsService.js";
 
 
 
@@ -14,6 +15,7 @@ export class TournamentsController extends BaseController {
             .get('/:id', this.getTournamentById)
             .get('/:id/comments', this.getCommentsByTournamentId)
             .get('/:id/participants', this.getTournamentParticipants)
+            .get('/:id', this.getTourneyRewards)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createTournament)
             .put('/:id', this.editTournament)
@@ -25,6 +27,16 @@ export class TournamentsController extends BaseController {
         try {
             const participants = await participantsService.getTournamentParticipants(req.params.id)
             return res.send(participants)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getTourneyRewards(req, res, next){
+        try {
+            const tournamentId = req.params.id
+            const rewards = await rewardsService.getTourneyRewards(tournamentId)
+            return res.send(rewards)
         } catch (error) {
             next(error)
         }
