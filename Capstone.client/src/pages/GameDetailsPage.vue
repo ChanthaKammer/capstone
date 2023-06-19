@@ -110,9 +110,12 @@ import { useRoute } from "vue-router";
       },
 
       setup(){
+         const route = useRoute();
+
          async function getGameDetails(){
             try {
-               rawgService.getGameDetails()
+               const gameSlug = route.params.slug
+               await rawgService.getGameDetails(gameSlug)
             } catch (error) {
                logger.log(error);
             }
