@@ -9,7 +9,7 @@
         </div>
       </router-link>
         <form @submit.prevent="searchGames()" class="d-flex" role="search" style="width: 40%;">
-          <input class="form-control me-2" type="search" placeholder="Search Games..." aria-label="Search" v-model="search">
+          <input class="form-control me-2" type="search" placeholder="Search Games..." aria-label="Search" v-model="editable">
           <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
         </form> <!-- LOGIN COMPONENT HERE -->
         <Login />
@@ -31,22 +31,23 @@ export default {
   components: { Login },
   setup() {
     const router = useRouter()
-    const search = ref('')
-
+    const editable = ref('')
     return {
-      search,
+      editable,
 
       async searchGames() {
         try {
-          const searchTerm = search.value
-
-          const parts = searchTerm.split(' ');
-          const modifiedSearch = parts.join('+');
-          logger.log(`Searching games containing ${modifiedSearch}`)
-          await rawgService.searchGames(searchTerm)
-          router.push(
-            { name: 'Search' }
-          )
+          // const searchTerm = search.value
+          // const parts = searchTerm.split(' ');
+          // const modifiedSearch = parts.join('+');
+          const searchString = editable.value
+            .split(' ')
+            .join('+')
+          logger.log(searchString)
+          await rawgService.searchGames(searchString)
+          // router.push(
+          //   { name: 'Search' }
+          // )
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
