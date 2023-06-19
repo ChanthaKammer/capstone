@@ -45,9 +45,10 @@ export default {
             .split(' ')
             .join('+')
           logger.log("[SEARCH STRING]",searchString)
+          AppState.query = searchString
           await rawgService.searchGames(searchString)
           router.push(
-            { name: 'Search' }
+            { name: 'Search' , params: { query: searchString }}
           )
         } catch (error) {
           logger.error(error)
