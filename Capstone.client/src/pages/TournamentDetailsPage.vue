@@ -4,12 +4,25 @@
 
     <div class="row">
       <div v-if="!tournament.isCancelled" class="col-12 col-md-6 mt-4 text-light text-uppercase">
-        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;">{{ tournament.name }} ({{ tournament.type }} MATCH) </p>
+        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;">{{ tournament.name }} ({{ tournament.type }}) </p>
         <div class="row">
           <div class="col-12">
             <p class="ms-5 ps-3 mt-0 pb-3" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{ tournament.location }} </p>
-            <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 650; font-style: italic;">BE THERE ON</p>
-            <p class="ms-5 ps-2 my-0" style="font-size: 2rem; font-weight: 650; font-style: italic;"> {{ new Date(tournament.startDate) }}</p>
+            <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 650; font-style: italic;">BE THERE ON
+                {{ 
+                  new Date( tournament.startDate )
+                  .toLocaleDateString('en-US', {
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric'
+                  }) }}
+                  @ {{ 
+                    new Date( tournament.startDate )
+                    .toLocaleTimeString('en-US', {
+                      hour: 'numeric', 
+                      minute: 'numeric'
+                    }) }}
+            </p>
             <div class="row">
               <div class="col-12 pb-5">
                 <div v-if="tournament.startDate" class="pb-5">
