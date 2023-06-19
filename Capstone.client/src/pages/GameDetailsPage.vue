@@ -1,5 +1,5 @@
 <template>
-   <section class="container-fluid" :style="{ backgroundImage: `url(${game?.background})` }">
+   <section class="container-fluid bg-animate" :style="{ background: `url(${game?.background})` }" style="background-repeat: repeat; background-size: cover; height: 100vh;">
       <div class="row justify-content-center pt-5">
          <div class="col-md-9 pt-3 bg-dark text-white rounded-3 animate-in">
             <div v-if="game" class="row">
@@ -9,7 +9,7 @@
                   <h1>4/5</h1>
                </div>
                <div class="col-md-4">
-                  <p class="py-3"> {{ game.description }} </p>
+                  <p class="py-3" style="overflow-y: auto; max-height: 38vh;"> {{ game.description }} </p>
                   <p role="button" v-if="user.isAuthenticated">
                      <NewTournamentForm />
                   </p>
@@ -21,6 +21,7 @@
                   <h1> {{ game.esrb_rating }} </h1>
                   <p>Platforms</p>
                   <div class="row">
+                     <div class="col-12"> {{ game.parent_platforms }} </div>
                      <div class="col-4">
                         <h2><i class="mdi mdi-microsoft-xbox" style="color: limegreen;"></i></h2>
                      </div>
@@ -146,6 +147,25 @@ import { useRoute } from "vue-router";
       animation: fadeIn ease 2s;
    }
 
+   .bg-animate {
+      animation: move 300s ease-in-out infinite;
+   }
+
+   @keyframes move {
+      0% {
+         background-position: left top;
+      }
+      25% {
+         background-position: right bottom;
+      }
+      50% {
+         background-position: left bottom;
+      }
+      75% {
+         background-position: right top;
+      }
+   }
+
    .animate-in {
       animation: fadeIn ease 1s;
    }
@@ -162,6 +182,8 @@ import { useRoute } from "vue-router";
          
       }
    }
+
+   
 
    @media (min-width: 1440px) {
       .polygon {
