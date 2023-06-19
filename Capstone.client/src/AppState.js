@@ -27,5 +27,5 @@ export const AppState = reactive({
   nextPage: null,
 
   /** @type {import('./models/Comment.js').Comment[]} */
-  comments: [],
+  comments: [], 
 })

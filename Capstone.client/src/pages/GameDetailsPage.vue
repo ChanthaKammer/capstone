@@ -22,10 +22,10 @@
                   <p>Platforms</p>
                   <div class="row">
                      <div class="col-4">
-                        <h2><i class="mdi mdi-microsoft-xbox"></i></h2>
+                        <h2><i class="mdi mdi-microsoft-xbox" style="color: limegreen;"></i></h2>
                      </div>
                      <div class="col-4">
-                        <h2><i class="mdi mdi-sony-playstation"></i></h2>
+                        <h2><i class="mdi mdi-sony-playstation" style="color: dodgerblue;"></i></h2>
                      </div>
                      <div class="col-4">
                         <h2>PC</h2>
@@ -183,7 +183,7 @@ import { useRoute } from "vue-router";
       .polygon {
          width: 30%;
          height: 46.5vh;
-         top: 12%
+         top: 12%;
       }
    }
 
@@ -191,7 +191,7 @@ import { useRoute } from "vue-router";
       .polygon {
          width: 30%;
          height: 48.5vh;
-         top: 12%
+         top: 13%;
       }
    }
 
