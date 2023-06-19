@@ -2,7 +2,7 @@ import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class TournamentsService{
-   
+    
     async createTournament(tournamentData) {
         const tournament = await dbContext.Tournaments.create(tournamentData)
         await tournament.populate('creator participantCount')
@@ -38,7 +38,7 @@ class TournamentsService{
         originalTourney.gameName = tournamentData.gameName || originalTourney.gameName
         originalTourney.gameSlug = tournamentData.gameSlug || originalTourney.gameSlug
         originalTourney.totalRounds = tournamentData.totalRounds|| originalTourney.totalRounds
-
+        
         await originalTourney.save()
         return originalTourney
     }
@@ -51,15 +51,22 @@ class TournamentsService{
         await tournament.save()
         return tournament
     }
-   
+    
     async tournamentFinished(tournamentId, userId) {
-       const tournament = await this.getTournamentById(tournamentId)
-       if (tournament.creatorId != userId){
-        throw new Forbidden("Not your Tournament!")
+        const tournament = await this.getTournamentById(tournamentId)
+        if (tournament.creatorId != userId){
+            throw new Forbidden("Not your Tournament!")
+        }
+        tournament.isFinished = !tournament.isFinished 
+        await tournament.save()
+        return tournament
     }
-    tournament.isFinished = !tournament.isFinished 
-    await tournament.save()
-    return tournament
+    async getProfileTournaments(profileId) {
+      const tournaments = await dbContext.Tournaments.find({ creatorId: profileId }).populate('participantCount')
+      if(!tournaments){
+        throw new BadRequest("This profile has no tournaments.")
+      }
+      return tournaments
     }
 }
 

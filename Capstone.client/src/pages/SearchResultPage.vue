@@ -1,8 +1,8 @@
 <template>
    <section v-if="game" class="container-fluid pt-3">
          <h1 class="text-center">Search Results</h1>
-         <div v-for="g in games" :key="g.slug" class="p-3">
-            <GameCard :game="g" class="col-md-6"/>
+         <div class="p-3">
+            <GameCard :game="g" class="col-md-6" v-for="g in games" :key="g.slug"/>
          </div>
          {{ AppState }}
       </section>                  
@@ -56,7 +56,7 @@ import Pop from '../utils/Pop.js';
          GameCard
       },
       setup() {
-         const query = computed(() => AppState.query)
+         // const query = computed(() => AppState.query)
          // const route = useRoute();
          // const router = useRouter();
 
@@ -70,16 +70,6 @@ import Pop from '../utils/Pop.js';
          //       Pop.toast(error.message, 'error')
          //    }
          // }
-         async function searchGames(){
-            try {
-               await rawgService.searchGames(query)
-            } catch (error) {
-               Pop.error
-            }
-         }
-         onMounted(() => {
-            searchGames()
-         })
          return {
             // getDetailsBySlug,
             game: computed(()=> AppState.activeGame),
