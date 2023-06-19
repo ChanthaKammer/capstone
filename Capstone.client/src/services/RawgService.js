@@ -28,7 +28,8 @@ class RawgService {
   }
 
   async getGameDetails(slug){
-    const res = rawgApi.get(`${slug}`)
+    const res = await rawgApi.get(`${slug}`)
+    logger.log(res.data)
   }
 
 }
