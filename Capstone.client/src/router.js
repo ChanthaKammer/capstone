@@ -23,6 +23,11 @@ const routes = [
     beforeEnter: authGuard
   },
   {
+    path: '/profile/',
+    name: 'Profile',
+    component: loadPage('ProfilePage'),
+  },
+  {
     path: '/tournament/:tournamentId',
     name: 'TournamentDetails',
     component: loadPage('TournamentDetailsPage')
