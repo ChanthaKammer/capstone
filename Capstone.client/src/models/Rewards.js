@@ -1,9 +1,18 @@
-export class Comment{
+export class Rewards{
+
   constructor(data){
     this.id = data.id
     this.creatorId = data.creatorId
     this.tournamentId = data.tournamentId
-    this.body = data.body
-    this.creator = data.creator
+    this.name = data.name
+    this.badge = data.badge
+    this.gpCoins = data.gpCoins
   }
 }
+
+
+
+
+
+
+
