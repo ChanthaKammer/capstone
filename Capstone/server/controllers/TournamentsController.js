@@ -16,6 +16,7 @@ export class TournamentsController extends BaseController {
             .get('/:id/comments', this.getCommentsByTournamentId)
             .get('/:id/participants', this.getTournamentParticipants)
             .get('/:id', this.getTourneyRewards)
+            .delete('/:id/permanent', this.deleteTournament)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createTournament)
             .put('/:id', this.editTournament)
@@ -103,6 +104,15 @@ export class TournamentsController extends BaseController {
     async tournamentFinished(req, res, next) {
         try {
             const tournament = await tournamentsService.tournamentFinished(req.params.id, req.userInfo.id)
+            return res.send(tournament)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async deleteTournament(req, res, next){
+        try {
+            const tournament = await tournamentsService.deleteTournament(req.params.id)
             return res.send(tournament)
         } catch (error) {
             next(error)
