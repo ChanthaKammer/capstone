@@ -90,8 +90,8 @@
       </div>
     </section>
 
-    <div class="row mb-5 py-3 accent-row shadow-lg">
-      <div class="col-6 mb-5 pe-5" style="position: absolute; top: -3.5vh; left: 19.5%;">
+    <div class="row justify-content-between mb-5 py-3 accent-row shadow-lg">
+      <div class="col-md-6 mb-5 pe-5" style="position: absolute; top: -3.5vh; left: 19.5%;">
         <div class="btn-group">
           <button type="button" class="btn btn-info neon-button">Highlights</button>
           <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -107,7 +107,7 @@
         </div>
       </div>
 
-      <div class="col-6 mb-5 ps-5" style="position: absolute; top: -3.5vh; left: 65.5%;">
+      <div class="col-md-6 mb-5 ps-5" style="position: absolute; top: -3.5vh; left: 65.5%;">
         <div class="btn-group">
         <button type="button" class="btn btn-info neon-button">Top Gamers</button>
           <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
