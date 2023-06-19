@@ -2,7 +2,8 @@ export class GameDetails{
    constructor(data, data2){
       this.slug = data.slug
       this.name = data.name
-      this.description = data.description
+      this.description = data.description_raw
+      this.descriptionHTML = data.description
       this.metacritic = data.metacritic
       this.released = data.released
       this.rating = data.rating
@@ -15,5 +16,8 @@ export class GameDetails{
       this.publishers = data.publishers
       this.esrb_rating = data.esrb_rating
       this.screenshots = data2.results
+      this.coverImg = data.background_image
+      this.background = data.backgroundd_image_additional
+
    }
 }
