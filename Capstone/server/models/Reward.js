@@ -6,7 +6,8 @@ export const RewardSchema = new Schema({
     accountId: { type: ObjectId, required: true, ref: 'Account'},
     name: {type: String, required: true,},
     badge: {type: String },
-    gpCoins: {type: Number}
+    gpCoins: {type: Number},
+    recipientId: {type: ObjectId, ref: 'Participant'}
 }, 
     {timestamps: true, toJSON: {virtuals: true}})
 
