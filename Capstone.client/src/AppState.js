@@ -16,7 +16,7 @@ export const AppState = reactive({
   
   /** @type {import('./models/Game.js').Game} */
   games: [],
-  activeGame:{screenshots: [], backgroundImg:"",rating:},
+  activeGame: {},
   searchGames: [],
   
   query: '',
