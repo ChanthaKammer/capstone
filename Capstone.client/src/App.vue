@@ -4,7 +4,15 @@
   </header>
   <main>
     <router-view />
+
+    
+
+    <div>
+      
+    </div>
   </main>
+
+
   <footer class="row bg-black g-0 sticky-bottom " style="width: 100%;">
     <marquee behavior="scroll" direction="right" scrollamount="10" class="text-light" style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
       <img src="https://media.giphy.com/media/pjb1HPZ41i5BS/source.gif" class="img-fluid" style="max-height: 80px; margin-top" alt="mario">
@@ -25,7 +33,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar }
+  components: { Navbar, }
 }
 </script>
 <style lang="scss">

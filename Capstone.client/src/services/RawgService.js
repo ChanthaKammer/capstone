@@ -7,6 +7,15 @@ class RawgService {
   //   const res = await rawgApi.get(``)
   //   logger.log('[RAWG DATA]', res.data)
   // }
+
+  //NOTE FOR GETTING GAMES BY THEIR DETAILS PAGE. NEEDS TO BE FIXED
+  // async getGameBySlug(slug) {
+  //   const res = await rawgApi.get(`games/${slug}`)
+  //   logger.log('[GETTING GAME BY SLUG]', res.data)
+  //   AppState.activeGame = new Game(res.data)
+  //   logger.log('[ACTIVE GAME]', AppState.activeGame)
+  // }
+
   async searchGames(searchTerm) {
     const res = await rawgApi.get(``, {
       params: {search: `${searchTerm}`}

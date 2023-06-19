@@ -10,7 +10,7 @@
           <div class="card-body" style="overflow-y: auto">
             <h4 class="card-title"> {{ tournament.name }} </h4>
             <p class="card-text">{{ tournament.category }}</p>
-            <p class="card-text text-end" style="font-weight: 650;">Spots Left: {{ remainingParticipantCount }} / {{ tournament.participantCount }} </p>
+            <p class="card-text text-end" style="font-weight: 650;">Spots Filled: {{ tournament.participantCount }} / {{ tournament.capacity }} </p>
             <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash prize!</p>
             <p class="card-text">{{ tournament.description }}</p>
           </div>
@@ -84,34 +84,28 @@
 
 <script>
 
-import { computed } from 'vue'
-import { AppState } from '../AppState.js'
+
+import { Tournament } from "../models/Tournament.js";
 
 export default {
 
   props: {
-    tournament: {type: Object, required: true},
+    tournament: {type: Tournament, required: true},
   },
 
-  setup(props) {
-  //   const bgs = [
-  //       'bg-1',
-  //       'bg-2',
-  //       'bg-3',
-  //       'bg-4',
-  //       'bg-5',
-  //       'bg-6'
-  //   ]
+  setup() {
 
     return {
 
-        props,
-        participantCount: computed(() =>{
-        return AppState.activeTournament.capacity
-        }),
-        remainingParticipantCount: computed(()=>{
-        return AppState.activeTournament.capacity - AppState.activeTournament.participantCount
-        }),
+       
+
+        // STUB Previous code before prop
+        // participantCount: computed(() =>{
+        // return AppState.activeTournament.capacity
+        // }),
+        // remainingParticipantCount: computed(()=>{
+        // return AppState.activeTournament.capacity - AppState.activeTournament.participantCount
+        // }),
 
         // getRandomBg() {
         //     return bgs[Math.floor(bgs.length * Math.random())]

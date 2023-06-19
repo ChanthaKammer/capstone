@@ -12,10 +12,11 @@ class TournamentsService {
     logger.log(AppState.tournaments)
   }
 
-  async getTournamentById(tournamentId) {
+  async setActiveTournament(tournamentId) {
     const res = await api.get(`api/tournaments/${tournamentId}`)
     AppState.activeTournament = res.data
-    logger.log(AppState.activeTournament, res.data)
+    logger.log(AppState.activeTournament)
+    
   }
 
   async getMyTournaments() {
