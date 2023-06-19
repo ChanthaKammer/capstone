@@ -16,7 +16,7 @@ export const AppState = reactive({
   
   /** @type {import('./models/Game.js').Game} */
   games: [],
-  activeGame: {},
+  activeGame:{screenshots: [], backgroundImg:"",rating:},
   searchGames: [],
   
   query: '',
@@ -25,5 +25,5 @@ export const AppState = reactive({
   nextPage: null,
 
   /** @type {import('./models/Comment.js').Comment[]} */
-  comments: [],
+  comments: [], 
 })
