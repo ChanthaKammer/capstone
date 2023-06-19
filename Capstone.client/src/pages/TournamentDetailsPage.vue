@@ -4,7 +4,7 @@
 
     <div class="row">
       <div v-if="!tournament.isCancelled" class="col-12 col-md-6 mt-4 text-light text-uppercase">
-        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;"> {{ tournament.type }} MATCH </p>
+        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;">{{ tournament.name }} ({{ tournament.type }} MATCH) </p>
         <div class="row">
           <div class="col-12">
             <p class="ms-5 ps-3 mt-0 pb-3" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{ tournament.location }} </p>
