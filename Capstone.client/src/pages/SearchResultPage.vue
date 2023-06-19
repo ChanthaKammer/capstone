@@ -4,9 +4,13 @@
          <div class="row p-3 justify-content-around">
             <GameCard :game="g" class="col-md-5" v-for="g in games" :key="g.slug"/>
          </div>
-         <div class="row justify-content-around pt-2">
-            <button class="col-3" :disabled="!previouspage" @click="changePage(previouspage)">Previous</button>
-            <button class="col-3" :disabled="!nextpage" @click="changePage(nextpage)">Next</button>
+         <div class="row justify-content-around py-2">
+            <div class="col-4">
+               <div class="row justify-content-around">
+                  <button class="col-auto btn btn-info" :disabled="!previouspage" @click="changePage(previouspage)">Previous</button>
+                  <button class="col-auto btn btn-info" :disabled="!nextpage" @click="changePage(nextpage)">Next</button>
+               </div>
+            </div>
          </div>
       </section>                  
       <!-- <div class="row p-4">
@@ -89,6 +93,10 @@ import Pop from '../utils/Pop.js';
             async changePage(direction){
                try {
                   await rawgService.changePage(direction)
+                  window.scrollTo({
+                     top: 0,
+                     behavior: 'smooth'
+                  });
                } catch (error) {
                   Pop.error
                }

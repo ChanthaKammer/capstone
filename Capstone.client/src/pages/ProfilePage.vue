@@ -1,8 +1,8 @@
 <template>
    <section class="container-fluid">
       <div class="row justify-content-center pt-3">
-         <div class="col-md-8">
-            <div class="row justify-content-around">
+         <div class="col-md-8 bg-dark text-white rounded-3">
+            <div class="row justify-content-around p-3">
                <div class="col-md-6">
                   <img src="http://localhost:8081/src/assets/img/gamePursuitLogo.png" alt="" class="img-fluid">
                   <h3>Badges</h3>
@@ -34,8 +34,8 @@
          </div>
       </div>
       <div class="row justify-content-center pt-3">
-         <div class="col-8">
-            <h1>Won Tournaments</h1>
+         <div class="col-8 bg-dark text-white">
+            <h1 class="text-center">Won Tournaments</h1>
             <h1>V-for Tournaments</h1>
          </div>
       </div>
