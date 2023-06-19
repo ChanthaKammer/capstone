@@ -9,7 +9,7 @@
         </div>
       </router-link>
         <form @submit.prevent="searchGames()" class="d-flex" role="search" style="width: 40%;">
-          <input class="form-control me-2" type="search" placeholder="Search Games..." aria-label="Search" v-model="editable">
+          <input class="form-control me-2" type="search" :placeholder="searchTerm" aria-label="Search" v-model="editable">
           <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
         </form> <!-- LOGIN COMPONENT HERE -->
         <Login />
@@ -44,10 +44,11 @@ export default {
           const searchString = editable.value
             .split(' ')
             .join('+')
-          logger.log(searchString)
+          logger.log("[SEARCH STRING]",searchString)
+          AppState.query = searchString
           await rawgService.searchGames(searchString)
           router.push(
-            { name: 'Search' }
+            { name: 'Search' , params: { query: searchString }}
           )
         } catch (error) {
           logger.error(error)

@@ -35,10 +35,10 @@
                      <p>Genre</p>
                   </div>
                   <div class="row">
-                     <div class="col-6">
+                     <div class="col-12">
                         <h2>Action</h2>
                      </div>
-                     <div class="col-6">
+                     <div class="col-12">
                         <h2>Adventure</h2>
                      </div>
                   </div>
@@ -95,10 +95,10 @@
 </template>
 
 <script>
-import Pop from '../utils/Pop.js';
+// import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import NewTournamentForm from "../components/NewTournamentForm.vue"
 import { rawgService } from "../services/RawgService.js";
 import { useRoute } from "vue-router";
@@ -120,6 +120,11 @@ import { useRoute } from "vue-router";
                logger.log(error);
             }
          }
+
+         onMounted(() => {
+            getGameDetails();
+         })
+
          return {
             game: computed(() => AppState.activeGame),
             user: computed(() => AppState.user),
@@ -169,7 +174,8 @@ import { useRoute } from "vue-router";
       .polygon {
          width: 30%;
          height: 46.6vh;
-         top: 12%
+         top: 12%;
+         right: 12.75vw;
       }
    }
 
@@ -184,7 +190,7 @@ import { useRoute } from "vue-router";
    @media (min-width: 1200px) {
       .polygon {
          width: 30%;
-         height: 46.5vh;
+         height: 48.5vh;
          top: 12%
       }
    }

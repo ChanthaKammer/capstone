@@ -1,10 +1,9 @@
 <template>
    <section v-if="game" class="container-fluid pt-3">
-         <h1 class="text-center">Search Results</h1>
-         <div v-for="g in games" :key="g.slug" class="p-3">
-            <GameCard :game="g" class="col-md-6"/>
+         <h1 class="text-center">Search Results </h1>
+         <div class="p-3">
+            <GameCard :game="g" class="col-md-6" v-for="g in games" :key="g.slug"/>
          </div>
-         {{ AppState }}
       </section>                  
       <!-- <div class="row p-4">
          <div class="col-md-6 p-4">
@@ -42,7 +41,7 @@
 // import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
 // import { logger } from '../utils/Logger.js';
-// import { useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 import { rawgService } from "../services/RawgService.js";
 // import { tournamentsService } from "../services/TournamentsService.js"
 import { computed, onMounted } from "vue";
@@ -56,8 +55,8 @@ import Pop from '../utils/Pop.js';
          GameCard
       },
       setup() {
-         const query = computed(() => AppState.query)
-         // const route = useRoute();
+         const route = useRoute();
+         const query = route.params.query
          // const router = useRouter();
 
          // async function getDetailsBySlug() {
@@ -71,11 +70,7 @@ import Pop from '../utils/Pop.js';
          //    }
          // }
          async function searchGames(){
-            try {
-               await rawgService.searchGames(query)
-            } catch (error) {
-               Pop.error
-            }
+            await rawgService.searchGames(query)
          }
          onMounted(() => {
             searchGames()
@@ -83,7 +78,7 @@ import Pop from '../utils/Pop.js';
          return {
             // getDetailsBySlug,
             game: computed(()=> AppState.activeGame),
-            games: computed(() => AppState.games),
+            games: computed(() => AppState.games)
          }
       }
    }

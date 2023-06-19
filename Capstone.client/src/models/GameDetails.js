@@ -1,5 +1,5 @@
 export class GameDetails{
-   constructor(data){
+   constructor(data, data2){
       this.slug = data.slug
       this.name = data.name
       this.description = data.description
@@ -14,5 +14,6 @@ export class GameDetails{
       this.tags = data.tags
       this.publishers = data.publishers
       this.esrb_rating = data.esrb_rating
+      this.screenshots = data2.results
    }
 }
