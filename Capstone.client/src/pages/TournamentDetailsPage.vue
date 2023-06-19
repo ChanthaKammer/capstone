@@ -4,24 +4,26 @@
 
     <div class="row">
       <div v-if="!tournament.isCancelled" class="col-12 col-md-6 mt-4 text-light text-uppercase">
-        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;">{{ tournament.name }} ({{ tournament.type }}) </p>
+        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;">{{ tournament.name
+        }} ({{ tournament.type }}) </p>
         <div class="row">
           <div class="col-12">
-            <p class="ms-5 ps-3 mt-0 pb-3" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{ tournament.location }} </p>
+            <p class="ms-5 ps-3 mt-0 pb-3" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{
+              tournament.location }} </p>
             <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 650; font-style: italic;">BE THERE ON
-                {{ 
-                  new Date( tournament.startDate )
+              {{
+                new Date(tournament.startDate)
                   .toLocaleDateString('en-US', {
-                    year: 'numeric', 
-                    month: 'short', 
+                    year: 'numeric',
+                    month: 'short',
                     day: 'numeric'
                   }) }}
-                  @ {{ 
-                    new Date( tournament.startDate )
-                    .toLocaleTimeString('en-US', {
-                      hour: 'numeric', 
-                      minute: 'numeric'
-                    }) }}
+              @ {{
+                new Date(tournament.startDate)
+                  .toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: 'numeric'
+                  }) }}
             </p>
             <div class="row">
               <div class="col-12 pb-5">
@@ -103,11 +105,26 @@
         </div>
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 40vw;" alt="StarShipCitizen">
+        <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 40vw;"
+          alt="StarShipCitizen">
       </div>
     </div>
   </section>
   <Section class="container-fluid">
+
+    <div class="row justify-content-center p-2">
+      <div class="col-4">
+        <div class=" elevation-5 comment-box p-2">
+          <form @submit.prevent="createComment()">
+            <textarea v-model="commentData" class="text-area w-100"></textarea>
+            <div class="text-end">
+              <button type="submit" class="mb-1 transparent-button">Post comment</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-12" v-for="c in comments" :key="c.id">
         <CommentCard :comment="c" />
@@ -118,7 +135,8 @@
   </Section>
 
   <footer class="row bg-black g-0 sticky-bottom" style="width: 100%; max-height: 60px;">
-    <marquee behavior="scroll" direction="right" scrollamount="5" class="text-light" style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
+    <marquee behavior="scroll" direction="right" scrollamount="5" class="text-light"
+      style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
       <img
         src="https://th.bing.com/th/id/R.2bc5a9822d665e72c81b61d4b4bb005e?rik=QzK0idJb9fJMqw&riu=http%3a%2f%2ffiles.gamebanana.com%2fimg%2fico%2fsprays%2fkoopa.gif&ehk=P%2bR6goQOAICNSQF%2barcUljvK1EsIlBzWRDFrzjXORa0%3d&risl=&pid=ImgRaw&r=0"
         class="img-fluid pb-3" style="max-height: 80px;" alt="mario">
@@ -128,7 +146,7 @@
 
 <script>
 
-import { computed, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
 import { tournamentsService } from '../services/TournamentsService';
 import { participantsService } from '../services/ParticipantsService';
@@ -146,6 +164,7 @@ export default {
   },
 
   setup() {
+    const commentData = ref('')
     const route = useRoute();
 
     onMounted(() => {
@@ -167,11 +186,28 @@ export default {
 
     }
     return {
+      commentData,
       route,
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
       comments: computed(() => AppState.comments),
+      async createComment() {
+      try {
+        const trimmedComment = commentData.value.trim();
+        if (trimmedComment.length == 0) {
+          Pop.toast("Comments must contain a body")
+          return
+        }
+        const tournyId = route.params.tournamentId
+        let comment = {body: trimmedComment,tournamentId: tournyId }
+
+        commentsService.createComment(comment)
+        commentData.value = ""
+      } catch (error) {
+        logger.log(error);
+      }
+    }
     }
 
     async function getParticipants() {
@@ -182,6 +218,7 @@ export default {
         Pop.error(error.message);
       }
     }
+
 
     async function getCommentsByTournamentId() {
       try {
@@ -205,6 +242,11 @@ h4,
 h5,
 h6 {
   text-shadow: 0 3px 5px #ffffff;
+}
+
+.comment-box {
+  width: 50vh;
+
 }
 
 .top-player {
