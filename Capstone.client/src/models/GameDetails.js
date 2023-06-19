@@ -14,7 +14,7 @@ export class GameDetails{
       this.genres = data.genres
       this.tags = data.tags
       this.publishers = data.publishers
-      this.esrb_rating = data.esrb_rating
+      this.esrb_rating = data.esrb_rating.name
       this.screenshots = data2.results
       this.coverImg = data.background_image
       this.background = data.backgroundd_image_additional

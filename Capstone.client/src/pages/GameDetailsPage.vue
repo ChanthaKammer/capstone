@@ -1,24 +1,24 @@
 <template>
-   <section class="container-fluid">
+   <section class="container-fluid" :style="{ backgroundImage: `url(${game?.background})` }">
       <div class="row justify-content-center pt-5">
          <div class="col-md-9 pt-3 bg-dark text-white rounded-3 animate-in">
             <div v-if="game" class="row">
                <div class="col-md-4 text-center">
                   <h1> {{ game.name }} </h1>
-                  <img src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png" class="img-fluid">
+                  <img :src="game.coverImg" :alt="game.name" class="img-fluid">
                   <h1>4/5</h1>
                </div>
                <div class="col-md-4">
-                  <p class="py-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis id molestiae natus earum illum. Possimus enim tempore odio maxime fugiat! Sint eligendi voluptas laborum possimus!</p>
+                  <p class="py-3"> {{ game.description }} </p>
                   <p role="button" v-if="user.isAuthenticated">
                      <NewTournamentForm />
                   </p>
                </div>
                <div class="col-md-4 text-center">
                   <p>Released</p>
-                  <h2>2013-09-17</h2>
+                  <h2> {{ game.released }} </h2>
                   <p>Rated</p>
-                  <h1>M</h1>
+                  <h1> {{ game.esrb_rating }} </h1>
                   <p>Platforms</p>
                   <div class="row">
                      <div class="col-4">
@@ -36,10 +36,7 @@
                   </div>
                   <div class="row">
                      <div class="col-12">
-                        <h2>Action</h2>
-                     </div>
-                     <div class="col-12">
-                        <h2>Adventure</h2>
+                        <h2> {{ game.genre }} </h2>
                      </div>
                   </div>
                </div>
@@ -135,10 +132,6 @@ import { useRoute } from "vue-router";
 
 
 <style lang="scss">
-
-   body{
-      background-image: url("https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg");
-   }
 
    .polygon {
       position: absolute;
