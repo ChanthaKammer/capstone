@@ -174,7 +174,8 @@ import { useRoute } from "vue-router";
       .polygon {
          width: 30%;
          height: 46.6vh;
-         top: 12%
+         top: 12%;
+         right: 12.75vw;
       }
    }
 
@@ -189,7 +190,7 @@ import { useRoute } from "vue-router";
    @media (min-width: 1200px) {
       .polygon {
          width: 30%;
-         height: 46.5vh;
+         height: 48.5vh;
          top: 12%
       }
    }
