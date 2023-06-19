@@ -24,6 +24,7 @@ class RawgService {
     AppState.previousPage = res.data.previous
     AppState.games = res.data.results.map(g => new Game(g))
     logger.log('[SEARCH RESULTS]', AppState.games)
+    logger.log('[SEARCH TERM', AppState.query)
   }
 }
 export const rawgService = new RawgService();

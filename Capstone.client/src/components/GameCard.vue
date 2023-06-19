@@ -1,9 +1,9 @@
 <template>
    <div class="row bg-dark rounded-3">
-      <div class="col-md-6 pt-2 pb-2 px-2" style="">
+      <div class="col-md-6 p-2" style="">
          <img
             :src="game.backgroundImg"
-            class="img-fluid rounded-3" alt="...">
+            class="img-fluid rounded-3 p-3" alt="...">
       </div>
       <div class="col-md-6 pt-2 align-self-center">
          <h1>{{ game.name }}</h1>
@@ -89,4 +89,8 @@ export default {
 </script>
 
 
-<style></style>
+<style>
+* {
+   border: 1px solid green
+}
+</style>
