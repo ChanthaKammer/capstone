@@ -11,7 +11,7 @@ export class GameDetails{
       this.platforms = data.platforms
       this.stores = data.stores
       this.developers = data.developers
-      this.genres = data.genres
+      this.genres = data.genres.name
       this.tags = data.tags
       this.publishers = data.publishers
       this.esrb_rating = data.esrb_rating.name
