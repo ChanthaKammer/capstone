@@ -32,7 +32,7 @@ class RawgService {
     const res2 = await rawgApi(`${slug}/screenshots`)
     logger.log(res.data)
     logger.log(res2.data)
-    AppState.activeGame = res.data
+    activeGame 
     
 
   }
