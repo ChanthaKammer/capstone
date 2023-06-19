@@ -1,11 +1,10 @@
 <!-- <TournamentDetailsCard /> -->
 <template>
-
   <section class="container-fluid bg-img">
-    
+
     <div class="row">
       <div v-if="!tournament.isCancelled" class="col-12 col-md-6 mt-4 text-light text-uppercase">
-        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;"> {{ tournament.type }} MATCH </p>
+        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;">{{ tournament.name }} ({{ tournament.type }} MATCH) </p>
         <div class="row">
           <div class="col-12">
             <p class="ms-5 ps-3 mt-0 pb-3" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{ tournament.location }} </p>
@@ -91,26 +90,27 @@
         </div>
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 40vw;" alt="StarShipCitizen"> 
+        <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 40vw;" alt="StarShipCitizen">
       </div>
     </div>
   </section>
-  
+  <Section class="container-fluid">
+    <div class="row">
+      <div class="col-12" v-for="c in comments" :key="c.id">
+        <CommentCard :comment="c" />
+      </div>
+
+    </div>
+
+  </Section>
+
   <footer class="row bg-black g-0 sticky-bottom" style="width: 100%; max-height: 60px;">
-    <marquee 
-      behavior="scroll" 
-      direction="right" 
-      scrollamount="5" 
-      class="text-light" 
-      style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
-      <img 
-        src="https://th.bing.com/th/id/R.2bc5a9822d665e72c81b61d4b4bb005e?rik=QzK0idJb9fJMqw&riu=http%3a%2f%2ffiles.gamebanana.com%2fimg%2fico%2fsprays%2fkoopa.gif&ehk=P%2bR6goQOAICNSQF%2barcUljvK1EsIlBzWRDFrzjXORa0%3d&risl=&pid=ImgRaw&r=0" 
-        class="img-fluid pb-3" 
-        style="max-height: 80px;" 
-        alt="mario">
+    <marquee behavior="scroll" direction="right" scrollamount="5" class="text-light" style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
+      <img
+        src="https://th.bing.com/th/id/R.2bc5a9822d665e72c81b61d4b4bb005e?rik=QzK0idJb9fJMqw&riu=http%3a%2f%2ffiles.gamebanana.com%2fimg%2fico%2fsprays%2fkoopa.gif&ehk=P%2bR6goQOAICNSQF%2barcUljvK1EsIlBzWRDFrzjXORa0%3d&risl=&pid=ImgRaw&r=0"
+        class="img-fluid pb-3" style="max-height: 80px;" alt="mario">
     </marquee>
   </footer>
-
 </template>
 
 <script>
@@ -124,12 +124,13 @@ import Pop from '../utils/Pop';
 // import TournamentDetailsCard from '../components/TournamentDetailsCard.vue';
 import { useRoute } from 'vue-router';
 import TournamentCountdown from '../components/TournamentCountdown.vue';
+import { commentsService } from "../services/CommentsService.js";
 
 export default {
 
-   components: {
-     TournamentCountdown
-   },
+  components: {
+    TournamentCountdown
+  },
 
   setup() {
     const route = useRoute();
@@ -137,10 +138,10 @@ export default {
     onMounted(() => {
       setActiveTournament();
       getParticipants();
+      getCommentsByTournamentId();
     });
 
-    onMounted(() => setActiveTournament())
-    
+
     async function setActiveTournament() {
       try {
         const tournamentId = route.params.tournamentId
@@ -157,9 +158,8 @@ export default {
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
+      comments: computed(() => AppState.comments),
     }
-
-
 
     async function getParticipants() {
       try {
@@ -169,16 +169,28 @@ export default {
         Pop.error(error.message);
       }
     }
+
+    async function getCommentsByTournamentId() {
+      try {
+        const tournamentId = route.params.tournamentId;
+        await commentsService.getCommentsByTournamentId(tournamentId);
+      }
+      catch (error) {
+        Pop.error(error);
+      }
+    }
   },
 }
 
 </script>
 
 <style scoped lang="scss">
-
-
-
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-shadow: 0 3px 5px #ffffff;
 }
 
@@ -209,6 +221,7 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 3rem;
   }
 }
+
 .bg-img {
   background-image: url(https://th.bing.com/th/id/R.86e62bb1ffccef76ceac5690808e9bb0?rik=FSe9PVtGZLmmfw&pid=ImgRaw&r=0);
   background-size: cover;
@@ -219,7 +232,7 @@ h1, h2, h3, h4, h5, h6 {
 .pizza-img {
   opacity: .98;
   filter: brightness(1.2);
-  
+
 }
 
 .starship-img:hover {
@@ -274,11 +287,13 @@ h1, h2, h3, h4, h5, h6 {
   0% {
     box-shadow: 0 0 50px 5px #00ff4cd6;
   }
+
   50% {
     box-shadow: 0 0 60px 5px #00ff4cea;
     filter: brightness(1.3);
     color: #6eff9aea
   }
+
   100% {
     box-shadow: 0 0 50px 5px #00ff4cd6;
   }
@@ -288,9 +303,9 @@ h1, h2, h3, h4, h5, h6 {
   0% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(0%);
   }
 }
-
 </style>

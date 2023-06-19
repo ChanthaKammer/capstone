@@ -16,11 +16,16 @@ export const AppState = reactive({
   
   /** @type {import('./models/Game.js').Game} */
   games: [],
-  activeGame:{},
+  /** @type {import('./models/GameDetails.js').GameDetails} */
+  activeGame: {},
+  
   searchGames: [],
   
   query: '',
 
   previousPage: null,
   nextPage: null,
+
+  /** @type {import('./models/Comment.js').Comment[]} */
+  comments: [], 
 })

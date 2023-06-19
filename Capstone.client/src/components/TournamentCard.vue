@@ -26,6 +26,12 @@
                       month: 'short', 
                       day: 'numeric'
                     }) }}
+                    @ {{ 
+                      new Date( tournament.updatedAt )
+                      .toLocaleTimeString('en-US', {
+                        hour: 'numeric', 
+                        minute: 'numeric'
+                      }) }}
                 </small>
               </p>
             </div>
