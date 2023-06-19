@@ -45,7 +45,7 @@
     </div>
     <div class="row justify-content-center text-center">
       <h1>Active Tournaments</h1>
-      <h1>V-For TounamentCard</h1>
+      <h1>V-For TournamentCard</h1>
     </div>
   </section>
 </template>
@@ -81,9 +81,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  border: 1px solid green
-}
 img {
   max-width: 100px;
 }

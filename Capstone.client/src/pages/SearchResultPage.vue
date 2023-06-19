@@ -89,6 +89,10 @@ import Pop from '../utils/Pop.js';
             async changePage(direction){
                try {
                   await rawgService.changePage(direction)
+                  window.scrollTo({
+                     top: 0,
+                     behavior: 'smooth'
+                  });
                } catch (error) {
                   Pop.error
                }
