@@ -20,21 +20,22 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from "vue-router";
 import Login from './Login.vue';
 import { logger } from "../utils/Logger.js";
 import { rawgService } from "../services/RawgService.js";
+import { AppState } from '../AppState.js';
 import Pop from "../utils/Pop.js";
 
 export default {
   components: { Login },
   setup() {
     const router = useRouter()
+    const searchTerm = computed(() => AppState.query)
     const editable = ref('')
     return {
       editable,
-
       async searchGames() {
         try {
           // const searchTerm = search.value
@@ -45,9 +46,9 @@ export default {
             .join('+')
           logger.log(searchString)
           await rawgService.searchGames(searchString)
-          // router.push(
-          //   { name: 'Search' }
-          // )
+          router.push(
+            { name: 'Search' }
+          )
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')

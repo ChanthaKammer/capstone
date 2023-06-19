@@ -95,10 +95,10 @@
 </template>
 
 <script>
-import Pop from '../utils/Pop.js';
+// import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import NewTournamentForm from "../components/NewTournamentForm.vue"
 import { rawgService } from "../services/RawgService.js";
 import { useRoute } from "vue-router";
@@ -120,6 +120,11 @@ import { useRoute } from "vue-router";
                logger.log(error);
             }
          }
+
+         onMounted(() => {
+            getGameDetails();
+         })
+
          return {
             game: computed(() => AppState.activeGame),
             user: computed(() => AppState.user),
