@@ -2,6 +2,7 @@ import { rawgApi } from "./AxiosService.js";
 import { logger } from "../utils/Logger.js"
 import { AppState } from "../AppState.js";
 import { Game } from "../models/Game.js";
+import { GameDetails } from "../models/GameDetails.js";
 class RawgService {
   // async getGames() {
   //   const res = await rawgApi.get(``)
@@ -30,9 +31,10 @@ class RawgService {
   async getGameDetails(slug){
     const res = await rawgApi.get(`${slug}`)
     const res2 = await rawgApi(`${slug}/screenshots`)
+    AppState.activeGame = new GameDetails(res.data, res2.data)
     logger.log(res.data)
     logger.log(res2.data)
-    activeGame 
+    logger.log (AppState.activeGame)
     
 
   }
