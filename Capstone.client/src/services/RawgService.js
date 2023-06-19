@@ -35,8 +35,13 @@ class RawgService {
     logger.log('[DESCRIPTION]',res.data)
     logger.log(res2.data)
     logger.log (AppState.activeGame)
-    
+  }
 
+  async changePage(direction){
+    const res = await rawgApi.get(direction)
+    AppState.nextPage = res.data.next
+    AppState.previousPage = res.data.previous
+    AppState.games = res.data.results.map(g => new Game(g))
   }
 
 }

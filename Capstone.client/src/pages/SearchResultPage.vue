@@ -5,8 +5,8 @@
             <GameCard :game="g" class="col-md-5" v-for="g in games" :key="g.slug"/>
          </div>
          <div class="row justify-content-around pt-2">
-            <button class="col-3" :disabled="!newer" @click="changePage(nextpage)">Previous</button>
-            <button class="col-3" :disabled="!older" @click="changePage(previouspage)">Next</button>
+            <button class="col-3" :disabled="!previouspage" @click="changePage(previouspage)">Previous</button>
+            <button class="col-3" :disabled="!nextpage" @click="changePage(nextpage)">Next</button>
          </div>
       </section>                  
       <!-- <div class="row p-4">
