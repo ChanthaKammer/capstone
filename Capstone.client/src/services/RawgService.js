@@ -26,5 +26,11 @@ class RawgService {
     logger.log('[SEARCH RESULTS]', AppState.games)
     logger.log('[SEARCH TERM', AppState.query)
   }
+
+  async getGameDetails(slug){
+    const res = await rawgApi.get(`${slug}`)
+    logger.log(res.data)
+  }
+
 }
 export const rawgService = new RawgService();
