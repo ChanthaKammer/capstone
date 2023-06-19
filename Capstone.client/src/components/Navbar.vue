@@ -32,7 +32,7 @@ export default {
   components: { Login },
   setup() {
     const router = useRouter()
-    const searchTerm = computed(() => AppState.query)
+    // const searchTerm = computed(() => AppState.query)
     const editable = ref('')
     return {
       editable,
