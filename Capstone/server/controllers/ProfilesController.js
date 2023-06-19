@@ -1,5 +1,6 @@
 import { participantsService } from '../services/ParticipantsService.js'
 import { profileService } from '../services/ProfileService.js'
+import { rewardsService } from '../services/RewardsService.js'
 import { tournamentsService } from '../services/TournamentsService.js'
 import BaseController from '../utils/BaseController'
 
@@ -11,6 +12,7 @@ export class ProfilesController extends BaseController {
       .get('/:id', this.getProfile)
       .get('/:id/participants', this.getProfileParticipants)
       .get('/:id/tournaments', this.getProfileTournaments)
+      .get('/:id/rewards', this.getProfileRewards)
   }
 
   async getProfiles(req, res, next) {
@@ -46,6 +48,16 @@ export class ProfilesController extends BaseController {
       const profileId = req.params.id
       const tournaments = await tournamentsService.getProfileTournaments(profileId)
       return res.send(tournaments)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getProfileRewards(req, res, next){
+    try {
+      const profileId = req.params.id
+      const rewards = await rewardsService.getProfileRewards(profileId)
+      return res.send(rewards)
     } catch (error) {
       next(error)
     }

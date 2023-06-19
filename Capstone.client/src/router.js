@@ -44,7 +44,7 @@ const routes = [
     component: loadPage('Test')
   },
   {
-    path: '/searchresultpage',
+    path: '/search/:query',
     name: 'Search',
     component: loadPage('SearchResultPage')
   },

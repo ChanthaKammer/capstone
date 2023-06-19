@@ -17,21 +17,28 @@ class RewardsService {
     }
     async getTourneyRewards(tournamentId) {
         const rewards = await dbContext.Rewards.find({tournamentId}).populate('account tournament')
-            if(!rewards){
-                throw new BadRequest("There are no rewards for this tournament.")
+        if(!rewards){
+            throw new BadRequest("There are no rewards for this tournament.")
             }
         return rewards
     }
     async getAccountRewards(accountId) {
         const rewards = await dbContext.Rewards.find({accountId}).populate('account tournament')
-            if(!rewards){
-                throw new BadRequest("This account has no rewards.")
-            }
+        if(!rewards){
+            throw new BadRequest("This account has no rewards.")
+        }
         return rewards
     }
+    async getProfileRewards(profileId) {
+      const rewards = await dbContext.Rewards.find({accountId: profileId})
+      if(!rewards){
+        throw new BadRequest("This profile has no rewards.")
+      }
+      return rewards
+    }
     
-
-
+    
+    
 }
 
 export const rewardsService = new RewardsService()
