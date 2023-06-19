@@ -3,8 +3,8 @@ import { BadRequest } from "../utils/Errors.js"
 
 class ParticipantsService{
     async createParticipant(participantData) {
-            const participant = await dbContext.Participants.create(participantData)
-            await participant.populate('profile tournament')
+        const participant = await dbContext.Participants.create(participantData)
+        await participant.populate('profile tournament')
             return participant
     }
     async getParticipant(participantId) {
@@ -20,8 +20,8 @@ class ParticipantsService{
         return participants
     }
     async getAccountParticipations(accountId) {
-      const participations = await dbContext.Participants.find({ accountId }).populate('profile tournament')
-      return participations
+        const participations = await dbContext.Participants.find({ accountId }).populate('profile tournament')
+        return participations
     }
     async deleteParticipant(userId, participantId) {
         const participant = await this.getParticipant(participantId)
@@ -30,6 +30,13 @@ class ParticipantsService{
         }
         await participant.remove()
         return participant
+    }
+    async getProfileParticipants(profileId) {
+      const participants = await dbContext.Participants.find({ accountId: profileId}).populate('tournament')
+      if(!participants){
+        throw new BadRequest("This profile has no participants.")
+      }
+      return participants
     }
     
 }
