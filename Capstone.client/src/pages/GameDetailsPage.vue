@@ -110,9 +110,16 @@ import { useRoute } from "vue-router";
       },
 
       setup(){
-         return {
-            async function getGameDetails(){
+         async function getGameDetails(){
+            try {
+               rawgService.getGameDetails()
+            } catch (error) {
+               logger.log(error);
             }
+         }
+         return {
+            game: computed(() => AppState.activeGame),
+            user: computed(() => AppState.user),
          }
       }
    }
