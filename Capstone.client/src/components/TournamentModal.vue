@@ -1,26 +1,9 @@
 <template>
-   <div class="row bg-dark rounded-3 p-2 my-2">
-      <div class="col-md-6" style="">
-         <img
-            :src="game.backgroundImg"
-            class="img-fluid rounded-3 p-3" alt="...">
-      </div>
-      <div class="col-md-6 pt-2 align-self-center">
-         <h1>{{ game.name }}</h1>
-         <h1>{{game.released}}</h1>
-         <h1>{{game.genre}}</h1>
-
-         <div class="text-center">
-            <router-link :to="{ name: 'GameDetails', params: { slug: game.slug } }">
-               <button class="btn btn-success">
-                  Game Info
-               </button>
-            </router-link>
-         </div>
-         
-         <!-- <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#tournamentModal">Create
+   <section class="container-fluid">
+      <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#tournamentModal">Create
             Tournament</button>
          <div class="row justify-content-center">
+            <!-- Modal -->
             <div class="modal fade" id="tournamentModal" tabindex="-1" aria-labelledby="tournamentModal" aria-hidden="true">
                <div class="modal-dialog">
                   <div class="modal-content">
@@ -61,32 +44,25 @@
                   </div>
                </div>
             </div>
-         </div> -->
-
-      </div>
-   </div>
+         </div>
+   </section>
 </template>
 
 <script>
-// import Pop from '../utils/Pop.js';
-// import { AppState } from '../AppState.js';
-// import { logger } from '../utils/Logger.js';
-import { Game } from "../models/Game.js";
-import TournamentModal from "./TournamentModal.vue";
-export default {
-   components: {
-      TournamentModal
-   },
-   props: {
+import Pop from '../utils/Pop.js';
+import { AppState } from '../AppState.js';
+import { logger } from '../utils/Logger.js';
+import { Game } from '../models/Game.js';
+   export default {
+      props: {
       game: { type: Game, required: true },
-   },
-   setup() {
+      },
+      setup(){
+         return {
 
-      return {
-
+         }
       }
    }
-}
 </script>
 
 
