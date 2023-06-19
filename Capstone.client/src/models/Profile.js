@@ -1,4 +1,4 @@
-export class Account {
+export class Profile {
   constructor(data) {
     this.id = data.id
     this.email = data.email
@@ -12,4 +12,3 @@ export class Account {
     this.gamerTag =data.gamerTag
   }
 }
-

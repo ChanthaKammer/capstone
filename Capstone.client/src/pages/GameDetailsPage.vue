@@ -95,11 +95,13 @@
 </template>
 
 <script>
-// import Pop from '../utils/Pop.js';
+import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
-// import { logger } from '../utils/Logger.js';
+import { logger } from '../utils/Logger.js';
 import { computed } from "vue";
 import NewTournamentForm from "../components/NewTournamentForm.vue"
+import { rawgService } from "../services/RawgService.js";
+import { useRoute } from "vue-router";
 
    export default {
 
@@ -108,6 +110,13 @@ import NewTournamentForm from "../components/NewTournamentForm.vue"
       },
 
       setup(){
+         async function getGameDetails(){
+            try {
+               rawgService.getGameDetails()
+            } catch (error) {
+               logger.log(error);
+            }
+         }
          return {
             game: computed(() => AppState.activeGame),
             user: computed(() => AppState.user),
