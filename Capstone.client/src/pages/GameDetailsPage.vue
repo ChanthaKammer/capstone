@@ -21,7 +21,7 @@
                   <h1> {{ game.esrb_rating }} </h1>
                   <p>Platforms</p>
                   <div class="row">
-                     <div class="col-12"> {{ game.parent_platforms }} </div>
+                     <div v-if="game.platforms?.length > 0" class="col-12"> {{ game.platforms[0].platform.name }} </div>
                      <div class="col-4">
                         <h2><i class="mdi mdi-microsoft-xbox" style="color: limegreen;"></i></h2>
                      </div>
