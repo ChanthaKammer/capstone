@@ -1,8 +1,8 @@
 <template>
    <section v-if="game" class="container-fluid pt-3">
-         <h1 class="text-center">Search Results </h1>
-         <div class="p-3">
-            <GameCard :game="g" class="col-md-6" v-for="g in games" :key="g.slug"/>
+         <h1 class="text-center">Search Results for "{{ query }}"</h1>
+         <div class="row p-3 justify-content-around">
+            <GameCard :game="g" class="col-md-5" v-for="g in games" :key="g.slug"/>
          </div>
       </section>                  
       <!-- <div class="row p-4">
@@ -78,7 +78,8 @@ import Pop from '../utils/Pop.js';
          return {
             // getDetailsBySlug,
             game: computed(()=> AppState.activeGame),
-            games: computed(() => AppState.games)
+            games: computed(() => AppState.games),
+            query: computed(() => route.params.query.split('+').join(" "))
          }
       }
    }

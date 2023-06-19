@@ -1,6 +1,6 @@
 <template>
-   <div class="row bg-dark rounded-3">
-      <div class="col-md-6 p-2" style="">
+   <div class="row bg-dark rounded-3 p-2 my-2">
+      <div class="col-md-6" style="">
          <img
             :src="game.backgroundImg"
             class="img-fluid rounded-3 p-3" alt="...">
@@ -16,14 +16,10 @@
                Game Info
             </button>
          </router-link>
-               
-
 
          <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#tournamentModal">Create
             Tournament</button>
          <div class="row justify-content-center">
-
-
 
             <!-- Modal -->
             <div class="modal fade" id="tournamentModal" tabindex="-1" aria-labelledby="tournamentModal" aria-hidden="true">
