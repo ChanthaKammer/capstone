@@ -11,13 +11,12 @@ export class GameDetails{
       this.platforms = data.platforms
       this.stores = data.stores
       this.developers = data.developers
-      this.genres = data.genres.name
+      this.genres = data.genres[0].name
       this.tags = data.tags
       this.publishers = data.publishers
       this.esrb_rating = data.esrb_rating.name
       this.screenshots = data2.results
       this.coverImg = data.background_image
       this.background = data.background_image_additional
-
    }
 }
