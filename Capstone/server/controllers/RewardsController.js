@@ -6,6 +6,7 @@ export class RewardsController extends BaseController{
     constructor(){
         super('api/rewards')
             this.router
+            .get('/:id', this.getReward)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createReward)
     }
@@ -14,6 +15,16 @@ export class RewardsController extends BaseController{
         try {
             req.body.accountId = req.userInfo.id
             const reward = await rewardsService.createReward(req.body)
+            return res.send(reward)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getReward(req, res, next){
+        try {
+            const rewardId = req.params.id
+            const reward = await rewardsService.getReward(rewardId)
             return res.send(reward)
         } catch (error) {
             next(error)
