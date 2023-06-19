@@ -7,4 +7,20 @@ export const RewardSchema = new Schema({
     name: {type: String, required: true,},
     badge: {type: String },
     gpCoins: {type: Number}
+}, 
+    {timestamps: true, toJSON: {virtuals: true}})
+
+
+RewardSchema.virtual('account', {
+    localField: 'accountId',
+    foreignField: '_id',
+    ref: 'Account',
+    justOne: true
+})
+
+RewardSchema.virtual('tournament', {
+    localField: 'tournamentId',
+    foreignField: '_id',
+    ref: 'Tournament',
+    justOne: true
 })

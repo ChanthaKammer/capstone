@@ -95,11 +95,13 @@
 </template>
 
 <script>
-// import Pop from '../utils/Pop.js';
+import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
-// import { logger } from '../utils/Logger.js';
+import { logger } from '../utils/Logger.js';
 import { computed } from "vue";
 import NewTournamentForm from "../components/NewTournamentForm.vue"
+import { rawgService } from "../services/RawgService.js";
+import { useRoute } from "vue-router";
 
    export default {
 
@@ -108,6 +110,16 @@ import NewTournamentForm from "../components/NewTournamentForm.vue"
       },
 
       setup(){
+         const route = useRoute();
+
+         async function getGameDetails(){
+            try {
+               const gameSlug = route.params.slug
+               await rawgService.getGameDetails(gameSlug)
+            } catch (error) {
+               logger.log(error);
+            }
+         }
          return {
             game: computed(() => AppState.activeGame),
             user: computed(() => AppState.user),
@@ -125,10 +137,10 @@ import NewTournamentForm from "../components/NewTournamentForm.vue"
 
    .polygon {
       position: absolute;
-      top: 14.49%;
+      top: 11.9%;
       right: 12.5%;
       width: 30%;
-      height: 55.59%;
+      height: 41vh;
       background-color: #f0f0f019;
       background-size: cover;
       background-position: center;
@@ -150,6 +162,42 @@ import NewTournamentForm from "../components/NewTournamentForm.vue"
          opacity:1;
          transform: scale3d(1, 1, 1);
          
+      }
+   }
+
+   @media (min-width: 1440px) {
+      .polygon {
+         width: 30%;
+         height: 46.6vh;
+         top: 12%
+      }
+   }
+
+   @media (max-width: 1440px) {
+      .polygon {
+         width: 30%;
+         height: 46.5vh;
+         top: 12%
+      }
+   }
+
+   @media (min-width: 1200px) {
+      .polygon {
+         width: 30%;
+         height: 46.5vh;
+         top: 12%
+      }
+   }
+
+   @media (max-width: 1200px) {
+      .polygon {
+         visibility: hidden;
+      }
+   }
+
+   @media (max-width: 992px) {
+      .polygon {
+         visibility: hidden;
       }
    }
 
