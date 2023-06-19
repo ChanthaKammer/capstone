@@ -7,8 +7,8 @@
       </div>
       <div class="col-md-6 pt-2 align-self-center">
          <h1>{{ game.name }}</h1>
-         <h1>{{game.released}}</h1>
-         <h1>{{game.genre}}</h1>
+         <h3>Released: {{game.released}}</h3>
+
 
          <div class="text-center">
             <router-link :to="{ name: 'GameDetails', params: { slug: game.slug } }">
@@ -72,11 +72,7 @@
 // import { AppState } from '../AppState.js';
 // import { logger } from '../utils/Logger.js';
 import { Game } from "../models/Game.js";
-import TournamentModal from "./TournamentModal.vue";
 export default {
-   components: {
-      TournamentModal
-   },
    props: {
       game: { type: Game, required: true },
    },
@@ -90,6 +86,8 @@ export default {
 </script>
 
 
-<style>
-
+<style scoped>
+body{
+   background-image: url()
+}
 </style>
