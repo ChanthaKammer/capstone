@@ -1,0 +1,69 @@
+<template>
+   <section class="container-fluid">
+      <div class="row justify-content-center pt-3">
+         <div class="col-md-8">
+            <div class="row justify-content-around">
+               <div class="col-md-6">
+                  <img src="http://localhost:8081/src/assets/img/gamePursuitLogo.png" alt="" class="img-fluid">
+                  <h3>Badges</h3>
+                  <div class="row">
+                     <h3 class="col-auto"><i class="mdi mdi-trophy" title="Trophy One"></i></h3>
+                     <h3 class="col-auto"><i class="mdi mdi-trophy" title="Trophy Two"></i></h3>
+                     <h3 class="col-auto"><i class="mdi mdi-trophy" title="Trophy Three"></i></h3>
+                     <h3 class="col-auto"><i class="mdi mdi-trophy" title="Trophy Four"></i></h3>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <h1>Profile Name</h1>
+                  <h1>Gamertag</h1>
+                  <h1>Platforms</h1>
+                  <div class="row justify-content-center">
+                     <div class="col-auto">
+                        <h2><i class="mdi mdi-microsoft-xbox" style="color: limegreen;"></i></h2>
+                     </div>
+                     <div class="col-auto">
+                        <h2><i class="mdi mdi-sony-playstation" style="color: dodgerblue;"></i></h2>
+                     </div>
+                     <div class="col-auto">
+                        <h2>PC</h2>
+                     </div>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni repellendus rerum dolorum, quod ducimus at. Mollitia doloribus dicta minima quas nulla rem reprehenderit modi eveniet.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row justify-content-center pt-3">
+         <div class="col-8">
+            <h1>Won Tournaments</h1>
+            <h1>V-for Tournaments</h1>
+         </div>
+      </div>
+   </section>
+</template>
+
+<!--Next tournament 
+
+-->
+
+<script>
+import Pop from '../utils/Pop.js';
+import { AppState } from '../AppState.js';
+import { logger } from '../utils/Logger.js';
+import TournamentCard  from '../components/TournamentCard.vue'
+   export default {
+      components: {
+         TournamentCard
+      },
+      setup(){
+         return {
+
+         }
+      }
+   }
+</script>
+
+
+<style lang="scss" scoped>
+   
+</style>

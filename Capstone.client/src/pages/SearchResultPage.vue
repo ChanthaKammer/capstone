@@ -4,6 +4,10 @@
          <div class="row p-3 justify-content-around">
             <GameCard :game="g" class="col-md-5" v-for="g in games" :key="g.slug"/>
          </div>
+         <div class="row justify-content-around pt-2">
+            <button class="col-3" :disabled="!newer" @click="changePage(nextpage)">Previous</button>
+            <button class="col-3" :disabled="!older" @click="changePage(previouspage)">Next</button>
+         </div>
       </section>                  
       <!-- <div class="row p-4">
          <div class="col-md-6 p-4">
@@ -79,7 +83,16 @@ import Pop from '../utils/Pop.js';
             // getDetailsBySlug,
             game: computed(()=> AppState.activeGame),
             games: computed(() => AppState.games),
-            query: computed(() => route.params.query.split('+').join(" "))
+            query: computed(() => route.params.query.split('+').join(" ")),
+            nextpage: computed(() => AppState.nextPage),
+            previouspage: computed(() => AppState.previousPage),
+            async changePage(direction){
+               try {
+                  await rawgService.changePage(direction)
+               } catch (error) {
+                  Pop.error
+               }
+            }
          }
       }
    }
