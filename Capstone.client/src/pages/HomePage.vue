@@ -39,10 +39,10 @@
       </section> -->
 
     <section class="row">
-      <div class="col-12">
+      <div class="col-12 ">
 
         <!-- NOTE BACKGROUND BORDER FOR CAROUSEL ----------------------------->
-        <div class="row bg-carousel justify-content-center align-items-center shadow-lg elevation-5 carousel-top">
+        <div class="row  bg-carousel justify-content-center align-items-center shadow-lg elevation-5 carousel-top">
 
           <!-- NOTE CAROUSEL FOR 'PC BUILD' PARTS IMAGES ------------------------------>
           <div class="bg-games">
@@ -147,7 +147,7 @@
       </div>
     </div>
     <!-- SECTION my tournaments -->
-    <section class="row pt-1">
+    <section class="row pt-1 lighting-bar">
 
       <!-- SECTION filter buttons -->
       <div class="d-flex justify-content-around my-3 bg-categories rounded p-3">
@@ -627,6 +627,10 @@ export default {
 
   .carousel-top { 
     margin-top: 2rem;
+    margin-bottom: -3rem;
+  }
+  .lighting-bar{
+    margin-top: -4rem;
   }
 }</style>
 
