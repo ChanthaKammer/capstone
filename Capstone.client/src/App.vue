@@ -17,21 +17,94 @@
     </marquee>
     <img src='../src/assets/img/mario-level.psd' class="" style="background-size: cover; background-repeat: norepeat; background-position: center; max-height: 50px; margin-bottom: 5rem;" alt="">
   </footer>
+
+  <div class="modal fade" id="tournamentModal" tabindex="-1" aria-labelledby="tournamentModal" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="createTournamentLabel">Create a Tournament</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body justify-content-center">
+                  <div v-if="editable">
+                     <form @submit.prevent="createTournament" class="col-12">
+                        <input class="form-control mb-3" type="text" placeholder="Tournament Name" aria-label="tournamentName" v-model="editable.name">
+                        <input class="form-control mb-3" type="text" id="tournamentAvatarImg" placeholder="Tournament Avatar Image" v-model="editable.coverImg">
+                        <input class="form-control mb-3" type="text" id="gameImg" placeholder="Tournament Cover Image" v-model="editable.gameImg">
+                        <input type="datetime-local" name="startDate" class="form-control" placeholder="Start Date" v-model="editable.startDate">
+                        <div class="row mb-3">
+                           <div class="col-6"><input class="form-control" type="text" id="tournamentCity" placeholder="City" v-model="editable.city"></div>
+                           <div class="col-6"><input class="form-control" type="text" id="tournamentState" placeholder="State" v-model="editable.state"></div>
+                        </div>
+                        <select class="form-select mb-3" aria-label="Default select example" v-model="editable.type">
+                           <option selected>Match Type</option>
+                           <option value="Online">Online</option>
+                           <option value="Local">Local</option>
+                        </select>
+                        <textarea class="form-control mb-3" id="tournamentDescription" rows="3" placeholder="Tournament Description" v-model="editable.description"></textarea>
+                        <select class="form-select mb-3" aria-label="Default select example" v-model="editable.ageRating">
+                           <option selected>Group Age Rating</option>
+                           <option value="Everyone">Everyone</option>
+                           <option value="Teen">Teen</option>
+                           <option value="Adult">Adult</option>
+                        </select>
+                        <input class="form-control mb-3" type="number" placeholder="Max Teams" aria-label="maxTeams" min="1" v-model="editable.maxTeams">
+                        <input class="form-control mb-3" type="text" id="tournamentMoney" placeholder="Tournament Money Prize" v-model="editable.reward">
+                        <input class="form-control mb-3" type="text" id="firstPlaceBadge" placeholder="First Place Badge" v-model="editable.firstPlaceBadge">
+                        <input class="form-control mb-3" type="text" id="secondPlaceBadge" placeholder="Second Place Badge" v-model="editable.secondPlaceBadge">
+                        <input class="form-control mb-3" type="text" id="thirdPlaceBadge" placeholder="Third Place Badge" v-model="editable.thirdPlaceBadge">
+                        <button class="btn btn-success text-end" type="submit" role="button">Create Tournament</button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
-import TournamentModal from './components/TournamentModal.vue'
+import { useRouter } from 'vue-router';
+import { logger } from './utils/Logger.js';
+import { tournamentsService } from './services/TournamentsService.js';
+import { Modal } from 'bootstrap';
+import Pop from './utils/Pop.js';
+
 
 export default {
   setup() {
-    return {
-      appState: computed(() => AppState)
-    }
+    const editable = ref({});
+         const router = useRouter();
+         
+         
+         return {
+          appState: computed(() => AppState),
+            editable,
+            async createTournament(){
+               try {
+                  logger.log(editable.value)
+                  editable.value.gameSlug = AppState.activeGame.slug
+                  const newTournament = await tournamentsService.createTournament()
+                  Modal.getOrCreateInstance('#tournamentModal').hide()
+                  editable.value = {}
+                  router.push(
+                     { name: 
+                        'TournamentDetails', 
+                        params: {
+                           tournamentId: newTournament.id 
+                        }}
+                        )
+               } catch (error) {
+                  Pop.error(error)
+               }
+            },
+            
+         }
   },
-  components: { Navbar, TournamentModal}
+  components: { Navbar}
 }
 </script>
 <style lang="scss">

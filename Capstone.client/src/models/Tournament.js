@@ -18,6 +18,8 @@ export class Tournament {
     this.creatorId = data.creatorId
     this.name = data.name
     this.description = data.description
+    this.coverImg = data.coverImg
+    this.location = data.location
     this.capacity = data.capacity
     this.totalRounds = data.totalRounds
     this.currentRound = data.currentRound
