@@ -28,7 +28,7 @@ RewardSchema.virtual('tournament', {
 
 RewardSchema.virtual('participant', {
     localField: 'recipientId',
-    foreignField: '_id',
-    ref: 'Participant',
+    foreignField: 'accountId',
+    ref: 'Account',
     justOne: true
 })
