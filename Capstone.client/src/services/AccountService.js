@@ -13,7 +13,13 @@ class AccountService {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
     }
   }
-  async updateAccountInfo(editable){
+
+  async getAccountParticipations(){
+    const res = await api.get('/account/participations')
+    AppState.myParticipations = res.data
+  }
+
+  async updateAccountInfo(editable) {
     const res =  await api.put('/account', editable)
     logger.log(editable)
     AppState.account = new Account(res.data)
