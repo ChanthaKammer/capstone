@@ -17,12 +17,12 @@ class AccountService {
   async getAccountParticipations(){
     const res = await api.get('/account/participants')
     logger.log(res.data)
-    AppState.myParticipations = res.data
+    AppState.myParticipation = res.data
   }
 
-  async updateAccountInfo(editable) {
-    const res =  await api.put('/account', editable)
-    logger.log(editable)
+  async updateAccountInfo(formData) {
+    logger.log(`this is the formData:`, formData)
+    const res =  await api.put('/account', { ...formData })
     AppState.account = new Account(res.data)
   }
 }
