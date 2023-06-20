@@ -9,34 +9,38 @@
                   <h1>4/5</h1>
                </div>
                <div class="col-md-4">
-                  <p class="py-3" style="overflow-y: auto; max-height: 38vh;"> {{ game.description }} </p>
-                  <p role="button" v-if="user.isAuthenticated">
-                     <NewTournamentForm />
-                  </p>
+                  <div class="card">
+                     <h6 class="card-header text-center">Description</h6>
+                     <span class="text-light p-2" style="overflow-y: auto; max-height: 38vh;"> {{ game.description }} </span>
+                  </div>
+                  <div class="p-2 pt-4">
+                     <p>Prove you're the #1 {{ game.name }} player...</p>
+                     <p role="button" v-if="user.isAuthenticated">
+                        <NewTournamentForm />
+                     </p>
+                  </div>
                </div>
                <div class="col-md-4 text-center">
+                  <div class="row card mx-3" style="border: 5px solid #00000090;">
+                     <p class="card-header">Platforms</p>
+                     <div v-if="game.platforms?.length > 0" class="col-12 px-2" style="overflow-y: auto; max-height: 10vh;">
+                        <div v-for="p in game.platforms" :key="p.platform">
+                           <span class="card-body"> {{ p.platform.name }} </span>
+                        </div>
+                     </div>
+                  </div>
                   <p>Released</p>
                   <h2> {{ game.released }} </h2>
-                  <p>Rated</p>
-                  <h1> {{ game.esrb_rating }} </h1>
-                  <p>Platforms</p>
-                  <div class="row">
-                     <div v-if="game.platforms?.length > 0" class="col-12"> {{ game.platforms[0].platform.name }} </div>
-                     <div class="col-4">
-                        <h2><i class="mdi mdi-microsoft-xbox" style="color: limegreen;"></i></h2>
-                     </div>
-                     <div class="col-4">
-                        <h2><i class="mdi mdi-sony-playstation" style="color: dodgerblue;"></i></h2>
-                     </div>
-                     <div class="col-4">
-                        <h2>PC</h2>
-                     </div>
-                  </div>
+                  <div class="pb-2">
+                     <p>Rated</p>
+                     <p class="fs-2" style="font-weight: 600;"> {{ game.esrb_rating }} </p>
+                  </div> 
+                  
                   <div class="col-12">
-                     <p>Genre</p>
+                     <h3 class="mt-2 mb-0">Genre</h3>
                   </div>
                   <div class="row">
-                     <div class="col-12">
+                     <div class="col-12 p-2">
                         <h2> {{ game.genres }} </h2>
                      </div>
                   </div>
@@ -44,8 +48,8 @@
             </div>
          </div>
       </div>
+      <!-- <div class="polygon"></div> -->
    </section>
-   <div class="polygon"></div>
 <!-- 
    <section class="container-fluid">
       <div class="row justify-content-center pt-5">
@@ -134,18 +138,57 @@ import { useRoute } from "vue-router";
 
 <style lang="scss">
 
+   .card {
+      color: #fff;
+      background-color: #f0f0f019;
+      background-size: cover;
+      background-position: center;
+      border-radius: .5rem;
+   }
+
+   .card-header {
+      background-color: #f0f0f057;
+      border-bottom: 1px solid #fff;
+      border-top-left-radius: .5rem;
+      border-top-right-radius: .5rem;
+   }
+
    .polygon {
       position: absolute;
-      top: 11.9%;
-      right: 12.5%;
-      width: 30%;
+      top: 11.9vh;
+      right: 12.5vw;
+      width: 30vw;
       height: 41vh;
       background-color: #f0f0f019;
       background-size: cover;
       background-position: center;
       clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
       animation: fadeIn ease 2s;
+      border-bottom-right-radius: .5rem;
    }
+
+   ::-webkit-scrollbar {
+      background-color: #2d288cc6;
+      width: .85rem;
+      border-radius: 0.25rem;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background-color: #8b8b8b5f;
+      border-radius: 0.25rem;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background-color: rgba(32, 20, 12, 0.512);
+      border-radius: 0.25rem;
+      border-style: ridge; 
+    }
+    
+    ::-webkit-scrollbar-corner {
+      background-color: #2d288c;
+      border-radius: 0.5rem;
+      border-style: groove; 
+    }
 
    .bg-animate {
       animation: move 300s ease-in-out infinite;
@@ -187,9 +230,9 @@ import { useRoute } from "vue-router";
 
    @media (min-width: 1440px) {
       .polygon {
-         width: 30%;
+         width: 30vw;
          height: 46.6vh;
-         top: 12%;
+         top: 12vh;
          right: 12.75vw;
       }
    }
@@ -198,15 +241,16 @@ import { useRoute } from "vue-router";
       .polygon {
          width: 30%;
          height: 46.5vh;
-         top: 12%;
+         top: 12vh;
       }
    }
 
    @media (min-width: 1200px) {
       .polygon {
-         width: 30%;
-         height: 48.5vh;
-         top: 13%;
+         width: 23vw;
+         height: 46.3vh;
+         top: 12vh;
+         right: 12.4vw;
       }
    }
 
