@@ -1,7 +1,7 @@
 <template>
   <section v-if="account" class="container-fluid pt-3 bg-dark">
-    <div class="row">
-      <div class="col-md-8">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-6">
         <div class="row">
           <div class="col-md-4">
             <img :src="account.picture" :alt="account.name" class="img-fluid rounded-circle">
@@ -13,7 +13,7 @@
                 <div class="card-text">
                   <h5>Welcome back, {{ account.name }}</h5>
                   <h6>📩: {{ account.email }}</h6>
-                  
+
                   <!-- <h6>Tournaments Joined: {{ account.myParticipantCount }}</h6> -->
                   <h6>Comments: {{ account.myComments }}</h6>
                 </div>
@@ -23,8 +23,9 @@
           <div class="col-md-2">
             <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
               <div class="row justify-content-center">
+
                 <!-- Modal -->
-                <div :profile="account" class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModal" aria-hidden="true">
+                <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModal" aria-hidden="true">
                     <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -52,20 +53,19 @@
 
           
         
-                  <!-- VISUALLY SHOWS TOURNAMENT CARDS FOR TOURNAMENTS THE ACCOUNT HOLDER IS ATTENDING -->
-                  <section>
+            <!-- VISUALLY SHOWS TOURNAMENT CARDS FOR TOURNAMENTS THE ACCOUNT HOLDER IS ATTENDING -->
+            <section>
 
-                    <div class="col-12 d-flex justify-content-center align-items-center my-5">
-                      <h1 class=""> {{ account.name }}'s Tournaments:</h1>
-                    </div>
-                    <div class="d-flex justify-content-center align-items-center">
-                      <div class="col-md-4 justify-content-center align-items-center overflow-auto" v-for="p in myParticipations" :key="p.id">
-                        <MyJoinedTournamentsCard :myParticipation="p"/>
-                      </div>
-                    </div>
-                  </section>
-        
-     
+              <div class="d-flex justify-content-center align-items-center my-5">
+                <h1 class=""> {{ account.name }}'s Tournaments:</h1>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="col-md-4" v-for="p in myParticipations" :key="p.id">
+                  <MyJoinedTournamentsCard :myParticipation="p"/>
+                </div>
+              </div>
+
+            </section>
 
         </div>
       </div>
