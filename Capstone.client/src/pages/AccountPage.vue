@@ -130,7 +130,7 @@ export default {
           
           async editAccount(){
             try {
-              await accountService.updateAccount(editable.value)
+              await accountService.updateAccountInfo(editable.value)
               } catch (error) {
                 Pop.error(error)
               }
