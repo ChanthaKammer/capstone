@@ -114,8 +114,8 @@
     <div class="col-12 bg-img" style="height: 50px; width: 100%; opacity: .9; filter: blur(10px) brightness(.8);"></div>
   
   
-      <div class="row bg-comments p-2 py-5">
-        <div class="col-4">
+      <div class="row justify-content-center bg-comments p-2 py-5">
+        <div class="col-md-8">
           <div class=" elevation-5 comment-box p-2">
             <form @submit.prevent="createComment()">
               <div v-if="account" class="d-flex justify-content-center align-items-center mb-2">
@@ -240,6 +240,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+* {
+  border: 1px solid green
+}
 h1,
 h2,
 h3,
