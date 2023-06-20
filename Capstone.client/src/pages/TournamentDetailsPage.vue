@@ -383,4 +383,11 @@ h6 {
     transform: translateX(0%);
   }
 }
+@media (max-width: 768px) {
+.mobile-results{
+   margin-bottom: 0rem;
+    padding-top: 6rem;
+}
+
+}
 </style>

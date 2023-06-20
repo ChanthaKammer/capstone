@@ -1,7 +1,7 @@
 <template>
    <section class="container-fluid bg-animate" :style="{ background: `url(${game?.background})` }" style="background-repeat: repeat; background-size: cover; height: 100vh;">
       <div class="row justify-content-center pt-5">
-         <div class="col-md-9 pt-3 bg-dark text-white rounded-3 animate-in pt-4 pb-3" style="opacity: .9;">
+         <div class="col-md-9 pt-3 bg-dark text-white rounded-3 animate-in pt-4 pb-3 mobile-card" style="opacity: .9;">
             <div v-if="game" class="row">
                <div class="col-md-4 text-center">
                   <h1> {{ game.name }} </h1>
@@ -13,7 +13,7 @@
                      <h6 class="card-header text-center">Description</h6>
                      <span class="text-light p-2" style="overflow-y: auto; max-height: 38vh;"> {{ game.description }} </span>
                   </div>
-                  <div class="p-2 pt-4">
+                  <div class="p-2 pt-4 mobile-btn-area d-flex flex-column">
                      <p class="ps-2" style="font-style: italic; font-weight: 600;"><small>Think you're the world's top player?</small></p>
                      
                      <NewTournamentForm v-if="user.isAuthenticated"/>
@@ -171,5 +171,14 @@ import { useRoute } from "vue-router";
          
       }
    }
-
+   @media (max-width: 768px) {
+.mobile-card{
+   margin-top: 3.2rem;
+   // margin-bottom: 0rem;
+}
+.mobile-btn-area{
+   
+   
+}
+}
 </style>
