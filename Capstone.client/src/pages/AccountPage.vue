@@ -1,10 +1,10 @@
 <template>
-  <section class="container-fluid pt-3">
-    <div class="row justify-content-center">
+  <section v-if="account" class="container-fluid pt-3 bg-dark">
+    <div class="row">
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-4">
-            <img src="http://localhost:8080/src/assets/img/gamePursuitLogo.png" alt="" class="img-fluid">
+            <img :src="account.picture" :alt="account.name" class="img-fluid rounded-circle">
           </div>
           <div class="col-md-6">
             <div class="card bg-dark pt-4 welcome-fade">
@@ -14,7 +14,7 @@
                   <h5>Welcome back, {{ account.name }}</h5>
                   <h6>📩: {{ account.email }}</h6>
                   
-                  <!-- <h6>Tickets Purchased: {{ account.myTicketCount }}</h6> -->
+                  <!-- <h6>Tournaments Joined: {{ account.myParticipantCount }}</h6> -->
                   <h6>Comments: {{ account.myComments }}</h6>
                 </div>
               </div>
@@ -24,7 +24,7 @@
             <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
               <div class="row justify-content-center">
                 <!-- Modal -->
-                <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModal" aria-hidden="true">
+                <div :profile="account" class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModal" aria-hidden="true">
                     <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -49,19 +49,23 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+
           
         
-                  <div class="col-12 justify-content-center align-items-center">
-                    <!-- VISUALLY SHOWS TOURNAMENT CARDS FOR TOURNAMENTS THE ACCOUNT HOLDER IS ATTENDING -->
-                    <h1 class=""> {{ account.name }}'s Tournaments:</h1>
-                  </div>
+                  <!-- VISUALLY SHOWS TOURNAMENT CARDS FOR TOURNAMENTS THE ACCOUNT HOLDER IS ATTENDING -->
+                  <section>
+
+                    <div class="col-12 d-flex justify-content-center align-items-center my-5">
+                      <h1 class=""> {{ account.name }}'s Tournaments:</h1>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="col-md-4 my-tournaments justify-content-center align-items-center overflow-auto" v-for="p in myParticipations" :key="p.id">
+                        <MyJoinedTournamentsCard :myParticipation="p"/>
+                      </div>
+                    </div>
+                  </section>
         
-                  <div class="col-md-4 my-tournaments px-3 overflow-auto" v-for="p in myParticipations" :key="p.id">
-                    <MyJoinedTournamentsCard :myParticipation="p"/>
-                  </div>
-        
-            </div>
+     
 
         </div>
       </div>
@@ -82,16 +86,16 @@ import { useRoute } from "vue-router";
 
 export default {
 
-  props: {
-    tournament: {
-      type: Object,
-      required: true
-    },
-    participant: {
-      type: Object,
-      required: true
-    }
-  },
+  // props: {
+  //   tournament: {
+  //     type: Object,
+  //     required: true
+  //   },
+  //   participant: {
+  //     type: Object,
+  //     required: true
+  //   }
+  // },
 
   components: {
     MyJoinedTournamentsCard,
@@ -141,7 +145,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+.my-tournaments {
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+  text-shadow: 0 0 10px rgba(1, 0, 0, 0.4);
+  border-radius: 0.5rem;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
 img {
   max-width: 100px;
 }
