@@ -39,9 +39,7 @@
             </p>
           </div>
           <div class="col-12 d-flex justify-content-center py-1">
-            <router-link :to="{ name: 'TournamentDetails', params: { tournamentId: tournamentId } }">
-              <a href="#" class="btn btn-outline-primary">Details</a>
-            </router-link>
+              <button @click="myJoinedTournaments" class="btn btn-outline-primary">Details</button>
           </div>
         </div>
       </div>   
@@ -88,13 +86,12 @@ setup(props) {
 
   return {
 
-    isCancelled: computed(() => AppState.activemyParticipation.Tournament.isCancelled),
+    isCancelled: computed(() => AppState.myParticipation.tournament.isCancelled),
     account: computed(() => AppState.account),
-    // tournament: computed(() => AppState.activeTournament),
 
     myJoinedTournaments() {
       router.push({ name: 'TournamentDetails',
-                    params: { tournamentId: props.myParticipation.tournamentId }
+                    params: { tournamentId: props.myParticipation.tournament.id }
                   })
     },
 
