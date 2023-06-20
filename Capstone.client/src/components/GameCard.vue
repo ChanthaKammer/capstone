@@ -15,11 +15,9 @@
             </button>
          </router-link>
 
-         <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#tournamentModal">Create
+         <!-- <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#tournamentModal">Create
             Tournament</button>
          <div class="row justify-content-center">
-
-            <!-- Modal -->
             <div class="modal fade" id="tournamentModal" tabindex="-1" aria-labelledby="tournamentModal"
                aria-hidden="true">
                <div class="modal-dialog">
@@ -60,7 +58,7 @@
                   </div>
                </div>
             </div>
-         </div>
+         </div> -->
       </div>
    </div>
 </template>
