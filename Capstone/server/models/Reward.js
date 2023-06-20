@@ -3,7 +3,7 @@ const ObjectId = Schema.Types.ObjectId
 
 export const RewardSchema = new Schema({
     tournamentId: { type: ObjectId, required: true, ref: 'Tournament'},
-    accountId: { type: ObjectId, required: false, ref: 'Account'},
+    accountId: { type: ObjectId, required: false},
     name: {type: String, required: true,},
     badge: {type: String },
     gpCoins: {type: Number},
