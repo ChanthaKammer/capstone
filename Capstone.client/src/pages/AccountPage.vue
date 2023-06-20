@@ -57,8 +57,8 @@
                     <h1 class=""> {{ account.name }}'s Tournaments:</h1>
                   </div>
         
-                  <div class="col-md-4 my-tournaments px-3 overflow-auto" v-for="t in myTournaments" :key="t.id">
-                    <MyJoinedTournamentsCard :myTournament="t"/>
+                  <div class="col-md-4 my-tournaments px-3 overflow-auto" v-for="p in myParticipations" :key="p.id">
+                    <MyJoinedTournamentsCard :myParticipation="p"/>
                   </div>
         
             </div>
@@ -75,8 +75,7 @@ import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
 import { logger } from '../utils/Logger.js';
 import {ref, watchEffect} from 'vue';
-import TournamentCard from '../components/TournamentCard.vue';
-import MyJoinedTournamentsCard from '../components/MyJoinedTournamentsCard.vue'
+import MyJoinedTournamentsCard from '../components/MyJoinedTournamentsCard.vue';
 import Pop from '../utils/Pop.js';
 import { accountService } from '../services/AccountService.js';
 import { useRoute } from "vue-router";
@@ -95,7 +94,7 @@ export default {
   },
 
   components: {
-    MyJoinedTournamentsCard
+    MyJoinedTournamentsCard,
   },
 
     setup() {
@@ -105,16 +104,16 @@ export default {
       const editable = ref({})
       watchEffect(() => {
         editable.value = AppState.account
-      }),
+      })
 
       async function getAccountParticipations() {
           try {
-            await accountService.getAccountParticipations();
+            await accountService.getAccountParticipations()
           } catch (error) {
             logger.error(error);
-            Pop.toast(error.message, `Error finding tournaments for ${AppState.account.name}`);
+            Pop.toast(error.message, `Error finding tournaments for ${AppState.account.name}`)
           }
-        },
+        }
 
       onMounted(() => {
         getAccountParticipations();
@@ -139,7 +138,6 @@ export default {
           };
 
     },
-    components: { TournamentCard }
 }
 </script>
 

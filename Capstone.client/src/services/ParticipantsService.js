@@ -26,6 +26,12 @@ class ParticipantsService {
     logger.log(AppState.participants)
     Pop.confirm(`${AppState.account.name} deleted participant.`)
   }
+
+  async leaveTournament(participantId){
+    const res = await this.deleteParticipant(participantId)
+    logger.log(res.data)
+    Pop.confirm(`${AppState.account.name } left the lobby for ${AppState.activeTournament.name}.`)
+  }
 }
 
 export const participantsService = new ParticipantsService()

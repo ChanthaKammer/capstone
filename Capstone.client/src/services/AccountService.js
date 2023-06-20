@@ -15,7 +15,8 @@ class AccountService {
   }
 
   async getAccountParticipations(){
-    const res = await api.get('/account/participations')
+    const res = await api.get('/account/participants')
+    logger.log(res.data)
     AppState.myParticipations = res.data
   }
 

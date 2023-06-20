@@ -55,50 +55,7 @@
       </div>
       <!-- <div class="polygon"></div> -->
    </section>
-<!-- 
-   <section class="container-fluid">
-      <div class="row justify-content-center pt-5">
-         <div class="col-md-9 pt-3 bg-dark text-white rounded-3">
-            <div v-if="game" class="row">
-               <div class="col-md-4 text-center">
-                  <h1> {{ game.name }} </h1>
-                  <img :src="game.backgroundImg" :alt="game.name" class="img-fluid">
-                  <h1>4/5</h1>
-               </div>
-               <div class="col-md-4">
-                  <p> {{ game.description }} </p>
-               </div>
-               <div class="col-md-4 text-center">
-                  <p>Released:</p>
-                  <h2> {{ game.released }} </h2>
-                  <p>Rated</p>
-                  <h1> {{ game.rated }} </h1>
-                  <p>Platforms: {{ game.platforms }} </p>
-                  <div class="row">
-                     <div class="col-6">
-                        <h2><i class="mdi mdi-microsoft-xbox"></i></h2>
-                     </div>
-                     <div class="col-6">
-                        <h2><i class="mdi mdi-sony-playstation"></i></h2>
-                     </div>
-                     <div class="col-6">
-                        <h2>PC</h2>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <p>Genre</p>
-                     <div class="col-6">
-                        <h2>Action {{ game.genre }} </h2>
-                     </div>
-                     <div class="col-6">
-                        <h2>Adventure</h2>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section> -->
+
 </template>
 
 <script>
@@ -140,8 +97,7 @@ import { useRoute } from "vue-router";
    }
 </script>
 
-
-<style lang="scss">
+<style scoped lang="scss">
 
    .card {
       color: #fff;
@@ -157,20 +113,6 @@ import { useRoute } from "vue-router";
       border-bottom: 1px solid #fff;
       border-top-left-radius: .5rem;
       border-top-right-radius: .5rem;
-   }
-
-   .polygon {
-      position: absolute;
-      top: 11.9vh;
-      right: 12.5vw;
-      width: 30vw;
-      height: 41vh;
-      background-color: #f0f0f019;
-      background-size: cover;
-      background-position: center;
-      clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
-      animation: fadeIn ease 2s;
-      border-bottom-right-radius: .5rem;
    }
 
    ::-webkit-scrollbar {
@@ -229,46 +171,6 @@ import { useRoute } from "vue-router";
          opacity:1;
          transform: scale3d(1, 1, 1);
          
-      }
-   }
-
-   
-
-   @media (min-width: 1440px) {
-      .polygon {
-         width: 30vw;
-         height: 46.6vh;
-         top: 12vh;
-         right: 12.75vw;
-      }
-   }
-
-   @media (max-width: 1440px) {
-      .polygon {
-         width: 30%;
-         height: 46.5vh;
-         top: 12vh;
-      }
-   }
-
-   @media (min-width: 1200px) {
-      .polygon {
-         width: 23vw;
-         height: 46.3vh;
-         top: 12vh;
-         right: 12.4vw;
-      }
-   }
-
-   @media (max-width: 1200px) {
-      .polygon {
-         visibility: hidden;
-      }
-   }
-
-   @media (max-width: 992px) {
-      .polygon {
-         visibility: hidden;
       }
    }
 

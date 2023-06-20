@@ -91,7 +91,7 @@ import { AppState } from "../AppState.js";
 </script>
 
 
-<style lang="scss">
+<style scoped lang="scss">
 
 /* CSS */
 .modal-button {
