@@ -1,6 +1,6 @@
 <template>
    
-   <button class="btn modal-button" data-bs-toggle="modal" data-bs-target="#tournamentModal">Create Tournament</button>
+   <button class="btn modal-button" data-bs-toggle="modal" data-bs-target="#tournamentModal">Create New Tournament</button>
    <div class="row justify-content-center">
       <div class="modal fade" id="tournamentModal" tabindex="-1" aria-labelledby="tournamentModal" aria-hidden="true">
          <div class="modal-dialog">
@@ -107,6 +107,11 @@ import { AppState } from "../AppState.js";
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+.modal-button:hover {
+   box-shadow: 0 0 30px #fff;
+   filter: brightness(1.2);
 }
 
 .modal-button:before {

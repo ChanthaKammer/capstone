@@ -1,25 +1,25 @@
 <template>
 <div class="container-fluid">
-  <div class="row media-adjust ms-4">
+  <div class="row media-adjust justify-content-center align-items-center ms-4">
     <div class="col-12">
-      <p class="text-center count-title pe-5">Tournament Countdown</p>
+      <p class="text-center count-title">Tournament Countdown</p>
     </div>
-    <div class="time__box d-flex mb-5">
+    <div class="time__box d-flex justify-content-center mb-5">
       <div class="col-3">
         <p class="text-center"> {{ days }} </p>
-        <span class="ms-5">days</span>
+        <span class="d-flex justify-content-center align-items-center">days</span>
       </div>
       <div class="col-3">
         <p class="text-center">{{ hours % 24 }} </p>
-        <span class="ms-5">hours</span>
+        <span class="d-flex justify-content-center align-items-center">hours</span>
       </div>
       <div class="col-3">
         <p class="text-center">{{ minutes % 60 }} </p>
-        <span class="ms-5">minutes</span>
+        <span class="d-flex justify-content-center align-items-center">minutes</span>
       </div>
       <div class="col-3">
         <p class="text-center ">{{ seconds % 60 }} </p>
-        <span class="ms-5">seconds</span>
+        <span class="d-flex justify-content-center align-items-center">seconds</span>
       </div>
     </div>
   </div>
@@ -68,6 +68,10 @@ export default {
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
+* {
+  border: none;
+}
+
 span {
   font-size: 1rem;
   font-weight: 500;
@@ -88,8 +92,8 @@ span {
 }
 
 .time__box {
-  width: 100%;
-  min-width: 93%;
+  width: 75%;
+  max-width: 75%;
   margin-bottom: 2rem;
   padding: 1em;
   background-color: #0811124f;
@@ -101,7 +105,6 @@ span {
 
 .time__box p {
   height: 80%;
-  width: 10vw;
   font-size: 3em;
   font-family: 'Orbitron', sans-serif;
   line-height: 100px;

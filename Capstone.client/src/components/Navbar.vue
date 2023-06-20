@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from "vue-router";
 import Login from './Login.vue';
 import { logger } from "../utils/Logger.js";
@@ -32,7 +32,6 @@ export default {
   components: { Login },
   setup() {
     const router = useRouter()
-    // const searchTerm = computed(() => AppState.query)
     const editable = ref('')
     return {
       editable,
