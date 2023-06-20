@@ -42,10 +42,10 @@
       <div class="col-12">
 
         <!-- NOTE BACKGROUND BORDER FOR CAROUSEL ----------------------------->
-        <div class="row bg-carousel justify-content-center align-items-center shadow-lg elevation-5">
+        <div class="row bg-carousel justify-content-center align-items-center shadow-lg elevation-5 carousel-top">
 
           <!-- NOTE CAROUSEL FOR 'PC BUILD' PARTS IMAGES ------------------------------>
-          <div class="bg-games p-5">
+          <div class="bg-games">
             <div id="carouselExampleIndicators" class="carousel slide">
               <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -601,6 +601,13 @@ export default {
     border-left-width: calc(300px - 5vw);
   }
 
+  .bg-games {
+  background-color: #34265599;
+  filter: drop-shadow(0 0 15px 15px #4EFE7F90);
+  opacity: .85;
+  box-shadow: 0px 0px 30px 30px inset #000000;
+  margin-bottom: 0rem;
+}
   .nav-bar2 {
     display: none;
   }
@@ -613,12 +620,14 @@ export default {
 
   position: absolute;
   top: -3.5vh;
-  left: 32.5%;
+  left: 31%;
   max-width: fit-content;
     // left: 32.5%;
   }
 
-  .accent-row {}
+  .carousel-top { 
+    margin-top: 2rem;
+  }
 }</style>
 
 
