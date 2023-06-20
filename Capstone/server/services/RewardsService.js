@@ -10,9 +10,9 @@ class RewardsService {
     }
     async getReward(rewardId) {
         const reward = await dbContext.Rewards.findById(rewardId)
-        if(!reward){
-            throw new BadRequest(`There is no reward at ID: ${rewardId}`)
-        }
+        // if(!reward){
+        //     throw new BadRequest(`There is no reward at ID: ${rewardId}`)
+        // }
         return reward
     }
     async getTourneyRewards(tournamentId) {
