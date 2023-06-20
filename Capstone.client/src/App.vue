@@ -31,18 +31,18 @@
                     <input class="form-control mb-3" type="text" placeholder="Tournament Name" aria-label="tournamentName" v-model="editable.name">
                     <input class="form-control mb-3" type="text" id="tournamentAvatarImg" placeholder="Tournament Avatar Image" v-model="editable.coverImg">
                     <input class="form-control mb-3" type="text" id="gameImg" placeholder="Tournament Cover Image" v-model="editable.gameImg">
-                    <input type="datetime-local" name="startDate" class="form-control" placeholder="Start Date" v-model="editable.startDate">
-                    <input class="form-control" type="text" id="totalRounds" placeholder="Location" v-model="editable.location">
-                    <input class="form-control" type="text" id="totalRounds" placeholder="Total Rounds" v-model="editable.totalRounds">
-                    <input class="form-control" type="text" id="capacity" placeholder="Tournament Capacity" v-model="editable.capacity">
-                    <select class="form-select mb-3" aria-label="Default select example" v-model="editable.type">
-                      <option selected>Match Type</option>
+                    <input type="datetime-local" name="startDate" class="form-control mb-3" placeholder="Start Date" v-model="editable.startDate">
+                    <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Location" v-model="editable.location">
+                    <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Total Rounds" v-model="editable.totalRounds">
+                    <input class="form-control mb-3" type="text" id="capacity" placeholder="Tournament Capacity" v-model="editable.capacity">
+                    <select class="form-select mb-3" aria-label="Tournament Type" v-model="editable.type">
+                      <option selected value="match" disabled>Match Type</option>
                       <option value="online">Online</option>
                       <option value="local">Local</option>
                     </select>
                     <textarea class="form-control mb-3" id="tournamentDescription" rows="3" placeholder="Tournament Description" v-model="editable.description"></textarea>
-                    <select class="form-select mb-3" aria-label="Default select example" v-model="editable.ageRating">
-                      <option selected>Group Age Rating</option>
+                    <select class="form-select mb-3" aria-label="Tournament Age Rating" v-model="editable.ageRating">
+                      <option selected value="rating" disabled>Group Age Rating</option>
                       <option value="Everyone">Everyone</option>
                       <option value="Teen">Teen</option>
                       <option value="Adult">Adult</option>
@@ -52,7 +52,7 @@
                     <input class="form-control mb-3" type="text" id="firstPlaceBadge" placeholder="First Place Badge" v-model="editable.firstPlaceBadge">
                     <input class="form-control mb-3" type="text" id="secondPlaceBadge" placeholder="Second Place Badge" v-model="editable.secondPlaceBadge">
                     <input class="form-control mb-3" type="text" id="thirdPlaceBadge" placeholder="Third Place Badge" v-model="editable.thirdPlaceBadge">
-                    <button class="btn btn-success text-end" type="submit" role="button">Create Tournament</button>
+                    <button :disabled="editable.type == 'match' || editable.ageRating == 'rating'" class="btn btn-success text-end" type="submit" role="button">Create Tournament</button>
                 </form>
               </div>
           </div>
@@ -75,7 +75,9 @@ import Pop from './utils/Pop.js';
 
 export default {
   setup() {
-    const editable = ref({});
+    const editable = ref({
+      type: 'match'
+    });
     const router = useRouter();
     
     return {
