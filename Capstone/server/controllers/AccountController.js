@@ -12,6 +12,17 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
       .get('/participants', this.getAccountParticipations)
       .get('/rewards', this.getAccountRewards)
+      .put('/:id', this.editAccount)
+  }
+  async updateAccount(req, res, next) {
+    try {
+      const accountData = req.body
+      const accountId = req.userInfo.id
+      const account = await accountService.updateAccount(accountId, accountData)
+      return res.send(account)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async getUserAccount(req, res, next) {
