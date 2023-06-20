@@ -1,8 +1,6 @@
 <template>
-
-
   <section class="container-fluid bg-background">
-      
+
     <!-- <section class="row bg-navbar justify-content-center align-items-center" style="height: 20px;">
 
     </section> -->
@@ -21,19 +19,19 @@
       </div>
     </section>
 
+
     <!-- <section class="row bg-nav-accent">
-      
     </section> -->
 
-      <!-- SECTION my tournaments -->
-      <section class="row pt-5">
-        <div class="col-12">
-          <h3 class="ps-5 fw-bold"></h3>
-        </div>
-        </section>
-  
-        <!-- SECTION filter buttons -->
-        <!-- <div class="d-flex justify-content-around my-3 bg-categories rounded p-3">
+    <!-- SECTION my tournaments -->
+    <section class="row pt-5">
+      <div class="col-12">
+        <h3 class="ps-5 fw-bold"></h3>
+      </div>
+    </section>
+
+    <!-- SECTION filter buttons -->
+    <!-- <div class="d-flex justify-content-around my-3 bg-categories rounded p-3">
           <button @click="filterBy = ''" class="btn btn-outline-light w-25 mx-2">All</button>
           <button @click="filterBy = 'online'" class="btn btn-outline-light w-25 mx-2">Online</button>
           <button @click="filterBy = 'local'" class="btn btn-outline-light w-25 mx-2">Local</button>
@@ -42,7 +40,7 @@
 
     <section class="row">
       <div class="col-12">
-        
+
         <!-- NOTE BACKGROUND BORDER FOR CAROUSEL ----------------------------->
         <div class="row bg-carousel justify-content-center align-items-center shadow-lg elevation-5">
 
@@ -50,38 +48,54 @@
           <div class="bg-games p-5">
             <div id="carouselExampleIndicators" class="carousel slide">
               <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
               </div>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="https://th.bing.com/th/id/R.f645b78e51a192cb4e9caa4aac6c0875?rik=ZTglhfD9mmwNIA&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fgod-of-war-image.jpg&ehk=D%2bfse8wLp7FcFA%2bqBBv%2bCP0fIUGXa8YSkuFKGmU83yk%3d&risl=&pid=ImgRaw&r=0" class="d-block w-75 game-img rounded-3" style="position: relative; right: 12%; left: 12%;" alt="...">
-                  <div class="carousel-caption d-none d-md-block mb-5" style="font-weight: 550; text-shadow: 0 2px 3px black;">
+                  <img
+                    src="https://th.bing.com/th/id/R.f645b78e51a192cb4e9caa4aac6c0875?rik=ZTglhfD9mmwNIA&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fgod-of-war-image.jpg&ehk=D%2bfse8wLp7FcFA%2bqBBv%2bCP0fIUGXa8YSkuFKGmU83yk%3d&risl=&pid=ImgRaw&r=0"
+                    class="d-block w-75 game-img rounded-3" style="position: relative; right: 12%; left: 12%;" alt="...">
+                  <div class="carousel-caption d-none d-md-block mb-5"
+                    style="font-weight: 550; text-shadow: 0 2px 3px black;">
                     <h1 class="caption-text-1" style="filter: brightness(1.5)">GOD OF WAR</h1>
-                    <h5 class="caption-text-1" style="filter: brightness(1.5);"><b>Join the battle with others that are slaying their way to the top of Olympus.</b></h5>
+                    <h5 class="caption-text-1" style="filter: brightness(1.5);"><b>Join the battle with others that are
+                        slaying their way to the top of Olympus.</b></h5>
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img src="https://th.bing.com/th/id/R.4c1438a6790709e13fedec0919ab9262?rik=vuldbqZ%2fyCjFpA&pid=ImgRaw&r=0" class="d-block w-75 game-img rounded-3" style="position: relative; right: 12%; left: 12%;" alt="...">
-                  <div class="carousel-caption d-none d-md-block mb-5" style="font-weight: 550; text-shadow: 0 2px 3px black;">
+                  <img
+                    src="https://th.bing.com/th/id/R.4c1438a6790709e13fedec0919ab9262?rik=vuldbqZ%2fyCjFpA&pid=ImgRaw&r=0"
+                    class="d-block w-75 game-img rounded-3" style="position: relative; right: 12%; left: 12%;" alt="...">
+                  <div class="carousel-caption d-none d-md-block mb-5"
+                    style="font-weight: 550; text-shadow: 0 2px 3px black;">
                     <h1 class="caption-text-2" style="filter: brightness(1.5)">Star Citizen</h1>
-                    <h5 class="caption-text-2" style="filter: brightness(1.5);"><b>#1 game for anyone looking to explore a creative universe built around cosmic destruction.</b></h5>
+                    <h5 class="caption-text-2" style="filter: brightness(1.5);"><b>#1 game for anyone looking to explore a
+                        creative universe built around cosmic destruction.</b></h5>
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img src="https://cdn.mos.cms.futurecdn.net/Goqyz5GacSCWcBHT522gJ9-970-80.jpg.webp" class="d-block w-75 game-img rounded-3" style="position: relative; right: 12%; left: 12%;" alt="...">
-                  <div class="carousel-caption d-none d-md-block mb-5" style="font-weight: 550; text-shadow: 0 2px 3px black;">
+                  <img src="https://cdn.mos.cms.futurecdn.net/Goqyz5GacSCWcBHT522gJ9-970-80.jpg.webp"
+                    class="d-block w-75 game-img rounded-3" style="position: relative; right: 12%; left: 12%;" alt="...">
+                  <div class="carousel-caption d-none d-md-block mb-5"
+                    style="font-weight: 550; text-shadow: 0 2px 3px black;">
                     <h1 class="caption-text-3" style="filter: brightness(1.5)">Elden Ring</h1>
-                    <h5 class="caption-text-3" style="filter: brightness(1.5);"><b>Up for something extra challenging? See the kind of dedication brought to the table by checking out our Most OP monster slayers!</b></h5>
+                    <h5 class="caption-text-3" style="filter: brightness(1.5);"><b>Up for something extra challenging? See
+                        the kind of dedication brought to the table by checking out our Most OP monster slayers!</b></h5>
                   </div>
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
@@ -92,48 +106,56 @@
     </section>
 
     <div class="row justify-content-between mb-5 py-3 accent-row shadow-lg">
-      <div class="col-md-6 mb-5 pe-5" style="position: absolute; top: -3.5vh; left: 19.5%;max-width: fit-content;">
+      <div class="accent row"></div>
+      <div class="col-md-6 mb-5 pe-5 neon-btn-one" style="">
         <div class="btn-group">
           <button type="button" class="btn btn-info neon-button">Highlights</button>
-          <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+            aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" href="#">Separated link</a></li>
           </ul>
         </div>
       </div>
 
-      <div class="col-md-6 mb-5 ps-5" style="position: absolute; top: -3.5vh; left: 65.5%; max-width: fit-content;">
+      <div class="col-md-6 mb-5 ps-5 neon-btn-two"
+        style="position: absolute; top: -3.5vh; left: 65.5%; max-width: fit-content;">
         <div class="btn-group">
-        <button type="button" class="btn btn-info neon-button">Top Gamers</button>
-          <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          <button type="button" class="btn btn-info neon-button">Top Gamers</button>
+          <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+            aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" href="#">Separated link</a></li>
           </ul>
         </div>
       </div>
     </div>
-      <!-- SECTION my tournaments -->
-      <section class="row pt-1">
-  
-        <!-- SECTION filter buttons -->
-        <div class="d-flex justify-content-around my-3 bg-categories rounded p-3">
-          <button @click="filterBy = ''" class="btn btn-outline-light w-25 mx-2">All</button>
-          <button @click="filterBy = 'online'" class="btn btn-outline-light w-25 mx-2">Online</button>
-          <button @click="filterBy = 'local'" class="btn btn-outline-light w-25 mx-2">Local</button>
-        </div>
-      </section>
+    <!-- SECTION my tournaments -->
+    <section class="row pt-1">
+
+      <!-- SECTION filter buttons -->
+      <div class="d-flex justify-content-around my-3 bg-categories rounded p-3">
+        <button @click="filterBy = ''" class="btn btn-outline-light w-25 mx-2">All</button>
+        <button @click="filterBy = 'online'" class="btn btn-outline-light w-25 mx-2">Online</button>
+        <button @click="filterBy = 'local'" class="btn btn-outline-light w-25 mx-2">Local</button>
+      </div>
+    </section>
     <!-- NOTE GAME INFO / DETAIL CARDS ------------------------------------------------------->
     <section class="row justify-content-center align-items-center accent-row px-2 pb-2">
       <div class="col-12 col-md-3 my-3" v-for="t in tournaments" :key="t.id">
@@ -142,13 +164,12 @@
       </div>
     </section>
   </section>
-  
-  <section>
-    
-    <!-- NOTE MEETUP / TOURNAMENT CARDS -->
-    
-  </section>
 
+  <section>
+
+    <!-- NOTE MEETUP / TOURNAMENT CARDS -->
+
+  </section>
 </template>
 
 <script>
@@ -165,24 +186,24 @@ export default {
 
   components: {
     TournamentCard,
-},
+  },
 
   setup() {
 
-    const filterBy = ref ('')
+    const filterBy = ref('')
 
-      //NOTE If we want to randomize between an array of set background colors / images this is how we can do that
-      // async getTournamentBg() {
-      //   try {
-      //     logger.log('getting tournament bg')
-      //     await tournamentsService.getTournamentBg()
-      //   } catch (error) {
-      //     Pop.error(error.message)
-      //     logger.log(error)
-      //   }
-      // }
-      
-      async function getAllTournaments() {
+    //NOTE If we want to randomize between an array of set background colors / images this is how we can do that
+    // async getTournamentBg() {
+    //   try {
+    //     logger.log('getting tournament bg')
+    //     await tournamentsService.getTournamentBg()
+    //   } catch (error) {
+    //     Pop.error(error.message)
+    //     logger.log(error)
+    //   }
+    // }
+
+    async function getAllTournaments() {
       try {
         logger.log('[GETTING TOURNAMENTS]')
         await tournamentsService.getAllTournaments()
@@ -191,31 +212,31 @@ export default {
         logger.log(error)
       }
     }
-    
+
     onMounted(() => {
       getAllTournaments()
     })
-  
-    
+
+
     return {
       filterBy,
       tournaments: computed(() => {
         if (filterBy.value == '') {
           return AppState.tournaments
         } else {
-          return AppState.tournaments.filter ( 
-            t => filterBy.value ? 
-            t.type == filterBy.value : true 
-            )
-        }}),
-      }
+          return AppState.tournaments.filter(
+            t => filterBy.value ?
+              t.type == filterBy.value : true
+          )
+        }
+      }),
+    }
   }
 };
 
 </script>
 
 <style scoped lang="scss">
-
 .btn-group {
   opacity: .8;
   animation: colorChange 15s infinite;
@@ -234,7 +255,7 @@ export default {
 
 .bg-nav-options {
   background-color: #0e2241;
-  filter: drop-shadow( 0 0 15px 15px #0e224170);
+  filter: drop-shadow(0 0 15px 15px #0e224170);
   box-shadow: 0 15px 15px #0e2241;
 }
 
@@ -272,7 +293,8 @@ export default {
   animation: fadeIn 1.5s forwards;
 }
 
-.neon-button, .dropdown-toggle {
+.neon-button,
+.dropdown-toggle {
   border: #71acff57 .125em solid;
   text-shadow: .5px .5px .125em rgba(15, 0, 68, 0.827);
   box-shadow: 0 0 20px 1px #49bfffe7;
@@ -306,6 +328,7 @@ export default {
 }
 
 .accent-row {
+  min-width: 90vw;
   background-color: #1f5b7b45;
   box-shadow: 0px 0px 150px 15px inset outset #1a407a;
   filter: drop-shadow(0px 0px 30px #682f2f);
@@ -397,6 +420,7 @@ export default {
   0% {
     margin-right: 23.5rem;
   }
+
   100% {
     margin-right: 0rem;
   }
@@ -406,6 +430,7 @@ export default {
   0% {
     margin-left: -1.5rem;
   }
+
   100% {
     margin-left: 0rem;
     color: #18113e;
@@ -416,10 +441,12 @@ export default {
   0% {
     box-shadow: 0 0 20px 1px #49bfffe7;
   }
+
   50% {
     box-shadow: 0 0 40px 2px #49bfffe7;
     filter: brightness(1.3);
   }
+
   100% {
     box-shadow: 0 0 20px 1px #49bfffe7;
   }
@@ -439,13 +466,13 @@ export default {
 ::-webkit-scrollbar-track {
   background-color: rgba(32, 20, 12, 0.512);
   border-radius: 0.25rem;
-  border-style: ridge; 
+  border-style: ridge;
 }
 
 ::-webkit-scrollbar-corner {
   background-color: #2d288c;
   border-radius: 0.5rem;
-  border-style: groove; 
+  border-style: groove;
 }
 
 .bg-games-info {
@@ -453,7 +480,7 @@ export default {
 }
 
 .bg-footer {
-  background-color: #152A6108; 
+  background-color: #152A6108;
   filter: drop-shadow(0 0 15px 15px #152A6108);
   box-shadow: 0 0 15px #152A6108;
   width: 100vw;
@@ -497,18 +524,22 @@ export default {
     background-color: #374466;
     box-shadow: 0 0 15px #152A6108;
   }
+
   25% {
     background-color: #123c86;
     box-shadow: 0 0 15px #30156143;
   }
+
   50% {
     background-color: #22112e;
     box-shadow: 0 0 15px #6a81ba3b;
   }
+
   75% {
     background-color: #124e86;
     box-shadow: 0 0 15px #106e932a;
   }
+
   100% {
     background-color: #374466;
     box-shadow: 0 0 15px #293c6d08;
@@ -520,18 +551,22 @@ export default {
     background-color: #561287fd;
     box-shadow: 0 0 15px #152A6108;
   }
+
   25% {
     background-color: #123c86;
     box-shadow: 0 0 15px #30156143;
   }
+
   50% {
     background-color: #22112e;
     box-shadow: 0 0 15px #6a81ba3b;
   }
+
   75% {
     background-color: #124e86;
     box-shadow: 0 0 15px #106e932a;
   }
+
   100% {
     background-color: #561287fd;
     box-shadow: 0 0 15px #293c6d08;
@@ -542,12 +577,21 @@ export default {
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: .5;
   }
+
   100% {
     opacity: 1;
   }
+}
+
+.neon-btn-one {
+  position: absolute;
+  top: -3.5vh;
+  left: 19.5%;
+  max-width: fit-content;
 }
 
 @media (max-width: 768px) {
@@ -556,12 +600,26 @@ export default {
     border-left-width: 300px;
     border-left-width: calc(300px - 5vw);
   }
-  .nav-bar2{
+
+  .nav-bar2 {
     display: none;
   }
-}
 
-</style>
+  .neon-btn-two {
+    display: none;
+  }
+
+  .neon-btn-one {
+
+  position: absolute;
+  top: -3.5vh;
+  left: 32.5%;
+  max-width: fit-content;
+    // left: 32.5%;
+  }
+
+  .accent-row {}
+}</style>
 
 
   
