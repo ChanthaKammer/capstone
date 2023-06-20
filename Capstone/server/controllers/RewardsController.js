@@ -13,7 +13,6 @@ export class RewardsController extends BaseController{
 
     async createReward(req, res, next){
         try {
-            req.body.hostId = req.userInfo.id
             const reward = await rewardsService.createReward(req.body)
             return res.send(reward)
         } catch (error) {
