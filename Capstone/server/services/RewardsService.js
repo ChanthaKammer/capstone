@@ -9,7 +9,7 @@ class RewardsService {
         return reward
     }
     async getReward(rewardId) {
-        const reward = await dbContext.Rewards.findById(rewardId)
+        const reward = await dbContext.Rewards.findById(rewardId).populate('account tournament participant')
         if(!reward){
             throw new BadRequest(`There is no reward at ID: ${rewardId}`)
         }
