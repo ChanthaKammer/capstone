@@ -26,9 +26,10 @@ class TournamentsService {
   }
 
   async createTournament(tournamentData) {
+    logger.log("[CREATE_TOURNAMENT]",tournamentData)
     const res = await api.post('api/tournaments', tournamentData)
     logger.log(res.data, `${tournamentData}`)
-    // AppState.tournaments.unshift(res.data)
+    AppState.tournaments.unshift(res.data)
     Pop.success(`New tournament ${res.data.name} has been created!`)
     return res.data
   }
