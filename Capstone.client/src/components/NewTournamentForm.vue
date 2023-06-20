@@ -57,34 +57,34 @@ import { logger } from "../utils/Logger.js";
 import { AppState } from "../AppState.js";
 
    export default {
-      setup(){
-         // const editable = ref({});
-         // const router = useRouter();
+      // setup(){
+      //    const editable = ref({});
+      //    const router = useRouter();
          
          
-         // return {
-         //    editable,
-         //    async createTournament(){
-         //       try {
-         //          logger.log(editable.value)
-         //          editable.value.gameSlug = AppState.activeGame.slug
-         //          const newTournament = await tournamentsService.createTournament()
-         //          Modal.getOrCreateInstance('#tournamentModal').hide()
-         //          editable.value = {}
-         //          router.push(
-         //             { name: 
-         //                'TournamentDetails', 
-         //                params: {
-         //                   tournamentId: newTournament.id 
-         //                }}
-         //                )
-         //       } catch (error) {
-         //          Pop.error(error)
-         //       }
-         //    },
+      //    return {
+      //       editable,
+      //       async createTournament(){
+      //          try {
+      //             logger.log(editable.value)
+      //             editable.value.gameSlug = AppState.activeGame.slug
+      //             const newTournament = await tournamentsService.createTournament()
+      //             Modal.getOrCreateInstance('#tournamentModal').hide()
+      //             editable.value = {}
+      //             router.push(
+      //                { name: 
+      //                   'TournamentDetails', 
+      //                   params: {
+      //                      tournamentId: newTournament.id 
+      //                   }}
+      //                   )
+      //          } catch (error) {
+      //             Pop.error(error)
+      //          }
+      //       },
             
-         // }
-      }
+      //    }
+      // }
    }
 
 </script>
