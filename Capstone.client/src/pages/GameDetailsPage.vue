@@ -15,9 +15,8 @@
                   </div>
                   <div class="p-2 pt-4">
                      <p class="ps-2" style="font-style: italic; font-weight: 600;"><small>Think you're the world's top player?</small></p>
-                     <p role="button" v-if="user.isAuthenticated">
-                        <NewTournamentForm />
-                     </p>
+                     
+                     <NewTournamentForm v-if="user.isAuthenticated"/>
                   </div>
                </div>
                <div class="col-md-4 text-center">
@@ -75,7 +74,6 @@ import { useRoute } from "vue-router";
 
       setup(){
          const route = useRoute();
-
          async function getGameDetails(){
             try {
                const gameSlug = route.params.slug

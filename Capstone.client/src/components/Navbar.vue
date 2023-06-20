@@ -4,12 +4,12 @@
     <div class="container-fluid bg-navbar">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <div class="d-flex flex-column align-items-center">
-          <div>
+          <div class="logo">
             <img alt="logo" src="src/assets/img/gamePursuitLogo.png" class="rounded-pill elevation-2 shadow-lg me-3" style="" height="65" /><b>Game Pursuit</b></div>
         </div>
       </router-link>
-        <form @submit.prevent="searchGames()" class="d-flex" role="search" style="width: 40%;">
-          <input class="form-control me-2" type="search" :placeholder="searchTerm" aria-label="Search" v-model="editable">
+        <form @submit.prevent="searchGames()" class="d-flex col-12 col-md-4" role="search" style="width: 40%;">
+          <input class="form-control me-2 search-input" type="search" :placeholder="searchTerm" aria-label="Search" v-model="editable" style="">
           <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
         </form> <!-- LOGIN COMPONENT HERE -->
         <Login />
@@ -80,7 +80,13 @@ a:hover {
   border-bottom-right-radius: 0;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
+  .search-input{
+    min-width: 58vw;
+  }
+  .logo{
+    width: 100vw;
+  }
   nav {
     height: 64px;
   }

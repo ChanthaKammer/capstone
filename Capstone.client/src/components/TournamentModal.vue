@@ -4,7 +4,7 @@
             Tournament</button>
          <div class="row justify-content-center">
             <!-- Modal -->
-            <div class="modal fade" id="tournamentModal" tabindex="-1" aria-labelledby="tournamentModal" aria-hidden="true">
+            <div class="modal fade" id="otherModal" tabindex="-1" aria-labelledby="tournamentModal" aria-hidden="true">
                <div class="modal-dialog">
                   <div class="modal-content">
                      <div class="modal-header">

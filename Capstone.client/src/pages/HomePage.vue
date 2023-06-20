@@ -7,7 +7,7 @@
 
     </section> -->
 
-    <section class="row bg-nav-options shadow" style="padding-left: 5rem;">
+    <section class="row bg-nav-options shadow nav-bar2" style="padding-left: 5rem;display:none">
       <div class="col-3 d-flex justify-content-center align-items-center">
         <h2 class="text-white mt-3">PLAY</h2>
       </div>
@@ -30,14 +30,15 @@
         <div class="col-12">
           <h3 class="ps-5 fw-bold"></h3>
         </div>
+        </section>
   
         <!-- SECTION filter buttons -->
-        <div class="d-flex justify-content-around my-3 bg-categories rounded p-3">
+        <!-- <div class="d-flex justify-content-around my-3 bg-categories rounded p-3">
           <button @click="filterBy = ''" class="btn btn-outline-light w-25 mx-2">All</button>
           <button @click="filterBy = 'online'" class="btn btn-outline-light w-25 mx-2">Online</button>
           <button @click="filterBy = 'local'" class="btn btn-outline-light w-25 mx-2">Local</button>
         </div>
-      </section>
+      </section> -->
 
     <section class="row">
       <div class="col-12">
@@ -91,7 +92,7 @@
     </section>
 
     <div class="row justify-content-between mb-5 py-3 accent-row shadow-lg">
-      <div class="col-md-6 mb-5 pe-5" style="position: absolute; top: -3.5vh; left: 19.5%;">
+      <div class="col-md-6 mb-5 pe-5" style="position: absolute; top: -3.5vh; left: 19.5%;max-width: fit-content;">
         <div class="btn-group">
           <button type="button" class="btn btn-info neon-button">Highlights</button>
           <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -107,7 +108,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 mb-5 ps-5" style="position: absolute; top: -3.5vh; left: 65.5%;">
+      <div class="col-md-6 mb-5 ps-5" style="position: absolute; top: -3.5vh; left: 65.5%; max-width: fit-content;">
         <div class="btn-group">
         <button type="button" class="btn btn-info neon-button">Top Gamers</button>
           <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -123,7 +124,16 @@
         </div>
       </div>
     </div>
-
+      <!-- SECTION my tournaments -->
+      <section class="row pt-1">
+  
+        <!-- SECTION filter buttons -->
+        <div class="d-flex justify-content-around my-3 bg-categories rounded p-3">
+          <button @click="filterBy = ''" class="btn btn-outline-light w-25 mx-2">All</button>
+          <button @click="filterBy = 'online'" class="btn btn-outline-light w-25 mx-2">Online</button>
+          <button @click="filterBy = 'local'" class="btn btn-outline-light w-25 mx-2">Local</button>
+        </div>
+      </section>
     <!-- NOTE GAME INFO / DETAIL CARDS ------------------------------------------------------->
     <section class="row justify-content-center align-items-center accent-row px-2 pb-2">
       <div class="col-12 col-md-3 my-3" v-for="t in tournaments" :key="t.id">
@@ -545,6 +555,9 @@ export default {
     border-top-width: 20px;
     border-left-width: 300px;
     border-left-width: calc(300px - 5vw);
+  }
+  .nav-bar2{
+    display: none;
   }
 }
 
