@@ -1,7 +1,7 @@
 <template>
    <section class="container-fluid bg-animate" :style="{ background: `url(${game?.background})` }" style="background-repeat: repeat; background-size: cover; height: 100vh;">
       <div class="row justify-content-center pt-5">
-         <div class="col-md-9 pt-3 bg-dark text-white rounded-3 animate-in">
+         <div class="col-md-9 pt-3 bg-dark text-white rounded-3 animate-in pt-4 pb-3" style="opacity: .9;">
             <div v-if="game" class="row">
                <div class="col-md-4 text-center">
                   <h1> {{ game.name }} </h1>
@@ -14,14 +14,14 @@
                      <span class="text-light p-2" style="overflow-y: auto; max-height: 38vh;"> {{ game.description }} </span>
                   </div>
                   <div class="p-2 pt-4">
-                     <p>Prove you're the #1 {{ game.name }} player...</p>
+                     <p class="ps-2" style="font-style: italic; font-weight: 600;"><small>Think you're the world's top player?</small></p>
                      <p role="button" v-if="user.isAuthenticated">
                         <NewTournamentForm />
                      </p>
                   </div>
                </div>
                <div class="col-md-4 text-center">
-                  <div class="row card mx-3" style="border: 5px solid #00000090;">
+                  <div class="row card mx-3">
                      <p class="card-header">Platforms</p>
                      <div v-if="game.platforms?.length > 0" class="col-12 px-2" style="overflow-y: auto; max-height: 10vh;">
                         <div v-for="p in game.platforms" :key="p.platform">
@@ -29,19 +29,24 @@
                         </div>
                      </div>
                   </div>
-                  <h3>Released:</h3>
-                  <p class="fs-2" style="font-weight: 600;"> {{ game.released }} </p>
-                  <div class="py-2">
-                     <h3>Rated:</h3>
-                     <p class="fs-2" style="font-weight: 600;"> {{ game.esrb_rating }} </p>
-                  </div> 
-                  
-                  <div class="col-12">
-                     <h3 class="mt-2 mb-0">Genre:</h3>
-                  </div>
-                  <div class="row">
-                     <div class="col-12 p-2">
-                        <h2> {{ game.genres }} </h2>
+                  <div class="row mt-4">
+                     <div class="col-12 mt-1">
+                        <h3 class="mb-0">Released:</h3>
+                     </div>
+                     <div class="col-12 px-2">
+                        <p class="fs-2" style="font-weight: 600;"> {{ game.released }} </p>
+                     </div>
+                     <div class="col-12 mt-2 mb-0">
+                        <h3 class="mt-2 mb-0">Rated:</h3>
+                     </div> 
+                     <div class="col-12 px-2">
+                        <p class="fs-2" style="font-weight: 600;"> {{ game.esrb_rating }} </p>
+                     </div>
+                     <div class="col-12">
+                        <h3 class="mt-2 mb-0">Genre:</h3>
+                     </div>
+                     <div class="col-12 px-2">
+                        <p class="fs-2" style="font-weight: 600;"> {{ game.genres }} </p>
                      </div>
                   </div>
                </div>
@@ -143,6 +148,7 @@ import { useRoute } from "vue-router";
       background-color: #f0f0f019;
       background-size: cover;
       background-position: center;
+      border: 3px solid #ffffff20;
       border-radius: .5rem;
    }
 
