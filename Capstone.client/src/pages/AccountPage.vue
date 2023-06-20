@@ -33,13 +33,13 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body justify-content-center">
-                          <form @submit.prevent="editAccount" class="col-12">
+                          <form @submit.prevent="editAccount()" class="col-12">
                             <input class="form-control mb-3" type="text" placeholder="Name" aria-label="name" v-model="editable.name">
                             <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image" v-model="editable.picture">
                             <input class="form-control mb-3" type="text" id="coverImg" placeholder="Cover Image" v-model="editable.coverImg">
                             <div class="row mb-3">
                                 <div class="col-6"><input class="form-control" type="number" id="name" placeholder="Age" v-model="editable.age"></div>
-                                <div class="col-6"><input class="form-control" type="text" id="gamertag" placeholder="Gamertag" v-model="editable.gamertag"></div>
+                                <div class="col-6"><input class="form-control" type="text" id="gamertag" placeholder="Gamertag" v-model="editable.gamerTag"></div>
                             </div>
                             <textarea class="form-control mb-3" id="bio" rows="3" placeholder="Bio" v-model="editable.bio"></textarea>
                           <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
@@ -134,6 +134,7 @@ export default {
           
           async editAccount(){
             try {
+              logger.log(editable.value)
               await accountService.updateAccountInfo(editable.value)
               } catch (error) {
                 Pop.error(error)

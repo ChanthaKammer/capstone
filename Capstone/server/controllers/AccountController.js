@@ -3,6 +3,7 @@ import { accountService } from '../services/AccountService'
 import BaseController from '../utils/BaseController'
 import { participantsService } from '../services/ParticipantsService.js'
 import { rewardsService } from '../services/RewardsService.js'
+import { logger } from "../utils/Logger.js"
 
 export class AccountController extends BaseController {
   constructor() {
@@ -17,8 +18,7 @@ export class AccountController extends BaseController {
   async updateAccount(req, res, next) {
     try {
       const accountData = req.body
-      const accountId = req.userInfo.id
-      const account = await accountService.updateAccount(accountId, accountData)
+      const account = await accountService.updateAccount(req.userInfo, accountData)
       return res.send(account)
     } catch (error) {
       next(error)
