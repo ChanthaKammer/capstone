@@ -60,7 +60,7 @@
                 <h1 class=""> {{ account.name }}'s Tournaments:</h1>
               </div>
               <div class="d-flex justify-content-center align-items-center">
-                <div class="col-md-4" v-for="p in myParticipations" :key="p.id">
+                <div class="col-md-6 col-12" v-for="p in myParticipations" :key="p.id">
                   <MyJoinedTournamentsCard :myParticipation="p"/>
                 </div>
               </div>
