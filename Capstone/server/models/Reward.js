@@ -13,7 +13,7 @@ export const RewardSchema = new Schema({
 
 
 RewardSchema.virtual('account', {
-    localField: 'accountId',
+    localField: 'hostId',
     foreignField: '_id',
     ref: 'Account',
     justOne: true
