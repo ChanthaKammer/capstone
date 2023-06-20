@@ -17,7 +17,8 @@ class AccountService {
   async getAccountParticipations(){
     const res = await api.get('/account/participants')
     logger.log(res.data)
-    AppState.myParticipation = res.data
+    AppState.myParticipations = res.data
+    logger.log(AppState.myParticipations)
   }
 
   async updateAccountInfo(formData) {

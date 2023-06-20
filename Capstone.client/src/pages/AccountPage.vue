@@ -59,7 +59,7 @@
                       <h1 class=""> {{ account.name }}'s Tournaments:</h1>
                     </div>
                     <div class="d-flex justify-content-center align-items-center">
-                      <div class="col-md-4 my-tournaments justify-content-center align-items-center overflow-auto" v-for="p in myParticipations" :key="p.id">
+                      <div class="col-md-4 justify-content-center align-items-center overflow-auto" v-for="p in myParticipations" :key="p.id">
                         <MyJoinedTournamentsCard :myParticipation="p"/>
                       </div>
                     </div>
@@ -128,7 +128,7 @@ export default {
           route,
           account: computed(() => AppState.account),
           tournaments: computed(() => AppState.activeTournament),
-          myTournaments: computed(() => AppState.myTournaments),
+          // myTournaments: computed(() => AppState.myTournaments),
           myParticipations: computed(() => AppState.myParticipations),
           isCancelled: computed(() => AppState.activeTournament.isCancelled),
           
