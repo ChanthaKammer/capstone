@@ -34,7 +34,7 @@
                       <div class="modal-body justify-content-center">
                           <form @submit.prevent="editAccount" class="col-12">
                             <input class="form-control mb-3" type="text" placeholder="Name" aria-label="name" v-model="editable.name">
-                            <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image" v-model="editable.avatarImg">
+                            <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image" v-model="editable.picture">
                             <input class="form-control mb-3" type="text" id="coverImg" placeholder="Cover Image" v-model="editable.coverImg">
                             <div class="row mb-3">
                                 <div class="col-6"><input class="form-control" type="number" id="name" placeholder="Age" v-model="editable.age"></div>
