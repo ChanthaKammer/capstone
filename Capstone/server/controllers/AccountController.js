@@ -12,7 +12,7 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
       .get('/participants', this.getAccountParticipations)
       .get('/rewards', this.getAccountRewards)
-      .put('/:id', this.editAccount)
+      .put('/:id', this.updateAccount)
   }
   async updateAccount(req, res, next) {
     try {
