@@ -6,7 +6,7 @@
                <div class="col-md-4 text-center">
                   <h1> {{ game.name }} </h1>
                   <img :src="game.coverImg" :alt="game.name" class="img-fluid">
-                  <h1>4/5</h1>
+                  <h1>  {{ game.rating }}/5</h1>
                </div>
                <div class="col-md-4">
                   <div class="card">
@@ -29,15 +29,15 @@
                         </div>
                      </div>
                   </div>
-                  <p>Released</p>
-                  <h2> {{ game.released }} </h2>
-                  <div class="pb-2">
-                     <p>Rated</p>
+                  <h3>Released:</h3>
+                  <p class="fs-2" style="font-weight: 600;"> {{ game.released }} </p>
+                  <div class="py-2">
+                     <h3>Rated:</h3>
                      <p class="fs-2" style="font-weight: 600;"> {{ game.esrb_rating }} </p>
                   </div> 
                   
                   <div class="col-12">
-                     <h3 class="mt-2 mb-0">Genre</h3>
+                     <h3 class="mt-2 mb-0">Genre:</h3>
                   </div>
                   <div class="row">
                      <div class="col-12 p-2">
