@@ -107,7 +107,7 @@ export default {
 
       const editable = ref({})
       watchEffect(() => {
-        editable.value = AppState.account
+        editable.value = { ...AppState.account }
       })
 
       async function getAccountParticipations() {
