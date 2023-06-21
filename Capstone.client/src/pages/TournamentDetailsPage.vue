@@ -248,7 +248,8 @@ export default {
     }
     async function leaveTournament(){
       try {
-        await participantsService.leaveTournament(AppState.activeTournament.id)
+        const participant = AppState.participants.find(p=> p.tournamentId == AppState.activeTournament.id && p.accountId == AppState.user.id)
+        await participantsService.leaveTournament(participant.id)
       } catch (error) {
         logger.log(error);
       }
