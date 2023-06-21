@@ -13,8 +13,6 @@
                       <div class="row media-body pt-5 text-white">
                         <div class="col-3" style="position: absolute; top: 22rem;">
                           <img :src="account.picture" :alt="account.name" class="img-fluid profile-img" style="max-width: 150px; min-width:100px;">
-                        </div>
-                        <div class="col-3 name-tag" style="position: absolute; top: 25rem; left: 9.75rem;">
                           <h4 class="my-0 mx-4"> {{ account.name }} </h4>
                           <div class="row">
                             <div class="col-12">
@@ -22,6 +20,14 @@
                             </div>
                           </div>
                         </div>
+                        <!-- <div class="col-3 name-tag" style="position: absolute; top: 25rem; left: 9.75rem;">
+                          <h4 class="my-0 mx-4"> {{ account.name }} </h4>
+                          <div class="row">
+                            <div class="col-12">
+                              <p class="small mb-4 mx-4 fs-6" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
+                            </div>
+                          </div>
+                        </div> -->
                       </div>
                     </div>
                       
@@ -198,11 +204,11 @@ export default {
 
 <style scoped lang="scss">
 
+
 .bg-background{
   background-color: #374466;
   filter: drop-shadow(0 0 15px 15px #152A6108);
   box-shadow: 0 0 15px #152A6108;
-  animation: colorChange 15s infinite;
 }
 
 .bio {
