@@ -1,19 +1,19 @@
 <template>
-  <button class="glow-on-hover m-1" type="button">Join the tournament!</button>
+  <button class="glow-on-hover m-1" type="button">{{ buttonText }}</button>
 </template>
 
 <script>
 export default {
-  data() {
-    return {};
-  },
-  methods: {}
+  props: {
+    buttonText: {
+      type: String,
+      default: () => "Label",
+    }
+  }
 };
 </script>
 
 <style>
-
-
 .glow-on-hover {
   width: 220px;
   height: 50px;
@@ -32,18 +32,16 @@ export default {
 
 .glow-on-hover:before {
   content: "";
-  background: linear-gradient(
-    45deg,
-    rgba(255, 0, 0, 0.8),
-    rgba(255, 115, 0, 0.8),
-    rgba(255, 251, 0, 0.8),
-    rgba(72, 255, 0, 0.8),
-    rgba(0, 255, 213, 0.8),
-    rgba(0, 43, 255, 0.8),
-    rgba(122, 0, 255, 0.8),
-    rgba(255, 0, 200, 0.8),
-    rgba(255, 0, 0, 0.8)
-  );
+  background: linear-gradient(45deg,
+      rgba(255, 0, 0, 0.8),
+      rgba(255, 115, 0, 0.8),
+      rgba(255, 251, 0, 0.8),
+      rgba(72, 255, 0, 0.8),
+      rgba(0, 255, 213, 0.8),
+      rgba(0, 43, 255, 0.8),
+      rgba(122, 0, 255, 0.8),
+      rgba(255, 0, 200, 0.8),
+      rgba(255, 0, 0, 0.8));
   position: absolute;
   top: -2px;
   left: -2px;
@@ -86,9 +84,11 @@ export default {
   0% {
     background-position: 0 0;
   }
+
   50% {
     background-position: 400% 0;
   }
+
   100% {
     background-position: 0 0;
   }
