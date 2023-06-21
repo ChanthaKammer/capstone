@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
-        <img :src="tournament.coverImg" class="img-fluid rounded-3 starship-img" style="min-height: 50vh;">
+        <img :src="tournament.coverImg" class="img-fluid object-fit-cover rounded-3 starship-img" style="min-height: 50vh;">
       </div>
       <!-- <div class="row">
         <div class="col-12 pb-5">
@@ -185,7 +185,7 @@
       <div class="col-6 card p-3 rounded-3 elevation-5 comment-area">
         <form @submit.prevent="createComment()">
           <div v-if="account" class="d-flex align-items-center mb-2">
-            <img :src="account.picture" class="img-fluid img-responsive rounded-circle me-2 pfp" width="38">
+            <img :src="account.picture" class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38">
             <h3>{{ account.name }}</h3>
           </div>
           <div class="text-end">
