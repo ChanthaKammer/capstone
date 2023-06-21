@@ -25,6 +25,7 @@
               minute: 'numeric'
             }) }}
         </span>
+        <i v-if="comment.creatorId == account.id" @click="deleteComment()" class="mdi mdi-delete pe-1 icon fs-4"></i>
       </div>
 
       <div class="comment-text"><span class="text-dark px-3"> {{ comment.body }} </span></div>
@@ -40,9 +41,6 @@
           <span class="text-dark ms-2">Upvotes</span><span class="dot ms-2"></span>
           <h6 class="ms-2 mt-1 reply-text">Reply</h6>
         </div>
-      </div>
-      <div>
-        <i v-if="comment.creatorId == account.id" @click="deleteComment()" class="mdi mdi-delete pe-1 icon fs-4"></i>
       </div>
     </div>
   </div>
@@ -101,8 +99,8 @@ img{
 }
 
 .bg-comments {
-  background-color: #d8eaff;
-  box-shadow: inset 0px -100px 150px #11245ebf;
+  background-color: #9ab3d000;
+  box-shadow: inset 0px -50px 80px #11245ebc;
 }
 
 .comment-text {

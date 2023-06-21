@@ -7,7 +7,7 @@
         }} ({{ tournament.type }}) </p>
         <div class="row justify-content-center">
           <div class="col-12">
-            <p class="ms-5 ps-3 mt-0 pb-3" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{
+            <p class="ms-5 ps-3 mt-0 " style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{
               tournament.location }} </p>
             <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 650; font-style: italic;">BE THERE ON
               {{
@@ -24,19 +24,22 @@
                     minute: 'numeric'
                   }) }}
             </p>
+          <div v-if="tournament.startDate" class="pb-5">
+            <TournamentCountdown />
+          </div>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
-        <img :src="tournament.coverImg" class="img-fluid" style="min-height: 50vh;">
+        <img :src="tournament.coverImg" class="img-fluid rounded-3 starship-img" style="min-height: 50vh;">
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-12 pb-5">
           <div v-if="tournament.startDate" class="pb-5">
             <TournamentCountdown />
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!--NOTE This section conditionally renders the status of the tournament
@@ -117,14 +120,15 @@
       </div>
     </div>
     <div class="row justify-content-center p-4">
-      <div class="col-6">
+      <div class="col-6 card p-3 rounded-3 elevation-3">
         <form @submit.prevent="createComment()">
-          <div v-if="account" class="d-flex justify-content-center align-items-center mb-2">
+          <div v-if="account" class="d-flex align-items-center mb-2">
             <img :src="account.picture" class="img-fluid img-responsive rounded-circle me-2" width="38">
-            <textarea v-model="commentData" class="text-area w-100"></textarea>
+            <h3>{{ account.name }}</h3>
           </div>
           <div class="text-end">
-            <button type="submit" class="mb-1 transparent-button">Post comment</button>
+            <textarea v-model="commentData" class="text-area w-100 rounded-3"></textarea>
+            <button type="submit" class="mb-1 transparent-button rounded-2">Post comment</button>
           </div>
         </form>
       </div>
