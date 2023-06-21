@@ -1,6 +1,6 @@
 <template>
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-navbar">
+  <nav class="navbar navbar-expand-lg bg-navbar">
     <div class="container-fluid bg-navbar">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <div class="d-flex flex-column align-items-center">

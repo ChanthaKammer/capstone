@@ -243,7 +243,6 @@ export default {
 }
 
 .neon-button {
-  opacity: .5;
   animation: colorChange 15s infinite;
   border: 2px solid #00000000;
   color: white;
