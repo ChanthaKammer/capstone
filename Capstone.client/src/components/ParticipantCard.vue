@@ -1,12 +1,12 @@
 <template>
 
     
-    <router-link :to="{name: 'Profile', params: { profileId: participant.accountId }}">
-      <div class="col-1 col-md-1 pb-2">
+  <div class="col-1 col-md-1 pb-2">
+      <router-link :to="{name: 'Profile', params: { profileId: participant.accountId }}">
         <img class="pfp rounded" :src="participant.profile.picture" alt="">
-        <p class="text-white">{{ participant.profile.name }}</p>
-      </div>
-    </router-link>
+      </router-link>
+      <p class="text-white">{{ participant.profile.name }}</p>
+    </div>
    
 
 </template>
