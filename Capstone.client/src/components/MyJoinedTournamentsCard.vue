@@ -1,19 +1,21 @@
 <template>
 
   <div v-if="!myParticipation.tournament.isCancelled">
-    
     <section class="container-fluid">
       <!--SECTION  * * * CARD IMAGE HEADER * * * ------------------------------>
       <div class="card card-custom border-white border-0" style="height: 400px">
         <div class="card-custom-img" :style="`background-image: url(${myParticipation.tournament.gameImg})`"></div>
+        <div v-if="myParticipation.tournament.creatorId == account.id">
+          <h5 class="host-badge">HOST</h5>
+        </div>
         <div class="card-custom-avatar">
-          <img class="img-fluid" :src="myParticipation.profile.picture" :alt="myParticipation.profile.name" />
+          <img class="img-fluid" :src="myParticipation.tournament.coverImg" :alt="myParticipation.tournament.gameName" />
         </div>
         <!--SECTION * * * CARD BODY * * * ------------->
         <div class="card-body" style="overflow-y: auto">
           <h4 class="card-title"> {{ myParticipation.tournament.name }} </h4>
           <p class="card-text">{{ myParticipation.tournament.category }}</p>
-          <p class="card-text text-end" style="font-weight: 650;">Spots Filled: {{ myParticipation.tournament.participantCount }} / {{ myParticipation.tournament.capacity }} </p>
+          <p class="card-text text-end" style="font-weight: 650;">Spots Filled: {{ participants.length }} / {{ myParticipation.tournament.capacity }} </p>
           <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash prize!</p>
           <p class="card-text">{{ myParticipation.tournament.description }}</p>
         </div>
@@ -48,7 +50,7 @@
   </div>
   <div v-if="myParticipation.tournament.isCancelled">
     <div class="row">
-      <p class="cancelled-text text-center">{{ myParticipation.tournament.name }} was cancelled.</p>
+      <p class="cancelled-text text-center"> {{ myParticipation.tournament.name }} was cancelled.</p>
       <div class="cancelled-tournament">
         <div class="card bg-dark text-light mb-3" role="button" @click="myJoinedTournaments" style="filter: blur(3px);">
           <div class="row g-0">
@@ -72,6 +74,7 @@ import { computed } from 'vue'
 import { logger } from "../utils/Logger"
 import { participantsService } from "../services/ParticipantsService"
 import Pop from "../utils/Pop.js"
+// import { Tournament } from "../models/Tournament.js"
 
 export default {
 
@@ -85,10 +88,10 @@ export default {
 setup(props) {
 
   return {
-
+    tournament: computed(() => AppState.tournaments),
     isCancelled: computed(() => AppState.myParticipation.tournament.isCancelled),
     account: computed(() => AppState.account),
-
+    participants: computed(() => AppState.participants),
     myJoinedTournaments() {
       router.push({ name: 'TournamentDetails',
                     params: { tournamentId: props.myParticipation.tournament.id }
@@ -125,6 +128,39 @@ setup(props) {
   aspect-ratio: 1/.5;
   box-shadow: 0 0 15px 15px #000000;
   filter: drop-shadow(0 0 15px 15px #000000);
+}
+
+.host-badge {
+  padding: .25rem;
+  text-align: center;
+  background-color: gold;
+  color: aliceblue;
+  text-shadow: 1px 1px 3px #000000;
+  border-radius: 3rem;
+  width: 5.25vw;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-image: linear-gradient(linear, left top, right top, color-stop(0%, #1e0a0a00), color-stop(25%, #1e0a0a00), color-stop(60%, #fff6b0d9), color-stop(100%, #1e0a0a00));
+  background-image: linear-gradient(120deg, #1e0a0a00 0%, #1e0a0a00 25%, #fff6b0d9 60%, #1e0a0a00 100%);
+  background-repeat: repeat-y;
+  background-position: -100px 0;
+  animation: goldShimmer 6s linear infinite;
+}
+
+@keyframes goldShimmer {
+
+  0% {
+    background-position: -800px 0
+  }
+
+  50% {
+    background-position: -200px 0
+  }
+
+  100% {
+    background-position: 100px 0
+  }
 }
 
 .card-custom {
