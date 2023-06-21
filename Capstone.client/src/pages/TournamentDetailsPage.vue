@@ -3,11 +3,11 @@
   <section class="container-fluid bg-details">
     <div class="row">
       <div v-if="!tournament.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase">
-        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;">{{ tournament.name
+        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{ tournament.name
         }} ({{ tournament.type }}) </p>
         <div class="row justify-content-center">
           <div class="col-12">
-            <p class="ms-5 ps-3 mt-0 " style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{
+            <p class="ms-5 ps-3 mt-0" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{
               tournament.location }} </p>
             <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 650; font-style: italic;">BE THERE ON
               {{

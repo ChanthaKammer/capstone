@@ -47,45 +47,6 @@
         </div>   
   </section>
 
-
-          
-
-
-              <!-- DISPLAYS FORMATTED DATE OF WHEN THE TOURNAMENT IS OCCURRING -->
-              <!-- <p class="card-text" style="font-weight: 650;">
-                Date of Tournament: {{ 
-                  new Date( tournament.startDate )
-                  .toLocaleDateString('en-US', {
-                    year: 'numeric', 
-                    month: 'short', 
-                    day: 'numeric
-                  }) }} 
-              </p> -->
-
-              <!-- DISPLAYS FORMATTED DATE FOR PREVIOUS UPDATE BY TOURNAMENT CREATOR -->
-              <!-- <p class="card-text">
-                <small class="card-text" style="font-weight: 650;">
-                  Last Updated on: {{ 
-                    new Date( tournament.updatedAt )
-                    .toLocaleDateString('en-US', {
-                      year: 'numeric', 
-                      month: 'short', 
-                      day: 'numeric'
-                    }) }}
-                </small>
-              </p> -->
-
-              <!-- DISPLAYS CURRENT FORMATTED DATE -->
-              <!-- <p class="card-text text-end" style="font-weight: 650;"> Created on: {{ 
-                new Date( tournament.createdAt )
-                .toLocaleDateString('en-US', {
-                   year: 'numeric', 
-                   month: 'short', 
-                   day: 'numeric'
-                  }) }}
-              </p> -->
-
-
 </template>
 
 <script>
