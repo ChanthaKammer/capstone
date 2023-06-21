@@ -112,7 +112,7 @@
         <div v-if="!isParticipant">
           <RGBButton buttonText="Join the Tournament!" @click="joinTournament" />
         </div>
-        <div v-else="">
+        <div v-else>
           <RGBButton buttonText="Leave Tournament!" @click="leaveTournament" />
         </div>
       </div>
@@ -204,8 +204,11 @@ export default {
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
       isParticipant: computed(() => {
-        const foundParticipant = AppState.participants?.find(p => p.accountId == AppState.account?.id);
-        return foundParticipant;
+        
+        if(AppState.myParticipations.find(p => p.tournamentId == AppState.activeTournament.id)){
+          return true;
+        }
+        return false
       }),
       comments: computed(() => AppState.comments),
       async createComment() {
@@ -244,16 +247,18 @@ export default {
           const tournyId = route.params.tournamentId
           const participant = await participantsService.createParticipant({ tournamentId: tournyId })
           logger.log(participant)
-          await this.getParticipants()
+          // await this.getParticipants()
 
         }
       } catch (error) {
         logger.log(error);
       }
     }
-    async function leaveTournament(){
+    async function leaveTournament() {
       try {
-        await participantsService.leaveTournament(AppState.activeTournament.id)
+        const foundParticipant = AppState.myParticipations.find(p => AppState.activeTournament.id == p.tournamentId)
+        logger.log("[FOUND PARTICIPANT OBJECT]", foundParticipant)
+        await participantsService.leaveTournament(foundParticipant.id)
       } catch (error) {
         logger.log(error);
       }
