@@ -24,7 +24,7 @@
     </section> -->
 
     <!-- SECTION my tournaments -->
-    <section class="row pt-5">
+    <section class="row">
       <div class="col-12">
         <h3 class="ps-5 fw-bold"></h3>
       </div>
@@ -55,7 +55,7 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                   aria-label="Slide 3"></button>
               </div>
-              <div class="carousel-inner">
+              <div class="carousel-inner p-5">
                 <div class="carousel-item active">
                   <img
                     src="https://th.bing.com/th/id/R.f645b78e51a192cb4e9caa4aac6c0875?rik=ZTglhfD9mmwNIA&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fgod-of-war-image.jpg&ehk=D%2bfse8wLp7FcFA%2bqBBv%2bCP0fIUGXa8YSkuFKGmU83yk%3d&risl=&pid=ImgRaw&r=0"
