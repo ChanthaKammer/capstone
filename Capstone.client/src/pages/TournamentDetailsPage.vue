@@ -1,6 +1,6 @@
 <!-- <TournamentDetailsCard /> -->
 <template>
-  <section class="container-fluid bg-img">
+  <section class="container-fluid bg-animated">
 
     <div class="row">
       <div v-if="!tournament.isCancelled" class="col-12 col-md-6 mt-4 text-light text-uppercase">
@@ -117,10 +117,6 @@
         </div>
       </div>
     </div>
-    <div class="col-12 bg-img" style="height: 50px; width: 100%; opacity: .9; filter: blur(10px) brightness(.8);"></div>
-
-
-
     <div class="row justify-content-center p-4">
       <div class="col-6">
         <form @submit.prevent="createComment()">
@@ -272,7 +268,32 @@ export default {
 
 </script>
 
+
 <style scoped lang="scss">
+.bg-animated {
+  background: linear-gradient(272deg, #662466, #ae76ae, #6fbce8);
+  background-size: 600% 600%;
+
+  -webkit-animation: bg-animated 0s ease infinite;
+  -moz-animation: bg-animated 0s ease infinite;
+  animation: bg-animated 0s ease infinite;
+}
+
+@-webkit-keyframes bg-animated {
+  0%{background-position:0% 61%}
+  50%{background-position:100% 40%}
+  100%{background-position:0% 61%}
+}
+@-moz-keyframes bg-animated {
+  0%{background-position:0% 61%}
+  50%{background-position:100% 40%}
+  100%{background-position:0% 61%}
+}
+@keyframes bg-animated {
+  0%{background-position:0% 61%}
+  50%{background-position:100% 40%}
+  100%{background-position:0% 61%}
+}
 h1,
 h2,
 h3,
