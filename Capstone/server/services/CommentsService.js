@@ -13,6 +13,11 @@ class CommentsService{
     return comments
   }
   
+  
+  async getAccountComments(creatorId) {
+    const comments = await dbContext.Comments.find({ creatorId }).populate('tournament creator')
+  }
+  
   async deleteComment(commentId, userId) {
     const comment = await dbContext.Comments.findById(commentId).populate('creator')
     if (!comment) throw new BadRequest('No comment by that ID')
