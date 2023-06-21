@@ -1,6 +1,6 @@
 <template>
-  <section v-if="account" class="container-fluid bg-main p-0">
-    <div class="row justify-content-center align-items-center shadow elevation-5 bg-inner">
+  <section v-if="account" class="container-fluid p-0 bg-background">
+    <div class="row justify-content-center align-items-center shadow elevation-5">
       <div>
           <div class="row">
             <div class="col-12 mx-auto">
@@ -59,9 +59,7 @@
                           </div>
                         </div>
                       </div>
-
                     </div>
-
                 </div>
 
                 <div class="d-flex justify-content-end text-center">
@@ -77,7 +75,7 @@
 
                 <div class="bio-box">
                   <p class="ps-5 pt-5 pb-0" style="font-size: 2rem; font-weight: 600; color: aliceblue;"> {{ account.gamerTag }}'s Bio: </p>
-                  <div class="p-5 mx-5 mb-5 bio">
+                  <div class="p-5 mx-5 mb-5 bio rounded-4 bg-light">
                     <p> {{ account.bio }} </p>
                   </div>
                 </div>
@@ -101,7 +99,7 @@
 
                   <div class="py-4">
                     <h5 class="mb-3 comment-header">Recent posts</h5>
-                    <div class="p-4 bg-comments rounded shadow-sm">
+                    <div class="p-4 rounded shadow-sm">
                       <div class="col-8 my-4" v-for="c in comments" :key="c.id">
                         <CommentCard :comment="c"/>
                       </div>
@@ -200,12 +198,19 @@ export default {
 
 <style scoped lang="scss">
 
+.bg-background{
+  background-color: #374466;
+  filter: drop-shadow(0 0 15px 15px #152A6108);
+  box-shadow: 0 0 15px #152A6108;
+  animation: colorChange 15s infinite;
+}
+
 .bio {
   background-color: #2f395d76;
   color: aliceblue;
   font-weight: 550;
   text-shadow: 2px 2px 5px #000000;
-  box-shadow: 0 0 10px 10px #38506e9f inset;
+  box-shadow: 0 0 10px 10px #38506e26 inset;
 }
 
 .bg-main {
