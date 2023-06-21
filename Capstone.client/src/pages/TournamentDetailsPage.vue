@@ -310,6 +310,9 @@ export default {
 
 
 <style scoped lang="scss">
+.bg-background{
+  background-color: #4a70e196
+}
 .bg-details {
   background-color: #374466;
   filter: drop-shadow(0 0 15px 15px #152A6108);
