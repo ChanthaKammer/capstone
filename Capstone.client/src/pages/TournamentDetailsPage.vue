@@ -7,9 +7,9 @@
         }} ({{ tournament.type }}) </p>
         <div class="row justify-content-center">
           <div class="col-12">
-            <p class="ms-5 ps-3 mt-0" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{
+            <p class="ms-5 ps-3 mt-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">@ {{
               tournament.location }} </p>
-            <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 650; font-style: italic;">BE THERE ON
+            <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">BE THERE ON
               {{
                 new Date(tournament.startDate)
                   .toLocaleDateString('en-US', {
