@@ -1,6 +1,6 @@
 <template>
 <div class="row bg-background rounded-4 elevation-3 mb-3">
-  <div class="comment-bottom p-2 px-4" style="">
+  <div class="comment-bottom p-2 px-4 rounded" style="">
     <div class="d-flex flex-row add-comment-section mt-1 mb-4">
   </div>
 
@@ -8,7 +8,7 @@
       class="commented-section mt-2 ps-4">
       <div class="d-flex flex-row  align-items-center commented-user">
         <span class="mb-1">
-          <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid rounded-circle" style="max-height: 50px;">
+          <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid comment-pfp" style="max-height: 50px;">
         </span>
         <h5 class="me-2"> {{ comment.creator.name }} </h5>
         <span style="color: darkblue;" class="mb-1 ms-2"> {{
@@ -83,7 +83,17 @@ export default {
 .bg-background{
   background-color: #374466
 }
-
+.comment-bottom{
+  background-color: #374466
+}
+.comment-pfp{
+  aspect-ratio: 1/1;
+  min-width: 4rem;
+  max-width: 4rem;
+  min-height: 4rem;
+  max-height: 4rem;
+  border-radius: 50%;
+}
 span {
   text-shadow: 1px 1px 2px white;
   font-weight: 650;
