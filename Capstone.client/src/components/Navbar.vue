@@ -62,8 +62,8 @@ export default {
 <style scoped>
 
 .bg-navbar {
-  background-color: #006e8cad;
-  filter: drop-shadow(0px .5rem 1rem #0b0d1248);
+  background-color: #18a7aaad;
+  filter: drop-shadow(0px .5rem 1rem #ffffff48);
 } 
 
 a:hover {
