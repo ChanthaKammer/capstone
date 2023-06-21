@@ -135,7 +135,7 @@
                               <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="editAccountLabel">Edit Tournament</h1>
+                                    <h1 class="modal-title fs-5" id="editTournamentLabel">Edit Tournament</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body justify-content-center">
@@ -299,7 +299,14 @@ export default {
         }
       },
 
-
+      async editTournament(){
+      try{
+        const tournamentId = route.params.tournamentId;
+        await tournamentsService.editTournament(tournamentId, editable.value)
+      } catch (error) {
+        Pop.error(error)
+      }
+    }
     }
 
     async function getParticipants() {
