@@ -67,15 +67,16 @@
 // import Pop from '../utils/Pop.js';
 // import { AppState } from '../AppState.js';
 // import { logger } from '../utils/Logger.js';
+import { computed } from "vue";
 import { Game } from "../models/Game.js";
+import { ref } from "vue";
 export default {
    props: {
       game: { type: Game, required: true },
    },
    setup() {
-
       return {
-
+         
       }
    }
 }
