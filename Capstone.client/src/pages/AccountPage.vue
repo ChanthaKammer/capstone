@@ -12,9 +12,9 @@
                     <div class="profile pt-5" style="margin-right: 25vw;">
                       <div class="row media-body pt-5 text-white">
                         <div class="col-3" style="position: absolute; top: 22rem;">
-                          <img :src="account.picture" :alt="account.name" class="img-fluid" style="max-width: 150px; min-width:100px;">
+                          <img :src="account.picture" :alt="account.name" class="img-fluid profile-img" style="max-width: 150px; min-width:100px;">
                         </div>
-                        <div class="col-3" style="position: absolute; top: 25rem; left: 9.75rem;">
+                        <div class="col-3 name-tag" style="position: absolute; top: 25rem; left: 9.75rem;">
                           <h4 class="my-0 mx-4"> {{ account.name }} </h4>
                           <div class="row">
                             <div class="col-12">
@@ -321,9 +321,29 @@ img {
   ul {
     margin-top: 7rem;
   }
+  .profile-img {
+    max-width: 20vw !important;
+    margin-top: 3rem;
+  }
   .neon-button {
-    width: 40vw !important;
+    margin-top: 6rem !important;
+    width: 20vw !important;
     
+  }
+}
+
+@media (min-width: 1600px) {
+
+  .profile-img {
+    max-width: 10vw !important;
+    margin-top: 3rem;
+  }
+  .neon-button {
+    margin-top: 9rem !important;
+  }
+  .name-tag {
+    margin-left: 3rem;
+    margin-top: 5rem;
   }
 }
 
