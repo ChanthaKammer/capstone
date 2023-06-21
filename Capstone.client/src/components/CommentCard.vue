@@ -99,8 +99,8 @@ img{
 }
 
 .bg-comments {
-  background-color: #d8eaff;
-  box-shadow: inset 0px -100px 150px #11245e36;
+  background-color: #9ab3d000;
+  box-shadow: inset 0px -50px 80px #11245ebc;
 }
 
 .comment-text {
