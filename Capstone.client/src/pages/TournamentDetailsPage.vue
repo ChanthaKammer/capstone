@@ -388,9 +388,6 @@ export default {
 .pfp{
   aspect-ratio: 1/1;
   min-width: 4rem;
-  
-  // height: 4rem;
-  // width: 4rem;
 }
 
 h1,

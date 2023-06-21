@@ -8,7 +8,9 @@
       class="commented-section mt-2 ps-4">
       <div class="d-flex flex-row  align-items-center commented-user">
         <span class="mb-1">
-          <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid object-fit-cover comment-pfp" style="max-height: 50px;">
+          <router-link :to="{name: 'Profile', params: { profileId: comment.creatorId }}">
+            <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid comment-pfp" style="max-height: 50px;">
+          </router-link>
         </span>
         <h5 class="me-2"> {{ comment.creator.name }} </h5>
         <span style="color: darkblue;" class="mb-1 ms-2"> {{
