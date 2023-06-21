@@ -1,6 +1,6 @@
 <!-- <TournamentDetailsCard /> -->
 <template>
-  <section class="container-fluid bg-animated">
+  <section class="container-fluid bg-details">
     <div class="row">
       <div v-if="!tournament.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase">
         <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;">{{ tournament.name
@@ -283,29 +283,11 @@ export default {
 
 
 <style scoped lang="scss">
-.bg-animated {
-  background: linear-gradient(272deg, #662466, #ae76ae, #6fbce8);
-  background-size: 600% 600%;
-
-  -webkit-animation: bg-animated 0s ease infinite;
-  -moz-animation: bg-animated 0s ease infinite;
-  animation: bg-animated 0s ease infinite;
-}
-
-@-webkit-keyframes bg-animated {
-  0%{background-position:0% 61%}
-  50%{background-position:100% 40%}
-  100%{background-position:0% 61%}
-}
-@-moz-keyframes bg-animated {
-  0%{background-position:0% 61%}
-  50%{background-position:100% 40%}
-  100%{background-position:0% 61%}
-}
-@keyframes bg-animated {
-  0%{background-position:0% 61%}
-  50%{background-position:100% 40%}
-  100%{background-position:0% 61%}
+.bg-details{
+  background-color: #374466;
+  filter: drop-shadow(0 0 15px 15px #152A6108);
+  box-shadow: 0 0 15px #152A6108;
+  animation: colorChange 15s infinite;
 }
 h1,
 h2,
