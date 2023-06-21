@@ -119,7 +119,8 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center p-4">
+    <div class="row p-4 ps-5 bg-dark justify-content-center">
+      <h1 class="text-center pb-4">Comments</h1>
       <div class="col-6 card p-3 rounded-3 elevation-3">
         <form @submit.prevent="createComment()">
           <div v-if="account" class="d-flex align-items-center mb-2">
@@ -133,8 +134,8 @@
         </form>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12" v-for="c in comments" :key="c.id">
+    <div class="row justify-content-center bg-dark">
+      <div class="col-md-8" v-for="c in comments" :key="c.id">
         <CommentCard :comment="c" />
       </div>
     </div>
@@ -277,10 +278,6 @@ export default {
 
 
 <style scoped lang="scss">
-
-* {
-  border: 1px solid green
-}
 .bg-animated {
   background: linear-gradient(272deg, #662466, #ae76ae, #6fbce8);
   background-size: 600% 600%;
