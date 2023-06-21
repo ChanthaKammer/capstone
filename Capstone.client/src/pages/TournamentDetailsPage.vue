@@ -119,7 +119,7 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center p-4">
+    <div class="row p-4 ps-5">
       <div class="col-6 card p-3 rounded-3 elevation-3">
         <form @submit.prevent="createComment()">
           <div v-if="account" class="d-flex align-items-center mb-2">
@@ -277,10 +277,6 @@ export default {
 
 
 <style scoped lang="scss">
-
-* {
-  border: 1px solid green
-}
 .bg-animated {
   background: linear-gradient(272deg, #662466, #ae76ae, #6fbce8);
   background-size: 600% 600%;

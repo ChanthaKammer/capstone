@@ -5,7 +5,7 @@
   </div>
 
       <div
-      class="commented-section mt-2 ps-5">
+      class="commented-section mt-2 ps-4">
       <div class="d-flex flex-row align-items-center commented-user">
         <span class="mb-1">
           <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid rounded-circle" style="max-height: 50px;">
@@ -100,7 +100,7 @@ img{
 
 .bg-comments {
   background-color: #9ab3d000;
-  box-shadow: inset 0px -50px 80px #11245ebc;
+  box-shadow: inset 0px -50px 80px #11245e00;
 }
 
 .comment-text {
