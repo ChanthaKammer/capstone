@@ -1,5 +1,5 @@
 <template>
-<div class="row card rounded-3 elevation-3 mb-3">
+<div class="row card rounded-4 elevation-3 mb-3">
   <div class="comment-bottom bg-comments p-2 px-4" style="">
     <div class="d-flex flex-row add-comment-section mt-1 mb-4">
   </div>
