@@ -225,6 +225,7 @@ import TournamentCountdown from '../components/TournamentCountdown.vue';
 import RGBButton from '../components/RGBButton.vue';
 import { commentsService } from "../services/CommentsService.js";
 import { Modal } from 'bootstrap';
+import ParticipantCard from "../components/ParticipantCard.vue";
 
 export default {
 
