@@ -108,11 +108,12 @@
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
         <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 40vw;"
-          alt="StarShipCitizen">
+        alt="">
+        <RGBButton @click="joinTournament" />
       </div>
     </div>
     <div class="col-12 bg-img" style="height: 50px; width: 100%; opacity: .9; filter: blur(10px) brightness(.8);"></div>
-  
+    
   
       <div class="row justify-content-center bg-comments p-2 py-5">
         <div class="col-md-8">
@@ -160,12 +161,14 @@ import Pop from '../utils/Pop';
 // import TournamentDetailsCard from '../components/TournamentDetailsCard.vue';
 import { useRoute } from 'vue-router';
 import TournamentCountdown from '../components/TournamentCountdown.vue';
+import RGBButton from '../components/RGBButton.vue';
 import { commentsService } from "../services/CommentsService.js";
 
 export default {
 
   components: {
-    TournamentCountdown
+    TournamentCountdown,
+    RGBButton
   },
 
   setup() {
@@ -191,6 +194,7 @@ export default {
 
     }
     return {
+      joinTournament,
       commentData,
       route,
       account: computed(() => AppState.account),
@@ -212,7 +216,9 @@ export default {
       } catch (error) {
         logger.log(error);
       }
-    }
+    },
+    
+
     }
 
     async function getParticipants() {
@@ -224,7 +230,20 @@ export default {
       }
     }
 
-
+    async function joinTournament(){
+      try {
+        
+        if (AppState.account.id.length > 1) {
+          const tournyId = route.params.tournamentId
+          const accountId = AppState.account.id
+          const participant = await participantsService.createParticipant({tournamentId: tournyId})
+          logger.log(participant)
+          await this.getParticipants
+        }
+      } catch (error) {
+        logger.log(error);
+      }
+    }
     async function getCommentsByTournamentId() {
       try {
         const tournamentId = route.params.tournamentId;
@@ -240,9 +259,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-* {
-  border: 1px solid green
-}
+
 h1,
 h2,
 h3,
