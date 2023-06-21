@@ -4,6 +4,7 @@ import BaseController from '../utils/BaseController'
 import { participantsService } from '../services/ParticipantsService.js'
 import { rewardsService } from '../services/RewardsService.js'
 import { logger } from "../utils/Logger.js"
+import { commentsService } from '../services/CommentsService.js'
 
 export class AccountController extends BaseController {
   constructor() {
@@ -13,6 +14,7 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
       .get('/participants', this.getAccountParticipations)
       .get('/rewards', this.getAccountRewards)
+      .get('/comments', this.getAccountComments)
       .put('', this.updateAccount)
   }
   async updateAccount(req, res, next) {
@@ -50,6 +52,16 @@ export class AccountController extends BaseController {
       return res.send(rewards)
     } catch (error) {
         next(error)
+    }
+  }
+
+  async getAccountComments(req, res, next){
+    try {
+      const creatorId = req.userInfo.id
+      const comments = await commentsService.getAccountComments(creatorId)
+      return res.send(comments)
+    } catch (error) {
+      next(error)
     }
   }
 }

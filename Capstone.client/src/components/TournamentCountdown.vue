@@ -76,14 +76,14 @@ span {
   font-size: 1rem;
   font-weight: 500;
   color: #ffffff75;
-  text-shadow: 0 0 10px #000;
+  
 }
 
 .count-title {
   font-size: 2rem;
   font-weight: 500;
   color: #ffffff;
-  text-shadow: 0 0 10px #000;
+
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -99,7 +99,7 @@ span {
   background-color: #0811124f;
   filter: drop-shadow(0 0 10px #000);
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
   transform: translateY(100px);
 }
 
@@ -109,10 +109,10 @@ span {
   font-family: 'Orbitron', sans-serif;
   line-height: 100px;
   font-weight: bold;
-  color: #aa0000f0;
-  filter: drop-shadow(0 0 5px #000051ad);
+  color: #45bdd0f0;
+
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+
   transition: 1s;
 }
 

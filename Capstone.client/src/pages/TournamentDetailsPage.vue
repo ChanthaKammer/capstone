@@ -1,14 +1,13 @@
 <!-- <TournamentDetailsCard /> -->
 <template>
-  <section class="container-fluid bg-img">
-
+  <section class="container-fluid bg-animated">
     <div class="row">
-      <div v-if="!tournament.isCancelled" class="col-12 col-md-6 mt-4 text-light text-uppercase">
+      <div v-if="!tournament.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase">
         <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;">{{ tournament.name
         }} ({{ tournament.type }}) </p>
-        <div class="row">
+        <div class="row justify-content-center">
           <div class="col-12">
-            <p class="ms-5 ps-3 mt-0 pb-3" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{
+            <p class="ms-5 ps-3 mt-0 " style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{
               tournament.location }} </p>
             <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 650; font-style: italic;">BE THERE ON
               {{
@@ -25,19 +24,22 @@
                     minute: 'numeric'
                   }) }}
             </p>
+          <div v-if="tournament.startDate" class="pb-5">
+            <TournamentCountdown />
+          </div>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
-        <img :src="tournament.coverImg" class="img-fluid" style="min-height: 50vh;">
+        <img :src="tournament.coverImg" class="img-fluid rounded-3 starship-img" style="min-height: 50vh;">
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-12 pb-5">
           <div v-if="tournament.startDate" class="pb-5">
             <TournamentCountdown />
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!--NOTE This section conditionally renders the status of the tournament
@@ -90,7 +92,7 @@
             <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 2px 2px #ffffff;">Top Player Team</p>
           </div>
           <div class="col-6 col-md-3">
-            <h1>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h1>
+            <h2>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
           </div>
           <div>
             <div class="row">
@@ -117,19 +119,16 @@
         </div>
       </div>
     </div>
-    <div class="col-12 bg-img" style="height: 50px; width: 100%; opacity: .9; filter: blur(10px) brightness(.8);"></div>
-
-
-
     <div class="row justify-content-center p-4">
-      <div class="col-6">
+      <div class="col-6 card p-3 rounded-3 elevation-3">
         <form @submit.prevent="createComment()">
-          <div v-if="account" class="d-flex justify-content-center align-items-center mb-2">
+          <div v-if="account" class="d-flex align-items-center mb-2">
             <img :src="account.picture" class="img-fluid img-responsive rounded-circle me-2" width="38">
-            <textarea v-model="commentData" class="text-area w-100"></textarea>
+            <h3>{{ account.name }}</h3>
           </div>
           <div class="text-end">
-            <button type="submit" class="mb-1 transparent-button">Post comment</button>
+            <textarea v-model="commentData" class="text-area w-100 rounded-3"></textarea>
+            <button type="submit" class="mb-1 transparent-button rounded-2">Post comment</button>
           </div>
         </form>
       </div>
@@ -256,9 +255,8 @@ export default {
     }
     async function leaveTournament() {
       try {
-        const foundParticipant = AppState.myParticipations.find(p => AppState.activeTournament.id == p.tournamentId)
-        logger.log("[FOUND PARTICIPANT OBJECT]", foundParticipant)
-        await participantsService.leaveTournament(foundParticipant.id)
+        const participant = AppState.participants.find(p=> p.tournamentId == AppState.activeTournament.id && p.accountId == AppState.user.id)
+        await participantsService.leaveTournament(participant.id)
       } catch (error) {
         logger.log(error);
       }
@@ -277,7 +275,36 @@ export default {
 
 </script>
 
+
 <style scoped lang="scss">
+
+* {
+  border: 1px solid green
+}
+.bg-animated {
+  background: linear-gradient(272deg, #662466, #ae76ae, #6fbce8);
+  background-size: 600% 600%;
+
+  -webkit-animation: bg-animated 0s ease infinite;
+  -moz-animation: bg-animated 0s ease infinite;
+  animation: bg-animated 0s ease infinite;
+}
+
+@-webkit-keyframes bg-animated {
+  0%{background-position:0% 61%}
+  50%{background-position:100% 40%}
+  100%{background-position:0% 61%}
+}
+@-moz-keyframes bg-animated {
+  0%{background-position:0% 61%}
+  50%{background-position:100% 40%}
+  100%{background-position:0% 61%}
+}
+@keyframes bg-animated {
+  0%{background-position:0% 61%}
+  50%{background-position:100% 40%}
+  100%{background-position:0% 61%}
+}
 h1,
 h2,
 h3,
@@ -345,7 +372,7 @@ h6 {
 .starship-img:hover {
   filter: brightness(1.2);
   transition: 0.5s;
-  box-shadow: 0px 0px 10px 10px #000000;
+  box-shadow: 0px 0px 10px 10px #10a5a548;
 }
 
 .bg-pending {
