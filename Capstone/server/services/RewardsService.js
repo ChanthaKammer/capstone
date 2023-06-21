@@ -24,6 +24,7 @@ class RewardsService {
     }
     async getAccountRewards(accountId) {
         const rewards = await dbContext.Rewards.find({accountId}).populate('tournament participant')
+        .sort({createdAt: -1})
         if(!rewards){
             throw new BadRequest("This account has no rewards.")
         }
@@ -31,6 +32,7 @@ class RewardsService {
     }
     async getProfileRewards(profileId) {
       const rewards = await dbContext.Rewards.find({accountId: profileId})
+      .sort({createdAt: -1})
       if(!rewards){
         throw new BadRequest("This profile has no rewards.")
       }
