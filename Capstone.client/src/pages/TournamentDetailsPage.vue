@@ -123,9 +123,55 @@
             </div>
           </div>
           <div v-if="isTournamentCreator">
-            <RGBButton buttonText="Cancel Tournament" @click="cancelTournament" />
+            <RGBButton buttonText="Cancel Tournament" />
           </div>
-
+          <div>
+            <RGBButton buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
+            <button class="btn neon-button mt-5" style="position: absolute; top: 29rem; min-width: 10vw;" data-bs-toggle="modal" data-bs-target="#editTournamentModal">Edit Tournament</button>
+                        <div class="row justify-content-center">
+          
+                          <!-- Modal -->
+                          <div class="modal fade" id="editTournamentModal" tabindex="-1" aria-labelledby="editTournamentModal" aria-hidden="true">
+                              <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="editAccountLabel">Edit Tournament</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body justify-content-center">
+                                    <form @submit.prevent="editTournament()" class="col-12">
+                                      <input class="form-control mb-3" type="text" placeholder="Tournament Name" aria-label="tournamentName" v-model="editable.name">
+                                      <input class="form-control mb-3" type="text" id="tournamentAvatarImg" placeholder="Tournament Avatar Image" v-model="editable.coverImg">
+                                      <input class="form-control mb-3" type="text" id="gameImg" placeholder="Tournament Cover Image" v-model="editable.gameImg">
+                                      <input type="datetime-local" name="startDate" class="form-control mb-3" placeholder="Start Date" v-model="editable.startDate">
+                                      <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Location" v-model="editable.location">
+                                      <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Total Rounds" v-model="editable.totalRounds">
+                                      <input class="form-control mb-3" type="text" id="capacity" placeholder="Tournament Capacity" v-model="editable.capacity">
+                                      <select class="form-select mb-3" aria-label="Tournament Type" v-model="editable.type">
+                                        <option selected value="match" disabled>Match Type</option>
+                                        <option value="online">Online</option>
+                                        <option value="local">Local</option>
+                                      </select>
+                                      <textarea class="form-control mb-3" id="tournamentDescription" rows="3" placeholder="Tournament Description" v-model="editable.description"></textarea>
+                                      <select class="form-select mb-3" aria-label="Tournament Age Rating" v-model="editable.ageRating">
+                                        <option selected value="rating" disabled>Group Age Rating</option>
+                                        <option value="Everyone">Everyone</option>
+                                        <option value="Teen">Teen</option>
+                                        <option value="Adult">Adult</option>
+                                      </select>
+                                      <input class="form-control mb-3" type="number" placeholder="Max Teams" aria-label="maxTeams" min="1" v-model="editable.maxTeams">
+                                      <input class="form-control mb-3" type="text" id="tournamentMoney" placeholder="Tournament Money Prize" v-model="editable.reward">
+                                      <input class="form-control mb-3" type="text" id="firstPlaceBadge" placeholder="First Place Badge" v-model="editable.firstPlaceBadge">
+                                      <input class="form-control mb-3" type="text" id="secondPlaceBadge" placeholder="Second Place Badge" v-model="editable.secondPlaceBadge">
+                                      <input class="form-control mb-3" type="text" id="thirdPlaceBadge" placeholder="Third Place Badge" v-model="editable.thirdPlaceBadge">
+                                      <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
+                                    </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+          </div>
         </div>
 
       </div>
@@ -172,6 +218,7 @@ import { participantsService } from '../services/ParticipantsService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 // import TournamentDetailsCard from '../components/TournamentDetailsCard.vue';
+import { watchEffect} from 'vue';
 import { useRoute } from 'vue-router';
 import TournamentCountdown from '../components/TournamentCountdown.vue';
 import RGBButton from '../components/RGBButton.vue';
@@ -186,8 +233,11 @@ export default {
 
   setup() {
     const commentData = ref('')
+    const editable = ref({})
     const route = useRoute();
-
+    watchEffect(() => {
+        editable.value = { ...AppState.activeTournament }
+    })
     onMounted(() => {
       setActiveTournament();
       getParticipants();
@@ -212,6 +262,7 @@ export default {
       joinTournament,
       commentData,
       route,
+      editable,
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
