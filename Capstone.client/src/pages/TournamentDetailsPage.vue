@@ -96,15 +96,8 @@
           </div>
           <div>
             <div class="row">
-              <div class="col-12 d-flex align-items-baseline">
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: red;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: red;"></i>
-              </div>
-              <div class="col-md-3" v-for="p in participants" :key="p.id">
+              <div class="col-12 col-md-3" v-for="p in participants" :key="p.id">
+             
                 <ParticipantCard :participant="p" />
               </div>
               
@@ -130,7 +123,7 @@
             <RGBButton buttonText="Cancel Tournament" />
           </div>
           <div v-if="isTournamentCreator">
-            <RGBButton buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
+            <RGBButton class="" buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
             <button class="btn neon-button mt-5" style="position: absolute; top: 29rem; min-width: 10vw;" data-bs-toggle="modal" data-bs-target="#editTournamentModal">Edit Tournament</button>
             <div class="row justify-content-center">
 
@@ -139,7 +132,7 @@
                   <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="editTournamentLabel">Edit Tournament</h1>
+                        <h1 class="modal-title fs-5" id="editTournamentLabel"></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body justify-content-center">

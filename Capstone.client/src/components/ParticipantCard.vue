@@ -1,13 +1,13 @@
 <template>
- <section class="container-fluid">
-    <div class="row">
-      <p class="text-white">WE'RE GOING!</p>
-      <div class="col-md-1 pb-4">
-        <img class="rounded-circle participants" :src="participant.profile.picture" alt="">
+
+    
+      
+      <!-- <div class="col-1 col-md-1 pb-2"> -->
+        <img class="pfp rounded" :src="participant.profile.picture" alt="">
         <p class="text-white">{{ participant.profile.name }}</p>
-      </div>
-    </div>
-  </section>
+      <!-- </div> -->
+   
+
 </template>
 
 
@@ -30,5 +30,9 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.pfp{
+  aspect-ratio: 1/1;
+  min-height: 4rem;
+  max-height: 4rem;
+}
 </style>
