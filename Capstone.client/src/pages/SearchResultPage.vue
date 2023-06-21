@@ -1,6 +1,6 @@
 <template>
    <section v-if="game" class="container-fluid pt-3 bg-background">
-         <h1 class="text-center mobile-results">Search Results for "{{ query }}"</h1>
+         <h1 class="text-center mobile-results text-white">Search Results for "{{ query }}"</h1>
          <div class="row p-3 justify-content-around">
             <GameCard :game="g" class="col-md-5" v-for="g in games" :key="g.slug"/>
          </div>
