@@ -11,7 +11,7 @@
             <h4 class="card-title"> {{ tournament.name }} </h4>
             <p class="card-text">{{ tournament.category }}</p>
             <p class="card-text text-end" style="font-weight: 650;">Spots Filled: {{ tournament.participantCount }} / {{ tournament.capacity }} </p>
-            <p class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash prize!</p>
+            <p  v-if="tournament.description.length <= 20" class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash prize!</p>
             <p class="card-text">{{ tournament.description }}</p>
           </div>
           <!--SECTION * * * CARD FOOTER * * * -------------------------------------------->
