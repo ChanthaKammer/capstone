@@ -20,6 +20,7 @@ class CommentsService{
   
   async getAccountComments(creatorId) {
     const comments = await dbContext.Comments.find({ creatorId }).populate('tournament creator')
+    return comments
   }
   
   async deleteComment(commentId, userId) {
