@@ -1,7 +1,5 @@
 <template>
-
-    
-      
+ 
       <!-- <div class="col-1 col-md-1 pb-2"> -->
         <img class="pfp rounded" :src="participant.profile.picture" alt="">
         <p class="text-white">{{ participant.profile.name }}</p>

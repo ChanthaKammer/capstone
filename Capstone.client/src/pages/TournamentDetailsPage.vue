@@ -2,7 +2,7 @@
 <template>
   <section class="container-fluid bg-details">
     <div class="row">
-      <div v-if="!tournament.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase">
+      <div v-if="!tournament.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase details-top">
         <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{ tournament.name
         }} ({{ tournament.type }}) </p>
         <div class="row justify-content-center">
@@ -24,7 +24,7 @@
                     minute: 'numeric'
                   }) }}
             </p>
-            <div v-if="tournament.startDate" class="pb-5">
+            <div v-if="tournament.startDate" class="pb-5 countdown-area">
               <TournamentCountdown />
             </div>
           </div>
@@ -88,15 +88,15 @@
             <h1>1st Place:</h1>
             <!-- NOTE MAKE ICON FOR CURRENT LEADER BY THEIR USER IMAGE USING THE :TITLE V-BIND METHOD ON ACTIVE TOURNAMENT WHEN LESS TIRED -->
             <i class="mdi mdi-account-circle top-player" style="font-size: 5rem;"></i>
-            <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 2px 2px #ffffff;">Top Player Name</p>
-            <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 2px 2px #ffffff;">Top Player Team</p>
+            <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 1px 1px #ffffff;">Top Player Name</p>
+            <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 1px 1px #ffffff;">Top Player Team</p>
           </div>
           <div class="col-6 col-md-3">
             <h2>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
           </div>
           <div>
             <div class="row">
-              <div class="col-12 col-md-3" v-for="p in participants" :key="p.id">
+              <div class="col-6 col-md-3" v-for="p in participants" :key="p.id">
              
                 <ParticipantCard :participant="p" />
               </div>
@@ -106,25 +106,24 @@
         </div>
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 40vw;" alt="">
+        <img :src="tournament.gameImg" class="img-fluid game-img rounded-2" style="min-width: 40vw;" alt="">
 
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-evenly">
 
 
           <div>
             <div v-if="!isParticipant">
-              <RGBButton buttonText="Join the Tournament!" @click="joinTournament" />
+              <RGBButton class="px-2 rgb-btn" buttonText="Join the Tournament!" @click="joinTournament" />
             </div>
             <div v-else>
-              <RGBButton buttonText="Leave Tournament!" @click="leaveTournament" />
+              <RGBButton class="px-2 rgb-btn" buttonText="Leave Tournament!" @click="leaveTournament" />
             </div>
           </div>
           <div v-if="isTournamentCreator">
-            <RGBButton buttonText="Cancel Tournament" />
+            <RGBButton class="px-2 rgb-btn" buttonText="Cancel Tournament" />
           </div>
           <div v-if="isTournamentCreator">
-            <RGBButton class="" buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
-            <button class="btn neon-button mt-5" style="position: absolute; top: 29rem; min-width: 10vw;" data-bs-toggle="modal" data-bs-target="#editTournamentModal">Edit Tournament</button>
+            <RGBButton class="px-2 rgb-btn" buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
             <div class="row justify-content-center">
 
               <!-- Modal -->
@@ -172,10 +171,12 @@
         </div>
 
       </div>
+
+
     </div>
     <div class="row p-4 ps-5 bg-dark justify-content-center">
       <h1 class="text-center pb-4">Comments</h1>
-      <div class="col-6 card p-3 rounded-3 elevation-5 comment-area">
+      <div class="col-12 col-md-6 card p-3 rounded-3 elevation-5 comment-area">
         <form @submit.prevent="createComment()">
           <div v-if="account" class="d-flex align-items-center mb-2">
             <img :src="account.picture" class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38">
@@ -183,7 +184,7 @@
           </div>
           <div class="text-end">
             <textarea v-model="commentData" class="text-area w-100 rounded-3 comment-box"></textarea>
-            <RGBButton buttonText="Post Comment" type="submit" />
+            <RGBButton class="mobile-rgb" buttonText="Post Comment" type="submit" />
           </div>
         </form>
       </div>
@@ -533,12 +534,33 @@ h6 {
     transform: translateX(0%);
   }
 }
-
+.rgb-btn{
+  width: 110%;
+}
 @media (max-width: 768px) {
   .mobile-results {
     margin-bottom: 0rem;
     padding-top: 6rem;
   }
-
+  .rgb-btn{
+  width: 90%;
+}
+.countdown-area{
+  display: none;
+}
+.details-top{
+  margin-top: 4rem;
+}
+.starship-img{
+  aspect-ratio: 1/1;
+  display: none;
+}
+.game-img{
+  aspect-ratio: 1/1;
+  // display: none;
+}
+.mobile-rgb{
+  width: 10rem;
+}
 }
 </style>
