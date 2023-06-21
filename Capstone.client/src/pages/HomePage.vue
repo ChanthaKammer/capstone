@@ -268,7 +268,7 @@ export default {
 .bg-carousel {
   background-color: #26553442;
   padding-bottom: 6rem;
-  filter: drop-shadow(0 0 3rem #561287fd);
+  filter: drop-shadow(0 0 3rem #56128767);
   animation: colorChange2 30s infinite;
 }
 
