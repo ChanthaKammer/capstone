@@ -24,9 +24,9 @@
                     minute: 'numeric'
                   }) }}
             </p>
-          <div v-if="tournament.startDate" class="pb-5">
-            <TournamentCountdown />
-          </div>
+            <div v-if="tournament.startDate" class="pb-5">
+              <TournamentCountdown />
+            </div>
           </div>
         </div>
       </div>
@@ -110,19 +110,19 @@
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
         <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 40vw;" alt="">
-<div>
+        <div>
+          <div v-if="!isParticipant">
+            <RGBButton buttonText="Join the Tournament!" @click="joinTournament" />
+          </div>
+          <div v-else>
+            <RGBButton buttonText="Leave Tournament!" @click="leaveTournament" />
+          </div>
+        </div>
+        <div>
+          <RGBButton buttonText="Cancel Tournament" @click="CancelTournament" />
+        </div>
 
-  <div v-if="!isParticipant">
-    <RGBButton buttonText="Join the Tournament!" @click="joinTournament" />
-  </div>
-  <div v-else>
-    <RGBButton buttonText="Leave Tournament!" @click="leaveTournament" />
-  </div>
-</div>
-<div>
-  <RGBButton buttonText="Cancel Tournament" @click="CancelTournament"/>
-</div>
-</div>
+      </div>
     </div>
     <div class="row p-4 ps-5 bg-dark justify-content-center">
       <h1 class="text-center pb-4">Comments</h1>
@@ -209,8 +209,8 @@ export default {
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
       isParticipant: computed(() => {
-        
-        if(AppState.myParticipations.find(p => p.tournamentId == AppState.activeTournament.id)){
+
+        if (AppState.myParticipations.find(p => p.tournamentId == AppState.activeTournament.id)) {
           return true;
         }
         return false
@@ -261,7 +261,7 @@ export default {
     }
     async function leaveTournament() {
       try {
-        const participant = AppState.myParticipations.find(p=> p.tournamentId == AppState.activeTournament.id)
+        const participant = AppState.myParticipations.find(p => p.tournamentId == AppState.activeTournament.id)
         await participantsService.leaveTournament(participant.id)
       } catch (error) {
         logger.log(error);
@@ -283,12 +283,13 @@ export default {
 
 
 <style scoped lang="scss">
-.bg-details{
+.bg-details {
   background-color: #374466;
   filter: drop-shadow(0 0 15px 15px #152A6108);
   box-shadow: 0 0 15px #152A6108;
   animation: colorChange 15s infinite;
 }
+
 h1,
 h2,
 h3,

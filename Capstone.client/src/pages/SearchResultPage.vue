@@ -115,4 +115,11 @@ import Pop from '../utils/Pop.js';
    box-shadow: 0 0 15px #152A6108;
    animation: colorChange 15s infinite;
 }
+@media (max-width: 768px) {
+ 
+  .mobile-results { 
+    margin-top: 5rem;
+    margin-bottom: -1rem;
+  }
+}
 </style>

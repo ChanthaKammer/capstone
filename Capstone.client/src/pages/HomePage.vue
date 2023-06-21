@@ -625,7 +625,7 @@ export default {
   }
 
   .carousel-top { 
-    margin-top: 2rem;
+    margin-top: 5rem;
     margin-bottom: -3rem;
   }
   .lighting-bar{
