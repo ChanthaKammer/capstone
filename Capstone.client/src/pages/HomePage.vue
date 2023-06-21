@@ -110,7 +110,7 @@
       <div class="col-md-6 mb-5 pe-5 neon-btn-one" style="">
         <div class="btn-group">
           <button type="button" class="btn btn-info neon-button">Highlights</button>
-          <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+          <!-- <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
             aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
@@ -122,14 +122,14 @@
               <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="#">Separated link</a></li>
-          </ul>
+          </ul> -->
         </div>
       </div>
       <div class="col-md-6 mb-5 ps-5 neon-btn-two"
         style="position: absolute; top: -3.5vh; left: 65.5%; max-width: fit-content;">
         <div class="btn-group">
           <button type="button" class="btn btn-info neon-button">Top Gamers</button>
-          <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+          <!-- <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
             aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
@@ -141,7 +141,7 @@
               <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="#">Separated link</a></li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>
@@ -294,8 +294,9 @@ export default {
 
 .neon-button,
 .dropdown-toggle {
+  color: #2bbcff;
   border: #71acff57 .125em solid;
-  text-shadow: .5px .5px .125em rgba(15, 0, 68, 0.827);
+  text-shadow: .5px .5px .125em #2bbcff;
   box-shadow: 0 0 20px 1px #49bfffe7;
   animation: pulse 3s infinite;
 }
@@ -306,7 +307,7 @@ export default {
   display: block;
   background: #2bbcff;
   top: 120%;
-  left: 0;
+  right: -15%;
   width: 130%;
   height: 100%;
   transform: perspective(1em) rotateX(40deg) scale(1, .35);
