@@ -11,7 +11,11 @@
         <form @submit.prevent="searchGames()" class="d-flex col-12 col-md-4" role="search" style="width: 40%;">
           <input class="form-control me-2 search-input" type="search" :placeholder="searchTerm" aria-label="Search" v-model="editable" style="">
           <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
-        </form> <!-- LOGIN COMPONENT HERE -->
+        </form>
+        <div v-if="user.isAuthenticated">
+          <div class="fs-4 ms-5" style="font-style: normal; color: #000000;">🪙: {{ account.gpBalance }} </div>
+        </div>
+        <!-- LOGIN COMPONENT HERE -->
         <Login />
       </div>
 
@@ -20,7 +24,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from "vue-router";
 import Login from './Login.vue';
 import { logger } from "../utils/Logger.js";
@@ -35,6 +39,9 @@ export default {
     const editable = ref('')
     return {
       editable,
+      user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
+
       async searchGames() {
         try {
           // const searchTerm = search.value
@@ -60,6 +67,10 @@ export default {
 </script>
 
 <style scoped>
+
+nav {
+  z-index: 1;
+}
 
 .bg-navbar {
   background-color: #18a7aaad;
