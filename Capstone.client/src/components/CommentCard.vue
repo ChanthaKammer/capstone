@@ -81,7 +81,7 @@ export default {
 
 <style lang="scss" scoped>
 .bg-background{
-  background-color: #3A4463
+  background-color: #374466
 }
 
 span {
