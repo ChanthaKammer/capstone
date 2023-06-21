@@ -104,7 +104,10 @@
                 <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: red;"></i>
                 <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: red;"></i>
               </div>
-              <ParticipantCard participants />
+              <div class="col-md-3" v-for="p in participants" :key="p.id">
+                <ParticipantCard :participant="p" />
+              </div>
+              
             </div>
           </div>
         </div>
