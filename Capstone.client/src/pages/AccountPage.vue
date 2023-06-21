@@ -1,6 +1,6 @@
 <template>
-  <section v-if="account" class="container-fluid bg-main p-0">
-    <div class="row justify-content-center align-items-center shadow elevation-5 bg-inner">
+  <section v-if="account" class="container-fluid p-0 bg-background">
+    <div class="row justify-content-center align-items-center shadow elevation-5">
       <div>
           <div class="row">
             <div class="col-12 mx-auto">
@@ -101,7 +101,7 @@
 
                   <div class="py-4">
                     <h5 class="mb-3 comment-header">Recent posts</h5>
-                    <div class="p-4 bg-comments rounded shadow-sm">
+                    <div class="p-4 rounded shadow-sm">
                       <div class="col-8 my-4" v-for="c in comments" :key="c.id">
                         <CommentCard :comment="c"/>
                       </div>
@@ -199,6 +199,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.bg-background{
+  background-color: #374466;
+  filter: drop-shadow(0 0 15px 15px #152A6108);
+  box-shadow: 0 0 15px #152A6108;
+  animation: colorChange 15s infinite;
+}
 
 .bio {
   background-color: #2f395d76;
