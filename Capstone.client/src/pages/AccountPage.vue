@@ -1,6 +1,6 @@
 <template>
-  <section v-if="account" class="container-fluid p-0 bg-background">
-    <div class="row justify-content-center align-items-center shadow elevation-5">
+  <section v-if="account" class="container-fluid bg-main p-0">
+    <div class="row justify-content-center align-items-center shadow elevation-5 bg-inner">
       <div>
           <div class="row">
             <div class="col-12 mx-auto">
@@ -13,6 +13,8 @@
                       <div class="row media-body pt-5 text-white">
                         <div class="col-3" style="position: absolute; top: 22rem;">
                           <img :src="account.picture" :alt="account.name" class="img-fluid profile-img" style="max-width: 150px; min-width:100px;">
+                        </div>
+                        <div class="col-3 name-tag" style="position: absolute; top: 25rem; left: 9.75rem;">
                           <h4 class="my-0 mx-4"> {{ account.name }} </h4>
                           <div class="row">
                             <div class="col-12">
@@ -20,14 +22,6 @@
                             </div>
                           </div>
                         </div>
-                        <!-- <div class="col-3 name-tag" style="position: absolute; top: 25rem; left: 9.75rem;">
-                          <h4 class="my-0 mx-4"> {{ account.name }} </h4>
-                          <div class="row">
-                            <div class="col-12">
-                              <p class="small mb-4 mx-4 fs-6" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
-                            </div>
-                          </div>
-                        </div> -->
                       </div>
                     </div>
                       
@@ -65,7 +59,9 @@
                           </div>
                         </div>
                       </div>
+
                     </div>
+
                 </div>
 
                 <div class="d-flex justify-content-end text-center">
@@ -81,7 +77,7 @@
 
                 <div class="bio-box">
                   <p class="ps-5 pt-5 pb-0" style="font-size: 2rem; font-weight: 600; color: aliceblue;"> {{ account.gamerTag }}'s Bio: </p>
-                  <div class="p-5 mx-5 mb-5 bio rounded-4 bg-light">
+                  <div class="p-5 mx-5 mb-5 bio">
                     <p> {{ account.bio }} </p>
                   </div>
                 </div>
@@ -105,7 +101,7 @@
 
                   <div class="py-4">
                     <h5 class="mb-3 comment-header">Recent posts</h5>
-                    <div class="p-4 rounded shadow-sm">
+                    <div class="p-4 bg-comments rounded shadow-sm">
                       <div class="col-8 my-4" v-for="c in comments" :key="c.id">
                         <CommentCard :comment="c"/>
                       </div>
@@ -204,19 +200,12 @@ export default {
 
 <style scoped lang="scss">
 
-
-.bg-background{
-  background-color: #374466;
-  filter: drop-shadow(0 0 15px 15px #152A6108);
-  box-shadow: 0 0 15px #152A6108;
-}
-
 .bio {
   background-color: #2f395d76;
   color: aliceblue;
   font-weight: 550;
   text-shadow: 2px 2px 5px #000000;
-  box-shadow: 0 0 10px 10px #38506e26 inset;
+  box-shadow: 0 0 10px 10px #38506e9f inset;
 }
 
 .bg-main {
