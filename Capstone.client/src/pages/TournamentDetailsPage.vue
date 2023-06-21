@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
-        <img :src="tournament.coverImg" class="img-fluid" style="min-height: 50vh;">
+        <img :src="tournament.coverImg" class="img-fluid rounded-3 starship-img" style="min-height: 50vh;">
       </div>
       <!-- <div class="row">
         <div class="col-12 pb-5">
