@@ -9,7 +9,7 @@ export class Account {
     this.platforms = data.platforms
     this.bio = data.bio
     this.coverImg = data.coverImg
-    this.gamerTag =data.gamerTag
+    this.gamerTag = data.gamerTag
   }
 }
 
