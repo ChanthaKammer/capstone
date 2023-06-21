@@ -316,6 +316,25 @@ img {
   }
 }
 
+@media (max-width: 768px) {
+  ul {
+    margin-top: 7rem;
+  }
+  .profile-img {
+    max-width: 20vw !important;
+    margin-top: 3rem;
+  }
+  .neon-button {
+    margin-top: 6.5rem !important;
+    width: 20vw !important;
+  }
+  .name-tag {
+    margin-left: 1rem;
+    margin-top: 3rem;
+    white-space: nowrap;
+  }
+}
+
 @media (max-width: 900px) {
   ul {
     margin-top: 7rem;
@@ -325,9 +344,13 @@ img {
     margin-top: 3rem;
   }
   .neon-button {
-    margin-top: 6rem !important;
+    margin-top: 8rem !important;
     width: 20vw !important;
-    
+  }
+  .name-tag {
+    margin-left: 2rem;
+    margin-top: 3rem;
+    white-space: nowrap;
   }
 }
 
