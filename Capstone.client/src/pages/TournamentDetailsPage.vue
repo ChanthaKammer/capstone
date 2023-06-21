@@ -7,9 +7,9 @@
         }} ({{ tournament.type }}) </p>
         <div class="row justify-content-center">
           <div class="col-12">
-            <p class="ms-5 ps-3 mt-0" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{
+            <p class="ms-5 ps-3 mt-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">@ {{
               tournament.location }} </p>
-            <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 650; font-style: italic;">BE THERE ON
+            <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">BE THERE ON
               {{
                 new Date(tournament.startDate)
                   .toLocaleDateString('en-US', {
@@ -123,24 +123,70 @@
             </div>
           </div>
           <div v-if="isTournamentCreator">
-            <RGBButton buttonText="Cancel Tournament" @click="cancelTournament" />
+            <RGBButton buttonText="Cancel Tournament" />
           </div>
+          <div v-if="isTournamentCreator">
+            <RGBButton buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
+            <button class="btn neon-button mt-5" style="position: absolute; top: 29rem; min-width: 10vw;" data-bs-toggle="modal" data-bs-target="#editTournamentModal">Edit Tournament</button>
+            <div class="row justify-content-center">
 
+              <!-- Modal -->
+              <div class="modal fade" id="editTournamentModal" tabindex="-1" aria-labelledby="editTournamentModal" aria-hidden="true">
+                  <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editTournamentLabel">Edit Tournament</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body justify-content-center">
+                        <form @submit.prevent="editTournament()" class="col-12">
+                          <input class="form-control mb-3" type="text" placeholder="Tournament Name" aria-label="tournamentName" v-model="editable.name">
+                          <input class="form-control mb-3" type="text" id="tournamentAvatarImg" placeholder="Tournament Avatar Image" v-model="editable.coverImg">
+                          <input class="form-control mb-3" type="text" id="gameImg" placeholder="Tournament Cover Image" v-model="editable.gameImg">
+                          <input type="datetime-local" name="startDate" class="form-control mb-3" placeholder="Start Date" v-model="editable.startDate">
+                          <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Location" v-model="editable.location">
+                          <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Total Rounds" v-model="editable.totalRounds">
+                          <input class="form-control mb-3" type="text" id="capacity" placeholder="Tournament Capacity" v-model="editable.capacity">
+                          <select class="form-select mb-3" aria-label="Tournament Type" v-model="editable.type">
+                            <option selected value="match" disabled>Match Type</option>
+                            <option value="online">Online</option>
+                            <option value="local">Local</option>
+                          </select>
+                          <textarea class="form-control mb-3" id="tournamentDescription" rows="3" placeholder="Tournament Description" v-model="editable.description"></textarea>
+                          <select class="form-select mb-3" aria-label="Tournament Age Rating" v-model="editable.ageRating">
+                            <option selected value="rating" disabled>Group Age Rating</option>
+                            <option value="Everyone">Everyone</option>
+                            <option value="Teen">Teen</option>
+                            <option value="Adult">Adult</option>
+                          </select>
+                          <input class="form-control mb-3" type="number" placeholder="Max Teams" aria-label="maxTeams" min="1" v-model="editable.maxTeams">
+                          <input class="form-control mb-3" type="text" id="tournamentMoney" placeholder="Tournament Money Prize" v-model="editable.reward">
+                          <input class="form-control mb-3" type="text" id="firstPlaceBadge" placeholder="First Place Badge" v-model="editable.firstPlaceBadge">
+                          <input class="form-control mb-3" type="text" id="secondPlaceBadge" placeholder="Second Place Badge" v-model="editable.secondPlaceBadge">
+                          <input class="form-control mb-3" type="text" id="thirdPlaceBadge" placeholder="Third Place Badge" v-model="editable.thirdPlaceBadge">
+                          <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
     </div>
     <div class="row p-4 ps-5 bg-dark justify-content-center">
       <h1 class="text-center pb-4">Comments</h1>
-      <div class="col-6 card p-3 rounded-3 elevation-3">
+      <div class="col-6 card p-3 rounded-3 elevation-5 comment-area">
         <form @submit.prevent="createComment()">
           <div v-if="account" class="d-flex align-items-center mb-2">
-            <img :src="account.picture" class="img-fluid img-responsive rounded-circle me-2" width="38">
+            <img :src="account.picture" class="img-fluid img-responsive rounded-circle me-2 pfp" width="38">
             <h3>{{ account.name }}</h3>
           </div>
           <div class="text-end">
-            <textarea v-model="commentData" class="text-area w-100 rounded-3"></textarea>
-            <button type="submit" class="mb-1 transparent-button rounded-2">Post comment</button>
+            <textarea v-model="commentData" class="text-area w-100 rounded-3 comment-box"></textarea>
+            <RGBButton buttonText="Post Comment" type="submit" />
           </div>
         </form>
       </div>
@@ -172,6 +218,7 @@ import { participantsService } from '../services/ParticipantsService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 // import TournamentDetailsCard from '../components/TournamentDetailsCard.vue';
+import { watchEffect} from 'vue';
 import { useRoute } from 'vue-router';
 import TournamentCountdown from '../components/TournamentCountdown.vue';
 import RGBButton from '../components/RGBButton.vue';
@@ -186,8 +233,11 @@ export default {
 
   setup() {
     const commentData = ref('')
+    const editable = ref({})
     const route = useRoute();
-
+    watchEffect(() => {
+        editable.value = { ...AppState.activeTournament }
+    })
     onMounted(() => {
       setActiveTournament();
       getParticipants();
@@ -212,6 +262,7 @@ export default {
       joinTournament,
       commentData,
       route,
+      editable,
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
@@ -248,7 +299,14 @@ export default {
         }
       },
 
-
+      async editTournament(){
+      try{
+        const tournamentId = route.params.tournamentId;
+        await tournamentsService.editTournament(tournamentId, editable.value)
+      } catch (error) {
+        Pop.error(error)
+      }
+    }
     }
 
     async function getParticipants() {
@@ -310,11 +368,27 @@ export default {
 
 
 <style scoped lang="scss">
+.bg-background{
+  background-color: #4a70e196
+}
 .bg-details {
   background-color: #374466;
   filter: drop-shadow(0 0 15px 15px #152A6108);
   box-shadow: 0 0 15px #152A6108;
   animation: colorChange 15s infinite;
+}
+.comment-box{
+  background-color: rgb(214, 210, 210)
+}
+.comment-area{
+  background-color: #374466
+}
+.pfp{
+  aspect-ratio: 1/1;
+  min-width: 4rem;
+  
+  // height: 4rem;
+  // width: 4rem;
 }
 
 h1,
