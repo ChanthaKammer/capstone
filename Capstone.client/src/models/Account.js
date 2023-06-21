@@ -10,6 +10,7 @@ export class Account {
     this.bio = data.bio
     this.coverImg = data.coverImg
     this.gamerTag = data.gamerTag
+    this.age = data.age
   }
 }
 
