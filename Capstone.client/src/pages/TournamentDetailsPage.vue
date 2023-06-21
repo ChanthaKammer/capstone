@@ -122,12 +122,13 @@
     <div class="row justify-content-center p-4">
       <div class="col-6 card p-3 rounded-3 elevation-3">
         <form @submit.prevent="createComment()">
-          <div v-if="account" class="d-flex justify-content-center align-items-center mb-2">
+          <div v-if="account" class="d-flex align-items-center mb-2">
             <img :src="account.picture" class="img-fluid img-responsive rounded-circle me-2" width="38">
-            <textarea v-model="commentData" class="text-area w-100"></textarea>
+            <h3>{{ account.name }}</h3>
           </div>
           <div class="text-end">
-            <button type="submit" class="mb-1 transparent-button">Post comment</button>
+            <textarea v-model="commentData" class="text-area w-100 rounded-3"></textarea>
+            <button type="submit" class="mb-1 transparent-button rounded-2">Post comment</button>
           </div>
         </form>
       </div>
