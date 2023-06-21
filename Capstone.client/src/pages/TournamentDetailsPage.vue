@@ -104,6 +104,7 @@
                 <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: red;"></i>
                 <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: red;"></i>
               </div>
+              <ParticipantCard participants />
             </div>
           </div>
         </div>
@@ -176,12 +177,14 @@ import { useRoute } from 'vue-router';
 import TournamentCountdown from '../components/TournamentCountdown.vue';
 import RGBButton from '../components/RGBButton.vue';
 import { commentsService } from "../services/CommentsService.js";
+import ParticipantCard from "../components/ParticipantCard.vue";
 
 export default {
 
   components: {
     TournamentCountdown,
-    RGBButton
+    RGBButton,
+    ParticipantCard
   },
 
   setup() {
