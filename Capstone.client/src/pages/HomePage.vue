@@ -125,7 +125,6 @@
           </ul>
         </div>
       </div>
-
       <div class="col-md-6 mb-5 ps-5 neon-btn-two"
         style="position: absolute; top: -3.5vh; left: 65.5%; max-width: fit-content;">
         <div class="btn-group">

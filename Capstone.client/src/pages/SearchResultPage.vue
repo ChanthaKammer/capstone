@@ -1,5 +1,5 @@
 <template>
-   <section v-if="game" class="container-fluid pt-3">
+   <section v-if="game" class="container-fluid pt-3 bg-animated">
          <h1 class="text-center mobile-results">Search Results for "{{ query }}"</h1>
          <div class="row p-3 justify-content-around">
             <GameCard :game="g" class="col-md-5" v-for="g in games" :key="g.slug"/>
@@ -109,6 +109,30 @@ import Pop from '../utils/Pop.js';
 
 
 <style>
+.bg-animated {
+   background: linear-gradient(272deg, #662466, #ae76ae, #6fbce8);
+   background-size: 600% 600%;
+
+   -webkit-animation: bg-animated 0s ease infinite;
+   -moz-animation: bg-animated 0s ease infinite;
+   animation: bg-animated 0s ease infinite;
+}
+
+@-webkit-keyframes bg-animated {
+   0%{background-position:0% 61%}
+   50%{background-position:100% 40%}
+   100%{background-position:0% 61%}
+}
+@-moz-keyframes bg-animated {
+   0%{background-position:0% 61%}
+   50%{background-position:100% 40%}
+   100%{background-position:0% 61%}
+}
+@keyframes bg-animated {
+   0%{background-position:0% 61%}
+   50%{background-position:100% 40%}
+   100%{background-position:0% 61%}
+}
 
 @media (max-width: 768px) {
 .mobile-results{
