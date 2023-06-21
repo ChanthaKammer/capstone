@@ -261,8 +261,12 @@ export default {
     }
     async function cancelTournament(){
       try {
-        const cancelledTournament = tournamentsService.cancelTournament(route.params.tournamentId)
-        logger.log(cancelledTournament)
+        if (await Pop.confirm('This will toggle the tournament cancellation. Are you sure you want to do this?')) {
+                        
+          const cancelledTournament = await tournamentsService.cancelTournament(route.params.tournamentId)
+          AppState.activeTournament.isCancelled = !AppState.activeTournament.isCancelled
+          logger.log(cancelledTournament)
+                    } 
       } catch (error) {
         logger.log(error);
       }

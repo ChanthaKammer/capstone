@@ -1,6 +1,6 @@
 <template>
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-navbar">
+  <nav class="navbar navbar-expand-lg bg-navbar">
     <div class="container-fluid bg-navbar">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <div class="d-flex flex-column align-items-center">
@@ -62,8 +62,8 @@ export default {
 <style scoped>
 
 .bg-navbar {
-  background-color: #006e8cad;
-  filter: drop-shadow(0px .5rem 1rem #0b0d1248);
+  background-color: #18a7aaad;
+  filter: drop-shadow(0px .5rem 1rem #ffffff48);
 } 
 
 a:hover {
