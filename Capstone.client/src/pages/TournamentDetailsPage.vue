@@ -176,17 +176,17 @@
 
       </div>
     </div>
-    <div class="row p-4 ps-5 justify-content-center bg-dark">
-      <h1 class="text-center pb-4 text-white">Comments</h1>
-      <div class="col-6 bg-background p-3 rounded-3 elevation-3">
+    <div class="row p-4 ps-5 bg-dark justify-content-center">
+      <h1 class="text-center pb-4">Comments</h1>
+      <div class="col-6 card p-3 rounded-3 elevation-5 comment-area">
         <form @submit.prevent="createComment()">
           <div v-if="account" class="d-flex align-items-center mb-2">
-            <img :src="account.picture" class="img-fluid img-responsive rounded-circle me-2" width="38">
+            <img :src="account.picture" class="img-fluid img-responsive rounded-circle me-2 pfp" width="38">
             <h3>{{ account.name }}</h3>
           </div>
           <div class="text-end">
-            <textarea v-model="commentData" class="text-area w-100 rounded-3"></textarea>
-            <button type="submit" class="mb-1 transparent-button rounded-2">Post comment</button>
+            <textarea v-model="commentData" class="text-area w-100 rounded-3 comment-box"></textarea>
+            <RGBButton buttonText="Post Comment" type="submit" />
           </div>
         </form>
       </div>
@@ -376,6 +376,19 @@ export default {
   filter: drop-shadow(0 0 15px 15px #152A6108);
   box-shadow: 0 0 15px #152A6108;
   animation: colorChange 15s infinite;
+}
+.comment-box{
+  background-color: rgb(214, 210, 210)
+}
+.comment-area{
+  background-color: #374466
+}
+.pfp{
+  aspect-ratio: 1/1;
+  min-width: 4rem;
+  
+  // height: 4rem;
+  // width: 4rem;
 }
 
 h1,
