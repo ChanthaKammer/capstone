@@ -70,7 +70,7 @@
                       <h5 class="font-weight-bold mb-0 d-block"> {{ myParticipations.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
                     </li>
                     <li class="list-inline-item">
-                      <h5 class="font-weight-bold mb-0 d-block">4K</h5><small class=""> <i class="mdi mdi-account-circle me-1"></i>Followers</small>
+                      <h5 class="font-weight-bold d-block" style="">4K</h5><small class=""> <i class="mdi mdi-account-circle me-1"></i>Followers</small>
                     </li>
                   </ul>
                 </div>
@@ -251,7 +251,7 @@ export default {
   text-shadow: 0 1px 1px #000000;
   filter: brightness(1.5);
   border: #71acff57 .125em solid;
-  text-shadow: .5px .5px .125em rgba(15, 0, 68, 0.827);
+  text-shadow: .5px .5px .125em #0f0044d3;
   box-shadow: 0 0 20px 1px #49bfffe7;
   animation: colorChange 20s infinite;
 }
