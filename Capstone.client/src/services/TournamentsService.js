@@ -35,8 +35,9 @@ class TournamentsService {
   }
 
   async cancelTournament(tournamentId) {
+    
+    // await Pop.confirm(`Tournament ${res.data.name} has been cancelled!`)
     const res = await api.delete(`api/tournaments/${tournamentId}`)
-    Pop.confirm(`Tournament ${res.data.name} has been cancelled!`)
     return res.data
   }
 }
