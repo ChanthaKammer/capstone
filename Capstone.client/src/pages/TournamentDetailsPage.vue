@@ -119,7 +119,7 @@
         </div>
       </div>
     </div>
-    <div class="row p-4 ps-5">
+    <div class="row p-4 ps-5 justify-content-center">
       <div class="col-6 card p-3 rounded-3 elevation-3">
         <form @submit.prevent="createComment()">
           <div v-if="account" class="d-flex align-items-center mb-2">
@@ -133,8 +133,8 @@
         </form>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12" v-for="c in comments" :key="c.id">
+    <div class="row justify-content-center">
+      <div class="col-md-8" v-for="c in comments" :key="c.id">
         <CommentCard :comment="c" />
       </div>
     </div>

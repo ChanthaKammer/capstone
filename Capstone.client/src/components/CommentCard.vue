@@ -1,12 +1,12 @@
 <template>
-<div class="row">
+<div class="row card rounded-3 elevation-3 mb-3">
   <div class="comment-bottom bg-comments p-2 px-4" style="">
     <div class="d-flex flex-row add-comment-section mt-1 mb-4">
   </div>
 
       <div
       class="commented-section mt-2 ps-4">
-      <div class="d-flex flex-row align-items-center commented-user">
+      <div class="d-flex flex-row  align-items-center commented-user">
         <span class="mb-1">
           <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid rounded-circle" style="max-height: 50px;">
         </span>
@@ -80,6 +80,10 @@ export default {
 
 
 <style lang="scss" scoped>
+
+* {
+  border: 1px solid green
+}
 
 span {
   text-shadow: 1px 1px 2px white;
