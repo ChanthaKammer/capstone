@@ -5,7 +5,14 @@
       </div>
       <div class="col-md-6 pt-2 align-self-center">
          <h1>{{ game.name }}</h1>
-         <h1>{{ game.released }}</h1>
+         <h4>Released</h4>
+         <h1>{{ 
+            new Date( game.released )
+            .toLocaleDateString('en-US', {
+               year: 'numeric', 
+               month: 'short', 
+               day: 'numeric'
+            }) }}</h1>
          <h1>{{ game.genre }}</h1>
 
 
