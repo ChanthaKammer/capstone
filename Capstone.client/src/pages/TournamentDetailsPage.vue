@@ -276,8 +276,8 @@ export default {
       try {
 
         if (AppState.account.id.length > 1) {
-          const tournyId = route.params.tournamentId
-          const participant = await participantsService.createParticipant({ tournamentId: tournyId })
+          const tourneyId = route.params.tournamentId
+          const participant = await participantsService.createParticipant({ tournamentId: tourneyId })
           logger.log(participant)
           // await this.getParticipants()
 
