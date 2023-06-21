@@ -632,10 +632,3 @@ export default {
     margin-top: -4rem;
   }
 }</style>
-
-
-  
-
-
-
-
