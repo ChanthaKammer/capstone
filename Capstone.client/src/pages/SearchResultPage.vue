@@ -5,7 +5,7 @@
             <GameCard :game="g" class="col-md-5" v-for="g in games" :key="g.slug"/>
          </div>
          <div class="row justify-content-around py-2">
-            <div class="col-4">
+            <div class="col-4 card py-3 elevation-3 bg-dark">
                <div class="row justify-content-around">
                   <button class="col-auto btn btn-info" :disabled="!previouspage" @click="changePage(previouspage)">Previous</button>
                   <button class="col-auto btn btn-info" :disabled="!nextpage" @click="changePage(nextpage)">Next</button>
