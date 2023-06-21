@@ -110,14 +110,19 @@
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
         <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 40vw;" alt="">
+<div>
 
-        <div v-if="!isParticipant">
-          <RGBButton buttonText="Join the Tournament!" @click="joinTournament" />
-        </div>
-        <div v-else>
-          <RGBButton buttonText="Leave Tournament!" @click="leaveTournament" />
-        </div>
-      </div>
+  <div v-if="!isParticipant">
+    <RGBButton buttonText="Join the Tournament!" @click="joinTournament" />
+  </div>
+  <div v-else>
+    <RGBButton buttonText="Leave Tournament!" @click="leaveTournament" />
+  </div>
+</div>
+<div>
+  <RGBButton buttonText="Cancel Tournament" @click="CancelTournament"/>
+</div>
+</div>
     </div>
     <div class="row p-4 ps-5 bg-dark justify-content-center">
       <h1 class="text-center pb-4">Comments</h1>
