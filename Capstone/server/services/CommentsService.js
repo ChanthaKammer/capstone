@@ -2,6 +2,10 @@ import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class CommentsService{
+  async getProfileComments(profileId) {
+    const comments = await dbContext.Comments.find({creatorId: profileId}).populate('tournament creator')
+    return comments
+  }
   async createComment(body) {
     const comment = await dbContext.Comments.create(body)
     await comment.populate('creator')
@@ -16,6 +20,7 @@ class CommentsService{
   
   async getAccountComments(creatorId) {
     const comments = await dbContext.Comments.find({ creatorId }).populate('tournament creator')
+    return comments
   }
   
   async deleteComment(commentId, userId) {

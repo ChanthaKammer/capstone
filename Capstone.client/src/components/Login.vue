@@ -8,7 +8,7 @@
       <div class="dropdown my-2 my-lg-0">
         <div type="button" class="bg-dark border-0 selectable no-select" data-bs-toggle="dropdown" aria-expanded="false">
           <div v-if="account.picture || user.picture">
-            <img :src="account.picture || user.picture" alt="account photo" height="40" class="rounded" />
+            <img :src="account.picture || user.picture" alt="account photo" height="40" class="rounded login-pfp" />
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-lg-end dropdown-menu-start p-0" aria-labelledby="authDropdown">
@@ -49,4 +49,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.login-pfp{
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  min-height: 4rem;
+  max-height: 4rem;
+  min-width: 4rem;
+  max-width: 4rem;
+}
+</style>

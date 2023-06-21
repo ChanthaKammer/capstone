@@ -33,6 +33,12 @@ class TournamentsService {
     Pop.success(`New tournament ${res.data.name} has been created!`)
     return res.data
   }
+  async editTournament(tournamentId, editable){
+    // logger.log(tournamentId, editable)
+    const res = await api.put('api/tournaments/' + tournamentId, editable)
+    logger.log(res.data)
+    AppState.activeTournament = res.data
+  }
 
   async cancelTournament(tournamentId) {
     

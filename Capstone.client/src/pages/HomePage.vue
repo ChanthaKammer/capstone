@@ -42,7 +42,7 @@
       <div class="col-12 ">
 
         <!-- NOTE BACKGROUND BORDER FOR CAROUSEL ----------------------------->
-        <div class="row  bg-carousel justify-content-center align-items-center shadow-lg elevation-5 carousel-top">
+        <div class="row bg-carousel justify-content-center align-items-center shadow-lg elevation-5 carousel-top">
 
           <!-- NOTE CAROUSEL FOR 'PC BUILD' PARTS IMAGES ------------------------------>
           <div class="bg-games">

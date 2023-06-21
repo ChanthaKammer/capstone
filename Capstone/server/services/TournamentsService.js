@@ -17,6 +17,7 @@ class TournamentsService{
     }
     async getAllTournaments() {
         const tournaments = await dbContext.Tournaments.find().populate('participantCount creator')
+        .sort({updatedAt: -1})
         return tournaments
     }
     async editTournament(tournamentId, tournamentData, userId) {
