@@ -51,7 +51,7 @@
                                     </form>
                                 </div>
                               </div>
-                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -97,17 +97,19 @@
                   </section>
 
                   </div>
- 
-                  <!-- <div class="py-4">
+                  
+                  <div class="py-4">
                     <h5 class="mb-3">Recent posts</h5>
                     <div class="p-4 bg-light rounded shadow-sm">
-                      <p class="font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                      <div class="col-8 offset-2 my-4" v-for="c in comments" :key="c.id">
+                        <CommentCard :comment="c"/>
+                      </div>
                       <ul class="list-inline small text-muted mt-3 mb-0">
                         <li class="list-inline-item"><i class="fa fa-comment-o me-2"></i>12 Comments</li>
                         <li class="list-inline-item"><i class="fa fa-heart-o me-2"></i>200 Likes</li>
                       </ul>
                     </div>
-                  </div> -->
+                  </div>
                 </div>
               </div><!-- End profile widget -->
           
@@ -129,6 +131,7 @@ import MyJoinedTournamentsCard from '../components/MyJoinedTournamentsCard.vue';
 import Pop from '../utils/Pop.js';
 import { accountService } from '../services/AccountService.js';
 import { useRoute } from "vue-router";
+import CommentCard from '../components/CommentCard.vue'
 
 export default {
 
@@ -144,7 +147,7 @@ export default {
   // },
 
   components: {
-    MyJoinedTournamentsCard,
+    MyJoinedTournamentsCard, CommentCard
   },
 
     setup() {
@@ -175,6 +178,7 @@ export default {
           account: computed(() => AppState.account),
           tournaments: computed(() => AppState.activeTournament),
           // myTournaments: computed(() => AppState.myTournaments),
+          comments: computed(() => AppState.comments),
           myParticipations: computed(() => AppState.myParticipations),
           isCancelled: computed(() => AppState.activeTournament.isCancelled),
           
