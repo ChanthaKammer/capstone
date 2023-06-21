@@ -59,9 +59,7 @@
                           </div>
                         </div>
                       </div>
-
                     </div>
-
                 </div>
 
                 <div class="d-flex justify-content-end text-center">
@@ -77,7 +75,7 @@
 
                 <div class="bio-box">
                   <p class="ps-5 pt-5 pb-0" style="font-size: 2rem; font-weight: 600; color: aliceblue;"> {{ account.gamerTag }}'s Bio: </p>
-                  <div class="p-5 mx-5 mb-5 bio">
+                  <div class="p-5 mx-5 mb-5 bio rounded-4 bg-light">
                     <p> {{ account.bio }} </p>
                   </div>
                 </div>
@@ -212,7 +210,7 @@ export default {
   color: aliceblue;
   font-weight: 550;
   text-shadow: 2px 2px 5px #000000;
-  box-shadow: 0 0 10px 10px #38506e9f inset;
+  box-shadow: 0 0 10px 10px #38506e26 inset;
 }
 
 .bg-main {
