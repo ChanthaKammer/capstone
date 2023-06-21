@@ -2,6 +2,9 @@ import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class CommentsService{
+  async getProfileComments(profileId) {
+    const comments = await dbContext.Comments.find({creatorId: profileId})
+  }
   async createComment(body) {
     const comment = await dbContext.Comments.create(body)
     await comment.populate('creator')
