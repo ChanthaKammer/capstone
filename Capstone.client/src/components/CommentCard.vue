@@ -1,11 +1,11 @@
 <template>
 <div class="row">
   <div class="comment-bottom bg-comments p-2 px-4" style="">
-    <div class="d-flex flex-row add-comment-section mt-4 mb-4">
+    <div class="d-flex flex-row add-comment-section mt-1 mb-4">
   </div>
 
       <div
-      class="commented-section mt-2">
+      class="commented-section mt-2 ps-5">
       <div class="d-flex flex-row align-items-center commented-user">
         <span class="mb-1">
           <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid rounded-circle" style="max-height: 50px;">
@@ -25,10 +25,10 @@
               minute: 'numeric'
             }) }}
         </span>
-        <i v-if="comment.creatorId == account.id" @click="deleteComment()" class="mdi mdi-delete pe-1 icon fs-4"></i>
       </div>
 
-      <div class="comment-text"><span class="text-dark px-3"> {{ comment.body }} </span></div>
+      <div class="comment-text"><span class="text-dark px-3"> {{ comment.body }} </span>
+        <i v-if="comment.creatorId == account.id" @click="deleteComment()" class="mdi mdi-delete pe-1 icon fs-4 float-end"></i></div>
       <div
         class="reply-section">
         <div class="d-flex flex-row align-items-center voting-icons">
