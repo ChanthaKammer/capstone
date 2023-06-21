@@ -1,12 +1,11 @@
 <!-- <TournamentDetailsCard /> -->
 <template>
   <section class="container-fluid bg-animated">
-
     <div class="row">
-      <div v-if="!tournament.isCancelled" class="col-12 col-md-6 mt-4 text-light text-uppercase">
+      <div v-if="!tournament.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase">
         <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 3rem; font-weight: 750; font-style: italic;">{{ tournament.name
         }} ({{ tournament.type }}) </p>
-        <div class="row">
+        <div class="row justify-content-center">
           <div class="col-12">
             <p class="ms-5 ps-3 mt-0 pb-3" style="font-size: 3rem; font-weight: 650; font-style: italic;">@ {{
               tournament.location }} </p>
@@ -90,7 +89,7 @@
             <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 2px 2px #ffffff;">Top Player Team</p>
           </div>
           <div class="col-6 col-md-3">
-            <h1>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h1>
+            <h2>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
           </div>
           <div>
             <div class="row">
@@ -270,6 +269,10 @@ export default {
 
 
 <style scoped lang="scss">
+
+* {
+  border: 1px solid green
+}
 .bg-animated {
   background: linear-gradient(272deg, #662466, #ae76ae, #6fbce8);
   background-size: 600% 600%;
@@ -361,7 +364,7 @@ h6 {
 .starship-img:hover {
   filter: brightness(1.2);
   transition: 0.5s;
-  box-shadow: 0px 0px 10px 10px #000000;
+  box-shadow: 0px 0px 10px 10px #10a5a548;
 }
 
 .bg-pending {
