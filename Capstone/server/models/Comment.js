@@ -15,3 +15,10 @@ CommentSchema.virtual('creator', {
     ref: 'Account',
     justOne: true
 })
+
+CommentSchema.virtual('tournament', {
+    localField: 'tournamentId',
+    foreignField: '_id',
+    ref: 'Tournament',
+    justOne: true
+})
