@@ -52,7 +52,7 @@
       <div class="my-4">
         <div class="row bg-pending">
           <div class="col-12 d-flex justify-content-center align-items-center">
-            <div v-if="!tournament.isFinished">
+            <div v-if="!tournament.isFinished && !tournament.isCancelled">
               <p class="pending" style="font-style: italic;">PENDING</p>
             </div>
           </div>
@@ -110,16 +110,22 @@
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
         <img :src="tournament.gameImg" class="img-fluid starship-img rounded-2" style="min-width: 40vw;" alt="">
-        <div>
-          <div v-if="!isParticipant">
-            <RGBButton buttonText="Join the Tournament!" @click="joinTournament" />
+
+        <div class="d-flex justify-content-between">
+
+
+          <div>
+            <div v-if="!isParticipant">
+              <RGBButton buttonText="Join the Tournament!" @click="joinTournament" />
+            </div>
+            <div v-else>
+              <RGBButton buttonText="Leave Tournament!" @click="leaveTournament" />
+            </div>
           </div>
-          <div v-else>
-            <RGBButton buttonText="Leave Tournament!" @click="leaveTournament" />
+          <div v-if="isTournamentCreator">
+            <RGBButton buttonText="Cancel Tournament" @click="cancelTournament" />
           </div>
-        </div>
-        <div>
-          <RGBButton buttonText="Cancel Tournament" @click="CancelTournament" />
+
         </div>
 
       </div>
@@ -201,6 +207,7 @@ export default {
 
     }
     return {
+      cancelTournament,
       leaveTournament,
       joinTournament,
       commentData,
@@ -208,9 +215,17 @@ export default {
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
+      isCancelled: computed(() => AppState.activeTournament.isCancelled),
       isParticipant: computed(() => {
 
         if (AppState.myParticipations.find(p => p.tournamentId == AppState.activeTournament.id)) {
+          return true;
+        }
+        return false
+      }),
+      isTournamentCreator: computed(() => {
+
+        if (AppState.activeTournament.creatorId === AppState.account.id) {
           return true;
         }
         return false
@@ -242,6 +257,14 @@ export default {
       } catch (error) {
         logger.log('[getting participants for this tournament]', error);
         Pop.error(error.message);
+      }
+    }
+    async function cancelTournament(){
+      try {
+        const cancelledTournament = tournamentsService.cancelTournament(route.params.tournamentId)
+        logger.log(cancelledTournament)
+      } catch (error) {
+        logger.log(error);
       }
     }
 
