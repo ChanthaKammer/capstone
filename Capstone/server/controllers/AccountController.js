@@ -14,6 +14,7 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
       .get('/participants', this.getAccountParticipations)
       .get('/rewards', this.getAccountRewards)
+      .get('/comments', this.getAccountComments)
       .put('', this.updateAccount)
   }
   async updateAccount(req, res, next) {
