@@ -4,7 +4,7 @@
         <div class="card card-custom border-white border-0" style="height: 500px">
           <div class="card-custom-img" :style="`background-image: url(${tournament.gameImg})`"></div>
           <div class="card-custom-avatar">
-            <img class="img-fluid" :src="tournament.creator.picture" :alt="tournament.creator.name" />
+            <img class="img-fluid object-fit-cover" :src="tournament.creator.picture" :alt="tournament.creator.name" />
           </div>
           <!--SECTION * * * CARD BODY * * * ------------->
           <div class="card-body" style="overflow-y: auto">

@@ -1,5 +1,5 @@
 <template>
-  <button class="glow-on-hover m-1" type="button">{{ buttonText }}</button>
+  <button class="glow-on-hover m-1" type="button" >{{ buttonText }}</button>
 </template>
 
 <script>

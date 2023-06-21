@@ -95,7 +95,7 @@ export default {
   border-radius: 50%;
 }
 span {
-  text-shadow: 1px 1px 2px white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0);
   font-weight: 650;
   padding: 0.5em;
   padding-bottom: 1rem;

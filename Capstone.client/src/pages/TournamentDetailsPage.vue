@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
-        <img :src="tournament.coverImg" class="img-fluid rounded-3 starship-img" style="min-height: 50vh;">
+        <img :src="tournament.coverImg" class="img-fluid object-fit-cover rounded-3 starship-img" style="min-height: 50vh;">
       </div>
       <!-- <div class="row">
         <div class="col-12 pb-5">
@@ -96,14 +96,11 @@
           </div>
           <div>
             <div class="row">
-              <div class="col-12 d-flex align-items-baseline">
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: green;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: red;"></i>
-                <i class="mdi mdi-account-multiple" style="font-size: 3rem; color: red;"></i>
+              <div class="col-12 col-md-3" v-for="p in participants" :key="p.id">
+             
+                <ParticipantCard :participant="p" />
               </div>
+              
             </div>
           </div>
         </div>
@@ -126,7 +123,7 @@
             <RGBButton buttonText="Cancel Tournament" />
           </div>
           <div v-if="isTournamentCreator">
-            <RGBButton buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
+            <RGBButton class="" buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
             <button class="btn neon-button mt-5" style="position: absolute; top: 29rem; min-width: 10vw;" data-bs-toggle="modal" data-bs-target="#editTournamentModal">Edit Tournament</button>
             <div class="row justify-content-center">
 
@@ -135,7 +132,7 @@
                   <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="editTournamentLabel">Edit Tournament</h1>
+                        <h1 class="modal-title fs-5" id="editTournamentLabel"></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body justify-content-center">
@@ -181,7 +178,7 @@
       <div class="col-6 card p-3 rounded-3 elevation-5 comment-area">
         <form @submit.prevent="createComment()">
           <div v-if="account" class="d-flex align-items-center mb-2">
-            <img :src="account.picture" class="img-fluid img-responsive rounded-circle me-2 pfp" width="38">
+            <img :src="account.picture" class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38">
             <h3>{{ account.name }}</h3>
           </div>
           <div class="text-end">
@@ -224,12 +221,14 @@ import TournamentCountdown from '../components/TournamentCountdown.vue';
 import RGBButton from '../components/RGBButton.vue';
 import { commentsService } from "../services/CommentsService.js";
 import { Modal } from 'bootstrap';
+import ParticipantCard from "../components/ParticipantCard.vue";
 
 export default {
 
   components: {
     TournamentCountdown,
-    RGBButton
+    RGBButton,
+    ParticipantCard
   },
 
   setup() {
