@@ -2,9 +2,9 @@
  <section class="container-fluid">
     <div class="row">
       <p class="text-white">WE'RE GOING!</p>
-      <div class="col-md-1 pb-4" v-for="p in participant" :key="p.id">
-        <img class="rounded-circle participant" :src="p.profile.picture" alt="">
-        <p class="text-white">{{ p.profile.name }}</p>
+      <div class="col-md-1 pb-4">
+        <img class="rounded-circle participants" :src="participant.profile.picture" alt="">
+        <p class="text-white">{{ participant.profile.name }}</p>
       </div>
     </div>
   </section>
@@ -20,7 +20,7 @@ export default {
   },
   setup(){
     return {
-      participants: computed(()=> AppState.participants)
+      // participants: computed(()=> AppState.participants)
       
 
     }
