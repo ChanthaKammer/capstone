@@ -57,6 +57,7 @@ import { tournamentsService } from '../services/TournamentsService.js';
 import { profileService } from '../services/ProfileService.js'
 import { onMounted } from 'vue';
 import { computed } from '@vue/reactivity';
+import { participantsService } from '../services/ParticipantsService.js';
    export default {
       components: {
          TournamentCard
@@ -79,6 +80,16 @@ import { computed } from '@vue/reactivity';
                // logger.log('[GETTING TOURNAMENTS]')
                const profileId = route.params.profileId
                await tournamentsService.getProfileTournaments(profileId)
+            } catch (error) {
+               logger.error(error)
+               Pop.toast(error.message, 'error')
+            }
+         }
+
+         async function getProfileParticipants(){
+            try {
+               const profileId = route.params.profileId
+               await participantsService.getProfileParticipants(profileId)
             } catch (error) {
                logger.error(error)
                Pop.toast(error.message, 'error')
