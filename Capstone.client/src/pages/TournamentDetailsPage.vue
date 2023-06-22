@@ -190,7 +190,7 @@
 <div v-if="isTournamentCreator" class="container">
     <div class="row">
       <div class="col-12">
-        <h1>Tournament Management</h1>
+        <h1 class="text-decoration-underline">Tournament Management</h1>
       </div>
     </div>
     <div class="row">
@@ -215,9 +215,11 @@
         </form>
       </div>
       <div class="col-5">
-        <!-- <button type="button" class="btn btn-primary">Advance Round</button> -->
-        <button type="button" class="m-1 btn btn-success">Finalize Round</button>
-        <button type="button" class="m-1 btn btn-danger">Finalize Tournament</button>
+        <div>
+          <h1>Round {{ tournament?.currentRound }} of {{ tournament?.totalRounds }}</h1>
+        </div>
+        <button @click="finalizeRound" v-if="tournament.currentRound < tournament.totalRounds" type="button" class="m-1 btn btn-success">Finalize Round</button>
+        <button @click="finalizeTournament" v-if="tournament.currentRound === tournament.totalRounds" type="button" class="m-1 btn btn-danger">Finalize Tournament</button>
       </div>
     </div>
   </div>
