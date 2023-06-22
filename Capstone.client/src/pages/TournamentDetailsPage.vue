@@ -2,7 +2,7 @@
 <template>
   <section class="container-fluid bg-details">
     <div class="row">
-      <div v-if="!tournament.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase details-top">
+      <div v-if="!tournament?.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase details-top">
         <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{ tournament.name
         }} ({{ tournament.type }}) </p>
         <div class="row justify-content-center">
@@ -298,16 +298,19 @@ export default {
       getCommentsByTournamentId();
     });
 
-     async function finalizeRound(){
+    //  async function finalizeRound(){
       
-      AppState.activeTournament.currentRound++
-      logger.log(tournament.currentRound)
-        try {
+    //   AppState.activeTournament.currentRound++
+    //     forEach(element => {
+          
+    //     });
+    //   logger.log(tournament.currentRound)
+    //     try {
 
-        } catch (error) {
-          logger.log(error);
-        }
-      }
+    //     } catch (error) {
+    //       logger.log(error);
+    //     }
+    //   }
       async function finalizeTournament(){
         try {
           
@@ -327,7 +330,7 @@ export default {
 
     }
     return {
-      finalizeRound,
+      // finalizeRound,
       finalizeTournament,
       cancelTournament,
       leaveTournament,
@@ -371,7 +374,21 @@ export default {
         }
       },
       // SECTION tournament management functions
+      async finalizeRound(){
       
+        // logger.log(tournament.currentRound)
+        try {
+          // AppState.activeTournament.currentRound++
+          // AppState.activeTournament = await tournamentsService.editTournament(AppState.activeTournament.id, {currentRound: AppState.activeTournament.currentRound})
+          // logger.log(AppState.activeTournament)
+          await AppState.participants.forEach(p => {
+            const participantUpdate = participantsService.updatePlayerStatus()
+            logger.log(p.profile.name ,p.status)
+          });
+        } catch (error) {
+          logger.log(error);
+        }
+      },
       async editTournament(){
       try{
         const tournamentId = route.params.tournamentId;

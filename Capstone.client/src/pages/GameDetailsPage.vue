@@ -176,9 +176,9 @@ import { useRoute } from "vue-router";
    margin-top: 3.2rem;
    // margin-bottom: 0rem;
 }
-.mobile-btn-area{
+// .mobile-btn-area{
    
    
-}
+// }
 }
 </style>
