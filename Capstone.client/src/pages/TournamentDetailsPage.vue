@@ -171,9 +171,40 @@
         </div>
 
       </div>
-
-
     </div>
+
+<!-- SECTION tournament management -->
+
+<div v-if="isTournamentCreator" class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Tournament Management</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-7">
+        <form>
+          <div class="form-group" v-for="(participant, index) in participants" :key="index">
+            <h1 class="fs-5">{{ participant.profile.name }}</h1>
+            <select class="mb-1 form-control" v-model="participant.status">
+              <option value="active">Active</option>
+              <option value="eliminated">Eliminated</option>
+              <option value="firstPlace">First Place</option>
+              <option value="secondPlace">Second Place</option>
+              <option value="thirdPlace">Third Place</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="col-5">
+        <!-- <button type="button" class="btn btn-primary">Advance Round</button> -->
+        <button type="button" class="m-1 btn btn-success">Finalize Round</button>
+        <button type="button" class="m-1 btn btn-danger">Finalize Tournament</button>
+      </div>
+    </div>
+  </div>
+
+
     <div class="row p-4 ps-5 bg-dark justify-content-center">
       <h1 class="text-center pb-4">Comments</h1>
       <div class="col-12 col-md-6 card p-3 rounded-3 elevation-5 comment-area">
@@ -236,8 +267,10 @@ export default {
     const commentData = ref('')
     const editable = ref({})
     const route = useRoute();
+    const playersState = ref([])
     watchEffect(() => {
         editable.value = { ...AppState.activeTournament }
+
     })
     onMounted(() => {
       setActiveTournament();
@@ -532,7 +565,8 @@ h6 {
   }
 }
 .rgb-btn{
-  width: 110%;
+  width: 95%;
+  height: 3rem;
 }
 @media (max-width: 768px) {
   .mobile-results {
