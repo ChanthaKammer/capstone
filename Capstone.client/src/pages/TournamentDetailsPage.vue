@@ -298,8 +298,10 @@ export default {
       getCommentsByTournamentId();
     });
 
-     function finalizeRound(){
-      tournament.currentRound = tournament.currentRound++
+     async function finalizeRound(){
+      
+      AppState.activeTournament.currentRound++
+      logger.log(tournament.currentRound)
         try {
 
         } catch (error) {
