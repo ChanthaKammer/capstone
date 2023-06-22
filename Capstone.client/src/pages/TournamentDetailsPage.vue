@@ -88,8 +88,8 @@
             <h1>1st Place:</h1>
             <!-- NOTE MAKE ICON FOR CURRENT LEADER BY THEIR USER IMAGE USING THE :TITLE V-BIND METHOD ON ACTIVE TOURNAMENT WHEN LESS TIRED -->
             <i class="mdi mdi-account-circle top-player" style="font-size: 5rem;"></i>
-            <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 1px 1px #ffffff;">Top Player Name</p>
-            <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 1px 1px #ffffff;">Top Player Team</p>
+            <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Name</p>
+            <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Team</p>
           </div>
           <div class="col-6 col-md-3">
             <h2>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
@@ -97,7 +97,6 @@
           <div>
             <div class="row">
               <div class="col-6 col-md-3" v-for="p in participants" :key="p.id">
-             
                 <ParticipantCard :participant="p" />
               </div>
               
@@ -106,11 +105,9 @@
         </div>
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" class="img-fluid game-img rounded-2" style="min-width: 40vw;" alt="">
+        <img :src="tournament.gameImg" class="img-fluid game-img  rounded-2" style="min-width: 40vw;" alt="">
 
         <div class="d-flex justify-content-evenly">
-
-
           <div>
             <div v-if="!isParticipant">
               <RGBButton class="px-2 rgb-btn" buttonText="Join the Tournament!" @click="joinTournament" />
@@ -126,7 +123,7 @@
             <RGBButton class="px-2 rgb-btn" buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
             <div class="row justify-content-center">
 
-              <!-- Modal -->
+              <!-- SECTION Tournament Edit Modal -->
               <div class="modal fade" id="editTournamentModal" tabindex="-1" aria-labelledby="editTournamentModal" aria-hidden="true">
                   <div class="modal-dialog">
                   <div class="modal-content">
@@ -214,7 +211,7 @@
             <h3>{{ account.name }}</h3>
           </div>
           <div class="text-end">
-            <textarea v-model="commentData" class="text-area w-100 rounded-3 comment-box"></textarea>
+            <textarea v-model="commentData" class="text-area w-100 rounded-3 comment-box text-dark"></textarea>
             <RGBButton class="mobile-rgb" buttonText="Post Comment" type="submit" />
           </div>
         </form>
@@ -581,16 +578,16 @@ p {
   .rgb-btn{
   width: 90%;
 }
-.countdown-area{
-  display: none;
-}
+// .countdown-area{
+//   display: none;
+// }
 .details-top{
   margin-top: 4rem;
 }
-.starship-img{
-  aspect-ratio: 1/1;
-  display: none;
-}
+// .starship-img{
+//   aspect-ratio: 1/1;
+//   display: none;
+// }
 .game-img{
   aspect-ratio: 1/1;
   // display: none;
