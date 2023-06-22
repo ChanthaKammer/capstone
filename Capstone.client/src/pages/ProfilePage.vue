@@ -14,8 +14,8 @@
                   </div>
                </div>
                <div class="col-md-6">
-                  <h1>Profile Name</h1>
-                  <h1>Gamertag</h1>
+                  <h1>{{ activeProfile.name }}</h1>
+                  <h1>{{ activeProfile.gamerTag }}</h1>
                   <h1>Platforms</h1>
                   <div class="row justify-content-center">
                      <div class="col-auto">
@@ -28,7 +28,7 @@
                         <h2>PC</h2>
                      </div>
                   </div>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni repellendus rerum dolorum, quod ducimus at. Mollitia doloribus dicta minima quas nulla rem reprehenderit modi eveniet.</p>
+                  <p>{{ activeProfile.bio }}</p>
                </div>
             </div>
          </div>
@@ -62,12 +62,11 @@ import { computed } from '@vue/reactivity';
          TournamentCard
       },
       setup(){
-         
          const route = useRoute()
+
          async function getProfile(){
             try {
                const profileId = route.params.profileId
-               logger.log('[GETTING PROFILE]')
                await profileService.getProfile(profileId)
             } catch (error) {
                logger.error(error)
@@ -90,9 +89,10 @@ import { computed } from '@vue/reactivity';
          getProfile(),
          getProfileTournaments()
          )
-         
+
          return {
-            profileTournaments: computed(() => AppState.profileTournaments)
+            profileTournaments: computed(() => AppState.profileTournaments),
+            activeProfile: computed(() => AppState.activeProfile)
          }
       }
    }
