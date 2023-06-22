@@ -36,7 +36,6 @@
       <div class="row justify-content-center pt-3">
          <div class="col-8 bg-dark text-white">
             <h1 class="text-center">Won Tournaments</h1>
-            <span>{{ profileTournaments }}</span>
             <h1>V-for Tournaments</h1>
          </div>
       </div>
@@ -110,7 +109,8 @@ import { rewardsService } from '../services/RewardsService.js'
          onMounted(() => {
          getProfile(),
          getProfileTournaments(),
-         getProfileParticipants()
+         getProfileParticipants(),
+         getProfileRewards()
          })
 
          return {
