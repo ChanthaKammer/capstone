@@ -1,23 +1,23 @@
 <template>
 <div class="container-fluid">
   <div class="row media-adjust justify-content-center align-items-center ms-4">
-    <div class="col-12">
+    <div class="col-md-12">
       <p class="text-center count-title">Tournament Countdown</p>
     </div>
     <div class="time__box d-flex justify-content-center mb-5">
-      <div class="col-3">
+      <div class="col-md-3">
         <p class="text-center"> {{ days }} </p>
         <span class="d-flex justify-content-center align-items-center">days</span>
       </div>
-      <div class="col-3">
+      <div class="col-md-3">
         <p class="text-center">{{ hours % 24 }} </p>
         <span class="d-flex justify-content-center align-items-center">hours</span>
       </div>
-      <div class="col-3">
+      <div class="col-md-3">
         <p class="text-center">{{ minutes % 60 }} </p>
         <span class="d-flex justify-content-center align-items-center">minutes</span>
       </div>
-      <div class="col-3">
+      <div class="col-md-3">
         <p class="text-center ">{{ seconds % 60 }} </p>
         <span class="d-flex justify-content-center align-items-center">seconds</span>
       </div>
@@ -76,7 +76,6 @@ span {
   font-size: 1rem;
   font-weight: 500;
   color: #ffffff75;
-  
 }
 
 .count-title {
@@ -92,8 +91,8 @@ span {
 }
 
 .time__box {
-  width: 75%;
-  max-width: 75%;
+  width: 100%;
+  max-width: 100%;
   margin-bottom: 2rem;
   padding: 1em;
   background-color: #0811124f;

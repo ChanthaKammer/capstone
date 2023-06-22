@@ -1,8 +1,8 @@
 <template>
-  <section v-if="account" class="container-fluid bg-dark p-0">
-    <div class="row justify-content-center align-items-center shadow elevation-5 bg-inner">
+  <section v-if="account" class="container-fluid bg-main p-0">
+    <div class="justify-content-center align-items-center shadow elevation-5 bg-inner">
       <div>
-          <div class="row">
+
             <div class="col-12 mx-auto">
           
               <!-- PROFILE START ( COPY / PASTE TO PROFILE PAGE ) -->
@@ -34,28 +34,22 @@
                               <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5 text-black" id="editAccountLabel">Edit Account</h1>
+                                    <h1 class="modal-title fs-5" id="editAccountLabel">Edit Account</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body justify-content-center">
                                     <form @submit.prevent="editAccount()" class="col-12">
-                                      <label for="text">Name</label>
                                       <input class="form-control mb-3" type="text" placeholder="Name" aria-label="name" v-model="editable.name">
-                                      <label for="text">Profile Picture</label>
                                       <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image" v-model="editable.picture">
-                                      <label for="text">Profile Cover Image</label>
                                       <input class="form-control mb-3" type="text" id="coverImg" placeholder="Cover Image" v-model="editable.coverImg">
                                       <div class="row mb-3">
                                         <div class="col-6">
-                                          <label for="text">Age</label>
                                           <input class="form-control" type="number" id="name" placeholder="Age" v-model="editable.age">
                                         </div>
                                         <div class="col-6">
-                                          <label for="text">Gamertag</label>
                                           <input class="form-control" type="text" id="gamertag" placeholder="Gamertag" v-model="editable.gamerTag">
                                         </div>
                                       </div>
-                                      <label for="text">Biography</label>
                                       <textarea class="form-control mb-3" id="bio" rows="3" placeholder="Bio" v-model="editable.bio"></textarea>
                                       <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
                                     </form>
@@ -82,7 +76,7 @@
 
                 <div class="bio-box">
                   <p class="ps-5 pt-5 pb-0" style="font-size: 2rem; font-weight: 600; color: aliceblue;"> {{ account.gamerTag }}'s Bio: </p>
-                  <div class="p-5 mx-5 mb-5 bio rounded-3">
+                  <div class="p-5 mx-5 mb-5 bio">
                     <p> {{ account.bio }} </p>
                   </div>
                 </div>
@@ -123,7 +117,7 @@
             </div>
           </div>
 
-      </div>
+
     </div>
 
   </section>
@@ -204,9 +198,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-label{
-  color: black
-}
+
 .bio {
   background-color: #2f395d76;
   color: aliceblue;

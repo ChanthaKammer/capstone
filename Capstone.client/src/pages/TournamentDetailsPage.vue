@@ -134,65 +134,66 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h1 class="modal-title fs-5" id="editTournamentLabel"></h1>
+                      <p class="m-0 fs-1 text-dark">Edit Tournament</p>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body justify-content-center">
                       <form @submit.prevent="editTournament()" class="col-12">
-                        <label for="text">Tournament Name</label>
+                        <label class="edit-labels" for="text">Tournament Name</label>
                         <input class="form-control mb-3" type="text" placeholder="Tournament Name"
                           aria-label="tournament Name" v-model="editable.name">
-                        <label for="text">Tournament Avatar Image</label>
+                        <label class="edit-labels" for="text">Tournament Avatar Image</label>
                         <input class="form-control mb-3" type="text" id="tournamentAvatarImg"
                           aria-label="tournament Avatar" placeholder="Tournament Avatar Image"
                           v-model="editable.coverImg">
-                        <label for="text">Tournament Cover Image</label>
+                        <label class="edit-labels" for="text">Tournament Cover Image</label>
                         <input class="form-control mb-3" type="text" id="gameImg" placeholder="Tournament Cover Image"
                           aria-label="tournament Cover Image" v-model="editable.gameImg">
-                        <label for="text">Start Date</label>
+                        <label class="edit-labels" for="text">Start Date</label>
                         <input type="datetime-local" name="startDate" class="form-control mb-3" placeholder="Start Date"
                           aria-label="Start Date" v-model="editable.startDate">
-                        <label for="text">Location</label>
+                        <label class="edit-labels" for="text">Location</label>
                         <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Location"
                           aria-label="Location" v-model="editable.location">
-                        <label for="text">Total Rounds</label>
+                        <label class="edit-labels" for="text">Total Rounds</label>
                         <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Total Rounds"
                           aria-label="Total Rounds" v-model="editable.totalRounds">
-                        <label for="text">Capacity</label>
+                        <label class="edit-labels" for="text">Capacity</label>
                         <input class="form-control mb-3" type="text" id="capacity" placeholder="Capacity"
                           aria-label="Capacity" v-model="editable.capacity">
-                        <label for="text">Match Type</label>
-                        <select class="form-select mb-3" aria-label="Tournament Type" v-model="editable.type">
-                          <option selected value="match" disabled>Match Type</option>
-                          <option value="online">Online</option>
-                          <option value="local">Local</option>
+                        <label class="edit-labels" for="text">Match Type</label>
+                        <select class="form-select mb-3" aria-label="Tournament Type" v-model="editable.type" style="background-color: white;">
+                          <option class="text-dark" selected value="match" disabled>Match Type</option>
+                          <option class="text-dark" value="online">Online</option>
+                          <option class="text-dark" value="local">Local</option>
                         </select>
-                        <label for="text">Tournament Description</label>
+                        <label class="edit-labels" for="text">Tournament Description</label>
                         <textarea class="form-control mb-3" id="tournamentDescription" rows="3"
                           aria-label="tournament Description" placeholder="Tournament Description"
                           v-model="editable.description"></textarea>
-                        <label for="text">Tournament Age Rating</label>
-                        <select class="form-select mb-3" aria-label="Tournament Age Rating" v-model="editable.ageRating">
-                          <option selected value="rating" disabled>Group Age Rating</option>
-                          <option value="Everyone">Everyone</option>
-                          <option value="Teen">Teen</option>
-                          <option value="Adult">Adult</option>
+                        <label class="edit-labels" for="text">Tournament Age Rating</label>
+                        <select class="form-select mb-3" aria-label="Tournament Age Rating" v-model="editable.ageRating" style="background-color: white;">
+                          
+                          <option class="text-dark" value="Everyone">Everyone</option>
+                          <option class="text-dark" value="Teen">Teen</option>
+                          <option class="text-dark" value="Adult">Adult</option>
                         </select>
-                        <label for="text">Max Teams</label>
-                        <input class="form-control mb-3" type="number" placeholder="Max Teams" aria-label="max Teams"
+                        <label class="edit-labels" for="text label-">Max Teams</label>
+                        <input class="form-control mb-3 bg-white" type="number" placeholder="Max Teams" aria-label="max Teams"
                           min="1" v-model="editable.maxTeams">
-                        <label for="text">Tournament GP Prize</label>
-                        <input class="form-control mb-3" type="text" id="tournamentMoney"
+                        <label class="edit-labels" for="text">Tournament GP Prize</label>
+                        <input class="form-control mb-3 bg-white" type="text" id="tournamentMoney"
                           placeholder="Tournament GP Prize" aria-label="Tournament Reward Coins"
                           v-model="editable.reward">
-                        <label for="text">First Place Badge</label>
-                        <input class="form-control mb-3" type="text" id="firstPlaceBadge" placeholder="First Place Badge"
+                        <label class="edit-labels" for="text">First Place Badge</label>
+                        <input class="form-control mb-3 bg-white" type="text" id="firstPlaceBadge" placeholder="First Place Badge"
                           aria-label="First Place Badge" v-model="editable.firstPlaceBadge">
-                        <label for="text">Second Place Badge</label>
-                        <input class="form-control mb-3" type="text" id="secondPlaceBadge"
+                        <label class="edit-labels" for="text">Second Place Badge</label>
+                        <input class="form-control mb-3 bg-white" type="text" id="secondPlaceBadge"
                           placeholder="Second Place Badge" aria-label="Second Place Badge"
                           v-model="editable.secondPlaceBadge">
-                        <label for="text">Third Place Badge</label>
-                        <input class="form-control mb-3" type="text" id="thirdPlaceBadge" placeholder="Third Place Badge"
+                        <label class="edit-labels" for="text">Third Place Badge</label>
+                        <input class="form-control mb-3 bg-white" type="text" id="thirdPlaceBadge" placeholder="Third Place Badge"
                           aria-label="Third Place Badge" v-model="editable.thirdPlaceBadge">
                         <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
                       </form>
@@ -231,11 +232,11 @@
                   participant.status }}</span></h1>
               </div>
               <select class="mb-3 form-control" v-model="participant.status">
-                <option value="active">Active</option>
-                <option value="eliminated">Eliminated</option>
-                <option value="firstPlace">First Place</option>
-                <option value="secondPlace">Second Place</option>
-                <option value="thirdPlace">Third Place</option>
+                <option class="text-dark" value="active">Active</option>
+                <option class="text-dark" value="eliminated">Eliminated</option>
+                <option class="text-dark" value="firstPlace">First Place</option>
+                <option class="text-dark" value="secondPlace">Second Place</option>
+                <option class="text-dark" value="thirdPlace">Third Place</option>
               </select>
             </div>
           </form>
@@ -328,26 +329,7 @@ export default {
       getCommentsByTournamentId();
     });
 
-    //  async function finalizeRound(){
 
-    //   AppState.activeTournament.currentRound++
-    //     forEach(element => {
-
-    //     });
-    //   logger.log(tournament.currentRound)
-    //     try {
-
-    //     } catch (error) {
-    //       logger.log(error);
-    //     }
-    //   }
-    async function finalizeTournament() {
-      try {
-
-      } catch (error) {
-        logger.log(error);
-      }
-    }
     async function setActiveTournament() {
       try {
         const tournamentId = route.params.tournamentId
@@ -361,7 +343,7 @@ export default {
     }
     return {
       // finalizeRound,
-      finalizeTournament,
+      // finalizeTournament,
       cancelTournament,
       leaveTournament,
       joinTournament,
@@ -420,6 +402,13 @@ export default {
           logger.log(error);
         }
       },
+      async finalizeTournament() {
+      try {
+
+      } catch (error) {
+        logger.log(error);
+      }
+    },
       async editTournament() {
         try {
           const tournamentId = route.params.tournamentId;
@@ -679,7 +668,9 @@ p {
   width: 95%;
   height: 3rem;
 }
-
+.edit-labels{
+  color: black;
+}
 @media (max-width: 768px) {
   .mobile-results {
     margin-bottom: 0rem;
@@ -709,4 +700,5 @@ p {
   .mobile-rgb {
     width: 10rem;
   }
+
 }</style>
