@@ -23,7 +23,7 @@ class ParticipantsService {
 
   async getProfileParticipants(profileId){
     const res = await api.get(`api/profile/${profileId}/participants`)
-    AppState.profileParticipants = res.data.map(p => new participant)
+    AppState.profileParticipants = res.data
   }
 
   async updatePlayerStatus(participantId, playerStatus){
