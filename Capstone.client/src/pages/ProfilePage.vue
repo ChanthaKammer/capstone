@@ -85,9 +85,10 @@ import { computed } from '@vue/reactivity';
             }
          }
          
-         onMounted(() =>
+         onMounted(() => {
          getProfile(),
          getProfileTournaments()
+         }
          )
 
          return {
