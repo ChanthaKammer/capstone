@@ -21,6 +21,14 @@ class ParticipantsService {
     Pop.success(`Welcome to ${AppState.activeTournament.name}`)
   }
 
+  async updatePlayerStatus(participantId, playerStatus){
+    try {
+      
+    } catch (error) {
+      logger.log(error);
+    }
+  }
+  
   async deleteParticipant(participantId) {
     const res = await api.delete(`api/participants/${participantId}`)
     logger.log(res.data)

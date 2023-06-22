@@ -2,7 +2,7 @@
 <template>
   <section class="container-fluid bg-details">
     <div class="row">
-      <div v-if="!tournament.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase details-top">
+      <div v-if="!tournament?.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase details-top">
         <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{ tournament.name
         }} ({{ tournament.type }}) </p>
         <div class="row justify-content-center">
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
-        <img :src="tournament.coverImg" class="img-fluid object-fit-cover rounded-3 starship-img" style="min-height: 50vh;">
+        <img :src="tournament.coverImg" :alt="tournament.coverImg" class="img-fluid object-fit-cover rounded-3 starship-img" style="min-height: 50vh;">
       </div>
       <!-- <div class="row">
         <div class="col-12 pb-5">
@@ -231,7 +231,7 @@
         <form @submit.prevent="createComment()">
           <div v-if="account" class="d-flex align-items-center mb-2">
             <img :src="account.picture" :alt="account.name" class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38">
-            <h3>{{ account.name }}</h3>
+            <h2>{{ account.name }}</h2>
           </div>
           <div class="text-end">
             <textarea v-model="commentData" class="text-area w-100 rounded-3 comment-box text-dark" aria-label="Text Area"></textarea>
@@ -298,14 +298,19 @@ export default {
       getCommentsByTournamentId();
     });
 
-    async function finalizeRound(){
-      tournament.currentRound = tournament.currentRound++
-        try {
+    //  async function finalizeRound(){
+      
+    //   AppState.activeTournament.currentRound++
+    //     forEach(element => {
+          
+    //     });
+    //   logger.log(tournament.currentRound)
+    //     try {
 
-        } catch (error) {
-          logger.log(error);
-        }
-      }
+    //     } catch (error) {
+    //       logger.log(error);
+    //     }
+    //   }
       async function finalizeTournament(){
         try {
           
@@ -325,7 +330,7 @@ export default {
 
     }
     return {
-      finalizeRound,
+      // finalizeRound,
       finalizeTournament,
       cancelTournament,
       leaveTournament,
@@ -369,7 +374,21 @@ export default {
         }
       },
       // SECTION tournament management functions
+      async finalizeRound(){
       
+        // logger.log(tournament.currentRound)
+        try {
+          // AppState.activeTournament.currentRound++
+          // AppState.activeTournament = await tournamentsService.editTournament(AppState.activeTournament.id, {currentRound: AppState.activeTournament.currentRound})
+          // logger.log(AppState.activeTournament)
+          await AppState.participants.forEach(p => {
+            const participantUpdate = participantsService.updatePlayerStatus()
+            logger.log(p.profile.name ,p.status)
+          });
+        } catch (error) {
+          logger.log(error);
+        }
+      },
       async editTournament(){
       try{
         const tournamentId = route.params.tournamentId;

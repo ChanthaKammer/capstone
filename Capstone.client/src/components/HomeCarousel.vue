@@ -1,4 +1,119 @@
 <template>
+  <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" >
+    <Slide v-for="t in tournaments" :key="t.id">
+      {{ t.coverImg }}
+    </Slide>
+
+    ...
+  </Carousel>
+</template>
+
+<script>
+import { computed, ref } from "vue"
+// import { defineComponent } from 'vue'
+import { Carousel, Pagination, Slide } from 'vue3-carousel'
+import { logger } from '../utils/Logger.js'
+import 'vue3-carousel/dist/carousel.css'
+import { AppState } from "../AppState.js"
+
+export default {
+  // defineComponent
+  // name: 'HomeCarousel',
+  components: {
+    Carousel,
+    Slide,
+    // Pagination,
+  },
+  
+  setup(){
+    const homeCarousel = ref(null)
+
+    
+ 
+    // logger.log(homeCarousel.value.data.currentSlide, 'lol what is this')
+
+// homeCarousel.value.next()
+// homeCarousel.value.updateSlideWidth()
+
+    return{
+tournaments: computed(()=>AppState.tournaments)
+
+    }
+  }
+}
+
+
+
+</script>
+
+
+
+
+<style scoped>
+.carousel__slide {
+  padding: 5px;
+}
+
+.carousel__viewport {
+  perspective: 2000px;
+}
+
+.carousel__track {
+  transform-style: preserve-3d;
+}
+
+.carousel__slide--sliding {
+  transition: 0.5s;
+}
+
+.carousel__slide {
+  opacity: 0.9;
+  transform: rotateY(-20deg) scale(0.9);
+}
+
+.carousel__slide--active ~ .carousel__slide {
+  transform: rotateY(20deg) scale(0.9);
+}
+
+.carousel__slide--prev {
+  opacity: 1;
+  transform: rotateY(-10deg) scale(0.95);
+}
+
+.carousel__slide--next {
+  opacity: 1;
+  transform: rotateY(10deg) scale(0.95);
+}
+
+.carousel__slide--active {
+  opacity: 1;
+  transform: rotateY(0) scale(1.1);
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <template>
+
 
   <div v-if="tournament">
     <div class="carousel-inner p-5">
@@ -44,28 +159,4 @@
 </div>
 
 </template>
-
-<script>
-import { AppState } from "../AppState.js";
-import { Tournament } from "../models/Tournament.js";
-
-
-export default {
-  
-  props: {
-    tournament: {
-      type: Tournament,
-      required: true
-    }
-  },
-
-  setup() {
-
-    return {
-      // participantCount: computed(() => AppState.activeTournament.participant)
-    }
-
-  }
-}
-
-</script>
+ -->
