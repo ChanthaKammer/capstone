@@ -3,7 +3,7 @@
       <div class="col-md-6" style="">
          <img :src="game.backgroundImg" class="img-fluid object-fit-cover rounded-3 p-3" style="height: 100%; aspect-ratio: 1/1;" :alt="game.name">
       </div>
-      <div class="col-md-6 pt-2 align-self-center">
+      <div class="col-md-6 d-flex flex-column justify-content-around">
          <h2>{{ game.name }}</h2>
          <!-- <h6 class="mt-3"><em>Genre: {{ game.genres[0].name }}</em></h6> -->
          <h5 class="mt-5 mb-0">Released:</h5>
@@ -14,10 +14,8 @@
                month: 'short', 
                day: 'numeric'
             }) }}</h3>
-
-
          <router-link :to="{ name: 'GameDetails', params: { slug: game.slug } }">
-            <button class="btn media-button my-4 p-1 mb-5">
+            <button class="btn media-button p-1">
                Game Info
             </button>
          </router-link>
@@ -90,17 +88,15 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 * {
    border: 1px solid green;
    color: rgb(194, 194, 194);
-   text-shadow: 1px 1px 2px 5px #d2d0d0;
 }
 
 .media-button{
    font-family: 'Raleway', sans-serif;
-   padding: 25px 30px;
    background-color: #050801;
    color: #03e9f4;
    font-weight: bold;
@@ -110,17 +106,17 @@ export default {
    overflow: hidden;
    transition: 0.5s;
    cursor: pointer;
- }
- 
- .media-button:hover{
-     background: #03e9f4;
-     color: #050801;
-     box-shadow: 0 0 5px #03e9f4,
-                 0 0 25px #03e9f4,
-                 0 0 50px #03e9f4,
-                 0 0 200px #03e9f4;
-      -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
- }
+}
+
+.media-button:hover{
+   background: #03e9f4;
+   color: #050801;
+   box-shadow: 0 0 5px #03e9f4,
+               0 0 25px #03e9f4,
+               0 0 50px #03e9f4,
+               0 0 200px #03e9f4;
+   -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+}
 
 
 @keyframes popIn {
@@ -134,10 +130,10 @@ export default {
  }
 
 @media screen and (max-width: 768px) {
-   .media-button {
-      position: relative;
-      top: -13vh;
-      left: 45vw;
-   }
+   // .media-button {
+   //    position: relative;
+   //    top: -13vh;
+   //    left: 45vw;
+   // }
 }
 </style>
