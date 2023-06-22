@@ -1,125 +1,126 @@
 <template>
-    <section v-if="account" class="container-fluid bg-main p-0">
-      <div class="justify-content-center align-items-center shadow elevation-5 bg-inner">
-        <div>
+  <section v-if="account" class="container-fluid bg-main p-0">
+    <div class="justify-content-center align-items-center shadow elevation-5 bg-inner">
+      <div>
 
-              <div class="col-12 mx-auto">
+            <div class="col-12 mx-auto">
           
-                <!-- PROFILE START ( COPY / PASTE TO PROFILE PAGE ) -->
-                <div class="shadow rounded overflow-hidden">
-                  <div class=" elevation-5 shadow-lg px-4 pt-0 pb-4" :style="{ background: `url(${account.coverImg})` }" style="background-position: center; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
-                    <div class="media align-items-end profile-header">
-                      <div class="profile pt-5" style="margin-right: 25vw;">
-                        <div class="row media-body pt-5 text-white">
-                          <div class="col-3" style="position: absolute; top: 22rem;">
-                            <img :src="account.picture" :alt="account.name" class="img-fluid profile-img" style="max-width: 150px; min-width:100px;">
-                          </div>
-                          <div class="col-3 name-tag" style="position: absolute; top: 25rem; left: 9.75rem;">
-                            <h4 class="my-0 mx-4"> {{ account.name }} </h4>
-                            <div class="row">
-                              <div class="col-12">
-                                <p class="small mb-4 mx-4 fs-6" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
-                              </div>
+              <!-- PROFILE START ( COPY / PASTE TO PROFILE PAGE ) -->
+              <div class="shadow rounded overflow-hidden">
+                <div class=" elevation-5 shadow-lg px-4 pt-0 pb-4" :style="{ background: `url(${account.coverImg})` }" style="background-position: center; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
+                  <div class="media align-items-end profile-header">
+                    <div class="profile pt-5" style="margin-right: 25vw;">
+                      <div class="row media-body pt-5 text-white">
+                        <div class="col-3" style="position: absolute; top: 22rem;">
+                          <img :src="account.picture" :alt="account.name" class="img-fluid profile-img" style="max-width: 150px; min-width:100px;">
+                        </div>
+                        <div class="col-3 name-tag" style="position: absolute; top: 25rem; left: 9.75rem;">
+                          <h4 class="my-0 mx-4"> {{ account.name }} </h4>
+                          <div class="row">
+                            <div class="col-12">
+                              <p class="small mb-4 mx-4 fs-6" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
                             </div>
                           </div>
                         </div>
                       </div>
+                    </div>
                       
-                      <div class="col-md-3">
-                        <button class="btn neon-button mt-5" style="position: absolute; top: 29rem; min-width: 10vw;" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
-                          <div class="row justify-content-center">
+                    <div class="col-md-3">
+                      <button class="btn neon-button mt-5" style="position: absolute; top: 29rem; min-width: 10vw;" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
+                        <div class="row justify-content-center">
           
-                            <!-- Modal -->
-                            <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModal" aria-hidden="true">
-                                <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h1 class="modal-title fs-5" id="editAccountLabel">Edit Account</h1>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body justify-content-center">
-                                      <form @submit.prevent="editAccount()" class="col-12">
-                                        <input class="form-control mb-3" type="text" placeholder="Name" aria-label="name" v-model="editable.name">
-                                        <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image" v-model="editable.picture">
-                                        <input class="form-control mb-3" type="text" id="coverImg" placeholder="Cover Image" v-model="editable.coverImg">
-                                        <div class="row mb-3">
-                                          <div class="col-6">
-                                            <input class="form-control" type="number" id="name" placeholder="Age" v-model="editable.age">
-                                          </div>
-                                          <div class="col-6">
-                                            <input class="form-control" type="text" id="gamertag" placeholder="Gamertag" v-model="editable.gamerTag">
-                                          </div>
+                          <!-- Modal -->
+                          <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModal" aria-hidden="true">
+                              <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="editAccountLabel">Edit Account</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body justify-content-center">
+                                    <form @submit.prevent="editAccount()" class="col-12">
+                                      <input class="form-control mb-3" type="text" placeholder="Name" aria-label="name" v-model="editable.name">
+                                      <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image" v-model="editable.picture">
+                                      <input class="form-control mb-3" type="text" id="coverImg" placeholder="Cover Image" v-model="editable.coverImg">
+                                      <div class="row mb-3">
+                                        <div class="col-6">
+                                          <input class="form-control" type="number" id="name" placeholder="Age" v-model="editable.age">
                                         </div>
-                                        <textarea class="form-control mb-3" id="bio" rows="3" placeholder="Bio" v-model="editable.bio"></textarea>
-                                        <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
-                                      </form>
-                                  </div>
+                                        <div class="col-6">
+                                          <input class="form-control" type="text" id="gamertag" placeholder="Gamertag" v-model="editable.gamerTag">
+                                        </div>
+                                      </div>
+                                      <textarea class="form-control mb-3" id="bio" rows="3" placeholder="Bio" v-model="editable.bio"></textarea>
+                                      <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
+                                    </form>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-
-                  </div>
-
-                  <div class="d-flex justify-content-end text-center">
-                    <ul class="list-inline social-tab mb-0 p-4 bg-filler">
-                      <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block"> {{ myParticipations.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
-                      </li>
-                      <li class="list-inline-item">
-                        <h5 class="font-weight-bold d-block" style="">4K</h5><small class=""> <i class="mdi mdi-account-circle me-1"></i>Followers</small>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="bio-box">
-                    <p class="ps-5 pt-5 pb-0" style="font-size: 2rem; font-weight: 600; color: aliceblue;"> {{ account.gamerTag }}'s Bio: </p>
-                    <div class="p-5 mx-5 mb-5 bio">
-                      <p> {{ account.bio }} </p>
-                    </div>
-                  </div>
-
-                  <div class="py-4 px-4 mb-5">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                      <h5 class="mt-5 tournament-header"> {{ account.name }}'s Tournaments:</h5>
-                    </div>
-                    <div class="row">
-
-                      <!-- VISUALLY SHOWS TOURNAMENT CARDS FOR TOURNAMENTS THE ACCOUNT HOLDER IS ATTENDING -->
-                    <section>
-                      <div class="d-flex align-items-center">
-                        <div class="col-md-3 col-12" v-for="p in myParticipations" :key="p.id">
-                          <MyJoinedTournamentsCard :myParticipation="p"/>
-                        </div>
-                      </div>
-                    </section>
-
                     </div>
 
-                    <div class="py-4">
-                      <h5 class="mb-3 comment-header">Recent posts</h5>
-                      <div class="p-4 bg-comments rounded shadow-sm">
-                        <div class="col-8 my-4" v-for="c in comments" :key="c.id">
-                          <CommentCard :comment="c"/>
-                        </div>
-                        <p class="text-light" style="text-shadow: 1px 1px 4px #000000; font-weight: 550;">No more recent comments on tournaments.</p>
-                        <ul class="list-inline small text-light mt-3 mb-0">
-                          <li class="list-inline-item"><i class="mdi mdi-comment me-2 text-light"></i>12 Comments</li>
-                          <li class="list-inline-item"><i class="mdi mdi-heart-plus me-2" style="color: red;"></i>200 Likes</li>
-                        </ul>
+                </div>
+
+                <div class="d-flex justify-content-end text-center">
+                  <ul class="list-inline social-tab mb-0 p-4 bg-filler">
+                    <li class="list-inline-item">
+                      <h5 class="font-weight-bold mb-0 d-block"> {{ myParticipations.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
+                    </li>
+                    <li class="list-inline-item">
+                      <h5 class="font-weight-bold d-block" style="">4K</h5><small class=""> <i class="mdi mdi-account-circle me-1"></i>Followers</small>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="bio-box">
+                  <p class="ps-5 pt-5 pb-0" style="font-size: 2rem; font-weight: 600; color: aliceblue;"> {{ account.gamerTag }}'s Bio: </p>
+                  <div class="p-5 mx-5 mb-5 bio">
+                    <p> {{ account.bio }} </p>
+                  </div>
+                </div>
+
+                <div class="py-4 px-4 mb-5">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="mt-5 tournament-header"> {{ account.name }}'s Tournaments:</h5>
+                  </div>
+                  <div class="row">
+
+                    <!-- VISUALLY SHOWS TOURNAMENT CARDS FOR TOURNAMENTS THE ACCOUNT HOLDER IS ATTENDING -->
+                  <section>
+                    <div class="d-flex align-items-center">
+                      <div class="col-md-3 col-12" v-for="p in myParticipations" :key="p.id">
+                        <MyJoinedTournamentsCard :myParticipation="p"/>
                       </div>
                     </div>
-                  </div>
-                </div><!-- END PROFILE ( COPY / PASTE TO PROFILE PAGE ) -->
+                  </section>
 
-              </div>
+                  </div>
+
+                  <div class="py-4">
+                    <h5 class="mb-3 comment-header">Recent posts</h5>
+                    <div class="p-4 bg-comments rounded shadow-sm">
+                      <div class="col-8 my-4" v-for="c in comments" :key="c.id">
+                        <CommentCard :comment="c"/>
+                      </div>
+                      <p class="text-light" style="text-shadow: 1px 1px 4px #000000; font-weight: 550;">No more recent comments on tournaments.</p>
+                      <ul class="list-inline small text-light mt-3 mb-0">
+                        <li class="list-inline-item"><i class="mdi mdi-comment me-2 text-light"></i>12 Comments</li>
+                        <li class="list-inline-item"><i class="mdi mdi-heart-plus me-2" style="color: red;"></i>200 Likes</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- END PROFILE ( COPY / PASTE TO PROFILE PAGE ) -->
+          
             </div>
+          </div>
 
-      </div>
 
-    </section>
+    </div>
+
+  </section>
 </template>
 
 <script>
@@ -197,9 +198,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-label{
-  color: black
-}
+
 .bio {
   background-color: #2f395d76;
   color: aliceblue;
