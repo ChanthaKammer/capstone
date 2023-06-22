@@ -106,7 +106,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" class="img-fluid game-img rounded-2" style="min-width: 40vw;" alt="">
+        <img :src="tournament.gameImg" class="img-fluid game-img  rounded-2" style="min-width: 40vw;" alt="">
 
         <div class="d-flex justify-content-evenly">
 
@@ -581,16 +581,16 @@ p {
   .rgb-btn{
   width: 90%;
 }
-.countdown-area{
-  display: none;
-}
+// .countdown-area{
+//   display: none;
+// }
 .details-top{
   margin-top: 4rem;
 }
-.starship-img{
-  aspect-ratio: 1/1;
-  display: none;
-}
+// .starship-img{
+//   aspect-ratio: 1/1;
+//   display: none;
+// }
 .game-img{
   aspect-ratio: 1/1;
   // display: none;

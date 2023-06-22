@@ -110,9 +110,7 @@ export default {
 
 
 <style lang="scss" scoped>
-* {
-  border: 1px solid green
-}
+
 
 
 .bg-commentcard{
