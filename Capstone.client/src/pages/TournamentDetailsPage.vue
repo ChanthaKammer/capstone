@@ -126,7 +126,7 @@
             <RGBButton class="px-2 rgb-btn" buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
             <div class="row justify-content-center">
 
-              <!-- Modal -->
+              <!-- SECTION Tournament Edit Modal -->
               <div class="modal fade" id="editTournamentModal" tabindex="-1" aria-labelledby="editTournamentModal" aria-hidden="true">
                   <div class="modal-dialog">
                   <div class="modal-content">
