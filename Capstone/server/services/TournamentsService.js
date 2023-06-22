@@ -39,6 +39,7 @@ class TournamentsService{
         originalTourney.gameName = tournamentData.gameName || originalTourney.gameName
         originalTourney.gameSlug = tournamentData.gameSlug || originalTourney.gameSlug
         originalTourney.totalRounds = tournamentData.totalRounds|| originalTourney.totalRounds
+        originalTourney.currentRound = tournamentData.currentRound|| originalTourney.currentRound
         
         await originalTourney.save()
         return originalTourney
