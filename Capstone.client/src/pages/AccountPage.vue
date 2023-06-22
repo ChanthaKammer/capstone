@@ -39,17 +39,23 @@
                                 </div>
                                 <div class="modal-body justify-content-center">
                                     <form @submit.prevent="editAccount()" class="col-12">
+                                      <label class="edit-labels" for="text">Name</label>
                                       <input class="form-control mb-3" type="text" placeholder="Name" aria-label="name" v-model="editable.name">
+                                      <label class="edit-labels" for="text">Avatar Image</label>
                                       <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image" v-model="editable.picture">
+                                      <label class="edit-labels" for="text">Cover Image</label>
                                       <input class="form-control mb-3" type="text" id="coverImg" placeholder="Cover Image" v-model="editable.coverImg">
                                       <div class="row mb-3">
                                         <div class="col-6">
+                                          <label class="edit-labels" for="text">Age</label>
                                           <input class="form-control" type="number" id="name" placeholder="Age" v-model="editable.age">
                                         </div>
                                         <div class="col-6">
+                                          <label class="edit-labels" for="text">Gamertag</label>
                                           <input class="form-control" type="text" id="gamertag" placeholder="Gamertag" v-model="editable.gamerTag">
                                         </div>
                                       </div>
+                                      <label class="edit-labels" for="text">Bio</label>
                                       <textarea class="form-control mb-3" id="bio" rows="3" placeholder="Bio" v-model="editable.bio"></textarea>
                                       <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
                                     </form>
@@ -198,7 +204,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+label{
+  color: black
+}
 .bio {
   background-color: #2f395d76;
   color: aliceblue;

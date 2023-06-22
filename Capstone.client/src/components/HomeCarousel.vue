@@ -1,10 +1,9 @@
 <template>
   <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" >
     <Slide v-for="t in tournaments" :key="t.id">
-      {{ t.coverImg }}
+      
+    <img :src="t.coverImg" alt="image">
     </Slide>
-
-    ...
   </Carousel>
 </template>
 
@@ -35,9 +34,8 @@ export default {
 // homeCarousel.value.next()
 // homeCarousel.value.updateSlideWidth()
 
-    return{
-tournaments: computed(()=>AppState.tournaments)
-
+    return {
+      tournaments: computed(()=>AppState.tournaments)
     }
   }
 }

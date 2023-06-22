@@ -4,30 +4,17 @@
          <div class="col-md-8 bg-dark text-white rounded-3">
             <div class="row justify-content-around p-3">
                <div class="col-md-6">
-                  <img src="" alt="" class="img-fluid">
+                  <img :src="activeProfile.picture" :alt="activeProfile.name" class="img-fluid">
                   <h3>Badges</h3>
                   <div class="row">
-                     <h3 class="col-auto"><i class="mdi mdi-trophy" title="Trophy One"></i></h3>
-                     <h3 class="col-auto"><i class="mdi mdi-trophy" title="Trophy Two"></i></h3>
-                     <h3 class="col-auto"><i class="mdi mdi-trophy" title="Trophy Three"></i></h3>
-                     <h3 class="col-auto"><i class="mdi mdi-trophy" title="Trophy Four"></i></h3>
+                     <div v-for="r in profileRewards" :key="r.id">
+                        <Badge :badge="r"/>
+                     </div>
                   </div>
                </div>
                <div class="col-md-6">
-                  <h1>{{ activeProfile.name }}</h1>
-                  <h1>{{ activeProfile.gamerTag }}</h1>
-                  <h1>Platforms</h1>
-                  <div class="row justify-content-center">
-                     <div class="col-auto">
-                        <h2><i class="mdi mdi-microsoft-xbox" style="color: limegreen;"></i></h2>
-                     </div>
-                     <div class="col-auto">
-                        <h2><i class="mdi mdi-sony-playstation" style="color: dodgerblue;"></i></h2>
-                     </div>
-                     <div class="col-auto">
-                        <h2>PC</h2>
-                     </div>
-                  </div>
+                  <h1>Name: {{ activeProfile.name }}</h1>
+                  <h1>Gamertag: {{ activeProfile.gamerTag }}</h1>
                   <p>{{ activeProfile.bio }}</p>
                </div>
             </div>
@@ -51,6 +38,7 @@ import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
 import TournamentCard  from '../components/TournamentCard.vue'
+import Badge from '../components/Badge.vue';
 import { useRoute } from 'vue-router';
 import { tournamentsService } from '../services/TournamentsService.js';
 import { profileService } from '../services/ProfileService.js'
@@ -60,7 +48,8 @@ import { participantsService } from '../services/ParticipantsService.js';
 import { rewardsService } from '../services/RewardsService.js'
    export default {
       components: {
-         TournamentCard
+         TournamentCard,
+         Badge
       },
       setup(){
          const route = useRoute()
@@ -100,6 +89,7 @@ import { rewardsService } from '../services/RewardsService.js'
             try {
                const profileId = route.params.profileId
                await rewardsService.getProfileRewards(profileId)
+               logger.log(AppState.profileRewards)
             } catch (error) {
                logger.error(error)
                Pop.toast(error.message, 'error')
