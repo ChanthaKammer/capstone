@@ -311,6 +311,8 @@ export default {
 
     }
     return {
+      finalizeRound,
+      finalizeTournament,
       cancelTournament,
       leaveTournament,
       joinTournament,
