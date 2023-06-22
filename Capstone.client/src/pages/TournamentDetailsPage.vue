@@ -97,7 +97,6 @@
           <div>
             <div class="row">
               <div class="col-6 col-md-3" v-for="p in participants" :key="p.id">
-             
                 <ParticipantCard :participant="p" />
               </div>
               
@@ -109,8 +108,6 @@
         <img :src="tournament.gameImg" class="img-fluid game-img  rounded-2" style="min-width: 40vw;" alt="">
 
         <div class="d-flex justify-content-evenly">
-
-
           <div>
             <div v-if="!isParticipant">
               <RGBButton class="px-2 rgb-btn" buttonText="Join the Tournament!" @click="joinTournament" />
@@ -120,7 +117,7 @@
             </div>
           </div>
           <div v-if="isTournamentCreator">
-            <RGBButton class="px-2 rgb-btn" buttonText="Cancel Tournament" />
+            <RGBButton class="px-2 rgb-btn" buttonText="Cancel Tournament" @click="cancelTournament" />
           </div>
           <div v-if="isTournamentCreator">
             <RGBButton class="px-2 rgb-btn" buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
@@ -229,7 +226,7 @@
             <h3>{{ account.name }}</h3>
           </div>
           <div class="text-end">
-            <textarea v-model="commentData" class="text-area w-100 rounded-3 comment-box"></textarea>
+            <textarea v-model="commentData" class="text-area w-100 rounded-3 comment-box text-dark"></textarea>
             <RGBButton class="mobile-rgb" buttonText="Post Comment" type="submit" />
           </div>
         </form>
