@@ -22,7 +22,7 @@ class ParticipantsService {
   }
 
   async getProfileParticipants(profileId){
-    const res = await api.get(`api/profile/${profileId}/participants`)
+    const res = await api.get(`api/profiles/${profileId}/participants`)
     AppState.profileParticipants = res.data
   }
 
