@@ -9,6 +9,7 @@ export class ParticipantsController extends BaseController{
             .use(Auth0Provider.getAuthorizedUserInfo)
             .get('/:id', this.getParticipant)
             .post('', this.createParticipant)
+            .put('/:id', this.editParticipant)
             .delete('/:id', this.deleteParticipant)
     }
     
@@ -26,6 +27,17 @@ export class ParticipantsController extends BaseController{
         try {
             req.body.accountId = req.userInfo.id
             const participant = await participantsService.createParticipant(req.body)
+            return res.send(participant)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async editParticipant(req, res, next){
+        try {
+            const participantId = req.params.id
+            const participantData = req.body
+            const participant = await participantsService.editParticipant(participantId, participantData)
             return res.send(participant)
         } catch (error) {
             next(error)

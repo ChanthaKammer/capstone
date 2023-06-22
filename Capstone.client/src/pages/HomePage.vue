@@ -41,16 +41,21 @@
     <section class="row">
       <div class="col-12 ">
 
+        <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" >
+          <Slide v-for="slide in carouselTournaments" :key="slide">
+            <div class="carousel__item"><img :src="slide.coverImg" alt=""></div>
+          </Slide>
+      
+          ...
+        </Carousel>
+
+        <!-- <HomeCarousel/> -->
+
+        <!-- #region -->
         <!-- NOTE BACKGROUND BORDER FOR CAROUSEL ----------------------------->
-        <div class="row bg-carousel justify-content-center align-items-center shadow-lg elevation-5 carousel-top">
+        <!-- <div class="row bg-carousel justify-content-center align-items-center shadow-lg elevation-5 carousel-top">
 
-
-
-
-
-
-
-          <!-- SECTION CAROUSEL FOR 'MOST POPULAR' TOURNAMENTS BY SELECTABLE COVER IMAGE ***START*** ------------------------------>
+          SECTION CAROUSEL FOR 'MOST POPULAR' TOURNAMENTS BY SELECTABLE COVER IMAGE ***START*** ----------------------------
           <div class="bg-games">
             <div id="carouselExampleIndicators" class="carousel slide">
               <div class="carousel-indicators">
@@ -111,7 +116,9 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
+<!-- #endregion -->
+
       </div>
     </section>
     <!-- SECTION CAROUSEL FOR 'MOST POPULAR' TOURNAMENTS BY SELECTABLE COVER IMAGE ***END*** ------------------------------>
@@ -124,11 +131,12 @@
 
 
 
-    <div class="row justify-content-between mb-5 py-3 accent-row shadow-lg">
+    <div class="row justify-content-between mb-5 py-3 accent-row shadow-lg"
+         style="">
       <div class="accent row"></div>
       <div class="col-md-6 mb-5 pe-5 neon-btn-one" style="">
         <div class="btn-group">
-          <button type="button" class="btn btn-info neon-button">Highlights</button>
+          <button type="button" class="btn btn-info neon-button" style="width: 10vw; position: absolute; top: 1.5vh; left: 0vw;" @click="homeCarousel.prev()">Previous</button>
 
           <!-- TODO GIVE THESE BUTTONS A ROUTE ONCE WE HAVE A USE FOR THEM --------------------------------------------->
           <!-- <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
@@ -146,10 +154,10 @@
           </ul> -->
         </div>
       </div>
-      <div class="col-md-6 mb-5 ps-5 neon-btn-two"
-        style="position: absolute; top: -3.5vh; left: 65.5%; max-width: fit-content;">
+      <div class="col-md-6 mb-5 ps-5"
+        style="position: absolute; top: -.5vh; left: 75%;">
         <div class="btn-group">
-          <button type="button" class="btn btn-info neon-button">Top Gamers</button>
+          <button type="button" class="btn btn-info neon-button" style="width: 10vw;" @click="homeCarousel.next()">Next</button>
 
           <!-- TODO GIVE THESE BUTTONS A ROUTE ONCE WE HAVE A USE FOR THEM --------------------------------------------->
           <!-- <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
@@ -201,6 +209,9 @@ import { logger } from '../utils/Logger.js'
 import Pop from '../utils/Pop.js'
 import { AppState } from '../AppState.js'
 import TournamentCard from '../components/TournamentCard.vue'
+// import HomeCarousel from '../components/HomeCarousel.vue'
+import { Carousel,Slide } from 'vue3-carousel'
+
 
 export default {
 
@@ -208,11 +219,16 @@ export default {
 
   components: {
     TournamentCard,
+    // HomeCarousel,
+    Carousel,
+    Slide,
   },
 
   setup() {
 
     const filterBy = ref('')
+    const homeCarousel = ref(null)
+
 
     //NOTE If we want to randomize between an array of set background colors / images this is how we can do that
     // async getTournamentBg() {
@@ -242,6 +258,8 @@ export default {
 
     return {
       filterBy,
+      homeCarousel,
+      carouselTournaments: computed(()=>AppState.tournaments),
       tournaments: computed(() => {
         if (filterBy.value == '') {
           return AppState.tournaments
@@ -317,9 +335,9 @@ export default {
 
 .neon-button,
 .dropdown-toggle {
-  color: #2bbcff;
+  color: #000000;
   border: #71acff57 .125em solid;
-  text-shadow: .5px .5px .125em #2bbcff;
+  text-shadow: .5px .5px .125rem #14005e;
   box-shadow: 0 0 20px 1px #49bfffe7;
   animation: pulse 3s infinite;
 }
@@ -655,4 +673,55 @@ export default {
   .lighting-bar{
     margin-top: -4rem;
   }
-}</style>
+
+}
+
+//#region carousel styles
+.carousel__slide {
+  padding: 5px;
+}
+
+.carousel__viewport {
+  perspective: 2000px;
+}
+
+.carousel__track {
+  transform-style: preserve-3d;
+}
+
+.carousel__slide--sliding {
+  transition: 0.5s;
+}
+
+.carousel__slide {
+  opacity: 0.9;
+  transform: rotateY(-20deg) scale(0.9);
+}
+
+.carousel__slide--active ~ .carousel__slide {
+  transform: rotateY(20deg) scale(0.9);
+}
+
+.carousel__slide--prev {
+  opacity: 1;
+  transform: rotateY(-10deg) scale(0.95);
+}
+
+.carousel__slide--next {
+  opacity: 1;
+  transform: rotateY(10deg) scale(0.95);
+}
+
+.carousel__slide--active {
+  opacity: 1;
+  transform: rotateY(0) scale(1.1);
+}
+
+.carousel__item>img{
+height: 35vh;
+width: 100%;
+object-fit: cover;
+}
+//#endregion
+
+</style>

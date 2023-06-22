@@ -48,7 +48,9 @@ class TournamentsService {
   }
 
   async getProfileTournaments(profileId){
-    const res = await api.get(`api/${profileId}/tournaments`)
+    const res = await api.get(`api/profiles/${profileId}/tournaments`)
+    AppState.profileTournaments = res.data.map(t => new Tournament(t))
+    logger.log(AppState.profileTournaments)
     return res.data
   }
 }
