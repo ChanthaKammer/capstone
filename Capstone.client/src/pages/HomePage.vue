@@ -1,14 +1,15 @@
 <template>
   <section class="container-fluid bg-background">
+    
 
     <!-- <section class="row bg-navbar justify-content-center align-items-center" style="height: 20px;">
 
     </section> -->
 
-    <section class="row bg-nav-options shadow nav-bar2 py-3" style="text-shadow: 2px 2px 3px #000000;">
-      <div class="col-12 d-flex justify-content-center align-items-center">
+    <!-- <section class="row bg-nav-options shadow nav-bar2 py-3" style="text-shadow: 2px 2px 3px #000000;"> -->
+      <!-- <div class="col-12 d-flex justify-content-center align-items-center">
         <h2 class="text-white mt-3">FEATURED TOURNAMENTS</h2>
-      </div>
+      </div> -->
       <!-- <div class="col-1" style="border-right: 5px double #ffffff99;"></div>
       <div class="col-3 d-flex justify-content-center align-items-center">
         <h2 class="text-white mt-3">HOST</h2>
@@ -17,7 +18,7 @@
       <div class="col-3 ps-5 d-flex justify-content-center align-items-center">
         <h2 class="text-white mt-3">COMPETE</h2>
       </div> -->
-    </section>
+    <!-- </section> -->
 
 
     <!-- <section class="row bg-nav-accent">
@@ -39,6 +40,7 @@
       </section> -->
 
     <section class="row">
+      <h2 class="text-white mt-3 text-center">FEATURED TOURNAMENTS</h2>
       <div class="col-12 bg-carousel justify-content-center align-items-center shadow-lg elevation-5">
         <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" class="">
           <Slide v-for="slide in carouselTournaments" :key="slide" class="">
