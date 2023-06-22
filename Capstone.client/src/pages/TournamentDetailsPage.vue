@@ -404,7 +404,7 @@ export default {
 
 <style scoped lang="scss">
 .bg-background{
-  background-color: #4a70e196
+  background-color: #4a70e196;
 }
 .bg-details {
   background-color: #374466;
@@ -413,10 +413,10 @@ export default {
   animation: colorChange 15s infinite;
 }
 .comment-box{
-  background-color: rgb(214, 210, 210)
+  background-color: rgb(214, 210, 210);
 }
 .comment-area{
-  background-color: #374466
+  background-color: #374466;
 }
 .pfp{
   aspect-ratio: 1/1;
@@ -429,7 +429,12 @@ h3,
 h4,
 h5,
 h6 {
-  text-shadow: 0 3px 5px #ffffff;
+  color: aliceblue;
+  text-shadow: 1px 1px 0 #000000;
+}
+
+p {
+  color: aliceblue;
 }
 
 .bg-img {
