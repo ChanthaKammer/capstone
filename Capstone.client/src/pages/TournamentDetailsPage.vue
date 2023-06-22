@@ -218,7 +218,7 @@
         <div>
           <h1>Round {{ tournament?.currentRound }} of {{ tournament?.totalRounds }}</h1>
         </div>
-        <button @click="finalizeRound" v-if="tournament.currentRound < tournament.totalRounds" type="button" class="m-1 btn btn-success">Finalize Round</button>
+        <button @click="finalizeRound()" v-if="tournament.currentRound < tournament.totalRounds" type="button" class="m-1 btn btn-success">Finalize Round</button>
         <button @click="finalizeTournament" v-if="tournament.currentRound === tournament.totalRounds" type="button" class="m-1 btn btn-danger">Finalize Tournament</button>
       </div>
     </div>
@@ -298,7 +298,21 @@ export default {
       getCommentsByTournamentId();
     });
 
+    async function finalizeRound(){
+      tournament.currentRound = tournament.currentRound++
+        try {
 
+        } catch (error) {
+          logger.log(error);
+        }
+      }
+      async function finalizeTournament(){
+        try {
+          
+        } catch (error) {
+          logger.log(error);
+        }
+      }
     async function setActiveTournament() {
       try {
         const tournamentId = route.params.tournamentId
@@ -354,7 +368,8 @@ export default {
           logger.log(error);
         }
       },
-
+      // SECTION tournament management functions
+      
       async editTournament(){
       try{
         const tournamentId = route.params.tournamentId;
