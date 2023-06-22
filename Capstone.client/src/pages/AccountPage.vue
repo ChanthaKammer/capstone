@@ -1,5 +1,5 @@
 <template>
-  <section v-if="account" class="container-fluid bg-main p-0">
+  <section v-if="account" class="container-fluid bg-dark p-0">
     <div class="row justify-content-center align-items-center shadow elevation-5 bg-inner">
       <div>
           <div class="row">
@@ -82,7 +82,7 @@
 
                 <div class="bio-box">
                   <p class="ps-5 pt-5 pb-0" style="font-size: 2rem; font-weight: 600; color: aliceblue;"> {{ account.gamerTag }}'s Bio: </p>
-                  <div class="p-5 mx-5 mb-5 bio">
+                  <div class="p-5 mx-5 mb-5 bio rounded-3">
                     <p> {{ account.bio }} </p>
                   </div>
                 </div>
