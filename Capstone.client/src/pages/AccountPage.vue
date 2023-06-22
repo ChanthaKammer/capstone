@@ -315,7 +315,7 @@ img {
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   ul {
     margin-top: 7rem;
   }
@@ -351,6 +351,30 @@ img {
     margin-top: 3rem;
     white-space: nowrap;
   }
+}
+
+@media screen and (max-width: 500px) {
+  ul {
+    margin-top: 0;
+    margin-right: .25rem;
+  }
+  .profile-img {
+    max-width: 20vw !important;
+    margin-top: 0;
+    margin-left: .325rem;
+  }
+  .neon-button {
+    margin-top: 0 !important;
+    width: 20vw !important;
+    white-space: nowrap;
+    box-sizing: content-box;
+  }
+  .name-tag {
+    margin-left: -3rem;
+    margin-top: -1.5rem;
+    white-space: nowrap;
+  }
+
 }
 
 @media (min-width: 1600px) {

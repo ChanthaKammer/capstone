@@ -8,15 +8,15 @@
             <img alt="logo" src="src/assets/img/gamePursuitLogo.png" class="rounded-pill elevation-2 shadow-lg me-3" style="" height="65" /><b>Game Pursuit</b></div>
         </div>
       </router-link>
-        <form @submit.prevent="searchGames()" class="d-flex col-12 col-md-4" role="search" style="width: 40%;">
+        <form @submit.prevent="searchGames()" class="d-flex col-12 col-md-4 searchbar" role="search" style="width: 40%;">
           <input class="form-control me-2 search-input" type="search" :placeholder="searchTerm" aria-label="Search" v-model="editable" style="">
           <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
         </form>
-        <div v-if="user.isAuthenticated">
-          <div class="fs-4 ms-5" style="font-style: normal; color: #000000;">🪙: {{ account.gpBalance }} </div>
+        <div v-if="user.isAuthenticated" class="">
+          <div class="d-flex justify-content-end align-items-end fs-4 ms-5 gp-balance" style="font-style: normal; color: #000000;">🪙: {{ account.gpBalance }} </div>
         </div>
         <!-- LOGIN COMPONENT HERE -->
-        <Login />
+        <Login class="login-pfp"/>
       </div>
 
   </nav>
@@ -96,10 +96,33 @@ a:hover {
     min-width: 58vw;
   }
   .logo{
-    width: 100vw;
+    position: relative;
+    top: -.5rem;
+    left: 0;
+    width: 80vw;
+    height: 5rem;
+  }
+  .login-pfp {
+  position: absolute;
+  top: -1.25rem;
+  right: 1rem;
   }
   nav {
     height: 64px;
+  }
+  .bg-navbar {
+    height: 65px;
+  }
+  .searchbar {
+    position: relative;
+    top: -1rem;
+    left: 1.5rem;
+    margin-bottom: -3.75rem;
+  }
+  .gp-balance {
+  position: absolute;
+  top: .75rem;
+  right: 5rem;
   }
 }
 
