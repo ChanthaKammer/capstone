@@ -189,7 +189,7 @@
       </div>
     </div>
     <div class="row justify-content-center bg-dark">
-      <div class="col-md-8" v-for="c in comments" :key="c.id">
+      <div class="col-md-7" v-for="c in comments" :key="c.id">
         <CommentCard :comment="c" />
       </div>
     </div>
