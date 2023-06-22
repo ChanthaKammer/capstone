@@ -4,7 +4,7 @@
          <div class="col-md-8 bg-dark text-white rounded-3">
             <div class="row justify-content-around p-3">
                <div class="col-md-6">
-                  <img src="http://localhost:8081/src/assets/img/gamePursuitLogo.png" alt="" class="img-fluid">
+                  <img src="" alt="" class="img-fluid">
                   <h3>Badges</h3>
                   <div class="row">
                      <h3 class="col-auto"><i class="mdi mdi-trophy" title="Trophy One"></i></h3>
@@ -36,6 +36,7 @@
       <div class="row justify-content-center pt-3">
          <div class="col-8 bg-dark text-white">
             <h1 class="text-center">Won Tournaments</h1>
+            <span>{{ profileTournaments }}</span>
             <h1>V-for Tournaments</h1>
          </div>
       </div>
@@ -53,8 +54,8 @@ import { logger } from '../utils/Logger.js';
 import TournamentCard  from '../components/TournamentCard.vue'
 import { useRoute } from 'vue-router';
 import { tournamentsService } from '../services/TournamentsService.js';
-import { profile } from 'console';
 import { onMounted } from 'vue';
+import { computed } from '@vue/reactivity';
    export default {
       components: {
          TournamentCard
@@ -67,9 +68,9 @@ import { onMounted } from 'vue';
          const route = useRoute()
          async function getProfileTournaments(){
             try {
+               // logger.log('[GETTING TOURNAMENTS]')
                const profileId = route.params.profileId
-               const tournaments = await tournamentsService.getProfileTournaments(profileId)
-               return tournaments
+               await tournamentsService.getProfileTournaments(profileId)
             } catch (error) {
                logger.error(error)
                Pop.toast(error.message, 'error')
@@ -77,7 +78,7 @@ import { onMounted } from 'vue';
          }
 
          return {
-
+            profileTournaments: computed(() => AppState.profileTournaments)
          }
       }
    }
