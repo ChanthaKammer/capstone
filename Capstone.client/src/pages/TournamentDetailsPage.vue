@@ -108,13 +108,13 @@
         <img :src="tournament.gameImg" :alt="tournament.name" class="img-fluid game-img object-fit-cover rounded-2"
           style="min-width: 40vw;" alt="">
 
-        <div class="d-flex justify-content-evenly">
+        <div v-if="user.isAuthenticated" class="d-flex justify-content-evenly">
           <div>
             <div v-if="!isParticipant">
               <RGBButton class="px-2 rgb-btn" aria-label="JoinTournamentButton" buttonText="Join the Tournament!"
                 @click="joinTournament" />
             </div>
-            <div v-else>
+            <div v-else="">
               <RGBButton class="px-2 rgb-btn" buttonText="Leave Tournament!" @click="leaveTournament" />
             </div>
           </div>
@@ -304,6 +304,7 @@ import RGBButton from '../components/RGBButton.vue';
 import { commentsService } from "../services/CommentsService.js";
 import { Modal } from 'bootstrap';
 import ParticipantCard from "../components/ParticipantCard.vue";
+// import isAuthenticated from '../services/AuthService'
 
 export default {
 
@@ -349,6 +350,7 @@ export default {
       commentData,
       route,
       editable,
+      user: computed(() => AppState.user),
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),

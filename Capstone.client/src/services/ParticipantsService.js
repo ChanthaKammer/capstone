@@ -10,7 +10,8 @@ class ParticipantsService {
     const res = await api.post('api/participants', newParticipant)
     await accountService.getAccountParticipations()
     AppState.participants.push(res.data)
-    AppState.participants = res.data
+    // AppState.participants = res.data
+
     logger.log(AppState.participants)
   }
 
@@ -18,7 +19,7 @@ class ParticipantsService {
     const res = await api.get(`api/tournaments/${tournamentId}/participants`)
     AppState.participants = res.data
     logger.log(AppState.participants)
-    Pop.success(`Welcome to ${AppState.activeTournament.name}`)
+    // Pop.success(`Welcome to ${AppState.activeTournament.name}`)
   }
 
   async getProfileParticipants(profileId){
@@ -49,7 +50,7 @@ class ParticipantsService {
     const res = await this.deleteParticipant(participantId)
     AppState.myParticipations = AppState.myParticipations.filter(t => t.id != participantId)
     logger.log("[LEAVE TOURNAMENT FUNCTION]",res.data)
-    Pop.confirm(`${AppState.account.name } left the lobby for ${AppState.activeTournament.name}.`)
+    Pop.toast(`${AppState.account.name } left the lobby for ${AppState.activeTournament.name}.`)
 
   }
 }
