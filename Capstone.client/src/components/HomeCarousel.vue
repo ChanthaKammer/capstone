@@ -1,8 +1,8 @@
 <template>
   <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" >
     <Slide v-for="t in tournaments" :key="t.id">
-
-        <img :src="t.coverImg" alt="image" class="selectable" @click="getActiveTournament()">
+      
+    <img :src="t.coverImg" alt="image">
     </Slide>
   </Carousel>
 </template>
@@ -14,7 +14,6 @@ import { Carousel, Pagination, Slide } from 'vue3-carousel'
 import { logger } from '../utils/Logger.js'
 import 'vue3-carousel/dist/carousel.css'
 import { AppState } from "../AppState.js"
-import { useRouter } from "vue-router"
 
 export default {
   // defineComponent
@@ -26,9 +25,7 @@ export default {
   },
   
   setup(){
-
     const homeCarousel = ref(null)
-    const router = useRouter()
 
     
  
@@ -38,12 +35,7 @@ export default {
 // homeCarousel.value.updateSlideWidth()
 
     return {
-      tournaments: computed(()=> AppState.tournaments),
-      tournament: computed(() => AppState.activeTournament),
-      getActiveTournament(){
-      router.push({ name: 'TournamentDetails',
-                    params: {tournamentId: AppState.tournament.id}})
-    },
+      tournaments: computed(()=>AppState.tournaments)
     }
   }
 }
