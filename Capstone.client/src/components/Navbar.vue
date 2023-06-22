@@ -1,25 +1,47 @@
 <template>
-
-  <nav class="navbar navbar-expand-lg bg-navbar">
+  <div class="container-fluid p-3 bg-dark">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="navbar-brand navbar-link">
+        <router-link class="text-white" :to="{ name: 'Home' }">
+            <img alt="logo" src="src/assets/img/gamePursuitLogo.png" height="50" class="pe-2"/>
+            Game Pursuit
+        </router-link>
+      </div>
+      <!-- <div class="d-flex align-items-center">
+          <form @submit.prevent="searchGames()" class="searchbar" role="search" >
+            <input class="form-control me-2 search-input" type="search" :placeholder="searchTerm" aria-label="Search" v-model="editable" style="">
+            <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
+          </form>
+      </div> -->
+      <form class="d-flex w-50" role="search" @submit.prevent="searchGames()">
+        <input class="form-control me-2" type="search" :placeholder="searchTerm || 'Search for a Game'" aria-label="Search" v-model="editable">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <div class="align-self-center">
+        <Login/>
+      </div>
+    </div>
+  </div>
+  <!-- <nav class="navbar navbar-expand-lg bg-navbar">
     <div class="container-fluid bg-navbar">
-      <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-        <div class="d-flex flex-column align-items-center">
-          <div class="logo">
-            <img alt="logo" src="src/assets/img/gamePursuitLogo.png" class="rounded-pill elevation-2 shadow-lg me-3" style="" height="65" /><b>Game Pursuit</b></div>
+      <div class="row justify-content-between">
+        <div class="col-auto">
+          <router-link class="" :to="{ name: 'Home' }">
+            <img alt="logo" src="src/assets/img/gamePursuitLogo.png" class="rounded-pill shadow-lg me-3" style="" height="65" />
+            <h1>Game Pursuit</h1>
+          </router-link>
         </div>
-      </router-link>
-        <form @submit.prevent="searchGames()" class="d-flex col-12 col-md-4 searchbar" role="search" style="width: 40%;">
+        <div v-if="user.isAuthenticated" class="">
+          <div class="fs-4 gp-balance" style="font-style: normal; color: #000000;">🪙: {{ account.gpBalance }} </div>
+        </div>
+        
+      </div>
+    </div>
+    <form @submit.prevent="searchGames()" class="d-flex col-md-4 searchbar" role="search" style="width: 40%;">
           <input class="form-control me-2 search-input" type="search" :placeholder="searchTerm" aria-label="Search" v-model="editable" style="">
           <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
-        </form>
-        <div v-if="user.isAuthenticated" class="">
-          <div class="d-flex justify-content-end align-items-end fs-4 ms-5 gp-balance" style="font-style: normal; color: #000000;">🪙: {{ account.gpBalance }} </div>
-        </div>
-        <!-- LOGIN COMPONENT HERE -->
-        <Login class="login-pfp"/>
-      </div>
-
-  </nav>
+    </form>
+</nav> -->
 
 </template>
 
@@ -68,7 +90,16 @@ export default {
 
 <style scoped>
 
-nav {
+.navbar-link{
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+router-link {
+  text-decoration: none;
+}
+/* nav {
   z-index: 1;
 }
 
@@ -130,6 +161,6 @@ a:hover {
   top: .75rem;
   right: 5rem;
   }
-}
+} */
 
 </style>
