@@ -91,17 +91,16 @@
             <i class="mdi mdi-account-circle top-player" style="font-size: 5rem;"></i>
             <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Name</p>
             <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Team</p>
+            <div class="row justify-content-center">
+              <div class="col-auto" v-for="p in participants" :key="p.id">
+                <ParticipantCard :participant="p" />
+              </div>
+            </div>
           </div>
           <div class="col-md-6 text-center">
             <h2>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
           </div>
           <div>
-            <div class="row justify-content-center">
-              <div class="col-md-2" v-for="p in participants" :key="p.id">
-                <ParticipantCard :participant="p" />
-              </div>
-
-            </div>
           </div>
         </div>
       </div>
@@ -254,9 +253,9 @@
     </div>
 
     <!-- SECTION Comments -->
-    <div class="row p-4 ps-5 bg-dark justify-content-center">
+    <div class="row p-5 bg-dark justify-content-center">
       <h1 class="text-center pb-4">Comments</h1>
-      <div class="col-12 col-md-6 card p-3 rounded-3 elevation-5 comment-area">
+      <div class="col-12 col-md-7 card p-3 rounded-3 elevation-5 comment-area">
         <form @submit.prevent="createComment()">
           <div v-if="account" class="d-flex align-items-center mb-2">
             <img :src="account.picture" :alt="account.name"
@@ -479,6 +478,10 @@ export default {
 
 
 <style scoped lang="scss">
+
+*{
+  border: 1px solid green
+}
 .bg-background {
   background-color: #4a70e196;
 }

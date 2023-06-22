@@ -107,6 +107,7 @@ export default {
 
 <style scoped>
 
+
 .navbar-link{
   color: white;
   text-decoration: none;
