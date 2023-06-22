@@ -5,7 +5,7 @@ class ParticipantsService{
     async createParticipant(participantData) {
         const participant = await dbContext.Participants.create(participantData)
         await participant.populate('profile tournament')
-            return participant
+        return participant
     }
     async getParticipant(participantId) {
         const participation = await dbContext.Participants.findById(participantId).populate('profile tournament')
@@ -22,6 +22,14 @@ class ParticipantsService{
     async getAccountParticipations(accountId) {
         const participations = await dbContext.Participants.find({ accountId }).populate('profile tournament')
         return participations
+    }
+    async editParticipant(participantId, participantData) {
+        const participant = await this.getParticipant(participantId)
+
+        participant.status = participantData.status || participant.status
+
+        await participant.save()
+        return participant
     }
     async deleteParticipant(userId, participantId) {
         const participant = await this.getParticipant(participantId)

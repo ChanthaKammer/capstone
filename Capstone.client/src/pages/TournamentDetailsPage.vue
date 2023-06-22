@@ -190,15 +190,21 @@
 <div v-if="isTournamentCreator" class="container">
     <div class="row">
       <div class="col-12">
-        <h1>Tournament Management</h1>
+        <h1 class="text-decoration-underline">Tournament Management</h1>
       </div>
     </div>
     <div class="row">
       <div class="col-7">
         <form>
           <div class="form-group" v-for="(participant, index) in participants" :key="index">
-            <h1 class="fs-5">{{ participant.profile.name }}</h1>
-            <select class="mb-1 form-control" v-model="participant.status">
+            <div>
+              <img v-if="participant.status != 'eliminated'" class="img-fluid pfp-manage" :src="participant.profile.picture" alt="">
+              <img v-else class="img-fluid pfp-manage player-eliminated" :src="participant.profile.picture" alt="">
+              <h1 v-if="participant.status == 'active'" class="fs-5">{{ participant.profile.name }} - Tournament status - <span class="text-success">{{ participant.status }}</span></h1>
+              <h1 v-else-if="participant.status == 'eliminated'" class="fs-5">{{ participant.profile.name }} - Tournament status - <span class="text-danger">{{ participant.status }}</span></h1>
+              <h1 v-else class="fs-5">{{ participant.profile.name }} - Tournament status - <span class="text-success">{{ participant.status }}</span></h1>
+            </div>
+            <select class="mb-3 form-control" v-model="participant.status">
               <option value="active">Active</option>
               <option value="eliminated">Eliminated</option>
               <option value="firstPlace">First Place</option>
@@ -209,9 +215,11 @@
         </form>
       </div>
       <div class="col-5">
-        <!-- <button type="button" class="btn btn-primary">Advance Round</button> -->
-        <button type="button" class="m-1 btn btn-success">Finalize Round</button>
-        <button type="button" class="m-1 btn btn-danger">Finalize Tournament</button>
+        <div>
+          <h1>Round {{ tournament?.currentRound }} of {{ tournament?.totalRounds }}</h1>
+        </div>
+        <button @click="finalizeRound" v-if="tournament.currentRound < tournament.totalRounds" type="button" class="m-1 btn btn-success">Finalize Round</button>
+        <button @click="finalizeTournament" v-if="tournament.currentRound === tournament.totalRounds" type="button" class="m-1 btn btn-danger">Finalize Tournament</button>
       </div>
     </div>
   </div>
@@ -303,6 +311,8 @@ export default {
 
     }
     return {
+      finalizeRound,
+      finalizeTournament,
       cancelTournament,
       leaveTournament,
       joinTournament,
@@ -430,11 +440,22 @@ export default {
 .comment-area{
   background-color: #374466;
 }
+// SECTION management classes
 .pfp{
   aspect-ratio: 1/1;
   min-width: 4rem;
 }
-
+.pfp-manage{
+  aspect-ratio: 1;
+  min-width: 5rem;
+  min-height: 5rem;
+  max-height: 5rem;
+  max-width: 5rem;
+  border-radius: 50%;
+}
+.player-eliminated{
+  filter: grayscale(100%);
+}
 h1,
 h2,
 h3,
