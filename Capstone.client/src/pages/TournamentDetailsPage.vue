@@ -479,9 +479,7 @@ export default {
 
 <style scoped lang="scss">
 
-*{
-  border: 1px solid green
-}
+
 .bg-background {
   background-color: #4a70e196;
 }
