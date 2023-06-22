@@ -88,8 +88,8 @@
             <h1>1st Place:</h1>
             <!-- NOTE MAKE ICON FOR CURRENT LEADER BY THEIR USER IMAGE USING THE :TITLE V-BIND METHOD ON ACTIVE TOURNAMENT WHEN LESS TIRED -->
             <i class="mdi mdi-account-circle top-player" style="font-size: 5rem;"></i>
-            <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 1px 1px #ffffff;">Top Player Name</p>
-            <p style="font-size: 2rem; font-weight: 650; text-shadow: 0 1px 1px #ffffff;">Top Player Team</p>
+            <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Name</p>
+            <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Team</p>
           </div>
           <div class="col-6 col-md-3">
             <h2>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
@@ -106,7 +106,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" class="img-fluid game-img rounded-2" style="min-width: 40vw;" alt="">
+        <img :src="tournament.gameImg" class="img-fluid game-img  rounded-2" style="min-width: 40vw;" alt="">
 
         <div class="d-flex justify-content-evenly">
 
@@ -221,7 +221,7 @@
       </div>
     </div>
     <div class="row justify-content-center bg-dark">
-      <div class="col-md-8" v-for="c in comments" :key="c.id">
+      <div class="col-md-7" v-for="c in comments" :key="c.id">
         <CommentCard :comment="c" />
       </div>
     </div>
@@ -581,16 +581,16 @@ p {
   .rgb-btn{
   width: 90%;
 }
-.countdown-area{
-  display: none;
-}
+// .countdown-area{
+//   display: none;
+// }
 .details-top{
   margin-top: 4rem;
 }
-.starship-img{
-  aspect-ratio: 1/1;
-  display: none;
-}
+// .starship-img{
+//   aspect-ratio: 1/1;
+//   display: none;
+// }
 .game-img{
   aspect-ratio: 1/1;
   // display: none;
