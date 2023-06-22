@@ -255,9 +255,9 @@
     <!-- SECTION Comments -->
     <div class="row p-5 bg-dark justify-content-center">
       <h1 class="text-center pb-4">Comments</h1>
-      <div class="col-12 col-md-7 card p-3 rounded-3 elevation-5 comment-area">
+      <div v-if="user.isAuthenticated" class="col-12 col-md-7 card p-3 rounded-3 elevation-5 comment-area">
         <form @submit.prevent="createComment()">
-          <div v-if="account" class="d-flex align-items-center mb-2">
+          <div class="d-flex align-items-center mb-2">
             <img :src="account.picture" :alt="account.name"
               class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38">
             <h2>{{ account.name }}</h2>
