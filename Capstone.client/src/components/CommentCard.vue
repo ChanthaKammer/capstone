@@ -1,19 +1,46 @@
 <template>
-<div class="row bg-background rounded-4 elevation-3 mb-3">
-  <div class="comment-bottom p-2 px-4 rounded" style="">
+<div class="row bg-commentcard rounded-4 elevation-3 m-3 p-3">
+  <div class="col-md-8 m-3">
+      <router-link :to="{name: 'Profile', params: { profileId: comment.creatorId }}">
+        <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid object-fit-cover comment-pfp" style="max-height: 50px;">
+      </router-link>
+    <span style="color: darkblue;" class="mb-1 date"> 
+      {{ comment.creator.name }}
+    {{
+      new Date(comment.creator.createdAt)
+        .toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        }) }}
+    @ {{
+      new Date(comment.creator.createdAt)
+        .toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric'
+        }) }} 
+    </span>
+  </div>
+  <div class="col-md-12 bg-light rounded-3">
+    <p class="text-dark"> {{ comment.body }} </p>
+    <i v-if="comment.creatorId == account.id" @click="deleteComment()" class="mdi mdi-delete pe-1 icon fs-4 float-end"></i>
+  </div>    
+</div>
+
+
+
+  <!-- <div class="col-md-8 comment-bottom p-2 px-4 rounded" style="">
     <div class="d-flex flex-row add-comment-section mt-1 mb-4">
   </div>
-
-      <div
-      class="commented-section mt-2 ps-4">
-      <div class="d-flex flex-row  align-items-center commented-user">
+      <div class="commented-section mt-2 ps-4">
+      <div class="d-flex flex-row align-items-center commented-user">
         <span class="mb-1">
           <router-link :to="{name: 'Profile', params: { profileId: comment.creatorId }}">
             <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid comment-pfp" style="max-height: 50px;">
           </router-link>
         </span>
         <h5 class="me-2"> {{ comment.creator.name }} </h5>
-        <span style="color: darkblue;" class="mb-1 ms-2"> {{
+        <span style="color: darkblue;" class="mb-1 ms-2 date"> {{
           new Date(comment.creator.createdAt)
             .toLocaleDateString('en-US', {
               year: 'numeric',
@@ -29,7 +56,7 @@
         </span>
       </div>
 
-      <div class="comment-text"><span class="text-dark px-3"> {{ comment.body }} </span>
+      <div class="comment-text"><p class="text-dark px-3"> {{ comment.body }} </p>
         <i v-if="comment.creatorId == account.id" @click="deleteComment()" class="mdi mdi-delete pe-1 icon fs-4 float-end"></i></div>
       <div
         class="reply-section">
@@ -42,11 +69,11 @@
           </div>
           <span class="text-dark ms-2">Upvotes</span><span class="dot ms-2"></span>
           <h6 class="ms-2 mt-1 reply-text">Reply</h6>
-        </div>
-      </div>
+        </div> -->
+      <!-- </div>
     </div>
   </div>
-</div>
+</div> --> 
   
 </template>
 
@@ -81,8 +108,12 @@ export default {
 </script>
 
 
+
 <style lang="scss" scoped>
-.bg-background{
+
+
+
+.bg-commentcard{
   background-color: #374466
 }
 .comment-bottom{
