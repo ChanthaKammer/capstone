@@ -197,7 +197,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+label{
+  color: black
+}
 .bio {
   background-color: #2f395d76;
   color: aliceblue;
