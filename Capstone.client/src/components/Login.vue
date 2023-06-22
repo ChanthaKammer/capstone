@@ -53,9 +53,13 @@ export default {
 .login-pfp{
   border-radius: 50%;
   aspect-ratio: 1/1;
-  min-height: 4rem;
-  max-height: 4rem;
-  min-width: 4rem;
-  max-width: 4rem;
+  min-height: 9vh;
+  max-height: 9vh;
+  min-width: 9vw;
+  max-width: 9vw;
+}
+
+@media screen and (max-width: 768px) {
+
 }
 </style>

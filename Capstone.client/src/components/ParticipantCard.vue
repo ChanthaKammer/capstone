@@ -5,7 +5,7 @@
       <router-link :to="{name: 'Profile', params: { profileId: participant.accountId }}">
         <img class="pfp rounded" :src="participant.profile.picture" alt="">
       </router-link>
-      <p class="text-white">{{ participant.profile.name }}</p>
+      <p class="text-white" style="white-space: nowrap;box-sizing: content-box;">{{ participant.profile.name }}</p>
     </div>
    
 
