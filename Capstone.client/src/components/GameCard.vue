@@ -91,7 +91,6 @@ export default {
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 * {
-   border: 1px solid green;
    color: rgb(194, 194, 194);
 }
 
@@ -115,7 +114,7 @@ export default {
                0 0 25px #03e9f4,
                0 0 50px #03e9f4,
                0 0 200px #03e9f4;
-   -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+   -webkit-box-reflect:below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.044));
 }
 
 
