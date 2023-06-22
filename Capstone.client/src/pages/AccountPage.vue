@@ -55,6 +55,7 @@
                                           <input class="form-control" type="text" id="gamertag" placeholder="Gamertag" v-model="editable.gamerTag">
                                         </div>
                                       </div>
+                                      <label class="edit-labels" for="text">Bio</label>
                                       <textarea class="form-control mb-3" id="bio" rows="3" placeholder="Bio" v-model="editable.bio"></textarea>
                                       <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
                                     </form>
