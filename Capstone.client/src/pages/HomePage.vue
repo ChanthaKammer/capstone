@@ -43,7 +43,7 @@
         <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" class="">
           <Slide v-for="slide in carouselTournaments" :key="slide" class="">
             <router-link :to="{name: 'TournamentDetails', params: {tournamentId: slide.id}}">
-
+              <div> {{ slide.name }} </div>
               <div class="carousel__item"><img :src="slide.coverImg" alt=""></div>
             </router-link>
           </Slide>
