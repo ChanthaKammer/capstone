@@ -22,7 +22,7 @@
     </span>
   </div>
   <div class="col-md-12 bg-light rounded-3">
-    <p class="text-dark"> {{ comment.body }} </p>
+    <p class="text-dark pt-2"> {{ comment.body }} </p>
     <i v-if="comment.creatorId == account.id" @click="deleteComment()" class="mdi mdi-delete pe-1 icon fs-4 float-end"></i>
   </div>    
 </div>

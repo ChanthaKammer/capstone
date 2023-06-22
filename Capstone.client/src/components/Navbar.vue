@@ -28,7 +28,7 @@
   <div class="container-fluid p-3 bg-dark d-md-none">
     <div class="d-flex justify-content-between align-items-center">
       <form class="d-flex w-50" role="search" @submit.prevent="searchGames()">
-          <input class="form-control me-2" type="search" :placeholder="searchTerm || 'Search for a Game'" aria-label="Search" v-model="editable">
+          <input class="form-control me-2" type="search" :placeholder="searchTerm || 'Search'" aria-label="Search" v-model="editable">
           <button class="btn btn-success" type="submit">Search</button>
         </form>
         <div v-if="user.isAuthenticated" class="">
@@ -106,6 +106,7 @@ export default {
 </script>
 
 <style scoped>
+
 
 .navbar-link{
   color: white;
