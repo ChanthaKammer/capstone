@@ -54,6 +54,7 @@ import { logger } from '../utils/Logger.js';
 import TournamentCard  from '../components/TournamentCard.vue'
 import { useRoute } from 'vue-router';
 import { tournamentsService } from '../services/TournamentsService.js';
+import { profileService } from '../services/ProfileService.js'
 import { onMounted } from 'vue';
 import { computed } from '@vue/reactivity';
    export default {
@@ -61,11 +62,19 @@ import { computed } from '@vue/reactivity';
          TournamentCard
       },
       setup(){
-         onMounted(() =>
-         getProfileTournaments()
-         )
-
+         
          const route = useRoute()
+         async function getProfile(){
+            try {
+               const profileId = route.params.profileId
+               logger.log('[GETTING PROFILE]')
+               await profileService.getProfile(profileId)
+            } catch (error) {
+               logger.error(error)
+               Pop.toast(error.message, 'error')
+            }
+         }
+
          async function getProfileTournaments(){
             try {
                // logger.log('[GETTING TOURNAMENTS]')
@@ -76,7 +85,12 @@ import { computed } from '@vue/reactivity';
                Pop.toast(error.message, 'error')
             }
          }
-
+         
+         onMounted(() =>
+         getProfile(),
+         getProfileTournaments()
+         )
+         
          return {
             profileTournaments: computed(() => AppState.profileTournaments)
          }
