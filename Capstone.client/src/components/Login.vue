@@ -53,7 +53,7 @@ export default {
 .login-pfp{
   border-radius: 50%;
   aspect-ratio: 1/1;
-  height: 5vw;
+  height: 50px;
   // min-height: 5vh;
   // max-height: 5vh;
   // min-width: 5vw;

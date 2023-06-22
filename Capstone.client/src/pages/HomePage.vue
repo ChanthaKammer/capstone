@@ -5,18 +5,18 @@
 
     </section> -->
 
-    <section class="row bg-nav-options shadow nav-bar2" style="padding-left: 5rem;display:none">
-      <div class="col-3 d-flex justify-content-center align-items-center">
-        <h2 class="text-white mt-3">PLAY</h2>
+    <section class="row bg-nav-options shadow nav-bar2 py-3" style="text-shadow: 2px 2px 3px #000000;">
+      <div class="col-12 d-flex justify-content-center align-items-center">
+        <h2 class="text-white mt-3">FEATURED TOURNAMENTS</h2>
       </div>
-      <div class="col-1" style="border-right: 5px double #ffffff99;"></div>
+      <!-- <div class="col-1" style="border-right: 5px double #ffffff99;"></div>
       <div class="col-3 d-flex justify-content-center align-items-center">
         <h2 class="text-white mt-3">HOST</h2>
       </div>
       <div class="col-1" style="border-left: 5px double #ffffff99;"></div>
       <div class="col-3 ps-5 d-flex justify-content-center align-items-center">
         <h2 class="text-white mt-3">COMPETE</h2>
-      </div>
+      </div> -->
     </section>
 
 
@@ -39,21 +39,19 @@
       </section> -->
 
     <section class="row">
-      <div class="col-12 ">
-
-        <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" >
-          <Slide v-for="slide in carouselTournaments" :key="slide">
-            <div class="carousel__item"><img :src="slide.coverImg" alt=""></div>
+      <div class="col-12 bg-carousel justify-content-center align-items-center shadow-lg elevation-5">
+        <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" class="">
+          <Slide v-for="slide in carouselTournaments" :key="slide" class="">
+            <div class="carousel__item"><img :src="slide.coverImg" alt="" class="selectable" @click=""></div>
           </Slide>
-      
-          ...
         </Carousel>
+      </div>
 
         <!-- <HomeCarousel/> -->
 
         <!-- #region -->
         <!-- NOTE BACKGROUND BORDER FOR CAROUSEL ----------------------------->
-        <!-- <div class="row bg-carousel justify-content-center align-items-center shadow-lg elevation-5 carousel-top">
+        <!-- 
 
           SECTION CAROUSEL FOR 'MOST POPULAR' TOURNAMENTS BY SELECTABLE COVER IMAGE ***START*** ----------------------------
           <div class="bg-games">
@@ -119,7 +117,6 @@
         </div> -->
 <!-- #endregion -->
 
-      </div>
     </section>
     <!-- SECTION CAROUSEL FOR 'MOST POPULAR' TOURNAMENTS BY SELECTABLE COVER IMAGE ***END*** ------------------------------>
 
@@ -131,51 +128,52 @@
 
 
 
-    <div class="row justify-content-between mb-5 py-3 accent-row shadow-lg"
-         style="">
-      <div class="accent row"></div>
-      <div class="col-md-6 mb-5 pe-5 neon-btn-one" style="">
-        <div class="btn-group">
-          <button type="button" class="btn btn-info neon-button" style="width: 10vw; position: absolute; top: 1.5vh; left: 0vw;" @click="homeCarousel.prev()">Previous</button>
 
-          <!-- TODO GIVE THESE BUTTONS A ROUTE ONCE WE HAVE A USE FOR THEM --------------------------------------------->
-          <!-- <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <span class="visually-hidden">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Separated link</a></li>
-          </ul> -->
-        </div>
-      </div>
-      <div class="col-md-6 mb-5 ps-5"
-        style="position: absolute; top: -.5vh; left: 75%;">
-        <div class="btn-group">
-          <button type="button" class="btn btn-info neon-button" style="width: 10vw;" @click="homeCarousel.next()">Next</button>
 
-          <!-- TODO GIVE THESE BUTTONS A ROUTE ONCE WE HAVE A USE FOR THEM --------------------------------------------->
-          <!-- <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <span class="visually-hidden">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Separated link</a></li>
-          </ul> -->
-        </div>
+    <div class="row accent-row d-flex mb-5 pb-2 pt-2" style="height: 4rem;">
+    
+      <div class="col-6 col-md-6 d-flex justify-content-center" style="position: absolute; top: -1.5rem; left: 0;">
+        <button type="button" class="btn btn-info neon-button me-5" style="width: 10vw;" @click="homeCarousel.prev()">Previous Slide</button>
       </div>
+
+      <div class="col-6 col-md-6 d-flex justify-content-center" style="position: absolute; top: -1.5rem; right: 0;">
+        <button type="button" class="btn btn-info neon-button ms-5" style="width: 10vw;" @click="homeCarousel.next()">Next Slide</button>
+      </div>
+
     </div>
+
+        <!-- TODO GIVE THESE BUTTONS A ROUTE ONCE WE HAVE A USE FOR THEM --------------------------------------------->
+        <!-- #region -->
+          <!-- <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul> -->
+          
+          <!-- TODO GIVE THESE BUTTONS A ROUTE ONCE WE HAVE A USE FOR THEM --------------------------------------------->
+          <!-- <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul> -->
+        <!-- #endregion -->
+        
     <!-- SECTION my tournaments -->
     <section class="row pt-1 lighting-bar">
 
@@ -259,6 +257,12 @@ export default {
     return {
       filterBy,
       homeCarousel,
+      tournament: computed(() => AppState.activeTournament),
+    
+    myEventTickets(){
+      router.push({ name: 'EventDetails',
+                    params: {eventId: props.myTicket.event.id}})
+    },
       carouselTournaments: computed(()=>AppState.tournaments),
       tournaments: computed(() => {
         if (filterBy.value == '') {
@@ -307,9 +311,9 @@ export default {
 }
 
 .bg-carousel {
-  background-color: #26553442;
+  border-top: 3px solid black;
+  margin-top: .5rem;
   padding-bottom: 6rem;
-  filter: drop-shadow(0 0 3rem #56128767);
   animation: colorChange2 30s infinite;
 }
 
@@ -369,7 +373,6 @@ export default {
 }
 
 .accent-row {
-  min-width: 90vw;
   background-color: #1f5b7b45;
   box-shadow: 0px 0px 150px 15px inset outset #1a407a;
   filter: drop-shadow(0px 0px 30px #682f2f);
@@ -695,6 +698,7 @@ export default {
 
 .carousel__slide {
   opacity: 0.9;
+  height: 50vh;
   transform: rotateY(-20deg) scale(0.9);
 }
 
@@ -723,5 +727,14 @@ width: 100%;
 object-fit: cover;
 }
 //#endregion
+
+@media screen and (max-width: 768px) {
+  .carousel__slide {
+    min-width: 65vw;
+  }
+  .neon-button {
+    display: none;
+  }
+}
 
 </style>

@@ -106,7 +106,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" :alt="tournament.name" class="img-fluid game-img  rounded-2"
+        <img :src="tournament.gameImg" :alt="tournament.name" class="img-fluid game-img object-fit-cover rounded-2"
           style="min-width: 40vw;" alt="">
 
         <div class="d-flex justify-content-evenly">
