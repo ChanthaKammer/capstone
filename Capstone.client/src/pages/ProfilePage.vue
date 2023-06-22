@@ -98,13 +98,14 @@ import { participantsService } from '../services/ParticipantsService.js';
          
          onMounted(() => {
          getProfile(),
-         getProfileTournaments()
-         }
-         )
+         getProfileTournaments(),
+         getProfileParticipants()
+         })
 
          return {
             profileTournaments: computed(() => AppState.profileTournaments),
-            activeProfile: computed(() => AppState.activeProfile)
+            activeProfile: computed(() => AppState.activeProfile),
+            profileParticipants: computed(() => AppState.profileParticipants)
          }
       }
    }
