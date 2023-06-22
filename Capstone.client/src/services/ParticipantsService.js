@@ -23,7 +23,9 @@ class ParticipantsService {
 
   async updatePlayerStatus(participantId, playerStatus){
     try {
-      
+      const res = await api.put(`api/participants/${participantId}`, playerStatus)
+     
+      return res.data
     } catch (error) {
       logger.log(error);
     }
