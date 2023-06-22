@@ -120,7 +120,7 @@
             </div>
           </div>
           <div v-if="isTournamentCreator">
-            <RGBButton class="px-2 rgb-btn" buttonText="Cancel Tournament" />
+            <RGBButton class="px-2 rgb-btn" buttonText="Cancel Tournament" @click="cancelTournament" />
           </div>
           <div v-if="isTournamentCreator">
             <RGBButton class="px-2 rgb-btn" buttonText="Edit Tournament" data-bs-toggle="modal" data-bs-target="#editTournamentModal"/>
