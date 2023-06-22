@@ -298,7 +298,7 @@ export default {
       getCommentsByTournamentId();
     });
 
-    async function finalizeRound(){
+     function finalizeRound(){
       tournament.currentRound = tournament.currentRound++
         try {
 
