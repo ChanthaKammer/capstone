@@ -46,6 +46,11 @@ class TournamentsService {
     const res = await api.delete(`api/tournaments/${tournamentId}`)
     return res.data
   }
+
+  async getProfileTournaments(profileId){
+    const res = await api.get(`api/${profileId}/tournaments`)
+    return res.data
+  }
 }
 
 export const tournamentsService = new TournamentsService()
