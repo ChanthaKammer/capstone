@@ -81,6 +81,12 @@ a:hover {
   text-decoration: none;
 }
 
+.gp-balance {
+  position: absolute;
+  top: 1rem;
+  right: 10rem;
+  }
+
 .nav-link {
   text-transform: uppercase;
 }
@@ -103,9 +109,9 @@ a:hover {
     height: 5rem;
   }
   .login-pfp {
-  position: absolute;
-  top: -1.25rem;
-  right: 1rem;
+    position: absolute;
+    top: -.5rem;
+    right: 1rem;
   }
   nav {
     height: 64px;
