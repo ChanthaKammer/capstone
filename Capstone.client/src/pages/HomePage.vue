@@ -39,11 +39,11 @@
       </section> -->
 
     <section class="row">
-      <div class="col-12 ">
+      <div class="col-12">
 
-        <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" >
-          <Slide v-for="slide in carouselTournaments" :key="slide">
-            <div class="carousel__item"><img :src="slide.coverImg" alt=""></div>
+        <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" class="">
+          <Slide v-for="slide in carouselTournaments" :key="slide" class="">
+            <div class="carousel__item"><img :src="slide.coverImg" alt="" class=""></div>
           </Slide>
       
           ...
@@ -136,7 +136,7 @@
       <div class="accent row"></div>
       <div class="col-md-6 mb-5 pe-5 neon-btn-one" style="">
         <div class="btn-group">
-          <button type="button" class="btn btn-info neon-button" style="width: 10vw; position: absolute; top: 1.5vh; left: 0vw;" @click="homeCarousel.prev()">Previous</button>
+          <button type="button" class="btn btn-info neon-button" style="width: 10vw; position: absolute; top: 1.5vh; right: 0vw;" @click="homeCarousel.prev()">Previous</button>
 
           <!-- TODO GIVE THESE BUTTONS A ROUTE ONCE WE HAVE A USE FOR THEM --------------------------------------------->
           <!-- <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
@@ -695,6 +695,7 @@ export default {
 
 .carousel__slide {
   opacity: 0.9;
+  height: 50vh;
   transform: rotateY(-20deg) scale(0.9);
 }
 
@@ -723,5 +724,14 @@ width: 100%;
 object-fit: cover;
 }
 //#endregion
+
+@media screen and (max-width: 768px) {
+  .carousel__slide {
+    min-width: 65vw;
+  }
+  .neon-button {
+    display: none;
+  }
+}
 
 </style>
