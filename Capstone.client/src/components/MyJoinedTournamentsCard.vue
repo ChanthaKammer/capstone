@@ -9,7 +9,7 @@
           <h5 class="host-badge">HOST</h5>
         </div>
         <div class="card-custom-avatar">
-          <img class="img-fluid" :src="myParticipation.tournament.coverImg" :alt="myParticipation.tournament.gameName" />
+          <img class="img-fluid object-fit-cover" :src="myParticipation.tournament.coverImg" :alt="myParticipation.tournament.gameName" />
         </div>
         <!--SECTION * * * CARD BODY * * * ------------->
         <div class="card-body" style="overflow-y: auto">
