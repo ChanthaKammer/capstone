@@ -51,11 +51,31 @@ import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
 import TournamentCard  from '../components/TournamentCard.vue'
+import { useRoute } from 'vue-router';
+import { tournamentsService } from '../services/TournamentsService.js';
+import { profile } from 'console';
+import { onMounted } from 'vue';
    export default {
       components: {
          TournamentCard
       },
       setup(){
+         onMounted(() =>
+         getProfileTournaments()
+         )
+
+         const route = useRoute()
+         async function getProfileTournaments(){
+            try {
+               const profileId = route.params.profileId
+               const tournaments = await tournamentsService.getProfileTournaments(profileId)
+               return tournaments
+            } catch (error) {
+               logger.error(error)
+               Pop.toast(error.message, 'error')
+            }
+         }
+
          return {
 
          }
