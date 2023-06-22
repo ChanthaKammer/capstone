@@ -110,7 +110,7 @@
         <div class="d-flex justify-content-evenly">
           <div>
             <div v-if="!isParticipant">
-              <RGBButton class="px-2 rgb-btn" buttonText="Join the Tournament!" @click="joinTournament" />
+              <RGBButton class="px-2 rgb-btn" aria-label="JoinTournamentButton" buttonText="Join the Tournament!" @click="joinTournament" />
             </div>
             <div v-else>
               <RGBButton class="px-2 rgb-btn" buttonText="Leave Tournament!" @click="leaveTournament" />
@@ -133,30 +133,45 @@
                     </div>
                     <div class="modal-body justify-content-center">
                         <form @submit.prevent="editTournament()" class="col-12">
-                          <input class="form-control mb-3" type="text" placeholder="Tournament Name" aria-label="tournamentName" v-model="editable.name">
-                          <input class="form-control mb-3" type="text" id="tournamentAvatarImg" placeholder="Tournament Avatar Image" v-model="editable.coverImg">
-                          <input class="form-control mb-3" type="text" id="gameImg" placeholder="Tournament Cover Image" v-model="editable.gameImg">
-                          <input type="datetime-local" name="startDate" class="form-control mb-3" placeholder="Start Date" v-model="editable.startDate">
-                          <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Location" v-model="editable.location">
-                          <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Total Rounds" v-model="editable.totalRounds">
-                          <input class="form-control mb-3" type="text" id="capacity" placeholder="Tournament Capacity" v-model="editable.capacity">
-                          <select class="form-select mb-3" aria-label="Tournament Type" v-model="editable.type">
+                          <label for="text">Tournament Name</label>
+                          <input class="form-control mb-3" type="text" placeholder="Tournament Name" aria-label="tournamentName"  v-model="editable.name">
+                          <label for="text">Tournament Avatar Image</label>
+                          <input class="form-control mb-3" type="text" id="tournamentAvatarImg" aria-label="tournamentAvatar" placeholder="Tournament Avatar Image" v-model="editable.coverImg">
+                          <label for="text">Tournament Cover Image</label>
+                          <input class="form-control mb-3" type="text" id="gameImg" placeholder="Tournament Cover Image" aria-label="tournamentCoverImage" v-model="editable.gameImg">
+                          <label for="text">Start Date</label>
+                          <input type="datetime-local" name="startDate" class="form-control mb-3" placeholder="Start Date" aria-label="StateDate" v-model="editable.startDate">
+                          <label for="text">Location</label>
+                          <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Location" aria-label="Location" v-model="editable.location">
+                          <label for="text">Total Rounds</label>
+                          <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Total Rounds" aria-label="TotalRounds" v-model="editable.totalRounds">
+                          <label for="text">Capacity</label>
+                          <input class="form-control mb-3" type="text" id="capacity" placeholder="Capacity" aria-label="Capacity" v-model="editable.capacity">
+                          <label for="text">Match Type</label>
+                          <select class="form-select mb-3" aria-label="Tournament Type"  v-model="editable.type">
                             <option selected value="match" disabled>Match Type</option>
                             <option value="online">Online</option>
                             <option value="local">Local</option>
                           </select>
-                          <textarea class="form-control mb-3" id="tournamentDescription" rows="3" placeholder="Tournament Description" v-model="editable.description"></textarea>
+                          <label for="text">Tournament Description</label>
+                          <textarea class="form-control mb-3" id="tournamentDescription" rows="3" aria-label="tournamentDescription" placeholder="Tournament Description" v-model="editable.description"></textarea>
+                          <label for="text">Tournament Age Rating</label>
                           <select class="form-select mb-3" aria-label="Tournament Age Rating" v-model="editable.ageRating">
                             <option selected value="rating" disabled>Group Age Rating</option>
                             <option value="Everyone">Everyone</option>
                             <option value="Teen">Teen</option>
                             <option value="Adult">Adult</option>
                           </select>
+                          <label for="text">Max Teams</label>
                           <input class="form-control mb-3" type="number" placeholder="Max Teams" aria-label="maxTeams" min="1" v-model="editable.maxTeams">
-                          <input class="form-control mb-3" type="text" id="tournamentMoney" placeholder="Tournament Money Prize" v-model="editable.reward">
-                          <input class="form-control mb-3" type="text" id="firstPlaceBadge" placeholder="First Place Badge" v-model="editable.firstPlaceBadge">
-                          <input class="form-control mb-3" type="text" id="secondPlaceBadge" placeholder="Second Place Badge" v-model="editable.secondPlaceBadge">
-                          <input class="form-control mb-3" type="text" id="thirdPlaceBadge" placeholder="Third Place Badge" v-model="editable.thirdPlaceBadge">
+                          <label for="text">Tournament GP Prize</label>
+                          <input class="form-control mb-3" type="text" id="tournamentMoney" placeholder="Tournament GP Prize" aria-label="TournamentRewardCoins" v-model="editable.reward">
+                          <label for="text">First Place Badge</label>
+                          <input class="form-control mb-3" type="text" id="firstPlaceBadge" placeholder="First Place Badge" aria-label="FirstPlaceBadge" v-model="editable.firstPlaceBadge">
+                          <label for="text">Second Place Badge</label>
+                          <input class="form-control mb-3" type="text" id="secondPlaceBadge" placeholder="Second Place Badge" aria-label="SecondPlaceBadge" v-model="editable.secondPlaceBadge">
+                          <label for="text">Third Place Badge</label>
+                          <input class="form-control mb-3" type="text" id="thirdPlaceBadge" placeholder="Third Place Badge" aria-label="ThirdPlaceBadge" v-model="editable.thirdPlaceBadge">
                           <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
                         </form>
                     </div>
