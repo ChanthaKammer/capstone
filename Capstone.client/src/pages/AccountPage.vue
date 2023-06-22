@@ -34,22 +34,28 @@
                               <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="editAccountLabel">Edit Account</h1>
+                                    <h1 class="modal-title fs-5 text-black" id="editAccountLabel">Edit Account</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body justify-content-center">
                                     <form @submit.prevent="editAccount()" class="col-12">
+                                      <label for="text">Name</label>
                                       <input class="form-control mb-3" type="text" placeholder="Name" aria-label="name" v-model="editable.name">
+                                      <label for="text">Profile Picture</label>
                                       <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image" v-model="editable.picture">
+                                      <label for="text">Profile Cover Image</label>
                                       <input class="form-control mb-3" type="text" id="coverImg" placeholder="Cover Image" v-model="editable.coverImg">
                                       <div class="row mb-3">
                                         <div class="col-6">
+                                          <label for="text">Age</label>
                                           <input class="form-control" type="number" id="name" placeholder="Age" v-model="editable.age">
                                         </div>
                                         <div class="col-6">
+                                          <label for="text">Gamertag</label>
                                           <input class="form-control" type="text" id="gamertag" placeholder="Gamertag" v-model="editable.gamerTag">
                                         </div>
                                       </div>
+                                      <label for="text">Biography</label>
                                       <textarea class="form-control mb-3" id="bio" rows="3" placeholder="Bio" v-model="editable.bio"></textarea>
                                       <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
                                     </form>
@@ -198,7 +204,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+label{
+  color: black
+}
 .bio {
   background-color: #2f395d76;
   color: aliceblue;
