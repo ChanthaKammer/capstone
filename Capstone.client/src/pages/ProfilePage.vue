@@ -58,6 +58,7 @@ import { profileService } from '../services/ProfileService.js'
 import { onMounted } from 'vue';
 import { computed } from '@vue/reactivity';
 import { participantsService } from '../services/ParticipantsService.js';
+import { rewardsService } from '../services/RewardsService.js'
    export default {
       components: {
          TournamentCard
@@ -95,6 +96,16 @@ import { participantsService } from '../services/ParticipantsService.js';
                Pop.toast(error.message, 'error')
             }
          }
+
+         async function getProfileRewards(){
+            try {
+               const profileId = route.params.profileId
+               await rewardsService.getProfileRewards(profileId)
+            } catch (error) {
+               logger.error(error)
+               Pop.toast(error.message, 'error')
+            }
+         }
          
          onMounted(() => {
          getProfile(),
@@ -105,7 +116,8 @@ import { participantsService } from '../services/ParticipantsService.js';
          return {
             profileTournaments: computed(() => AppState.profileTournaments),
             activeProfile: computed(() => AppState.activeProfile),
-            profileParticipants: computed(() => AppState.profileParticipants)
+            profileParticipants: computed(() => AppState.profileParticipants),
+            profileRewards: computed(() => AppState.profileRewards)
          }
       }
    }
