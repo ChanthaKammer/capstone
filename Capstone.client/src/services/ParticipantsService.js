@@ -21,6 +21,11 @@ class ParticipantsService {
     Pop.success(`Welcome to ${AppState.activeTournament.name}`)
   }
 
+  async getProfileParticipants(profileId){
+    const res = await api.get(`api/profile/${profileId}/participants`)
+    AppState.profileParticipants = res.data.map(p => new participant)
+  }
+
   async updatePlayerStatus(participantId, playerStatus){
     try {
       const res = await api.put(`api/participants/${participantId}`, playerStatus)
