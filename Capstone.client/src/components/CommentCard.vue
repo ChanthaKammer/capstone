@@ -1,5 +1,5 @@
 <template>
-<div class="row bg-background rounded-4 elevation-3 m-3 p-3">
+<div class="row bg-commentcard rounded-4 elevation-3 m-3 p-3">
   <div class="col-md-8 m-3">
       <router-link :to="{name: 'Profile', params: { profileId: comment.creatorId }}">
         <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid object-fit-cover comment-pfp" style="max-height: 50px;">
@@ -115,7 +115,7 @@ export default {
 }
 
 
-.bg-background{
+.bg-commentcard{
   background-color: #374466
 }
 .comment-bottom{
