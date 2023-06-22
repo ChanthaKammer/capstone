@@ -1,12 +1,12 @@
 <template>
   <span class="navbar-text">
-    <button class=" btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login"
+    <button class=" btn selectable text-info lighten-30 text-uppercase my-2 my-lg-0" @click="login"
       v-if="!user.isAuthenticated">
       Login
     </button>
     <div v-else>
       <div class="dropdown my-2 my-lg-0">
-        <div type="button" class="bg-dark border-0 selectable no-select" data-bs-toggle="dropdown" aria-expanded="false">
+        <div type="button" class="bg-dark border-0 selectable no-select" data-bs-toggle="dropdown" >
           <div v-if="account.picture || user.picture">
             <img :src="account.picture || user.picture" alt="account photo" height="40" class="rounded login-pfp object-fit-cover" />
           </div>
@@ -53,13 +53,14 @@ export default {
 .login-pfp{
   border-radius: 50%;
   aspect-ratio: 1/1;
-  min-height: 5vh;
-  max-height: 5vh;
-  min-width: 5vw;
-  max-width: 5vw;
-  position: absolute;
-  top: .25rem;
-  right: .5rem;
+  height: 50px;
+  // min-height: 5vh;
+  // max-height: 5vh;
+  // min-width: 5vw;
+  // max-width: 5vw;
+  // position: absolute;
+  // top: .25rem;
+  // right: .5rem;
 }
 
 @media screen and (max-width: 768px) {
