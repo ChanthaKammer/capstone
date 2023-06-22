@@ -13,13 +13,30 @@
             <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
           </form>
       </div> -->
-      <form class="d-flex w-50" role="search" @submit.prevent="searchGames()">
+      <form class="d-flex w-50 d-none  d-sm-flex" role="search" @submit.prevent="searchGames()">
         <input class="form-control me-2" type="search" :placeholder="searchTerm || 'Search for a Game'" aria-label="Search" v-model="editable">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-success" type="submit">Search</button>
       </form>
-      <div class="align-self-center">
+      <div v-if="user.isAuthenticated" class="">
+        <div class="fs-4 gp-balance text-white d-none d-sm-block" style="font-style: normal;">🪙 {{ account.gpBalance }} </div>
+      </div>
+      <div class="align-self-center d-none d-sm-block">
         <Login/>
       </div>
+    </div>
+  </div>
+  <div class="container-fluid p-3 bg-dark d-md-none">
+    <div class="d-flex justify-content-between align-items-center">
+      <form class="d-flex w-50" role="search" @submit.prevent="searchGames()">
+          <input class="form-control me-2" type="search" :placeholder="searchTerm || 'Search for a Game'" aria-label="Search" v-model="editable">
+          <button class="btn btn-success" type="submit">Search</button>
+        </form>
+        <div v-if="user.isAuthenticated" class="">
+          <div class="fs-4 gp-balance text-white" style="font-style: normal;">🪙 {{ account.gpBalance }} </div>
+        </div>
+        <div class="align-self-center">
+          <Login/>
+        </div>
     </div>
   </div>
   <!-- <nav class="navbar navbar-expand-lg bg-navbar">
@@ -96,9 +113,7 @@ export default {
   font-size: 24px;
 }
 
-router-link {
-  text-decoration: none;
-}
+
 /* nav {
   z-index: 1;
 }
@@ -127,6 +142,8 @@ a:hover {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
+
 
 @media screen and (max-width: 768px) {
   .search-input{
