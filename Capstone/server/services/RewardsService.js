@@ -5,7 +5,7 @@ import { BadRequest } from "../utils/Errors.js"
 class RewardsService {
     async createReward(rewardData) {
         const reward = await dbContext.Rewards.create(rewardData)
-        await reward.populate('tournament')
+        await reward.populate('tournament participant')
         return reward
     }
     async getReward(rewardId) {
