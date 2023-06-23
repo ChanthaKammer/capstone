@@ -3,28 +3,28 @@
   <section class="container-fluid bg-details">
     <div class="row">
       <div v-if="!tournament?.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase details-top">
-        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{ tournament.name
-        }} ({{ tournament.type }}) </p>
+        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{ tournament?.name
+        }} ({{ tournament?.type }}) </p>
         <div class="row justify-content-center">
           <div class="col-12">
             <p class="ms-5 ps-3 mt-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">@ {{
-              tournament.location }} </p>
+              tournament?.location }} </p>
             <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">BE THERE ON
               {{ startDate }}
               @ {{ startTime }}
             </p>
             <div v-if="!tournamentStarted" class="pb-5 countdown-area">
-              <TournamentCountdown :startDate="tournament.startDate" />
+              <TournamentCountdown :startDate="tournament?.startDate" />
             </div>
             <div v-else="tournamentStarted" class="pb-5 countdown-area">
-              <TournamentCountdown :startDate="tournament.startDate" />
+              <TournamentCountdown :startDate="tournament?.startDate" />
             </div>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
-        <img :src="tournament.coverImg" :alt="tournament.coverImg"
-          class="img-fluid object-fit-cover rounded-3 starship-img">
+        <img :src="tournament?.coverImg" :alt="tournament?.coverImg"
+          class="img-fluid rounded-3 tournament-image">
       </div>
       <!-- <div class="row">
         <div class="col-12 pb-5">
@@ -43,25 +43,25 @@
     <!--NOTE Expand further on card methodology once minimum requirements are met elsewhere -->
     <section>
       <div class="my-4">
-        <div class="row bg-pending">
-          <div class="col-12 d-flex justify-content-center align-items-center">
-            <div v-if="!tournamentStarted && !isCancelled">
-              <p class="pending" style="font-style: italic;">PENDING</p>
-            </div>
-            <div v-else-if="tournamentStarted">
-              <p style="font-style: italic;">ACTIVE</p>
+        <div class="row ">
+          <div v-if="!tournamentStarted && !isCancelled && !isFinished" class="bg-pending col-12 d-flex justify-content-center align-items-center">
+            <div >
+              <p class="pending" style="font-style: italic;">Tournament Pending</p>
             </div>
           </div>
+          <div v-else-if="tournamentStarted" class="bg-active d-flex justify-content-center align-items-center">
+            <p style="font-style: italic;">Tournament live!</p>
+          </div>
         </div>
-        <div class="row bg-active">
+        <!-- <div class="row bg-active">
           <div class="col-12 d-flex justify-content-center align-items-center">
 
           </div>
-        </div>
+        </div> -->
         <div class="row bg-finished">
           <div class="col-12 d-flex justify-content-center align-items-center">
             <div v-if="tournament.isFinished">
-              <p class="finished" style="font-style: italic;">FINISHED</p>
+              <p class="finished" style="font-style: italic;">Tournament Finished</p>
             </div>
           </div>
         </div>
@@ -98,8 +98,8 @@
         </div>
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" :alt="tournament.name" class="img-fluid game-img object-fit-cover rounded-2"
-          style="min-width: 40vw;" alt="">
+        <img :src="tournament.gameImg" :alt="tournament.name" class="img-fluid game-img rounded-2"
+          style="" alt="">
 
         <div v-if="user.isAuthenticated" class="d-flex justify-content-evenly">
           <div>
@@ -358,8 +358,9 @@ export default {
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
       isCancelled: computed(() => AppState.activeTournament.isCancelled),
+      isFinished: computed(() => AppState.activeTournament.isFinished),
       startDate: computed(() => {
-        return formatDateAndTime(AppState.activeTournament.startDate).formattedDate
+        return formatDateAndTime(AppState.activeTournament?.startDate).formattedDate
       }),
       startTime: computed(() => {
         return formatDateAndTime(AppState.activeTournament.startDate).formattedTime
@@ -404,13 +405,15 @@ export default {
       async finalizeRound() {
         try {
           if (await Pop.confirm(`This will advance the tournament to the next round. Please confirm all players status before accepting as you can not go back.`)) {
-            AppState.activeTournament.currentRound++
-            AppState.activeTournament = await tournamentsService.editTournament(AppState.activeTournament.id, { currentRound: AppState.activeTournament.currentRound })
-            logger.log(AppState.activeTournament)
+           
+            const newRound = AppState.activeTournament.currentRound + 1
+            AppState.activeTournament = await tournamentsService.editTournament(AppState.activeTournament.id, { currentRound: newRound })
+            logger.log("[ACTIVE TOURNAMENT FROM FINALIZE ROUND]",AppState.activeTournament)
             await AppState.participants.forEach(p => {
 
               const participantUpdate = participantsService.updatePlayerStatus(p.id, { status: p.status })
-              // logger.log(p.id, p.profile.name, p.status)
+              logger.log(participantUpdate)
+              setActiveTournament()
             });
           }
         } catch (error) {
@@ -612,8 +615,14 @@ p {
   filter: brightness(1.2);
 
 }
-
-.starship-img:hover {
+.tournament-image{
+    aspect-ratio: 1/1;
+    min-height: 30vh;
+    min-width: 50vh;
+    max-height: 40vh;
+    max-width: 50vh;
+  }
+.tournament-image:hover {
   filter: brightness(1.2);
   transition: 0.5s;
   box-shadow: 0px 0px 10px 10px #10a5a548;
@@ -626,9 +635,26 @@ p {
   background-color: #ffb134;
   text-shadow: 0 3px 5px #000000;
   box-shadow: 0 0 50px 5px #ffb134;
-  animation: pulse 3s infinite;
+  animation: pulsePending 3s infinite;
 }
+@keyframes pulsePending {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #ffb134;
+  }
 
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 60px 5px #ffb134;
+    filter: brightness(1.3);
+    color: #6eff9aea
+  }
+
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #b17b25;
+  }
+}
 .bg-active {
   color: #f0f0f0e9;
   font-size: 3rem;
@@ -646,7 +672,25 @@ p {
   background-color: #21d6ffd6;
   text-shadow: 0 3px 5px #000000;
   box-shadow: 0 0 50px 5px #21d6ffd6;
-  animation: pulse 3s infinite;
+  animation: pulseFinished 3s infinite;
+}
+@keyframes pulseFinished {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #21d6ffd6;
+  }
+
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 60px 5px #21d6ffd6;
+    filter: brightness(1.3);
+    color: #6eff9aea
+  }
+
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #21d6ffd6;
+  }
 }
 
 .bg-cancelled {
@@ -656,27 +700,44 @@ p {
   background-color: #9a0000d6;
   text-shadow: 0 3px 5px #000000;
   box-shadow: 0 0 50px 5px #9a0000d6;
-  animation: pulse 3s infinite;
+  opacity: 0.8;
+  animation: pulseCancelled 3s infinite;
 }
+@keyframes pulseCancelled {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #9a0000d6;
+  }
 
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 60px 5px #9a0000d6;
+    filter: brightness(1.3);
+    color: #6eff9aea
+  }
 
-
-
-
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #9a0000d6;
+  }
+}
 
 
 @keyframes pulse {
   0% {
+    opacity: 0.5;
     box-shadow: 0 0 50px 5px #00ff4cd6;
   }
 
   50% {
+    opacity: 0.9;
     box-shadow: 0 0 60px 5px #00ff4cea;
     filter: brightness(1.3);
     color: #6eff9aea
   }
 
   100% {
+    opacity: 0.5;
     box-shadow: 0 0 50px 5px #00ff4cd6;
   }
 }
@@ -717,14 +778,19 @@ p {
     margin-top: 4rem;
   }
 
-  // .starship-img{
-  //   aspect-ratio: 1/1;
-  //   display: none;
-  // }
-  .game-img {
+ 
+  .game-img{
     aspect-ratio: 1/1;
-    // display: none;
+    min-height: 20rem;
+    min-width: 10vh;
+    max-height: 50vh;
+    max-width: 50vh;
   }
+.game-img:hover {
+  filter: brightness(1.2);
+  transition: 0.5s;
+  box-shadow: 0px 0px 10px 10px #10a5a548;
+}
 
   .mobile-rgb {
     width: 10rem;
