@@ -26,7 +26,7 @@
                     </div>
                       
                     <div class="col-md-3">
-                      <button class="btn neon-button" style="position: absolute; top: 29rem; left: 40px; min-width: 10vw;" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
+                      
                         <div class="row justify-content-center">
           
                           <!-- Modal -->
@@ -69,8 +69,9 @@
 
                 </div>
 
-                <div class="d-flex justify-content-end text-center">
-                  <ul class="list-inline social-tab mb-0 p-4 bg-filler" style="margin-right: 55px;margin-top: 20px;">
+                <div class="d-flex justify-content-between text-center">
+                  <button class="btn neon-button" style="" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
+                  <ul class="list-inline social-tab mb-0 p-4 bg-filler" style="margin-right: 45px;margin-top: 20px;">
                     <li class="list-inline-item">
                       <h5 class="font-weight-bold mb-0 d-block"> {{ myParticipations.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
                     </li>
@@ -140,6 +141,7 @@
 import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
 import { logger } from '../utils/Logger.js';
+import { Modal } from "bootstrap";
 import {ref, watchEffect} from 'vue';
 import MyJoinedTournamentsCard from '../components/MyJoinedTournamentsCard.vue';
 import Pop from '../utils/Pop.js';
@@ -198,8 +200,10 @@ export default {
           
           async editAccount(){
             try {
-              logger.log(editable.value)
+              logger.log('edit account function',editable.value)
               await accountService.updateAccountInfo(editable.value)
+              Modal.getOrCreateInstance('#accountModal').hide()
+              
               } catch (error) {
                 Pop.error(error)
               }
@@ -267,7 +271,10 @@ export default {
   text-shadow: .5px .5px .125em #0f0044d3;
   box-shadow: 0 0 20px 1px #49bfffe7;
   animation: colorChange 20s infinite;
-  margin-left: 12px;
+  margin-left: 50px;
+  margin-top: 60px;
+  height: 3rem;
+  min-width: 15vh;
 }
 
 .neon-button::before {
@@ -347,10 +354,10 @@ img {
     max-height: 20vh;
     margin-top: 3rem;
   }
-  .neon-button {
-    margin-top: 6.5rem !important;
-    width: 20vw !important;
-  }
+  // .neon-button {
+  //   margin-top: 6.5rem !important;
+  //   width: 20vw !important;
+  // }
   .name-tag {
     margin-left: 1rem;
     margin-top: 3rem;
@@ -363,10 +370,10 @@ img {
     margin-top: 7rem;
   }
   
-  .neon-button {
-    margin-top: 8rem !important;
-    width: 20vw !important;
-  }
+  // .neon-button {
+  //   margin-top: 8rem !important;
+  //   width: 20vw !important;
+  // }
   .name-tag {
     margin-left: 2rem;
     margin-top: 3rem;
@@ -380,12 +387,12 @@ img {
     margin-right: .25rem;
   }
   
-  .neon-button {
-    margin-top: 0 !important;
-    width: 20vw !important;
-    white-space: nowrap;
-    box-sizing: content-box;
-  }
+  // .neon-button {
+  //   margin-top: 9rem !important;
+  //   width: 20vw !important;
+  //   white-space: nowrap;
+  //   box-sizing: content-box;
+  // }
   .name-tag {
     margin-left: -3rem;
     margin-top: -1.5rem;
@@ -400,9 +407,9 @@ img {
     // max-width: 10vw !important;
     // margin-top: 3rem;
   }
-  .neon-button {
-    margin-top: 9rem !important;
-  }
+  // .neon-button {
+  //   margin-top: 9rem !important;
+  // }
   .name-tag {
     margin-left: 3rem;
     margin-top: 5rem;
