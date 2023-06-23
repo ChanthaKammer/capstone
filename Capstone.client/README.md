@@ -1,3 +1,25 @@
+This App is designed for Video Game Tournament Management. Online and In Person/Local. 
+
+In this App you will be able to search a Video Game from over 800k games. 
+
+When you find a game you can click on the details to see if that game is right for you.
+
+In the game details page you will be able to create a Tournament. Add a Tournament name, a start date and time, where the location for said Tournament will be held. Also, choose if it will ba an Online or Local/in person Tournament.
+
+Each Tournament will have a max player capacity and multiple round chosen by the Tournament creator/host.
+
+Hosts of a Tournament will have a Management section to Cancel their Tournament, Edit their Tournament, Advance rounds, eliminate a player, and assign winners and rewards.
+
+Logged in members can choose a Tournament to Join or leave if they wish.
+
+All logged in members will be able to comment on a Tournament and delete their post if they didn't like their thoughts.
+
+Anyone visiting the App can click on a participant and see that players profile. It will have Tournaments they will be participating in, as well as badges won.
+
+Members logged in can visit their account page and see which Tournament they joined, badges won and comments that were posted on a Tournament they are hosting.
+
+Members in the account page will be able to edit their profile info. 
+
 CodeWorks Vue Starter
 =====================
 This template is designed to help get students started building vue applications
