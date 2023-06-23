@@ -7,9 +7,9 @@
               <!-- PROFILE START ( COPY / PASTE TO PROFILE PAGE ) -->
               <div class="shadow overflow-hidden">
                 <div class="elevation-5 shadow-lg" :style="{ background: `url(${account.coverImg})` }" style="background-position: top; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
-                  <div class="container-fluid py-5">
-                      <div class="row justify-content-center align-items-center p-5">
-                        <div class="col-md-3 text-center text-white shadow-sm elevation-5 pt-3 bg-glass rounded-3" style="position:absolute; bottom:17rem;">
+                  <div class="container-fluid">
+                      <div class="row justify-content-start align-items-center p-5">
+                        <div class="col-md-3 text-center text-white shadow-sm elevation-5 pt-5 bg-glass rounded-3" style="">
                           <img :src="account.picture" :alt="account.name" class="img-fluid object-fit-cover profile-img" style="height:40%">
                           <h4 class="my-0" style="text-shadow:  1px 1px 1px black;"> {{ account.name }} </h4>
                           <p class="small fs-4" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
@@ -58,7 +58,7 @@
 
                 </div>
 
-                <div class="d-flex justify-content-between text-center p-3">
+                <div class="d-flex justify-content-between text-center p-5">
                   <ul class="list-inline social-tab mb-0 p-4 bg-filler" style="margin-right: 45px;margin-top: 20px;">
                     <li class="list-inline-item">
                       <h5 class="font-weight-bold mb-0 d-block"> {{ myParticipations.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
@@ -342,6 +342,10 @@ img {
     max-height: 30vh;
   }
 @media screen and (max-width: 768px) {
+  .bg-glass{
+    position: relative;
+    top: 6rem;
+  }
   ul {
     margin-top: 7rem;
   }
