@@ -349,15 +349,15 @@ img {
   }
   .bg-glass{
     position: relative;
-    top: 6rem;
+    top: 3rem;
   }
   ul {
     margin-top: 7rem;
   }
   .profile-img {
     aspect-ratio: 1/1;
-    max-width: 30vw;
-    max-height: 30vh;
+    max-width: 50vw;
+    max-height: 50vh;
   }
   // .neon-button {
   //   margin-top: 6.5rem !important;
