@@ -44,17 +44,15 @@
       <div class="col-12 bg-dark justify-content-center align-items-center shadow-lg elevation-5">
         <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" class="">
           <Slide v-for="slide in carouselTournaments" :key="slide" class="">
-            <router-link :to="{name: 'TournamentDetails', params: {tournamentId: slide.id}}">
-              <div class="card text-bg-dark">
-              <div class="carousel__item">
-                  <img :src="slide.coverImg" :alt="slide.name" class="img-fluid" style="">
-                  <div class="card-img-overlay">
-                    <h5 style="color: aliceblue; text-shadow: 1px 1px 2px aliceblue;" class="card-title mt-2"> {{ slide.name }}</h5>
-                    <p class="card-text text-dark" style="font-weight: 500; text-shadow: 1px 1px 2px aliceblue;"> {{ slide.description }} </p>
-                    <p class="card-text text-dark" style="font-weight: 500; text-shadow: 1px 1px 2px aliceblue;"><small> {{ slide.updatedAt }} </small></p>
+            <router-link :to="{ name: 'TournamentDetails', params: { tournamentId: slide.id }}">
+              <div class="card bg-transparent" style="">
+                <div class="carousel__item">
+                  <img :src="slide.coverImg" class="card-img-top" :alt="slide.name">
+                  <h3 class="card-title"> {{ slide.name }} </h3>
+                  <div class="card-body mb-4">
+                    <p class="card-text text-light"> {{ slide.description }} </p>
                   </div>
                 </div>
-                
               </div>
             </router-link>
           </Slide>
@@ -197,6 +195,10 @@ export default {
         logger.log(error)
       }
     }
+
+    // async function truncateCarouselDescription(str, num) {
+    //   if (homeCarousel.str.length)
+    // }
 
     onMounted(() => {
       getAllTournaments()
@@ -652,6 +654,11 @@ export default {
 .carousel__slide--active {
   opacity: 1;
   transform: rotateY(0) scale(1.1);
+}
+
+.carousel__item {
+  color: aliceblue;
+  text-shadow: 1px 1px 2px #000000;
 }
 
 .carousel__item>img{
