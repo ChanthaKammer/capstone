@@ -10,19 +10,8 @@
             <p class="ms-5 ps-3 mt-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">@ {{
               tournament.location }} </p>
             <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">BE THERE ON
-              {{
-                new Date(tournament.startDate)
-                  .toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
-                  }) }}
-              @ {{
-                new Date(tournament.startDate)
-                  .toLocaleTimeString('en-US', {
-                    hour: 'numeric',
-                    minute: 'numeric'
-                  }) }}
+              {{ startDate }}
+              @ {{ startTime }}
             </p>
             <div v-if="tournament.startDate" class="pb-5 countdown-area">
               <TournamentCountdown />
@@ -342,8 +331,7 @@ export default {
 
     }
     return {
-      // finalizeRound,
-      // finalizeTournament,
+      formatDateAndTime,
       cancelTournament,
       leaveTournament,
       joinTournament,
@@ -355,6 +343,12 @@ export default {
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
       isCancelled: computed(() => AppState.activeTournament.isCancelled),
+      startDate: computed(()=> {
+       return formatDateAndTime(AppState.activeTournament.startDate).formattedDate
+      }),
+      startTime: computed(()=> {
+        return formatDateAndTime(AppState.activeTournament.startDate).formattedTime
+      }),
       isParticipant: computed(() => {
 
         if (AppState.myParticipations.find(p => p.tournamentId == AppState.activeTournament.id)) {
@@ -475,7 +469,19 @@ export default {
     }
   },
 }
-
+function formatDateAndTime(dateString) {
+  
+  const date = new Date(dateString);
+  // Format date as MM/DD/YYYY
+  const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+  // Format time as regular 12-hour format
+  let hours = date.getHours();
+  const minutes = date.getMinutes();
+  const amPm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12;
+  const formattedTime = `${hours}:${minutes.toString().padStart(2, '0')} ${amPm}`;
+  return {formattedDate, formattedTime};
+}
 </script>
 
 
