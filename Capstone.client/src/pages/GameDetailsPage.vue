@@ -1,6 +1,6 @@
 <template>
-   <section class="container-fluid bg-animate" :style="{ background: `url(${game?.background})` }" style="background-repeat: repeat; background-size: cover; height: 100vh;">
-      <div class="row justify-content-center pt-5">
+   <section class="container-fluid bg-animate" :style="{ background: `url(${game?.background})` }" style="background-repeat:repeat-y; background-size: cover; height: 100vh;">
+      <div class="row justify-content-center pt-5 p-3">
          <div class="col-md-9 pt-3 bg-dark text-white rounded-3 animate-in pt-4 pb-3 mobile-card" style="opacity: .9;">
             <div v-if="game" class="row">
                <div class="col-md-4 text-center">
