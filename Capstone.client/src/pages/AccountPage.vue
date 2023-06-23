@@ -214,9 +214,7 @@ export default {
 * {
   border: 0px solid green
 }
-.pfp-image{
-  // max-width: 0rem;
-}
+
 .bio {
   background-color: #2f395d76;
   color: aliceblue;
@@ -403,13 +401,6 @@ img {
 
 @media (min-width: 1600px) {
 
-  .profile-img {
-    // max-width: 10vw !important;
-    // margin-top: 3rem;
-  }
-  // .neon-button {
-  //   margin-top: 9rem !important;
-  // }
   .name-tag {
     margin-left: 3rem;
     margin-top: 5rem;
