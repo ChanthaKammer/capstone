@@ -43,25 +43,25 @@
     <!--NOTE Expand further on card methodology once minimum requirements are met elsewhere -->
     <section>
       <div class="my-4">
-        <div class="row bg-pending">
-          <div class="col-12 d-flex justify-content-center align-items-center">
-            <div v-if="!tournamentStarted && !isCancelled">
-              <p class="pending" style="font-style: italic;">PENDING</p>
-            </div>
-            <div v-else-if="tournamentStarted">
-              <p style="font-style: italic;">ACTIVE</p>
+        <div class="row ">
+          <div v-if="!tournamentStarted && !isCancelled && !isFinished" class="bg-pending col-12 d-flex justify-content-center align-items-center">
+            <div >
+              <p class="pending" style="font-style: italic;">Tournament Pending</p>
             </div>
           </div>
+          <div v-else-if="tournamentStarted" class="bg-active d-flex justify-content-center align-items-center">
+            <p style="font-style: italic;">Tournament live!</p>
+          </div>
         </div>
-        <div class="row bg-active">
+        <!-- <div class="row bg-active">
           <div class="col-12 d-flex justify-content-center align-items-center">
 
           </div>
-        </div>
+        </div> -->
         <div class="row bg-finished">
           <div class="col-12 d-flex justify-content-center align-items-center">
             <div v-if="tournament.isFinished">
-              <p class="finished" style="font-style: italic;">FINISHED</p>
+              <p class="finished" style="font-style: italic;">Tournament Finished</p>
             </div>
           </div>
         </div>
@@ -358,6 +358,7 @@ export default {
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
       isCancelled: computed(() => AppState.activeTournament.isCancelled),
+      isFinished: computed(() => AppState.activeTournament.isFinished),
       startDate: computed(() => {
         return formatDateAndTime(AppState.activeTournament.startDate).formattedDate
       }),
@@ -626,9 +627,26 @@ p {
   background-color: #ffb134;
   text-shadow: 0 3px 5px #000000;
   box-shadow: 0 0 50px 5px #ffb134;
-  animation: pulse 3s infinite;
+  animation: pulsePending 3s infinite;
 }
+@keyframes pulsePending {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #ffb134;
+  }
 
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 60px 5px #ffb134;
+    filter: brightness(1.3);
+    color: #6eff9aea
+  }
+
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #b17b25;
+  }
+}
 .bg-active {
   color: #f0f0f0e9;
   font-size: 3rem;
@@ -646,7 +664,25 @@ p {
   background-color: #21d6ffd6;
   text-shadow: 0 3px 5px #000000;
   box-shadow: 0 0 50px 5px #21d6ffd6;
-  animation: pulse 3s infinite;
+  animation: pulseFinished 3s infinite;
+}
+@keyframes pulseFinished {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #21d6ffd6;
+  }
+
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 60px 5px #21d6ffd6;
+    filter: brightness(1.3);
+    color: #6eff9aea
+  }
+
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #21d6ffd6;
+  }
 }
 
 .bg-cancelled {
@@ -656,27 +692,44 @@ p {
   background-color: #9a0000d6;
   text-shadow: 0 3px 5px #000000;
   box-shadow: 0 0 50px 5px #9a0000d6;
-  animation: pulse 3s infinite;
+  opacity: 0.8;
+  animation: pulseCancelled 3s infinite;
 }
+@keyframes pulseCancelled {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #9a0000d6;
+  }
 
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 60px 5px #9a0000d6;
+    filter: brightness(1.3);
+    color: #6eff9aea
+  }
 
-
-
-
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 50px 5px #9a0000d6;
+  }
+}
 
 
 @keyframes pulse {
   0% {
+    opacity: 0.5;
     box-shadow: 0 0 50px 5px #00ff4cd6;
   }
 
   50% {
+    opacity: 0.9;
     box-shadow: 0 0 60px 5px #00ff4cea;
     filter: brightness(1.3);
     color: #6eff9aea
   }
 
   100% {
+    opacity: 0.5;
     box-shadow: 0 0 50px 5px #00ff4cd6;
   }
 }
