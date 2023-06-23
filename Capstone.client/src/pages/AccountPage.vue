@@ -77,7 +77,7 @@
                   </div>
                 </div>
 
-                <div class="py-4 px-4 mb-5">
+                <div class="p-5 mb-5">
                   <div class="d-flex align-items-center justify-content-between mb-3">
                     <h5 class="mt-5 tournament-header"> {{ account.name }}'s Tournaments:</h5>
                   </div>
