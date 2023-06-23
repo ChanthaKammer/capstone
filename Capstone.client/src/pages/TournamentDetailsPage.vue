@@ -254,7 +254,7 @@
 
     <!-- SECTION Comments -->
     <div class="row p-5 bg-dark justify-content-center">
-      <h1 class="text-center pb-4">Comments</h1>
+      <h1 class="text-center pb-4">Tournament comments</h1>
       <div v-if="user.isAuthenticated" class="col-12 col-md-6 card p-1 px-3 rounded-3 elevation-5 comment-area" style="position: relative;">
         <form @submit.prevent="createComment()">
           <div class="d-flex align-items-center mb-2">
