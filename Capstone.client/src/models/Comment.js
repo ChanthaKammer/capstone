@@ -17,8 +17,8 @@ export class Comment{
     this.tournamentId = data.tournamentId
     this.body = data.body
     this.creator = data.creator
-    this.createdDate = formattedDate(new Date).formattedDate
-    this.createdTime = formattedDate(new Date).formattedTime
+    this.createdDate = formatDateAndTime(data.updatedAt).formattedDate
+    this.createdTime = formatDateAndTime(data.updatedAt).formattedTime
 
   }
 }

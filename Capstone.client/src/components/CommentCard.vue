@@ -6,19 +6,8 @@
       </router-link>
     <span style="text-shadow: 1px 1px 1px black;color: white; margin-left: 1rem; position: absolute; top:0px; right:0px;" class="mb-1 fw-light"> 
       <span class="text-white fw-normal" style="text-shadow: 1px 1px 1px black">{{ comment.creator.name }}</span>posted on
-    {{
-      new Date(comment.creator.createdAt)
-        .toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
-        }) }}
-    @ {{
-      new Date(comment.creator.createdAt)
-        .toLocaleTimeString('en-US', {
-          hour: 'numeric',
-          minute: 'numeric'
-        }) }} 
+    {{ comment?.createdDate }}
+    @ {{ comment?.createdTime }} 
     </span>
   </div>
   <div class="col-md-12 bg-light rounded-3" style="">
@@ -96,13 +85,13 @@ export default {
   },
   setup(props){
     return {
-      formatDateAndTime,
-      currentDate: computed(() =>{
-        return formatDateAndTime(new Date).formattedDate
-      }),
-      currentTime: computed(() =>{
-        return formatDateAndTime(new Date).formattedTime
-      }),
+      // formatDateAndTime,
+      // currentDate: computed(() =>{
+      //   return formatDateAndTime(new Date).formattedDate
+      // }),
+      // currentTime: computed(() =>{
+      //   return formatDateAndTime(new Date).formattedTime
+      // }),
       account: computed(() => AppState.account),
       
       async deleteComment() {
@@ -117,18 +106,18 @@ export default {
     }
   }
 }
-function formatDateAndTime(dateString) {
-  const date = new Date(dateString);
-  // Format date as MM/DD/YYYY
-  const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-  // Format time as regular 12-hour format
-  let hours = date.getHours();
-  const minutes = date.getMinutes();
-  const amPm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12 || 12;
-  const formattedTime = `${hours}:${minutes.toString().padStart(2, '0')} ${amPm}`;
-  return {formattedDate, formattedTime}
-}
+// function formatDateAndTime(dateString) {
+//   const date = new Date(dateString);
+//   // Format date as MM/DD/YYYY
+//   const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+//   // Format time as regular 12-hour format
+//   let hours = date.getHours();
+//   const minutes = date.getMinutes();
+//   const amPm = hours >= 12 ? 'PM' : 'AM';
+//   hours = hours % 12 || 12;
+//   const formattedTime = `${hours}:${minutes.toString().padStart(2, '0')} ${amPm}`;
+//   return {formattedDate, formattedTime}
+// }
 </script>
 
 
