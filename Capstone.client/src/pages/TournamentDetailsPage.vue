@@ -633,11 +633,18 @@ p {
 }
 
 .game-img {
+  margin-left: 4rem;
   aspect-ratio: 1/1;
   min-height: 45vh;
   min-width: 40vw;
   max-height: 45vh;
   max-width: 40vw;
+}
+
+.game-img:hover {
+  filter: brightness(1.2);
+  transition: 0.5s;
+  box-shadow: 0px 0px 10px 10px #10a5a548;
 }
 
 .bg-pending {
@@ -769,7 +776,7 @@ p {
 }
 
 .rgb-btn {
-  width: 95%;
+  width: 10vw;
   height: 3rem;
 }
 
@@ -787,19 +794,22 @@ p {
     width: 100%;
   }
 
+  .game-img {
+    margin-left: auto;
+    aspect-ratio: 1/1;
+    min-height: 30vh;
+    min-width: 90vw;
+    max-height: 45vh;
+    max-width: 40vw;
+  }
+  .tournament-image{
+    display: none;
+  }
   // .countdown-area{
   //   display: none;
   // }
   .details-top {
-    margin-top: 4rem;
-  }
-
-
-
-  .game-img:hover {
-    filter: brightness(1.2);
-    transition: 0.5s;
-    box-shadow: 0px 0px 10px 10px #10a5a548;
+    margin-top: 0rem;
   }
 
   .mobile-rgb {
