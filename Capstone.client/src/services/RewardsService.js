@@ -1,5 +1,6 @@
 import { AppState } from "../AppState.js"
 import { Reward } from "../models/Reward.js"
+import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
 
 class RewardsService{
@@ -7,6 +8,7 @@ class RewardsService{
     async getProfileRewards(profileId){
         const res = await api.get(`api/profiles/${profileId}/rewards`)
         AppState.profileRewards = res.data.map(r => new Reward(r))
+        logger.log('[PROFILE REWARDS]', AppState.profileRewards)
     }
 }
 

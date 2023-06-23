@@ -8,9 +8,9 @@
                   <img :src="activeProfile.picture" :alt="activeProfile.name" class="img-fluid">
                   <h3>Badges</h3>
                   <div class="row">
-                     <!-- <div v-for="r in profileRewards" :key="r.id">
+                     <div v-for="r in profileRewards" :key="r.id">
                         <Badge :badge="r"/>
-                     </div> -->
+                     </div>
                   </div>
                </div>
                <div class="col-md-6">

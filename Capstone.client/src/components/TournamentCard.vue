@@ -36,7 +36,7 @@
               </p>
             </div>
             <div class="col-6 ps-4 py-1">
-              <a href="#" class="btn btn-dark" style="color: dodgerblue;">Groups</a>
+              <a href="#" class="btn btn-dark" style="color: dodgerblue;">To Top</a>
             </div>
             <div class="col-6 ps-5 py-1">
               <router-link :to="{ name: 'TournamentDetails', params: { tournamentId: tournament.id } }">
