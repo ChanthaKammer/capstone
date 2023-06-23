@@ -7,9 +7,9 @@
                   <img :src="activeProfile.picture" :alt="activeProfile.name" class="img-fluid">
                   <h3>Badges</h3>
                   <div class="row">
-                     <div v-for="r in profileRewards" :key="r.id">
+                     <!-- <div v-for="r in profileRewards" :key="r.id">
                         <Badge :badge="r"/>
-                     </div>
+                     </div> -->
                   </div>
                </div>
                <div class="col-md-6">
@@ -43,7 +43,7 @@ import { useRoute } from 'vue-router';
 import { tournamentsService } from '../services/TournamentsService.js';
 import { profileService } from '../services/ProfileService.js'
 import { onMounted } from 'vue';
-import { computed } from '@vue/reactivity';
+import { computed } from 'vue';
 import { participantsService } from '../services/ParticipantsService.js';
 import { rewardsService } from '../services/RewardsService.js'
    export default {
