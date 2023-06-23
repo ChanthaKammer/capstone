@@ -22,7 +22,7 @@ class TournamentsService {
   async getMyTournaments() {
     const res = await api.get('account/tournaments')
     AppState.myTournaments = res.data
-    logger.log(AppState.myTournaments, 'are my tournaments')
+    logger.log('[MY_TOURNAMENTS]',AppState.myTournaments)
   }
 
   async createTournament(tournamentData) {
@@ -50,7 +50,7 @@ class TournamentsService {
   async getProfileTournaments(profileId){
     const res = await api.get(`api/profiles/${profileId}/tournaments`)
     AppState.profileTournaments = res.data.map(t => new Tournament(t))
-    logger.log(AppState.profileTournaments)
+    // logger.log('[PROFILE_TOURNAMENTS]',AppState.profileTournaments)
     return res.data
   }
 }
