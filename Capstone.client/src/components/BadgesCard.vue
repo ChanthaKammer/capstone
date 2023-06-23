@@ -344,8 +344,8 @@
     margin-left: -55px;
     height: 30px;
     font-size: 14px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.27);
-    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px #00000045;
+    text-shadow: 0 2px 2px #0000001a;
     text-transform: uppercase;
     background: linear-gradient(to bottom right, #555 0%, #333 100%);
     cursor: default;
