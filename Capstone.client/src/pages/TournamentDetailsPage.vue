@@ -3,7 +3,8 @@
   <section class="container-fluid bg-details">
     <div class="row">
       <div v-if="!tournament?.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase details-top">
-        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{ tournament?.name
+        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{
+          tournament?.name
         }} ({{ tournament?.type }}) </p>
         <div class="row justify-content-center">
           <div class="col-12">
@@ -23,8 +24,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
-        <img :src="tournament?.coverImg" :alt="tournament?.coverImg"
-          class="img-fluid rounded-3 tournament-image">
+        <img :src="tournament?.coverImg" :alt="tournament?.coverImg" class="img-fluid rounded-3 tournament-image">
       </div>
       <!-- <div class="row">
         <div class="col-12 pb-5">
@@ -44,8 +44,9 @@
     <section>
       <div class="my-4">
         <div class="row ">
-          <div v-if="!tournamentStarted && !isCancelled && !isFinished" class="bg-pending col-12 d-flex justify-content-center align-items-center">
-            <div >
+          <div v-if="!tournamentStarted && !isCancelled && !isFinished"
+            class="bg-pending col-12 d-flex justify-content-center align-items-center">
+            <div>
               <p class="pending" style="font-style: italic;">Tournament Pending</p>
             </div>
           </div>
@@ -98,8 +99,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" :alt="tournament.name" class="img-fluid game-img rounded-2"
-          style="" alt="">
+        <img :src="tournament.gameImg" :alt="tournament.name" class="game-img rounded-2" style="" alt="">
 
         <div v-if="user.isAuthenticated" class="d-flex justify-content-evenly">
           <div>
@@ -405,10 +405,10 @@ export default {
       async finalizeRound() {
         try {
           if (await Pop.confirm(`This will advance the tournament to the next round. Please confirm all players status before accepting as you can not go back.`)) {
-           
+
             const newRound = AppState.activeTournament.currentRound + 1
             AppState.activeTournament = await tournamentsService.editTournament(AppState.activeTournament.id, { currentRound: newRound })
-            logger.log("[ACTIVE TOURNAMENT FROM FINALIZE ROUND]",AppState.activeTournament)
+            logger.log("[ACTIVE TOURNAMENT FROM FINALIZE ROUND]", AppState.activeTournament)
             await AppState.participants.forEach(p => {
 
               const participantUpdate = participantsService.updatePlayerStatus(p.id, { status: p.status })
@@ -615,17 +615,29 @@ p {
   filter: brightness(1.2);
 
 }
-.tournament-image{
-    aspect-ratio: 1/1;
-    min-height: 30vh;
-    min-width: 50vh;
-    max-height: 40vh;
-    max-width: 50vh;
-  }
+
+.tournament-image {
+  padding-left: 5rem;
+  padding-right: 10rem;
+  aspect-ratio: 1/1;
+  min-height: 45vh;
+  min-width: 40vw;
+  max-height: 45vh;
+  max-width: 40vw;
+}
+
 .tournament-image:hover {
   filter: brightness(1.2);
   transition: 0.5s;
   box-shadow: 0px 0px 10px 10px #10a5a548;
+}
+
+.game-img {
+  aspect-ratio: 1/1;
+  min-height: 45vh;
+  min-width: 40vw;
+  max-height: 45vh;
+  max-width: 40vw;
 }
 
 .bg-pending {
@@ -637,6 +649,7 @@ p {
   box-shadow: 0 0 50px 5px #ffb134;
   animation: pulsePending 3s infinite;
 }
+
 @keyframes pulsePending {
   0% {
     opacity: 0.5;
@@ -655,6 +668,7 @@ p {
     box-shadow: 0 0 50px 5px #b17b25;
   }
 }
+
 .bg-active {
   color: #f0f0f0e9;
   font-size: 3rem;
@@ -674,6 +688,7 @@ p {
   box-shadow: 0 0 50px 5px #21d6ffd6;
   animation: pulseFinished 3s infinite;
 }
+
 @keyframes pulseFinished {
   0% {
     opacity: 0.5;
@@ -703,6 +718,7 @@ p {
   opacity: 0.8;
   animation: pulseCancelled 3s infinite;
 }
+
 @keyframes pulseCancelled {
   0% {
     opacity: 0.5;
@@ -778,19 +794,13 @@ p {
     margin-top: 4rem;
   }
 
- 
-  .game-img{
-    aspect-ratio: 1/1;
-    min-height: 20rem;
-    min-width: 10vh;
-    max-height: 50vh;
-    max-width: 50vh;
+
+
+  .game-img:hover {
+    filter: brightness(1.2);
+    transition: 0.5s;
+    box-shadow: 0px 0px 10px 10px #10a5a548;
   }
-.game-img:hover {
-  filter: brightness(1.2);
-  transition: 0.5s;
-  box-shadow: 0px 0px 10px 10px #10a5a548;
-}
 
   .mobile-rgb {
     width: 10rem;
