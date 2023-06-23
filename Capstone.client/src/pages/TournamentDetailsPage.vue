@@ -385,7 +385,7 @@ export default {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
-      lastRound: computed(()=> tournament.currentRound === tournament.totalRounds),
+      lastRound: computed(()=> AppState.activeTournament.currentRound === AppState.activeTournament.totalRounds),
       participants: computed(() => AppState.participants),
 
       activePlayers: computed(() =>{
