@@ -267,9 +267,9 @@
           <div>
             <h1>Round {{ tournament?.currentRound }} of {{ tournament?.totalRounds }}</h1>
           </div>
-          <button @click="finalizeRound()" v-if="lastRound" type="button"
+          <button @click="finalizeRound()" v-if="!lastRound" type="button"
             class="m-1 btn btn-success">Finalize Round</button>
-          <button @click="finalizeTournament" v-if="!lastRound" type="button"
+          <button @click="finalizeTournament" v-if="lastRound" type="button"
             class="m-1 btn btn-danger">Finalize Tournament</button>
             <!-- SECTION FINISH TOURNAMENT INPUTS -->
             <div class="row">
