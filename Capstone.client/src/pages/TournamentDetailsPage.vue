@@ -383,7 +383,7 @@ export default {
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
       activePlayers: computed(() =>{
-        return AppState.participants.filter(p => p.status == 'active')
+        return AppState.participants.filter(p => p.status != 'eliminated')
       }),
       eliminatedPlayers: computed(() =>{
         return AppState.participants.filter(p => p.status == 'eliminated')
