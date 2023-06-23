@@ -5,7 +5,7 @@ import { BadRequest } from "../utils/Errors.js"
 class RewardsService {
     async createReward(rewardData) {
         const reward = await dbContext.Rewards.create(rewardData)
-        await reward.populate('tournament')
+        await reward.populate('tournament participant')
         return reward
     }
     async getReward(rewardId) {
@@ -31,7 +31,7 @@ class RewardsService {
         return rewards
     }
     async getProfileRewards(profileId) {
-      const rewards = await dbContext.Rewards.find({accountId: profileId})
+      const rewards = await dbContext.Rewards.find({accountId: profileId}).populate('tournament participant')
       .sort({createdAt: -1})
       if(!rewards){
         throw new BadRequest("This profile has no rewards.")
