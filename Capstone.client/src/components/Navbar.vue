@@ -18,7 +18,7 @@
         <button class="btn btn-success" type="submit">Search</button>
       </form>
       <div v-if="user.isAuthenticated" class="">
-        <div class="fs-4 gp-balance text-white d-none d-sm-block" style="font-style: normal;">🪙 {{ account.gpBalance }} </div>
+        <div class="fs-4 gp-balance text-white d-none d-sm-block" style="font-style: normal;"><img src="../assets/img/coin.png" style="height: 40px" class="img-fluid"> {{ account.gpBalance }} </div>
       </div>
       <div class="align-self-center d-none d-sm-block">
         <Login/>
@@ -32,7 +32,7 @@
           <button class="btn btn-success" type="submit">Search</button>
         </form>
         <div v-if="user.isAuthenticated" class="">
-          <div class="fs-4 gp-balance text-white" style="font-style: normal;">🪙 {{ account.gpBalance }} </div>
+          <div class="fs-4 gp-balance text-white" style="font-style: normal;"><img src="../assets/img/coin.png" style="height: 40px" class="img-fluid"> {{ account.gpBalance }} </div>
         </div>
         <div class="align-self-center">
           <Login/>
