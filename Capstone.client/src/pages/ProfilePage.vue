@@ -1,6 +1,7 @@
 <template>
-   <section class="container-fluid">
-      <div class="row justify-content-center pt-3">
+   <section class="container-fluid bg-background" 
+   :style="{ background: `url(${activeProfile.coverImg})` || 'background-color: #4a70e196;' }">
+      <div class="row justify-content-center pt-3 p-3">
          <div class="col-md-8 bg-dark text-white rounded-3">
             <div class="row justify-content-around p-3">
                <div class="col-md-6">
@@ -20,8 +21,8 @@
             </div>
          </div>
       </div>
-      <div class="row justify-content-center pt-3">
-         <div class="col-8 bg-dark text-white">
+      <div class="row justify-content-center pt-3 p-3">
+         <div class="col-md-8 bg-dark text-white rounded-3">
             <h1 class="text-center">Won Tournaments</h1>
             <h1>V-for Tournaments</h1>
          </div>
@@ -115,5 +116,7 @@ import { rewardsService } from '../services/RewardsService.js'
 
 
 <style lang="scss" scoped>
-   
+.bg-background{
+   background-color: #4a70e196;
+}
 </style>
