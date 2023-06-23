@@ -1,30 +1,22 @@
 <template>
-<div class="row bg-commentcard rounded-4 elevation-3 m-3 p-3">
-  <div class="col-md-8 m-3">
+<div class="row bg-commentcard rounded-4 elevation-3 m-3 p-3" style=" position: relative;">
+  <div class="col-md-8 m-3 p-0">
       <router-link :to="{name: 'Profile', params: { profileId: comment.creatorId }}">
-        <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid object-fit-cover comment-pfp" style="max-height: 50px;">
+        <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid object-fit-cover comment-pfp" style="max-height: 50px; margin-left:-1rem; position: absolute; top: -25px; box-shadow: 0 0 1px 1px white">
       </router-link>
-    <span style="color: darkblue;" class="mb-1 date"> 
-      {{ comment.creator.name }}
-    {{
-      new Date(comment.creator.createdAt)
-        .toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
-        }) }}
-    @ {{
-      new Date(comment.creator.createdAt)
-        .toLocaleTimeString('en-US', {
-          hour: 'numeric',
-          minute: 'numeric'
-        }) }} 
+    <span style="text-shadow: 1px 1px 1px black;color: white; margin-left: 1rem; position: absolute; top:0px; right:0px;" class="mb-1 fw-light"> 
+      <span class="text-white fw-normal" style="text-shadow: 1px 1px 1px black">{{ comment.creator.name }}</span>posted on
+    {{ comment?.createdDate }}
+    @ {{ comment?.createdTime }} 
     </span>
   </div>
-  <div class="col-md-12 bg-light rounded-3">
-    <p class="text-dark pt-2"> {{ comment.body }} </p>
-    <i v-if="comment.creatorId == account.id" @click="deleteComment()" class="mdi mdi-delete pe-1 icon fs-4 float-end"></i>
-  </div>    
+  <div class="col-md-12 bg-light rounded-3" style="">
+    <div>
+
+      <p class="text-dark pt-2 mt-0 mb-1"> {{ comment.body }} </p>
+    </div>    
+    <i v-if="comment.creatorId == account.id" @click="deleteComment()" class="mdi mdi-delete pe-1 icon fs-5 float-end"><small>remove comment</small></i>
+  </div>
 </div>
 
 
@@ -84,13 +76,22 @@ import { AppState } from "../AppState.js";
 import { Comment } from "../models/Comment.js";
 import { commentsService } from "../services/CommentsService.js";
 import Pop from "../utils/Pop.js";
+import { Tournament } from "../models/Tournament.js"
 
 export default {
   props: {
-    comment: { type: Comment, required: true}
+    comment: { type: Comment, required: true},
+    tournament:{type: Tournament,required: true }
   },
   setup(props){
     return {
+      // formatDateAndTime,
+      // currentDate: computed(() =>{
+      //   return formatDateAndTime(new Date).formattedDate
+      // }),
+      // currentTime: computed(() =>{
+      //   return formatDateAndTime(new Date).formattedTime
+      // }),
       account: computed(() => AppState.account),
       
       async deleteComment() {
@@ -105,6 +106,18 @@ export default {
     }
   }
 }
+// function formatDateAndTime(dateString) {
+//   const date = new Date(dateString);
+//   // Format date as MM/DD/YYYY
+//   const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+//   // Format time as regular 12-hour format
+//   let hours = date.getHours();
+//   const minutes = date.getMinutes();
+//   const amPm = hours >= 12 ? 'PM' : 'AM';
+//   hours = hours % 12 || 12;
+//   const formattedTime = `${hours}:${minutes.toString().padStart(2, '0')} ${amPm}`;
+//   return {formattedDate, formattedTime}
+// }
 </script>
 
 
@@ -114,7 +127,8 @@ export default {
 
 
 .bg-commentcard{
-  background-color: #374466
+  background-color: #374466;
+  // height: 10rem;
 }
 .comment-bottom{
   background-color: #374466

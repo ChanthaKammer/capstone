@@ -12,10 +12,10 @@
                     <div class="profile pt-5" style="margin-right: 25vw;">
                       <div class="row media-body pt-5 text-white">
                         <div class="col-3" style="position: absolute; top: 22rem;">
-                          <img :src="account.picture" :alt="account.name" class="img-fluid profile-img" style="max-width: 150px; min-width:100px;">
+                          <img :src="account.picture" :alt="account.name" class="img-fluid profile-img rounded" style="max-width: 150px; min-width:100px;">
                         </div>
                         <div class="col-3 name-tag" style="position: absolute; top: 25rem; left: 9.75rem;">
-                          <h4 class="my-0 mx-4"> {{ account.name }} </h4>
+                          <h4 class="my-0 mx-4" style="text-shadow:  1px 1px 1px black;"> {{ account.name }} </h4>
                           <div class="row">
                             <div class="col-12">
                               <p class="small mb-4 mx-4 fs-6" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
@@ -39,17 +39,23 @@
                                 </div>
                                 <div class="modal-body justify-content-center">
                                     <form @submit.prevent="editAccount()" class="col-12">
+                                      <label class="edit-labels" for="text">Name</label>
                                       <input class="form-control mb-3" type="text" placeholder="Name" aria-label="name" v-model="editable.name">
+                                      <label class="edit-labels" for="text">Avatar Image</label>
                                       <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image" v-model="editable.picture">
+                                      <label class="edit-labels" for="text">Cover Image</label>
                                       <input class="form-control mb-3" type="text" id="coverImg" placeholder="Cover Image" v-model="editable.coverImg">
                                       <div class="row mb-3">
                                         <div class="col-6">
+                                          <label class="edit-labels" for="text">Age</label>
                                           <input class="form-control" type="number" id="name" placeholder="Age" v-model="editable.age">
                                         </div>
                                         <div class="col-6">
+                                          <label class="edit-labels" for="text">Gamertag</label>
                                           <input class="form-control" type="text" id="gamertag" placeholder="Gamertag" v-model="editable.gamerTag">
                                         </div>
                                       </div>
+                                      <label class="edit-labels" for="text">Bio</label>
                                       <textarea class="form-control mb-3" id="bio" rows="3" placeholder="Bio" v-model="editable.bio"></textarea>
                                       <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
                                     </form>
@@ -64,7 +70,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end text-center">
-                  <ul class="list-inline social-tab mb-0 p-4 bg-filler">
+                  <ul class="list-inline social-tab mb-0 p-4 bg-filler" style="margin-right: 55px;margin-top: 20px;">
                     <li class="list-inline-item">
                       <h5 class="font-weight-bold mb-0 d-block"> {{ myParticipations.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
                     </li>
@@ -207,6 +213,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .bio {
   background-color: #2f395d76;
   color: aliceblue;

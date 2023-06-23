@@ -10,19 +10,8 @@
             <p class="ms-5 ps-3 mt-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">@ {{
               tournament.location }} </p>
             <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">BE THERE ON
-              {{
-                new Date(tournament.startDate)
-                  .toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
-                  }) }}
-              @ {{
-                new Date(tournament.startDate)
-                  .toLocaleTimeString('en-US', {
-                    hour: 'numeric',
-                    minute: 'numeric'
-                  }) }}
+              {{ startDate }}
+              @ {{ startTime }}
             </p>
             <div v-if="tournament.startDate" class="pb-5 countdown-area">
               <TournamentCountdown />
@@ -254,16 +243,16 @@
 
     <!-- SECTION Comments -->
     <div class="row p-5 bg-dark justify-content-center">
-      <h1 class="text-center pb-4">Comments</h1>
-      <div class="col-12 col-md-7 card p-3 rounded-3 elevation-5 comment-area">
+      <h1 class="text-center pb-4">Tournament comments</h1>
+      <div v-if="user.isAuthenticated" class="col-12 col-md-6 card p-1 px-3 rounded-3 elevation-5 comment-area" style="position: relative;">
         <form @submit.prevent="createComment()">
-          <div v-if="account" class="d-flex align-items-center mb-2">
+          <div class="d-flex align-items-center mb-2">
             <img :src="account.picture" :alt="account.name"
-              class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38">
-            <h2>{{ account.name }}</h2>
+              class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38" style="position: absolute; top: -50px; box-shadow: 0px 0px 1px 1px white;" >
+            <h4 style="position: absolute; top: -3px;left:100px;">{{ account.name }}</h4> <small class="text-white fw-normal" style="text-shadow: 1px 1px 1px black;position: absolute; top: 8px;right: 57px;">join the conversation</small>
           </div>
           <div class="text-end">
-            <textarea v-model="commentData" class="text-area w-100 rounded-3 comment-box text-dark"
+            <textarea style="margin-top: 20px;" v-model="commentData" class="text-area w-100 bg-light rounded-3 comment-box text-dark"
               aria-label="Text Area"></textarea>
             <RGBButton class="mobile-rgb" buttonText="Post Comment" type="submit" />
           </div>
@@ -342,8 +331,7 @@ export default {
 
     }
     return {
-      // finalizeRound,
-      // finalizeTournament,
+      formatDateAndTime,
       cancelTournament,
       leaveTournament,
       joinTournament,
@@ -355,6 +343,12 @@ export default {
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
       isCancelled: computed(() => AppState.activeTournament.isCancelled),
+      startDate: computed(()=> {
+       return formatDateAndTime(AppState.activeTournament.startDate).formattedDate
+      }),
+      startTime: computed(()=> {
+        return formatDateAndTime(AppState.activeTournament.startDate).formattedTime
+      }),
       isParticipant: computed(() => {
 
         if (AppState.myParticipations.find(p => p.tournamentId == AppState.activeTournament.id)) {
@@ -475,7 +469,19 @@ export default {
     }
   },
 }
-
+function formatDateAndTime(dateString) {
+  
+  const date = new Date(dateString);
+  // Format date as MM/DD/YYYY
+  const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+  // Format time as regular 12-hour format
+  let hours = date.getHours();
+  const minutes = date.getMinutes();
+  const amPm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12;
+  const formattedTime = `${hours}:${minutes.toString().padStart(2, '0')} ${amPm}`;
+  return {formattedDate, formattedTime};
+}
 </script>
 
 
@@ -681,7 +687,7 @@ p {
   }
 
   .rgb-btn {
-    width: 90%;
+    width: 100%;
   }
 
   // .countdown-area{

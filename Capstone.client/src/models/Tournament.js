@@ -8,7 +8,7 @@ function formatDateAndTime(dateString) {
   const amPm = hours >= 12 ? 'PM' : 'AM';
   hours = hours % 12 || 12;
   const formattedTime = `${hours}:${minutes.toString().padStart(2, '0')} ${amPm}`;
-  return `${formattedDate} ${formattedTime}`;
+  return {formattedDate, formattedTime};
 }
 
 export class Tournament {
@@ -23,8 +23,8 @@ export class Tournament {
     this.capacity = data.capacity
     this.totalRounds = data.totalRounds
     this.currentRound = data.currentRound
-    this.startDate = formatDateAndTime(data.startDate).formattedDate || formatDateAndTime(new Date).formattedDate
-    this.startTime = formatDateAndTime(data.startDate).formattedTime || formatDateAndTime(new Date).formattedTime
+    this.startDate = formatDateAndTime(data.startDate).formattedDate
+    this.startTime = formatDateAndTime(data.startDate).formattedTime
     this.createdAt = data.createdAt
     this.updatedAt = data.updatedAt
     this.isCancelled = data.isCancelled
