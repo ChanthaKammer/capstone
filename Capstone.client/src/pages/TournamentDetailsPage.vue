@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
-        <img :src="tournament?.coverImg" :alt="tournament?.coverImg" class="img-fluid rounded-3 tournament-image">
+        <img :src="tournament?.coverImg" :alt="tournament?.coverImg" class="img-fluid tournament-image">
       </div>
       <!-- <div class="row">
         <div class="col-12 pb-5">
@@ -258,9 +258,9 @@
           <div class="d-flex align-items-center mb-2">
             <img :src="account.picture" :alt="account.name"
               class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38"
-              style="position: absolute; top: -50px; box-shadow: 0px 0px 1px 1px white;">
-            <h4 style="position: absolute; top: -3px;left:100px;">{{ account.name }}</h4> <small
-              class="text-white fw-normal"
+              style="position: absolute; top: -40px; box-shadow: 0px 0px 1px 1px white;">
+            <h3 style="position: absolute; top: -3px;left:100px;">{{ account.name }}</h3> <small
+              class="text-white fw-normal mobile-post-comment"
               style="text-shadow: 1px 1px 1px black;position: absolute; top: 8px;right: 57px;">join the
               conversation</small>
           </div>
@@ -624,6 +624,7 @@ p {
   min-width: 40vw;
   max-height: 45vh;
   max-width: 40vw;
+  border-radius:5%;
 }
 
 .tournament-image:hover {
@@ -815,5 +816,8 @@ p {
   .mobile-rgb {
     width: 10rem;
   }
-
-}</style>
+.mobile-post-comment{
+display: none;
+}
+}
+</style>
