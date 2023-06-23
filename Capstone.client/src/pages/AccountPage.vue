@@ -10,7 +10,7 @@
                   <div class="container-fluid">
                       <div class="row justify-content-start align-items-center p-5">
                         <div class="col-md-3 text-center text-white shadow-sm elevation-5 pt-5 bg-glass rounded-3" style="">
-                          <img :src="account.picture" :alt="account.name" class="img-fluid object-fit-cover profile-img" style="height:40%">
+                          <img :src="account.picture" :alt="account.name" class="img-fluid object-fit-cover profile-img rounded-3" style="height:40%">
                           <h4 class="my-0" style="text-shadow:  1px 1px 1px black;"> {{ account.name }} </h4>
                           <p class="small fs-4" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
                         </div>
@@ -58,8 +58,8 @@
 
                 </div>
 
-                <div class="d-flex justify-content-between text-center p-5">
-                  <ul class="list-inline social-tab mb-0 p-4 bg-filler" style="margin-right: 45px;margin-top: 20px;">
+                <div class="d-flex justify-content-between text-center p-5 r">
+                  <ul class="list-inline social-tab mb-0 p-4 bg-filler rounded-3" style="margin-right: 45px;margin-top: 20px;">
                     <li class="list-inline-item">
                       <h5 class="font-weight-bold mb-0 d-block"> {{ myParticipations.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
                     </li>
@@ -94,8 +94,8 @@
 
                   <div class="py-4">
                     <h5 class="mb-3 comment-header">Recent posts</h5>
-                    <div class="p-4 bg-comments rounded shadow-sm">
-                      <div class="my-4" v-for="c in comments" :key="c.id">
+                    <div class="p-4 bg-comments rounded shadow-sm mobile-p-none">
+                      <div class="my-4 pt-4" v-for="c in comments" :key="c.id">
                         <CommentCard :comment="c"/>
                       </div>
                       <p class="text-light" style="text-shadow: 1px 1px 4px #000000; font-weight: 550;">No more recent comments on tournaments.</p>
@@ -204,6 +204,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+
 .bg-background {
   background-color: #4a70e196;
 }
@@ -340,6 +342,11 @@ img {
     max-height: 30vh;
   }
 @media screen and (max-width: 768px) {
+  .mobile-p-none{
+    margin: -3rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
   .bg-glass{
     position: relative;
     top: 6rem;
