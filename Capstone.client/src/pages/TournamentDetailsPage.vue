@@ -255,15 +255,15 @@
     <!-- SECTION Comments -->
     <div class="row p-5 bg-dark justify-content-center">
       <h1 class="text-center pb-4">Comments</h1>
-      <div v-if="user.isAuthenticated" class="col-12 col-md-7 card p-3 rounded-3 elevation-5 comment-area">
+      <div v-if="user.isAuthenticated" class="col-12 col-md-7 card p-1 px-3 rounded-3 elevation-5 comment-area" style="position: relative;">
         <form @submit.prevent="createComment()">
           <div class="d-flex align-items-center mb-2">
             <img :src="account.picture" :alt="account.name"
-              class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38">
-            <h2>{{ account.name }}</h2>
+              class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38" style="position: absolute; top: -50px; box-shadow: 0px 0px 1px 1px white;" >
+            <h4 style="position: absolute; top: -3px;left:100px;">{{ account.name }}</h4>
           </div>
           <div class="text-end">
-            <textarea v-model="commentData" class="text-area w-100 rounded-3 comment-box text-dark"
+            <textarea style="margin-top: 20px;" v-model="commentData" class="text-area w-100 bg-light rounded-3 comment-box text-dark"
               aria-label="Text Area"></textarea>
             <RGBButton class="mobile-rgb" buttonText="Post Comment" type="submit" />
           </div>
