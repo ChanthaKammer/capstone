@@ -267,25 +267,24 @@ export default {
   text-shadow: .5px .5px .125em #0f0044d3;
   box-shadow: 0 0 20px 1px #49bfffe7;
   animation: colorChange 20s infinite;
-  margin-left: 50px;
   margin-top: 60px;
   height: 3rem;
   min-width: 15vh;
 }
 
-.neon-button::before {
-  content: '';
-  position: absolute;
-  display: block;
-  background: #2bbcff;
-  top: 100%;
-  left: -10%;
-  width: 130%;
-  height: 75%;
-  transform: perspective(1em) rotateX(40deg) scale(1, .35);
-  filter: blur(1em) brightness(1.5);
-  animation: colorChange 20s infinite;
-}
+// .neon-button::before {
+//   content: '';
+//   position: absolute;
+//   display: block;
+//   background: #2bbcff;
+//   top: 100%;
+//   left: -10%;
+//   width: 130%;
+//   height: 75%;
+//   transform: perspective(1em) rotateX(40deg) scale(1, .35);
+//   filter: blur(1em) brightness(1.5);
+//   animation: colorChange 20s infinite;
+// }
 
 .my-tournaments {
   cursor: pointer;
