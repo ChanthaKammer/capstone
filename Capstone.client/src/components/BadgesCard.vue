@@ -336,7 +336,7 @@
     position: absolute;
     border-radius: 4px;
     padding: 5px 5px 4px;
-    width: 100px;
+    width: 120px;
     z-index: 10;
     color: #fff;
     bottom: 12px;
