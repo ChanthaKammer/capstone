@@ -23,11 +23,13 @@
       </div>
       <div class="row justify-content-center pt-3 p-3">
          <div class="col-md-8 bg-dark text-white rounded-3">
-            <h1 class="text-center">Won Tournaments</h1>
+            <h1 class="text-center">Participating Tournaments</h1>
          </div>
       </div>
-      <div class="col-12 col-md-3 my-3" v-for="t in profileTournaments" :key="t.id">
-         <TournamentCard :tournament="t" />
+      <div class="row justify-content-center">
+         <div class="col-12 col-md-3 my-3" v-for="t in profileTournaments" :key="t.id">
+            <TournamentCard :tournament="t" />
+         </div>
       </div>
    </section>
 </template>
