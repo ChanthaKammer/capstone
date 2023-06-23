@@ -1,23 +1,34 @@
 <template>
-  <section v-if="account" class="container-fluid bg-dark p-0">
-    <div class="justify-content-center align-items-bottom shadow elevation-5">
+  <section v-if="account" class="container-fluid bg-main p-0">
+    <div class="justify-content-center align-items-center shadow elevation-5 bg-inner">
       <div>
 
-            <div class="col-md-12">
+            <div class="col-12 mx-auto">
+          
               <!-- PROFILE START ( COPY / PASTE TO PROFILE PAGE ) -->
-              <div class="shadow overflow-hidden">
-                <div class="elevation-5 shadow-lg" :style="{ background: `url(${account.coverImg})` }" style="background-position: top; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
-                  <div class="container-fluid">
-                      <div class="row justify-content-start align-items-center p-5">
-                        <div class="col-md-3 text-center text-white shadow-sm elevation-5 pt-5 bg-glass rounded-3" style="">
-                          <img :src="account.picture" :alt="account.name" class="img-fluid object-fit-cover profile-img rounded-3" style="height:40%">
-                          <h4 class="my-0" style="text-shadow:  1px 1px 1px black;"> {{ account.name }} </h4>
-                          <p class="small fs-4" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
+              <div class="shadow rounded overflow-hidden">
+                <div class=" elevation-5 shadow-lg px-4 pt-0 pb-4" :style="{ background: `url(${account.coverImg})` }" style="background-position: center; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
+                  <div class="media align-items-end profile-header">
+                    <div class="profile pt-5" style="margin-right: 25vw;">
+                      <div class="row media-body pt-5 text-white">
+                        <div class="col-3" style="position: absolute; top: 22rem;">
+
+                          <div class="card profile-card bg-filler p-1" style="border: none; width: 15rem;">
+                            <img :src="account.picture" :alt="account.name" class="card-img-top profile-img">
+                            <div class="d-flex flex-column justify-content-center align-items-center" style="line-height: 35px;">
+                              <p class="name-query my-0" style="text-shadow: 1px 1px 2px #000000; color: aliceblue; font-weight: 550;"> {{ account.name }} </p>
+                              <p class="tag-query list-group-item small mb-3 fs-6"  style="line-height: 5px; font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
+                            </div>
+                          </div>
+
                         </div>
                       </div>
-                    <div class="col-md-3">
+                    </div>
                       
+                    <div class="col-md-3">
+                      <button class="btn neon-button mt-0" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
                         <div class="row justify-content-center">
+          
                           <!-- Modal -->
                           <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModal" aria-hidden="true">
                               <div class="modal-dialog">
@@ -53,31 +64,27 @@
                             </div>
                           </div>
                         </div>
-                    </div>
+                      </div>
                     </div>
 
                 </div>
 
-                <div class="d-flex justify-content-between text-center p-5 r">
-                  <ul class="list-inline social-tab mb-0 p-4 bg-filler rounded-3" style="margin-right: 45px;margin-top: 20px;">
+                <div class="d-flex justify-content-end text-center">
+                  <ul class="list-inline social-tab mb-0 p-4 bg-filler" style="margin-right: 1rem; margin-top: 20px;">
                     <li class="list-inline-item">
                       <h5 class="font-weight-bold mb-0 d-block"> {{ myParticipations.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
                     </li>
-                    <li class="list-inline-item">
-                      <h5 class="font-weight-bold d-block" style="">4K</h5><small class=""> <i class="mdi mdi-account-circle me-1"></i>Followers</small>
-                    </li>
                   </ul>
-                  <button class="btn neon-button" style="" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
                 </div>
 
                 <div class="bio-box">
-                  <p class="ps-5 pt-5 pb-0" style="font-size: 2rem; font-weight: 600; color: aliceblue;"> {{ account.gamerTag }}'s Bio: </p>
-                  <div class="p-5 mx-5 mb-5 bio rounded-3">
+                  <p class="p-4 pt-5 pb-0" style="font-size: 2rem; font-weight: 600; color: aliceblue;"> {{ account.gamerTag }}'s Bio: </p>
+                  <div class="p-5 ms-4 mx-3 mb-5 bio">
                     <p> {{ account.bio }} </p>
                   </div>
                 </div>
 
-                <div class="p-5 mb-5">
+                <div class="py-4 px-4 mb-5">
                   <div class="d-flex align-items-center justify-content-between mb-3">
                     <h5 class="mt-5 tournament-header"> {{ account.name }}'s Tournaments:</h5>
                   </div>
@@ -94,8 +101,8 @@
 
                   <div class="py-4">
                     <h5 class="mb-3 comment-header">Recent posts</h5>
-                    <div class="p-4 bg-comments rounded shadow-sm mobile-p-none">
-                      <div class="my-4 pt-4" v-for="c in comments" :key="c.id">
+                    <div class="p-4 bg-comments rounded shadow-sm">
+                      <div class="col-8 my-4" v-for="c in comments" :key="c.id">
                         <CommentCard :comment="c"/>
                       </div>
                       <p class="text-light" style="text-shadow: 1px 1px 4px #000000; font-weight: 550;">No more recent comments on tournaments.</p>
@@ -130,7 +137,6 @@
 import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
 import { logger } from '../utils/Logger.js';
-import { Modal } from "bootstrap";
 import {ref, watchEffect} from 'vue';
 import MyJoinedTournamentsCard from '../components/MyJoinedTournamentsCard.vue';
 import Pop from '../utils/Pop.js';
@@ -189,10 +195,8 @@ export default {
           
           async editAccount(){
             try {
-              logger.log('edit account function',editable.value)
+              logger.log(editable.value)
               await accountService.updateAccountInfo(editable.value)
-              Modal.getOrCreateInstance('#accountModal').hide()
-              
               } catch (error) {
                 Pop.error(error)
               }
@@ -205,18 +209,6 @@ export default {
 
 <style scoped lang="scss">
 
-
-.bg-background {
-  background-color: #4a70e196;
-}
-.bg-glass{
-  background-color: rgba(0, 0, 0, 0.314);
-  backdrop-filter: blur(5px);
-}
-* {
-  border: 0px solid green
-}
-
 .bio {
   background-color: #2f395d76;
   color: aliceblue;
@@ -226,13 +218,12 @@ export default {
 }
 
 .bg-main {
-  background-color: #4a70e196;
-  // background-image: url(https://image.freepik.com/free-vector/gradient-neon-hexagonal-background_52683-61882.jpg);
-  // background-position: center;
-  // background-size: cover;
-  // background-repeat: no-repeat;
-  // background-color: #1f2937e3;
-  // box-shadow: 0 0 10px 10px #06080b9f;
+  background-image: url(https://image.freepik.com/free-vector/gradient-neon-hexagonal-background_52683-61882.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #1f2937e3;
+  box-shadow: 0 0 10px 10px #06080b9f;
 }
 
 .bg-inner {
@@ -261,7 +252,9 @@ export default {
 }
 
 .neon-button {
-  animation: colorChange 15s infinite;
+  position: absolute;
+  top: 6.5rem;
+  right: 1rem;
   border: 2px solid #00000000;
   color: white;
   background-color: #49bfffe7;
@@ -271,24 +264,7 @@ export default {
   text-shadow: .5px .5px .125em #0f0044d3;
   box-shadow: 0 0 20px 1px #49bfffe7;
   animation: colorChange 20s infinite;
-  margin-top: 60px;
-  height: 3rem;
-  min-width: 15vh;
 }
-
-// .neon-button::before {
-//   content: '';
-//   position: absolute;
-//   display: block;
-//   background: #2bbcff;
-//   top: 100%;
-//   left: -10%;
-//   width: 130%;
-//   height: 75%;
-//   transform: perspective(1em) rotateX(40deg) scale(1, .35);
-//   filter: blur(1em) brightness(1.5);
-//   animation: colorChange 20s infinite;
-// }
 
 .my-tournaments {
   cursor: pointer;
@@ -304,10 +280,6 @@ export default {
 .social-tab {
   color: aliceblue;
   text-shadow: 2px 2px 2px #010000;
-}
-
-img {
-  max-width: 100px;
 }
 
 @keyframes colorChange {
@@ -336,49 +308,46 @@ img {
     box-shadow: 0 0 15px #293c6d08;
   }
 }
- .profile-img {
-    aspect-ratio: 1/1;
-    max-width: 30vw;
-    max-height: 30vh;
-  }
+
 @media screen and (max-width: 768px) {
-  .mobile-p-none{
-    margin: -3rem;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .bg-glass{
-    position: relative;
-    top: 3rem;
-  }
   ul {
-    margin-top: 7rem;
+    padding: .5rem !important;
+    border-radius: .5rem;
+  }
+  .profile-card {
+    max-width: 25vw;
+    max-height: 21vh;
+    margin-top: 6rem;
   }
   .profile-img {
-    aspect-ratio: 1/1;
-    max-width: 50vw;
-    max-height: 50vh;
+    margin-top: .25rem !important;
+    height: 5rem;
   }
-  // .neon-button {
-  //   margin-top: 6.5rem !important;
-  //   width: 20vw !important;
-  // }
-  .name-tag {
-    margin-left: 1rem;
-    margin-top: 3rem;
-    white-space: nowrap;
+  .neon-button {
+    font-size: .75rem;
+    top: 11.5rem;
+    min-width: 20vw;
+  }
+  .tag-query {
+    font-size: .55rem !important;
+  }
+  .name-query {
+    font-size: .85rem;
   }
 }
 
-@media (max-width: 900px) {
+@media (width: 412px) {
   ul {
     margin-top: 7rem;
   }
-  
-  // .neon-button {
-  //   margin-top: 8rem !important;
-  //   width: 20vw !important;
-  // }
+  .profile-card {
+    max-width: 25vw !important;
+    margin-top: 13rem !important;
+  }
+  .neon-button {
+    margin-top: 8rem !important;
+    width: 20vw !important;
+  }
   .name-tag {
     margin-left: 2rem;
     margin-top: 3rem;
@@ -391,27 +360,23 @@ img {
     margin-top: 0;
     margin-right: .25rem;
   }
-  
-  // .neon-button {
-  //   margin-top: 9rem !important;
-  //   width: 20vw !important;
-  //   white-space: nowrap;
-  //   box-sizing: content-box;
-  // }
+  .profile-img {
+    max-width: 20vw !important;
+    margin-top: 5rem;
+    margin-left: .325rem;
+  }
+  .neon-button {
+    margin-top: 0 !important;
+    width: 20vw !important;
+    white-space: nowrap;
+    box-sizing: content-box;
+  }
   .name-tag {
     margin-left: -3rem;
     margin-top: -1.5rem;
     white-space: nowrap;
   }
 
-}
-
-@media (min-width: 1600px) {
-
-  .name-tag {
-    margin-left: 3rem;
-    margin-top: 5rem;
-  }
 }
 
 </style>
