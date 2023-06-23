@@ -379,7 +379,7 @@ export default {
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
-      activePlayers: computed(())
+      // activePlayers: computed(())
       isCancelled: computed(() => AppState.activeTournament.isCancelled),
       isFinished: computed(() => AppState.activeTournament.isFinished),
       startDate: computed(() => {
