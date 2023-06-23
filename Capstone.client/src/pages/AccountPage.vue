@@ -1,34 +1,23 @@
 <template>
   <section v-if="account" class="container-fluid bg-main p-0">
-    <div class="justify-content-center align-items-center shadow elevation-5 bg-inner">
+    <div class="justify-content-center align-items-bottom shadow elevation-5 bg-inner">
       <div>
 
-            <div class="col-12 mx-auto">
-          
+            <div class="col-md-12">
               <!-- PROFILE START ( COPY / PASTE TO PROFILE PAGE ) -->
               <div class="shadow rounded overflow-hidden">
-                <div class=" elevation-5 shadow-lg px-4 pt-0 pb-4" :style="{ background: `url(${account.coverImg})` }" style="background-position: center; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
-                  <div class="media align-items-end profile-header">
-                    <div class="profile pt-5" style="margin-right: 25vw;">
-                      <div class="row media-body pt-5 text-white">
-                        <div class="col-3" style="position: absolute; top: 22rem;">
-                          <img :src="account.picture" :alt="account.name" class="img-fluid profile-img rounded" style="max-width: 150px; min-width:100px;">
-                        </div>
-                        <div class="col-3 name-tag" style="position: absolute; top: 25rem; left: 9.75rem;">
-                          <h4 class="my-0 mx-4" style="text-shadow:  1px 1px 1px black;"> {{ account.name }} </h4>
-                          <div class="row">
-                            <div class="col-12">
-                              <p class="small mb-4 mx-4 fs-6" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
-                            </div>
-                          </div>
+                <div class="elevation-5 shadow-lg" :style="{ background: `url(${account.coverImg})` }" style="background-position: top; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
+                  <div class="container-fluid py-5">
+                      <div class="row justify-content-center align-items-center p-5">
+                        <div class="col-md-3 text-center text-white shadow-lg elevation-5 pt-3 bg-glass rounded-3" >
+                          <img :src="account.picture" :alt="account.name" class="img-fluid object-fit-cover profile-img rounded" style="height:40%">
+                          <h4 class="my-0" style="text-shadow:  1px 1px 1px black;"> {{ account.name }} </h4>
+                          <p class="small fs-4" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
                         </div>
                       </div>
-                    </div>
-                      
                     <div class="col-md-3">
-                      <button class="btn neon-button mt-5" style="position: absolute; top: 29rem; min-width: 10vw;" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
+                      
                         <div class="row justify-content-center">
-          
                           <!-- Modal -->
                           <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModal" aria-hidden="true">
                               <div class="modal-dialog">
@@ -64,13 +53,13 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                    </div>
                     </div>
 
                 </div>
 
-                <div class="d-flex justify-content-end text-center">
-                  <ul class="list-inline social-tab mb-0 p-4 bg-filler" style="margin-right: 55px;margin-top: 20px;">
+                <div class="d-flex justify-content-between text-center p-3">
+                  <ul class="list-inline social-tab mb-0 p-4 bg-filler" style="margin-right: 45px;margin-top: 20px;">
                     <li class="list-inline-item">
                       <h5 class="font-weight-bold mb-0 d-block"> {{ myParticipations.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
                     </li>
@@ -78,6 +67,7 @@
                       <h5 class="font-weight-bold d-block" style="">4K</h5><small class=""> <i class="mdi mdi-account-circle me-1"></i>Followers</small>
                     </li>
                   </ul>
+                  <button class="btn neon-button" style="" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
                 </div>
 
                 <div class="bio-box">
@@ -140,6 +130,7 @@
 import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
 import { logger } from '../utils/Logger.js';
+import { Modal } from "bootstrap";
 import {ref, watchEffect} from 'vue';
 import MyJoinedTournamentsCard from '../components/MyJoinedTournamentsCard.vue';
 import Pop from '../utils/Pop.js';
@@ -198,8 +189,10 @@ export default {
           
           async editAccount(){
             try {
-              logger.log(editable.value)
+              logger.log('edit account function',editable.value)
               await accountService.updateAccountInfo(editable.value)
+              Modal.getOrCreateInstance('#accountModal').hide()
+              
               } catch (error) {
                 Pop.error(error)
               }
@@ -211,7 +204,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.bg-glass{
+  background-color: rgba(0, 0, 0, 0.314);
+  backdrop-filter: blur(5px);
+}
+* {
+  border: 0px solid green
+}
+.pfp-image{
+  // max-width: 0rem;
+}
 .bio {
   background-color: #2f395d76;
   color: aliceblue;
@@ -265,21 +267,24 @@ export default {
   text-shadow: .5px .5px .125em #0f0044d3;
   box-shadow: 0 0 20px 1px #49bfffe7;
   animation: colorChange 20s infinite;
+  margin-top: 60px;
+  height: 3rem;
+  min-width: 15vh;
 }
 
-.neon-button::before {
-  content: '';
-  position: absolute;
-  display: block;
-  background: #2bbcff;
-  top: 100%;
-  left: -10%;
-  width: 130%;
-  height: 75%;
-  transform: perspective(1em) rotateX(40deg) scale(1, .35);
-  filter: blur(1em) brightness(1.5);
-  animation: colorChange 20s infinite;
-}
+// .neon-button::before {
+//   content: '';
+//   position: absolute;
+//   display: block;
+//   background: #2bbcff;
+//   top: 100%;
+//   left: -10%;
+//   width: 130%;
+//   height: 75%;
+//   transform: perspective(1em) rotateX(40deg) scale(1, .35);
+//   filter: blur(1em) brightness(1.5);
+//   animation: colorChange 20s infinite;
+// }
 
 .my-tournaments {
   cursor: pointer;
@@ -327,19 +332,24 @@ img {
     box-shadow: 0 0 15px #293c6d08;
   }
 }
-
+ .profile-img {
+    aspect-ratio: 1/1;
+    max-width: 30vw;
+    max-height: 30vh;
+  }
 @media screen and (max-width: 768px) {
   ul {
     margin-top: 7rem;
   }
   .profile-img {
-    max-width: 20vw !important;
-    margin-top: 3rem;
+    aspect-ratio: 1/1;
+    max-width: 30vw;
+    max-height: 30vh;
   }
-  .neon-button {
-    margin-top: 6.5rem !important;
-    width: 20vw !important;
-  }
+  // .neon-button {
+  //   margin-top: 6.5rem !important;
+  //   width: 20vw !important;
+  // }
   .name-tag {
     margin-left: 1rem;
     margin-top: 3rem;
@@ -351,14 +361,11 @@ img {
   ul {
     margin-top: 7rem;
   }
-  .profile-img {
-    max-width: 20vw !important;
-    margin-top: 3rem;
-  }
-  .neon-button {
-    margin-top: 8rem !important;
-    width: 20vw !important;
-  }
+  
+  // .neon-button {
+  //   margin-top: 8rem !important;
+  //   width: 20vw !important;
+  // }
   .name-tag {
     margin-left: 2rem;
     margin-top: 3rem;
@@ -371,17 +378,13 @@ img {
     margin-top: 0;
     margin-right: .25rem;
   }
-  .profile-img {
-    max-width: 20vw !important;
-    margin-top: 0;
-    margin-left: .325rem;
-  }
-  .neon-button {
-    margin-top: 0 !important;
-    width: 20vw !important;
-    white-space: nowrap;
-    box-sizing: content-box;
-  }
+  
+  // .neon-button {
+  //   margin-top: 9rem !important;
+  //   width: 20vw !important;
+  //   white-space: nowrap;
+  //   box-sizing: content-box;
+  // }
   .name-tag {
     margin-left: -3rem;
     margin-top: -1.5rem;
@@ -393,12 +396,12 @@ img {
 @media (min-width: 1600px) {
 
   .profile-img {
-    max-width: 10vw !important;
-    margin-top: 3rem;
+    // max-width: 10vw !important;
+    // margin-top: 3rem;
   }
-  .neon-button {
-    margin-top: 9rem !important;
-  }
+  // .neon-button {
+  //   margin-top: 9rem !important;
+  // }
   .name-tag {
     margin-left: 3rem;
     margin-top: 5rem;
