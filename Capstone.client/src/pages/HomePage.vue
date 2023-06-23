@@ -42,12 +42,12 @@
     <section class="row">
       <h2 class="text-white mt-3 text-center">FEATURED TOURNAMENTS</h2>
       <div class="col-12 bg-dark justify-content-center align-items-center shadow-lg elevation-5">
-        <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" class="">
+        <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" class="mt-5">
           <Slide v-for="slide in carouselTournaments" :key="slide" class="">
             <router-link :to="{ name: 'TournamentDetails', params: { tournamentId: slide.id }}">
               <div class="card bg-transparent" style="">
                 <div class="carousel__item">
-                  <img :src="slide.coverImg" class="card-img-top" :alt="slide.name">
+                  <img :src="slide.coverImg" class="card-img-top pt-5" :alt="slide.name">
                   <h3 class="card-title"> {{ slide.name }} </h3>
                   <div class="card-body mb-4">
                     <p class="card-text text-light pb-3"> {{ slide.description.split(' ').splice(0, 19).join(' ') }}... </p>
