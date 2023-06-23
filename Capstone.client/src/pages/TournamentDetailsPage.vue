@@ -77,27 +77,53 @@
     </section>
 
     <div class="row">
-      <div class="col-12 col-md-6 order-2 order-md-1">
-        <div class="row justify-content-around p-4">
-          <div class="col-md-12 text-center">
+       <!-- SECTION WHEN TOURNAMENT IS FINISHED SHOW THE WINNERS -->
+      <div v-if="isFinished" class="col-12 col-md-6 order-2 order-md-1">
+        <div  class="row justify-content-around p-4">
+          <div  class="col-md-12 text-center">
             <h1>1st Place:</h1>
             <!-- NOTE MAKE ICON FOR CURRENT LEADER BY THEIR USER IMAGE USING THE :TITLE V-BIND METHOD ON ACTIVE TOURNAMENT WHEN LESS TIRED -->
             <i class="mdi mdi-account-circle top-player" style="font-size: 5rem;"></i>
             <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Name</p>
             <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Team</p>
             <div class="row justify-content-center">
-              <div class="col-auto" v-for="p in participants" :key="p.id">
-                <ParticipantCard :participant="p" />
-              </div>
             </div>
           </div>
-          <div class="col-md-6 text-center">
-            <h2>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
-          </div>
+          
           <div>
           </div>
         </div>
+        <div class="col-md-6 text-center">
+            <h2>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
+          </div>
+          <div class="col-auto" v-for="p in participants" :key="p.id">
+            <ParticipantCard :participant="p" />
+          </div>
       </div>
+ <!-- SECTION SHOW CURRENT PLAYERS WHILE TOURNAMENT IS NOT FINISHED -->
+      <div v-if="!isFinished" class="col-12 col-md-6">
+        <div class="row text-center">
+          <h1 class="fw-normal">Active players</h1>
+          <div class="col-3" v-for="p in activePlayers" :key="p.id">            
+              <ParticipantCard :participant="p" />            
+          </div>
+        </div>
+        <div class="row text-center">
+          <h1 class="fw-normal">Eliminated Players</h1>
+          <div class="col-3" v-for="p in eliminatedPlayers" :key="p.id">            
+              <ParticipantCard :participant="p" />            
+          </div>
+        </div>
+        <div class="row text-center">
+          <h2 class="fw-normal">Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
+
+          <div class="col-md-6 text-center">
+          </div>
+        </div>
+
+      </div>
+
+
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
         <img :src="tournament.gameImg" :alt="tournament.name" class="game-img rounded-2" style="" alt="">
 
@@ -320,7 +346,6 @@ export default {
     const commentData = ref('')
     const editable = ref({})
     const route = useRoute();
-    const playersState = ref([])
     watchEffect(() => {
       editable.value = { ...AppState.activeTournament }
 
@@ -357,6 +382,12 @@ export default {
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
+      activePlayers: computed(() =>{
+        return AppState.participants.filter(p => p.status != 'eliminated')
+      }),
+      eliminatedPlayers: computed(() =>{
+        return AppState.participants.filter(p => p.status == 'eliminated')
+      }),
       isCancelled: computed(() => AppState.activeTournament.isCancelled),
       isFinished: computed(() => AppState.activeTournament.isFinished),
       startDate: computed(() => {

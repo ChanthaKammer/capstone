@@ -7,9 +7,9 @@
               <!-- PROFILE START ( COPY / PASTE TO PROFILE PAGE ) -->
               <div class="shadow overflow-hidden">
                 <div class="elevation-5 shadow-lg" :style="{ background: `url(${account.coverImg})` }" style="background-position: top; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
-                  <div class="container-fluid py-5">
-                      <div class="row justify-content-center align-items-center p-5">
-                        <div class="col-md-3 text-center text-white shadow-sm elevation-5 pt-3 bg-glass rounded-3" >
+                  <div class="container-fluid">
+                      <div class="row justify-content-start align-items-center p-5">
+                        <div class="col-md-3 text-center text-white shadow-sm elevation-5 pt-5 bg-glass rounded-3" style="">
                           <img :src="account.picture" :alt="account.name" class="img-fluid object-fit-cover profile-img" style="height:40%">
                           <h4 class="my-0" style="text-shadow:  1px 1px 1px black;"> {{ account.name }} </h4>
                           <p class="small fs-4" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
@@ -58,7 +58,7 @@
 
                 </div>
 
-                <div class="d-flex justify-content-between text-center p-3">
+                <div class="d-flex justify-content-between text-center p-5">
                   <ul class="list-inline social-tab mb-0 p-4 bg-filler" style="margin-right: 45px;margin-top: 20px;">
                     <li class="list-inline-item">
                       <h5 class="font-weight-bold mb-0 d-block"> {{ myParticipations.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
@@ -77,7 +77,7 @@
                   </div>
                 </div>
 
-                <div class="py-4 px-4 mb-5">
+                <div class="p-5 mb-5">
                   <div class="d-flex align-items-center justify-content-between mb-3">
                     <h5 class="mt-5 tournament-header"> {{ account.name }}'s Tournaments:</h5>
                   </div>
@@ -95,7 +95,7 @@
                   <div class="py-4">
                     <h5 class="mb-3 comment-header">Recent posts</h5>
                     <div class="p-4 bg-comments rounded shadow-sm">
-                      <div class="col-8 my-4" v-for="c in comments" :key="c.id">
+                      <div class="my-4" v-for="c in comments" :key="c.id">
                         <CommentCard :comment="c"/>
                       </div>
                       <p class="text-light" style="text-shadow: 1px 1px 4px #000000; font-weight: 550;">No more recent comments on tournaments.</p>
@@ -214,9 +214,7 @@ export default {
 * {
   border: 0px solid green
 }
-.pfp-image{
-  // max-width: 0rem;
-}
+
 .bio {
   background-color: #2f395d76;
   color: aliceblue;
@@ -342,6 +340,10 @@ img {
     max-height: 30vh;
   }
 @media screen and (max-width: 768px) {
+  .bg-glass{
+    position: relative;
+    top: 6rem;
+  }
   ul {
     margin-top: 7rem;
   }
@@ -399,13 +401,6 @@ img {
 
 @media (min-width: 1600px) {
 
-  .profile-img {
-    // max-width: 10vw !important;
-    // margin-top: 3rem;
-  }
-  // .neon-button {
-  //   margin-top: 9rem !important;
-  // }
   .name-tag {
     margin-left: 3rem;
     margin-top: 5rem;
