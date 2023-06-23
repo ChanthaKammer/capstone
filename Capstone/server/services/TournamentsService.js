@@ -64,7 +64,7 @@ class TournamentsService{
         return tournament
     }
     async getProfileTournaments(profileId) {
-        const tournaments = await dbContext.Tournaments.find({ creatorId: profileId }).populate('participantCount')
+        const tournaments = await dbContext.Tournaments.find({ creatorId: profileId }).populate('participantCount creator')
         if(!tournaments){
             throw new BadRequest("This profile has no tournaments.")
         }
