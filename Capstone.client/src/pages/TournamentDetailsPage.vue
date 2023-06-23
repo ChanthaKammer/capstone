@@ -103,11 +103,15 @@
  <!-- SECTION SHOW CURRENT PLAYERS WHILE TOURNAMENT IS NOT FINISHED -->
       <div v-if="!isFinished" class="col-12 col-md-6">
         <div class="row text-center">
-          <h1 class="fw-normal">Current players</h1>
-          <div class="col-3" v-for="p in participants" :key="p.id">
-            
-              <ParticipantCard :participant="p" />
-            
+          <h1 class="fw-normal">Active players</h1>
+          <div class="col-3" v-for="p in activePlayers" :key="p.id">            
+              <ParticipantCard :participant="p" />            
+          </div>
+        </div>
+        <div class="row text-center">
+          <h1 class="fw-normal">Eliminated Players</h1>
+          <div class="col-3" v-for="p in eliminatedPlayers" :key="p.id">            
+              <ParticipantCard :participant="p" />            
           </div>
         </div>
         <div class="row text-center">
@@ -342,7 +346,6 @@ export default {
     const commentData = ref('')
     const editable = ref({})
     const route = useRoute();
-    const playersState = ref([])
     watchEffect(() => {
       editable.value = { ...AppState.activeTournament }
 
@@ -379,7 +382,12 @@ export default {
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
-      // activePlayers: computed(())
+      activePlayers: computed(() =>{
+        return AppState.participants.filter(p => p.status == 'active')
+      }),
+      eliminatedPlayers: computed(() =>{
+        return AppState.participants.filter(p => p.status == 'eliminated')
+      }),
       isCancelled: computed(() => AppState.activeTournament.isCancelled),
       isFinished: computed(() => AppState.activeTournament.isFinished),
       startDate: computed(() => {
