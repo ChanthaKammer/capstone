@@ -120,7 +120,16 @@
 
     </div>
 
+    <!-- STUB AFTER WE HAVE STORAGE FOR BADGES WE CAN REMOVE THIS. DIDN'T KNOW WHERE ELSE TO PLACE THEM TEMPORARILY OTHER THAN THEIR OWN PAGE. -->
+    <section class="d-flex justify-content-center">
+      <router-link :to="{name: 'About'}">
+        <h1 class="selectable"><u><em>BADGES</em></u></h1>
+      </router-link>
+    </section>
   </section>
+
+
+
 </template>
 
 <script>
@@ -198,7 +207,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 .bio {
   background-color: #2f395d76;
   color: aliceblue;
