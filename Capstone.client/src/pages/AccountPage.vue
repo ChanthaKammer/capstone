@@ -1,16 +1,16 @@
 <template>
-  <section v-if="account" class="container-fluid bg-main p-0">
-    <div class="justify-content-center align-items-bottom shadow elevation-5 bg-inner">
+  <section v-if="account" class="container-fluid bg-dark p-0">
+    <div class="justify-content-center align-items-bottom shadow elevation-5">
       <div>
 
             <div class="col-md-12">
               <!-- PROFILE START ( COPY / PASTE TO PROFILE PAGE ) -->
-              <div class="shadow rounded overflow-hidden">
+              <div class="shadow overflow-hidden">
                 <div class="elevation-5 shadow-lg" :style="{ background: `url(${account.coverImg})` }" style="background-position: top; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
                   <div class="container-fluid py-5">
                       <div class="row justify-content-center align-items-center p-5">
-                        <div class="col-md-3 text-center text-white shadow-lg elevation-5 pt-3 bg-glass rounded-3" >
-                          <img :src="account.picture" :alt="account.name" class="img-fluid object-fit-cover profile-img rounded" style="height:40%">
+                        <div class="col-md-3 text-center text-white shadow-sm elevation-5 pt-3 bg-glass rounded-3" >
+                          <img :src="account.picture" :alt="account.name" class="img-fluid object-fit-cover profile-img" style="height:40%">
                           <h4 class="my-0" style="text-shadow:  1px 1px 1px black;"> {{ account.name }} </h4>
                           <p class="small fs-4" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
                         </div>
@@ -72,7 +72,7 @@
 
                 <div class="bio-box">
                   <p class="ps-5 pt-5 pb-0" style="font-size: 2rem; font-weight: 600; color: aliceblue;"> {{ account.gamerTag }}'s Bio: </p>
-                  <div class="p-5 mx-5 mb-5 bio">
+                  <div class="p-5 mx-5 mb-5 bio rounded-3">
                     <p> {{ account.bio }} </p>
                   </div>
                 </div>
@@ -204,6 +204,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.bg-background {
+  background-color: #4a70e196;
+}
 .bg-glass{
   background-color: rgba(0, 0, 0, 0.314);
   backdrop-filter: blur(5px);
@@ -223,12 +226,13 @@ export default {
 }
 
 .bg-main {
-  background-image: url(https://image.freepik.com/free-vector/gradient-neon-hexagonal-background_52683-61882.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #1f2937e3;
-  box-shadow: 0 0 10px 10px #06080b9f;
+  background-color: #4a70e196;
+  // background-image: url(https://image.freepik.com/free-vector/gradient-neon-hexagonal-background_52683-61882.jpg);
+  // background-position: center;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-color: #1f2937e3;
+  // box-shadow: 0 0 10px 10px #06080b9f;
 }
 
 .bg-inner {
