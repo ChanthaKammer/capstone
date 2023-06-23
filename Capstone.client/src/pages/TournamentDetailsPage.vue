@@ -681,7 +681,7 @@ p {
   }
 
   .rgb-btn {
-    width: 90%;
+    width: 100%;
   }
 
   // .countdown-area{

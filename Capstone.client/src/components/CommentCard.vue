@@ -2,7 +2,7 @@
 <div class="row bg-commentcard rounded-4 elevation-3 m-3 p-3" style=" position: relative;">
   <div class="col-md-8 m-3 p-0">
       <router-link :to="{name: 'Profile', params: { profileId: comment.creatorId }}">
-        <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid object-fit-cover comment-pfp" style="max-height: 50px; margin-left:-1rem; position: absolute; top: -20px; box-shadow: 0 0 1px 1px white">
+        <img :src="comment.creator.picture" :alt="comment.creator.name" class="img-fluid object-fit-cover comment-pfp" style="max-height: 50px; margin-left:-1rem; position: absolute; top: -25px; box-shadow: 0 0 1px 1px white">
       </router-link>
     <span style="text-shadow: 1px 1px 1px black;color: white; margin-left: 1rem; position: absolute; top:0px; right:0px;" class="mb-1 fw-light"> 
       <span class="text-white fw-normal" style="text-shadow: 1px 1px 1px black">{{ comment.creator.name }}</span>posted on

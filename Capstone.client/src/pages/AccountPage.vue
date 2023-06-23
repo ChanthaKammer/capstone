@@ -12,10 +12,10 @@
                     <div class="profile pt-5" style="margin-right: 25vw;">
                       <div class="row media-body pt-5 text-white">
                         <div class="col-3" style="position: absolute; top: 22rem;">
-                          <img :src="account.picture" :alt="account.name" class="img-fluid profile-img" style="max-width: 150px; min-width:100px;">
+                          <img :src="account.picture" :alt="account.name" class="img-fluid profile-img rounded" style="max-width: 150px; min-width:100px;">
                         </div>
                         <div class="col-3 name-tag" style="position: absolute; top: 25rem; left: 9.75rem;">
-                          <h4 class="my-0 mx-4"> {{ account.name }} </h4>
+                          <h4 class="my-0 mx-4" style="text-shadow:  1px 1px 1px black;"> {{ account.name }} </h4>
                           <div class="row">
                             <div class="col-12">
                               <p class="small mb-4 mx-4 fs-6" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end text-center">
-                  <ul class="list-inline social-tab mb-0 p-4 bg-filler">
+                  <ul class="list-inline social-tab mb-0 p-4 bg-filler" style="margin-right: 55px;margin-top: 20px;">
                     <li class="list-inline-item">
                       <h5 class="font-weight-bold mb-0 d-block"> {{ myParticipations.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
                     </li>
