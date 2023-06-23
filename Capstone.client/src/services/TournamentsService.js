@@ -9,6 +9,7 @@ class TournamentsService {
   async getAllTournaments() {
     const res = await api.get('api/tournaments')
     AppState.tournaments = res.data.map(t => new Tournament(t))
+    logger.log('this is the res.data', res.data)
     logger.log(AppState.tournaments)
   }
 
