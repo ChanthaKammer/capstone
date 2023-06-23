@@ -91,18 +91,16 @@
                   <div class="d-flex align-items-center justify-content-between mb-3">
                     <h5 class="mt-5 tournament-header"> {{ account.name }}'s Tournaments:</h5>
                   </div>
-                  <div class="row">
-
-                    <!-- VISUALLY SHOWS TOURNAMENT CARDS FOR TOURNAMENTS THE ACCOUNT HOLDER IS ATTENDING -->
+                  
+                  <!-- VISUALLY SHOWS TOURNAMENT CARDS FOR TOURNAMENTS THE ACCOUNT HOLDER IS ATTENDING -->
                   <section>
-                    <div class="d-flex align-items-center">
-                      <div class="col-md-3 col-12" v-for="p in myParticipations" :key="p.id">
+                    <div class="row align-items-center">
+                      <div class="col-12 col-md-4 col-lg-3 py-3" v-for="p in myParticipations" :key="p.id">
                         <MyJoinedTournamentsCard :myParticipation="p"/>
                       </div>
                     </div>
                   </section>
 
-                  </div>
 
                   <div class="py-4">
                     <h5 class="mb-3 comment-header">Recent posts</h5>
