@@ -41,12 +41,21 @@
 
     <section class="row">
       <h2 class="text-white mt-3 text-center">FEATURED TOURNAMENTS</h2>
-      <div class="col-12 bg-carousel justify-content-center align-items-center shadow-lg elevation-5">
+      <div class="col-12 bg-dark justify-content-center align-items-center shadow-lg elevation-5">
         <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" class="">
           <Slide v-for="slide in carouselTournaments" :key="slide" class="">
             <router-link :to="{name: 'TournamentDetails', params: {tournamentId: slide.id}}">
-              <div> {{ slide.name }} </div>
-              <div class="carousel__item"><img :src="slide.coverImg" alt=""></div>
+              <div class="card text-bg-dark">
+              <div class="carousel__item">
+                  <img :src="slide.coverImg" :alt="slide.name" class="img-fluid" style="">
+                  <div class="card-img-overlay">
+                    <h5 style="color: aliceblue; text-shadow: 1px 1px 2px aliceblue;" class="card-title mt-2"> {{ slide.name }}</h5>
+                    <p class="card-text text-dark" style="font-weight: 500; text-shadow: 1px 1px 2px aliceblue;"> {{ slide.description }} </p>
+                    <p class="card-text text-dark" style="font-weight: 500; text-shadow: 1px 1px 2px aliceblue;"><small> {{ slide.updatedAt }} </small></p>
+                  </div>
+                </div>
+                
+              </div>
             </router-link>
           </Slide>
         </Carousel>
@@ -566,13 +575,6 @@ export default {
   }
 }
 
-.neon-btn-one {
-  position: absolute;
-  top: -3.5vh;
-  left: 19.5%;
-  max-width: fit-content;
-}
-
 @media (max-width: 768px) {
   .card-custom-img::after {
     border-top-width: 20px;
@@ -588,10 +590,6 @@ export default {
   margin-bottom: 0rem;
 }
   .nav-bar2 {
-    display: none;
-  }
-
-  .neon-btn-two {
     display: none;
   }
 
@@ -659,7 +657,8 @@ export default {
 .carousel__item>img{
 height: 35vh;
 width: 100%;
-object-fit: cover;
+object-fit: contain;
+animation: fadeIn 1.5s ease-in-out forwards;
 }
 //#endregion
 
