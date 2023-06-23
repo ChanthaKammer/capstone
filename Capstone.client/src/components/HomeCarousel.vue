@@ -9,9 +9,7 @@
 
 <script>
 import { computed, ref } from "vue"
-// import { defineComponent } from 'vue'
 import { Carousel, Pagination, Slide } from 'vue3-carousel'
-import { logger } from '../utils/Logger.js'
 import 'vue3-carousel/dist/carousel.css'
 import { AppState } from "../AppState.js"
 
@@ -26,13 +24,6 @@ export default {
   
   setup(){
     const homeCarousel = ref(null)
-
-    
- 
-    // logger.log(homeCarousel.value.data.currentSlide, 'lol what is this')
-
-// homeCarousel.value.next()
-// homeCarousel.value.updateSlideWidth()
 
     return {
       tournaments: computed(()=>AppState.tournaments)

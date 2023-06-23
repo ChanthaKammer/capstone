@@ -42,15 +42,15 @@
     <section class="row">
       <h2 class="text-white mt-3 text-center">FEATURED TOURNAMENTS</h2>
       <div class="col-12 bg-dark justify-content-center align-items-center shadow-lg elevation-5">
-        <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" class="">
+        <Carousel ref="homeCarousel" :itemsToShow="3.95" :wrapAround="true" :transition="500" class="mt-5">
           <Slide v-for="slide in carouselTournaments" :key="slide" class="">
             <router-link :to="{ name: 'TournamentDetails', params: { tournamentId: slide.id }}">
               <div class="card bg-transparent" style="">
                 <div class="carousel__item">
-                  <img :src="slide.coverImg" class="card-img-top" :alt="slide.name">
+                  <img :src="slide.coverImg" class="card-img-top pt-5" :alt="slide.name">
                   <h3 class="card-title"> {{ slide.name }} </h3>
                   <div class="card-body mb-4">
-                    <p class="card-text text-light"> {{ slide.description }} </p>
+                    <p class="card-text text-light pb-3"> {{ slide.description.split(' ').splice(0, 19).join(' ') }}... </p>
                   </div>
                 </div>
               </div>
@@ -58,7 +58,17 @@
           </Slide>
         </Carousel>
       </div>
-    </section>
+      <!-- NOTE - ACCENT ROW BETWEEN CAROUSEL AND PREVIOUS / NEXT SLIDE BUTTONS -->
+      <div class="row accent-row d-flex mb-5 pb-2 pt-2" style="height: 4rem;">
+      <!-- NOTE - PREVIOUS / NEXT SLIDE BUTTONS -->
+      <div class="col-6 col-md-6 d-flex justify-content-center" style="position: absolute; top: -1.5rem; left: 0;">
+        <button type="button" class="btn btn-info neon-button me-5" style="width: 10vw;" @click="homeCarousel.prev()">Previous Slide</button>
+      </div>
+      <div class="col-6 col-md-6 d-flex justify-content-center" style="position: absolute; top: -1.5rem; right: 0;">
+        <button type="button" class="btn btn-info neon-button ms-5" style="width: 10vw;" @click="homeCarousel.next()">Next Slide</button>
+      </div>
+    </div>
+  </section>
 
         <!-- <HomeCarousel/> -->
 
@@ -79,17 +89,6 @@
 
 
 
-    <div class="row accent-row d-flex mb-5 pb-2 pt-2" style="height: 4rem;">
-    
-      <div class="col-6 col-md-6 d-flex justify-content-center" style="position: absolute; top: -1.5rem; left: 0;">
-        <button type="button" class="btn btn-info neon-button me-5" style="width: 10vw;" @click="homeCarousel.prev()">Previous Slide</button>
-      </div>
-
-      <div class="col-6 col-md-6 d-flex justify-content-center" style="position: absolute; top: -1.5rem; right: 0;">
-        <button type="button" class="btn btn-info neon-button ms-5" style="width: 10vw;" @click="homeCarousel.next()">Next Slide</button>
-      </div>
-
-    </div>
 
         <!-- TODO GIVE THESE BUTTONS A ROUTE ONCE WE HAVE A USE FOR THEM --------------------------------------------->
         <!-- #region -->
@@ -156,7 +155,6 @@ import { logger } from '../utils/Logger.js'
 import Pop from '../utils/Pop.js'
 import { AppState } from '../AppState.js'
 import TournamentCard from '../components/TournamentCard.vue'
-// import HomeCarousel from '../components/HomeCarousel.vue'
 import { Carousel,Slide } from 'vue3-carousel'
 
 export default {
@@ -174,17 +172,9 @@ export default {
 
     const filterBy = ref('')
     const homeCarousel = ref(null)
-
-    //NOTE If we want to randomize between an array of set background colors / images this is how we can do that
-    // async getTournamentBg() {
-    //   try {
-    //     logger.log('getting tournament bg')
-    //     await tournamentsService.getTournamentBg()
-    //   } catch (error) {
-    //     Pop.error(error.message)
-    //     logger.log(error)
-    //   }
-    // }
+    const sortedTournament = AppState.tournaments
+    // .sort((a, b) =>
+    //   b.participantCount - a.participantCount)
 
     async function getAllTournaments() {
       try {
@@ -196,20 +186,19 @@ export default {
       }
     }
 
-    // async function truncateCarouselDescription(str, num) {
-    //   if (homeCarousel.str.length)
-    // }
-
     onMounted(() => {
       getAllTournaments()
+      logger.log('SORTED TOURNEY', sortedTournament)
     })
-
 
     return {
       filterBy,
       homeCarousel,
       tournament: computed(() => AppState.activeTournament),
-      carouselTournaments: computed(()=>AppState.tournaments),
+      carouselTournaments: computed(()=> 
+      AppState.tournaments.sort((carouselTournaments1, carouselTournaments2) =>
+      carouselTournaments2.participantCount - carouselTournaments1.participantCount)),
+
       tournaments: computed(() => {
         if (filterBy.value == '') {
           return AppState.tournaments
@@ -222,7 +211,7 @@ export default {
       }),
     }
   }
-};
+}
 
 </script>
 
