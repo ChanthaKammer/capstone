@@ -9,7 +9,7 @@
                 <div class="elevation-5 shadow-lg" :style="{ background: `url(${account.coverImg})` }" style="background-position: top; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
                   <div class="container-fluid py-5">
                       <div class="row justify-content-center align-items-center p-5">
-                        <div class="col-md-3 text-center text-white shadow-sm elevation-5 pt-3 bg-glass rounded-3" >
+                        <div class="col-md-3 text-center text-white shadow-sm elevation-5 pt-3 bg-glass rounded-3" style="position:absolute; bottom:17rem;">
                           <img :src="account.picture" :alt="account.name" class="img-fluid object-fit-cover profile-img" style="height:40%">
                           <h4 class="my-0" style="text-shadow:  1px 1px 1px black;"> {{ account.name }} </h4>
                           <p class="small fs-4" style="font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ account.gamerTag }} </p>

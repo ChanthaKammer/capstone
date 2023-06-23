@@ -1,9 +1,9 @@
 <template>
    <div class="row bg-dark rounded-3 p-2 my-2">
-      <div class="col-md-6" style="">
+      <div class="col-12 col-md-6" style="">
          <img :src="game.backgroundImg" class="img-fluid object-fit-cover rounded-3 p-3" style="height: 100%; aspect-ratio: 1/1;" :alt="game.name">
       </div>
-      <div class="col-md-6 d-flex flex-column justify-content-around">
+      <div class="col-12 col-md-6 d-flex flex-column justify-content-around">
          <h2>{{ game.name }}</h2>
          <!-- <h6 class="mt-3"><em>Genre: {{ game.genres[0].name }}</em></h6> -->
          <h5 class="mt-5 mb-0">Released:</h5>

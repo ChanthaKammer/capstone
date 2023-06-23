@@ -11,7 +11,6 @@ export class GameDetails{
       this.platforms = data.platforms
       this.stores = data.stores
       this.developers = data.developers
-      debugger
       this.genres = data.genres[0] ? data.genres[0].name : ''
       this.tags = data.tags
       this.publishers = data.publishers
