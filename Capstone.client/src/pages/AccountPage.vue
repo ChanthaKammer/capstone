@@ -95,7 +95,7 @@
                   <div class="py-4">
                     <h5 class="mb-3 comment-header">Recent posts</h5>
                     <div class="p-4 bg-comments rounded shadow-sm">
-                      <div class="col-8 my-4" v-for="c in comments" :key="c.id">
+                      <div class="my-4" v-for="c in comments" :key="c.id">
                         <CommentCard :comment="c"/>
                       </div>
                       <p class="text-light" style="text-shadow: 1px 1px 4px #000000; font-weight: 550;">No more recent comments on tournaments.</p>
