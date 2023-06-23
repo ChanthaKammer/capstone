@@ -259,7 +259,7 @@
             <img :src="account.picture" :alt="account.name"
               class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38"
               style="position: absolute; top: -40px; box-shadow: 0px 0px 1px 1px white;">
-            <h4 style="position: absolute; top: -3px;left:100px;">{{ account.name }}</h4> <small
+            <h3 style="position: absolute; top: -3px;left:100px;">{{ account.name }}</h3> <small
               class="text-white fw-normal mobile-post-comment"
               style="text-shadow: 1px 1px 1px black;position: absolute; top: 8px;right: 57px;">join the
               conversation</small>
