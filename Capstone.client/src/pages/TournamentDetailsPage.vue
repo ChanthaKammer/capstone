@@ -13,15 +13,18 @@
               {{ startDate }}
               @ {{ startTime }}
             </p>
-            <div v-if="tournament.startDate" class="pb-5 countdown-area">
-              <TournamentCountdown />
+            <div v-if="!tournamentStarted" class="pb-5 countdown-area">
+              <TournamentCountdown :startDate="tournament.startDate" />
+            </div>
+            <div v-else="tournamentStarted" class="pb-5 countdown-area">
+              <TournamentCountdown :startDate="tournament.startDate" />
             </div>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
         <img :src="tournament.coverImg" :alt="tournament.coverImg"
-          class="img-fluid object-fit-cover rounded-3 starship-img" >
+          class="img-fluid object-fit-cover rounded-3 starship-img">
       </div>
       <!-- <div class="row">
         <div class="col-12 pb-5">
@@ -42,16 +45,17 @@
       <div class="my-4">
         <div class="row bg-pending">
           <div class="col-12 d-flex justify-content-center align-items-center">
-            <div v-if="!tournament.isFinished && !tournament.isCancelled">
+            <div v-if="!tournamentStarted && !isCancelled">
               <p class="pending" style="font-style: italic;">PENDING</p>
+            </div>
+            <div v-else-if="tournamentStarted">
+              <p style="font-style: italic;">ACTIVE</p>
             </div>
           </div>
         </div>
         <div class="row bg-active">
           <div class="col-12 d-flex justify-content-center align-items-center">
-            <div v-if="tournament.startDate >= Date.now() && !tournament.isFinished">
-              <p style="font-style: italic;">ACTIVE</p>
-            </div>
+
           </div>
         </div>
         <div class="row bg-finished">
@@ -150,7 +154,8 @@
                         <input class="form-control mb-3" type="text" id="capacity" placeholder="Capacity"
                           aria-label="Capacity" v-model="editable.capacity">
                         <label class="edit-labels" for="text">Match Type</label>
-                        <select class="form-select mb-3" aria-label="Tournament Type" v-model="editable.type" style="background-color: white;">
+                        <select class="form-select mb-3" aria-label="Tournament Type" v-model="editable.type"
+                          style="background-color: white;">
                           <option class="text-dark" selected value="match" disabled>Match Type</option>
                           <option class="text-dark" value="online">Online</option>
                           <option class="text-dark" value="local">Local</option>
@@ -160,29 +165,32 @@
                           aria-label="tournament Description" placeholder="Tournament Description"
                           v-model="editable.description"></textarea>
                         <label class="edit-labels" for="text">Tournament Age Rating</label>
-                        <select class="form-select mb-3" aria-label="Tournament Age Rating" v-model="editable.ageRating" style="background-color: white;">
-                          
+                        <select class="form-select mb-3" aria-label="Tournament Age Rating" v-model="editable.ageRating"
+                          style="background-color: white;">
+
                           <option class="text-dark" value="Everyone">Everyone</option>
                           <option class="text-dark" value="Teen">Teen</option>
                           <option class="text-dark" value="Adult">Adult</option>
                         </select>
                         <label class="edit-labels" for="text label-">Max Teams</label>
-                        <input class="form-control mb-3 bg-white" type="number" placeholder="Max Teams" aria-label="max Teams"
-                          min="1" v-model="editable.maxTeams">
+                        <input class="form-control mb-3 bg-white" type="number" placeholder="Max Teams"
+                          aria-label="max Teams" min="1" v-model="editable.maxTeams">
                         <label class="edit-labels" for="text">Tournament GP Prize</label>
                         <input class="form-control mb-3 bg-white" type="text" id="tournamentMoney"
                           placeholder="Tournament GP Prize" aria-label="Tournament Reward Coins"
                           v-model="editable.reward">
                         <label class="edit-labels" for="text">First Place Badge</label>
-                        <input class="form-control mb-3 bg-white" type="text" id="firstPlaceBadge" placeholder="First Place Badge"
-                          aria-label="First Place Badge" v-model="editable.firstPlaceBadge">
+                        <input class="form-control mb-3 bg-white" type="text" id="firstPlaceBadge"
+                          placeholder="First Place Badge" aria-label="First Place Badge"
+                          v-model="editable.firstPlaceBadge">
                         <label class="edit-labels" for="text">Second Place Badge</label>
                         <input class="form-control mb-3 bg-white" type="text" id="secondPlaceBadge"
                           placeholder="Second Place Badge" aria-label="Second Place Badge"
                           v-model="editable.secondPlaceBadge">
                         <label class="edit-labels" for="text">Third Place Badge</label>
-                        <input class="form-control mb-3 bg-white" type="text" id="thirdPlaceBadge" placeholder="Third Place Badge"
-                          aria-label="Third Place Badge" v-model="editable.thirdPlaceBadge">
+                        <input class="form-control mb-3 bg-white" type="text" id="thirdPlaceBadge"
+                          placeholder="Third Place Badge" aria-label="Third Place Badge"
+                          v-model="editable.thirdPlaceBadge">
                         <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
                       </form>
                     </div>
@@ -244,16 +252,21 @@
     <!-- SECTION Comments -->
     <div class="row p-5 bg-dark justify-content-center">
       <h1 class="text-center pb-4">Tournament comments</h1>
-      <div v-if="user.isAuthenticated" class="col-12 col-md-6 card p-1 px-3 rounded-3 elevation-5 comment-area" style="position: relative;">
+      <div v-if="user.isAuthenticated" class="col-12 col-md-6 card p-1 px-3 rounded-3 elevation-5 comment-area"
+        style="position: relative;">
         <form @submit.prevent="createComment()">
           <div class="d-flex align-items-center mb-2">
             <img :src="account.picture" :alt="account.name"
-              class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38" style="position: absolute; top: -50px; box-shadow: 0px 0px 1px 1px white;" >
-            <h4 style="position: absolute; top: -3px;left:100px;">{{ account.name }}</h4> <small class="text-white fw-normal" style="text-shadow: 1px 1px 1px black;position: absolute; top: 8px;right: 57px;">join the conversation</small>
+              class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38"
+              style="position: absolute; top: -50px; box-shadow: 0px 0px 1px 1px white;">
+            <h4 style="position: absolute; top: -3px;left:100px;">{{ account.name }}</h4> <small
+              class="text-white fw-normal"
+              style="text-shadow: 1px 1px 1px black;position: absolute; top: 8px;right: 57px;">join the
+              conversation</small>
           </div>
           <div class="text-end">
-            <textarea style="margin-top: 20px;" v-model="commentData" class="text-area w-100 bg-light rounded-3 comment-box text-dark"
-              aria-label="Text Area"></textarea>
+            <textarea style="margin-top: 20px;" v-model="commentData"
+              class="text-area w-100 bg-light rounded-3 comment-box text-dark" aria-label="Text Area"></textarea>
             <RGBButton class="mobile-rgb" buttonText="Post Comment" type="submit" />
           </div>
         </form>
@@ -325,12 +338,14 @@ export default {
         logger.log('[ACTIVE TOURNAMENT ID]', tournamentId)
         await tournamentsService.setActiveTournament(tournamentId)
 
+
       } catch (error) {
         Pop.error(error)
       }
 
     }
     return {
+      setActiveTournament,
       formatDateAndTime,
       cancelTournament,
       leaveTournament,
@@ -343,10 +358,10 @@ export default {
       tournament: computed(() => AppState.activeTournament),
       participants: computed(() => AppState.participants),
       isCancelled: computed(() => AppState.activeTournament.isCancelled),
-      startDate: computed(()=> {
-       return formatDateAndTime(AppState.activeTournament.startDate).formattedDate
+      startDate: computed(() => {
+        return formatDateAndTime(AppState.activeTournament.startDate).formattedDate
       }),
-      startTime: computed(()=> {
+      startTime: computed(() => {
         return formatDateAndTime(AppState.activeTournament.startDate).formattedTime
       }),
       isParticipant: computed(() => {
@@ -377,9 +392,14 @@ export default {
           commentsService.createComment(comment)
           commentData.value = ""
         } catch (error) {
-          logger.log(error);
+          logger.log(error)
         }
       },
+      tournamentStarted: computed(() => {
+        const startDate = new Date(AppState.activeTournament.startDate)
+        const currentDate = new Date()
+        return startDate < currentDate
+      }),
       // SECTION tournament management functions
       async finalizeRound() {
         try {
@@ -398,12 +418,12 @@ export default {
         }
       },
       async finalizeTournament() {
-      try {
+        try {
 
-      } catch (error) {
-        logger.log(error);
-      }
-    },
+        } catch (error) {
+          logger.log(error);
+        }
+      },
       async editTournament() {
         try {
           const tournamentId = route.params.tournamentId;
@@ -470,7 +490,7 @@ export default {
   },
 }
 function formatDateAndTime(dateString) {
-  
+
   const date = new Date(dateString);
   // Format date as MM/DD/YYYY
   const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
@@ -480,14 +500,12 @@ function formatDateAndTime(dateString) {
   const amPm = hours >= 12 ? 'PM' : 'AM';
   hours = hours % 12 || 12;
   const formattedTime = `${hours}:${minutes.toString().padStart(2, '0')} ${amPm}`;
-  return {formattedDate, formattedTime};
+  return { formattedDate, formattedTime };
 }
 </script>
 
 
 <style scoped lang="scss">
-
-
 .bg-background {
   background-color: #4a70e196;
 }
@@ -677,9 +695,11 @@ p {
   width: 95%;
   height: 3rem;
 }
-.edit-labels{
+
+.edit-labels {
   color: black;
 }
+
 @media (max-width: 768px) {
   .mobile-results {
     margin-bottom: 0rem;

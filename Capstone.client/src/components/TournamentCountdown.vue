@@ -34,23 +34,33 @@ import { AppState } from "../AppState.js";
 
 
 export default {
+  props: {
+      startDate: { type: Date, required: true },
+   },
 
-  setup() {
+   setup(props) {
+    const countDownDate = new Date(props.startDate);
     const days = ref(0);
     const hours = ref(0);
     const minutes = ref(0);
     const seconds = ref(0);
 
-    const countDownDate = new Date(AppState.activeTournament.startDate);
-
     setInterval(() => {
       const now = new Date();
       const timeBetween = countDownDate - now;
 
-      seconds.value = parseInt(timeBetween / 1000)
-      minutes.value = parseInt(seconds.value / 60)
-      hours.value = parseInt(minutes.value / 60)
-      days.value = parseInt(hours.value / 24)
+      if (timeBetween > 0) {
+        seconds.value = Math.floor(timeBetween / 1000) % 60;
+        minutes.value = Math.floor(timeBetween / 1000 / 60) % 60;
+        hours.value = Math.floor(timeBetween / 1000 / 60 / 60) % 24;
+        days.value = Math.floor(timeBetween / 1000 / 60 / 60 / 24);
+      } else {
+        // Countdown is finished, set all values to zero
+        seconds.value = 0;
+        minutes.value = 0;
+        hours.value = 0;
+        days.value = 0;
+      }
     }, 1000);
 
     return {
