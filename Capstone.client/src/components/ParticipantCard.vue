@@ -6,7 +6,7 @@
         <img v-if="participant.status != 'eliminated'" class="pfp rounded" :src="participant.profile.picture" alt="">
         <img v-else class="pfp rounded player-eliminated" :src="participant.profile.picture" alt="">
       </router-link>
-      <p class="text-white" style="white-space: nowrap;">{{ participant.profile.name }}</p>
+      <p class="text-white fw-normal m-0" style="white-space: nowrap;text-shadow: 1px 1px 1px black;">{{ participant.profile.name }}</p>
     </div>
    
 

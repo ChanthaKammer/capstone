@@ -24,7 +24,7 @@
   <div class="col-md-12 bg-light rounded-3" style="">
     <div>
 
-      <p class="text-dark pt-2"> {{ comment.body }} </p>
+      <p class="text-dark pt-2 mt-0 mb-1"> {{ comment.body }} </p>
     </div>    
     <i v-if="comment.creatorId == account.id" @click="deleteComment()" class="mdi mdi-delete pe-1 icon fs-5 float-end"><small>remove comment</small></i>
   </div>
