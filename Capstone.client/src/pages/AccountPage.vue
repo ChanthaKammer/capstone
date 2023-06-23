@@ -7,12 +7,12 @@
           
               <!-- PROFILE START ( COPY / PASTE TO PROFILE PAGE ) -->
               <div class="shadow rounded overflow-hidden">
-                <div class=" elevation-5 shadow-lg px-4 pt-0 pb-4" :style="{ background: `url(${account.coverImg})` }" style="background-position: center; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
+                <div class="elevation-5 shadow-lg px-4 pt-0 pb-4" :style="{ background: `url(${account.coverImg})` }" style="background-position: center; background-size: cover; background- background-repeat: no-repeat; height: 50vh">
                   <div class="media align-items-end profile-header">
                     <div class="profile pt-5" style="margin-right: 25vw;">
                       <div class="row media-body pt-5 text-white">
                         <div class="col-3" style="position: absolute; top: 22rem;">
-                          <img :src="account.picture" :alt="account.name" class="img-fluid profile-img rounded" style="max-width: 150px; min-width:100px;">
+                          <img :src="account.picture" :alt="account.name" class="img-fluid profile-img rounded" style="">
                         </div>
                         <div class="col-3 name-tag" style="position: absolute; top: 25rem; left: 9.75rem;">
                           <h4 class="my-0 mx-4" style="text-shadow:  1px 1px 1px black;"> {{ account.name }} </h4>
@@ -26,7 +26,7 @@
                     </div>
                       
                     <div class="col-md-3">
-                      <button class="btn neon-button mt-5" style="position: absolute; top: 29rem; min-width: 10vw;" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
+                      <button class="btn neon-button" style="position: absolute; top: 29rem; left: 40px; min-width: 10vw;" data-bs-toggle="modal" data-bs-target="#accountModal">Edit Account</button>
                         <div class="row justify-content-center">
           
                           <!-- Modal -->
@@ -211,7 +211,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.pfp-image{
+  // max-width: 0rem;
+}
 .bio {
   background-color: #2f395d76;
   color: aliceblue;
@@ -265,6 +267,7 @@ export default {
   text-shadow: .5px .5px .125em #0f0044d3;
   box-shadow: 0 0 20px 1px #49bfffe7;
   animation: colorChange 20s infinite;
+  margin-left: 12px;
 }
 
 .neon-button::before {
@@ -327,13 +330,21 @@ img {
     box-shadow: 0 0 15px #293c6d08;
   }
 }
-
+ .profile-img {
+    aspect-ratio: 1/1;
+    margin-left: 20px;
+    max-width: 25vw;
+    max-height: 20vh;
+    margin-top: 3rem;
+  }
 @media screen and (max-width: 768px) {
   ul {
     margin-top: 7rem;
   }
   .profile-img {
-    max-width: 20vw !important;
+    aspect-ratio: 1/1;
+    max-width: 25vw;
+    max-height: 20vh;
     margin-top: 3rem;
   }
   .neon-button {
@@ -351,10 +362,7 @@ img {
   ul {
     margin-top: 7rem;
   }
-  .profile-img {
-    max-width: 20vw !important;
-    margin-top: 3rem;
-  }
+  
   .neon-button {
     margin-top: 8rem !important;
     width: 20vw !important;
@@ -371,11 +379,7 @@ img {
     margin-top: 0;
     margin-right: .25rem;
   }
-  .profile-img {
-    max-width: 20vw !important;
-    margin-top: 0;
-    margin-left: .325rem;
-  }
+  
   .neon-button {
     margin-top: 0 !important;
     width: 20vw !important;
@@ -393,8 +397,8 @@ img {
 @media (min-width: 1600px) {
 
   .profile-img {
-    max-width: 10vw !important;
-    margin-top: 3rem;
+    // max-width: 10vw !important;
+    // margin-top: 3rem;
   }
   .neon-button {
     margin-top: 9rem !important;
