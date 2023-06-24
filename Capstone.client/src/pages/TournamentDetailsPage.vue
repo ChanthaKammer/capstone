@@ -152,7 +152,7 @@
               <RGBButton class="px-2 rgb-btn" aria-label="JoinTournamentButton" buttonText="Join the Tournament!"
                 @click="joinTournament" />
             </div>
-            <div v-else-if="tournamentStarted">
+            <div v-else-if="!tournamentStarted">
               <RGBButton class="px-2 rgb-btn" buttonText="Leave Tournament!" @click="leaveTournament" />
             </div>
             

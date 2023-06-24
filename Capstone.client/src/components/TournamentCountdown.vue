@@ -94,9 +94,9 @@ span {
   color: #ffffff;
 
   font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   letter-spacing: 2px;
-  margin-top: 0rem;
+  margin-top: 1rem;
   margin-bottom: -5rem;
 }
 
@@ -104,7 +104,7 @@ span {
   width: 100%;
   max-width: 100%;
   margin-bottom: 2rem;
-  padding: 1em;
+  padding: em;
   background-color: #0811124f;
   filter: drop-shadow(0 0 10px #000);
   border-radius: 5px;
@@ -133,6 +133,7 @@ span {
 
   .time__box p {
     width: 20vw;
+    font-size: 45px;
   }
 }
 
