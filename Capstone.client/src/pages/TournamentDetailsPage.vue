@@ -111,7 +111,7 @@
               <ParticipantCard :participant="p" />
             </div>
           </div>
-          <div class="row text-center mb-3">
+          <div v-if="eliminatedPlayers.length >= 1" class="row text-center mb-3">
             <h1 class="fw-normal glass-container">Eliminated Players</h1>
             <div class="col col-md-3 mx-2" v-for="p in eliminatedPlayers" :key="p.id">
               <ParticipantCard :participant="p" />
