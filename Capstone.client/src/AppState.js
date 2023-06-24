@@ -30,7 +30,7 @@ export const AppState = reactive({
   activeGame: {},
   
   searchGames: [],
-  
+  rewards:[],
   query: '',
 
   previousPage: null,
