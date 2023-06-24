@@ -28,15 +28,15 @@
           <h4 class="fw-normal fs-3 ms-5">Tournament has begun</h4>
           <h5 class="fw-lighter ms-5">May the best player win</h5>
         </div>
-        <div v-else-if="isFinished" class="text-center">
+        <div v-if="tournament.isFinished == true" class="text-center">
           <h4 class="fw-bold fs-2 ms-0">WINNER</h4>
-          <h5 class="fw-lighter ms-4">Congratulations to <span class="text-white fw-bold fs-5"> {{ first.profile.gamerTag }}</span> for winning the tournament!</h5>
+          <h5 class="fw-lighter ms-4">Congratulations to <span class="text-white fw-bold fs-5"> {{ first?.profile?.gamerTag }}</span> for winning the tournament!</h5>
         </div>
-        <div class="text-center">
-          <img class="winner" :src="first.profile.picture" alt="">
+        <div v-if="isFinished" class="text-center">
+          <img class="winner" :src="first?.profile?.picture" alt="">
         </div>
       </div>
-      <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
+      <div class="col-12 col-md-6 pt-5 px-5 d-flex  align-items-center">
         <img :src="tournament?.coverImg" :alt="tournament?.coverImg" class=" tournament-image" style="">
       </div>
       <div>
@@ -79,7 +79,7 @@
         <div class="row bg-finished">
           <div class="col-12 d-flex justify-content-center align-items-center">
             <div v-if="tournament.isFinished">
-              <p class="finished" style="font-style: italic;">Congratulations {{ first.profile.gamerTag }}</p>
+              <p class="finished" style="font-style: italic;">Congratulations {{ first?.profile?.gamerTag }}</p>
             </div>
           </div>
         </div>
@@ -93,10 +93,8 @@
       </div>
     </section>
 
+    <!-- SECTION WHEN TOURNAMENT IS FINISHED SHOW THE WINNERS -->
     <div class="row">
-
-      
-      <!-- SECTION WHEN TOURNAMENT IS FINISHED SHOW THE WINNERS -->
       <div v-if="!isFinished" class="col-12 col-md-6 ">
 
         <!-- SECTION SHOW CURRENT PLAYERS WHILE TOURNAMENT IS NOT FINISHED -->
@@ -126,13 +124,13 @@
       <div v-else class="col-12 col-md-6 d-flex justify-content-around">
         <div>
           <p class="fs-3 text-center">Second place</p>
-          <img :src="second.profile.picture" alt="" class="winner2">
-          <p class="fs-3 text-center">{{ second.profile.gamerTag }}</p>
+          <img :src="second?.profile?.picture" alt="" class="winner2">
+          <p class="fs-3 text-center">{{ second?.profile?.gamerTag }}</p>
         </div>
         <div>
           <p class="fs-3 text-center">Third place</p>
-          <img :src="third.profile.picture" alt="" class="winner2">
-          <p class="fs-3 text-center">{{ third.profile.gamerTag }}</p>
+          <img :src="third?.profile?.picture" alt="" class="winner2">
+          <p class="fs-3 text-center">{{ third?.profile?.gamerTag }}</p>
         </div>
 
       </div>
