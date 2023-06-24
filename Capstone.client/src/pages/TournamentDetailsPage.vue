@@ -823,11 +823,11 @@ p {
   border-radius: 3%;
 }
 
-.tournament-image:hover {
-  filter: brightness(1.2);
-  transition: 0.5s;
-  box-shadow: 0px 0px 10px 10px #10a5a548;
-}
+// .tournament-image:hover {
+//   filter: brightness(1.2);
+//   transition: 0.5s;
+//   box-shadow: 0px 0px 10px 10px #10a5a548;
+// }
 
 .container-img {
   display: flex;
