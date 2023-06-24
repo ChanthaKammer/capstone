@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="modal-body justify-content-center">
                                     <form @submit.prevent="editAccount()" class="col-12">
-                                      <label class="edit-labels" max="16" for="text">Name</label>
+                                      <label class="edit-labels" for="text">Name</label>
                                       <input class="form-control mb-3" type="text" placeholder="Name" aria-label="name" v-model="editable.name">
                                       <label class="edit-labels" for="text">Avatar Image</label>
                                       <input class="form-control mb-3" type="text" id="avatarImg" placeholder="Avatar Image" v-model="editable.picture">
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="col-6">
                                           <label class="edit-labels" for="text">Gamertag</label>
-                                          <input class="form-control" type="text" max="16" id="gamertag" placeholder="Gamertag" v-model="editable.gamerTag">
+                                          <input class="form-control" type="text" id="gamertag" placeholder="Gamertag" v-model="editable.gamerTag">
                                         </div>
                                       </div>
                                       <label class="edit-labels" for="text">Bio</label>

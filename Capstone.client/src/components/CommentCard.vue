@@ -156,13 +156,14 @@ img {
   .mobile-posted-name {
     display: absolute;
     top: -10px;
-    left: 80px;
+    left: 100px;
   }
   .mobile-posted-on {
+    font-size: 16px;
     display: absolute;
     position: absolute;
     margin-left: 1rem;
-    top: 10px;
+    top: 25px;
     right: 8px;
     margin-right: 0;
   }
