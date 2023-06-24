@@ -1,3 +1,43 @@
+account
+get /account returns user account
+get /account/participants returns tournaments you are participating in 
+get /account/rewards returns the rewards that the account has
+get /account/comments returns the comments that are on an account **
+put /account updates the users account information
+comment
+post /api/comments posts a comment
+delete /api/comments deletes a comment
+
+participants 
+get /api/participants/:id gets a participant
+post /api/participants creates a participant on a tournament
+put /api/participants/:id edits a participant on a tournament
+delete /api/participants/:id deletes a participant
+
+profiles
+get /api/profiles returns all profiles
+get /api/profiles/:id returns a profile by Id
+get /api/profiles/:id/participants returns tournaments that a profile is participating in
+get /api/profiles/:id/tournaments returns a list of tournaments a profile has created
+get /api/profiles/:id/rewards returns the rewards that a profile has
+get /api/profiles/:id/comments returns a list of comments that a profile has created
+
+rewards
+get /api/rewards/:id gets a list of rewards by Id
+post /api/rewards creates an award
+
+
+tournaments
+get /api/tournaments gets all tournaments
+get /api/tournaments/:id gets tournament by Id
+get /api/tournaments/:id/comments get comments by tournament Id
+get /api/tournaments/:id/participants gets tournament participants
+get /api/tournaments/:id/
+delete /api/tournaments/:id deletes a tournament by Id
+post /api/tournaments creates a tournament
+put /api/tournaments/:id edits a tournament
+delete /api/tournaments/finished/:id finishes a tournament
+
 # Auth0 Server Setup
 
 This template is designed to help kickstart a project that utilizes <a href="https://auth0.com/" target="_blank">Auth0.</a> The bulk of the structure has been setup and requires a few pieces of configuration.

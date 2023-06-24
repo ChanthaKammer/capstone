@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between align-items-center">
       <div class="navbar-brand navbar-link">
         <router-link class="text-white" :to="{ name: 'Home' }">
-            <img alt="logo" src="src/assets/img/gamePursuitLogo.png" height="50" class="pe-2"/>
+            <img  src="src/assets/img/gamePursuitLogo.png" alt="logo" height="50" class="pe-2"/>
             Game Pursuit
         </router-link>
       </div>
@@ -18,7 +18,7 @@
         <button class="btn btn-success" type="submit">Search</button>
       </form>
       <div v-if="user.isAuthenticated" class="">
-        <div class="fs-4 gp-balance text-white d-none d-sm-block" style="font-style: normal;"><img src="../assets/img/coin.png" style="height: 40px" class="img-fluid"> {{ account.gpBalance }} </div>
+        <div class="fs-4 gp-balance text-white d-none d-sm-block" style="font-style: normal;" aria-label="Coin Balance"><img src="../assets/img/coin.png" alt="gpBalance" style="height: 40px" class="img-fluid" aria-label="Coin Balance"> {{ account.gpBalance }} </div>
       </div>
       <div class="align-self-center d-none d-sm-block">
         <Login/>
