@@ -1,9 +1,9 @@
 <template>
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
   <div class="row media-adjust justify-content-center align-items-center ms-4">
-    <div class="col-md-12">
+    <!-- <div class="col col-md-12"> -->
       <p class="text-center count-title">Tournament Countdown</p>
-    </div>
+    <!-- </div> -->
     <div class="time__box d-flex justify-content-center mb-5">
       <div class="col-md-3">
         <p class="text-center"> {{ days }} </p>
@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-</div>
+<!-- </div> -->
 
 </template>
 
@@ -96,7 +96,7 @@ span {
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-top: 4rem;
+  margin-top: 0rem;
   margin-bottom: -5rem;
 }
 

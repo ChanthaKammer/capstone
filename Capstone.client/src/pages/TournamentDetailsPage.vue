@@ -6,7 +6,7 @@
         <p class="ms-4 mt-1 mb-0 my-0 text-uppercase" style="font-size: 2.5rem; font-weight: 650; font-style: italic;">{{
           tournament?.name
         }} ({{ tournament?.type }}) </p>
-        <div v-if="!started" class="row justify-content-center">
+        <div v-if="!tournamentStarted" class="row justify-content-center">
           <div class="col-12">
             <p class="ms-4 ps-3 mt-0 mb-0" style="font-size: 1.9rem; font-weight: 450; font-style: italic;">Location:
               <span class="fw-light text-white fs-2"> {{
@@ -66,7 +66,7 @@
     <section>
       <div class="my-4">
         <div class="row ">
-          <div v-if="!tournamentStarted && !isCancelled && !isFinished && !started"
+          <div v-if="!tournamentStarted && !isCancelled && !isFinished"
             class="bg-pending col-12 d-flex justify-content-center align-items-center">
             <div>
               <p class="pending" style="font-style: italic;">Tournament Pending</p>
