@@ -188,7 +188,6 @@ export default {
           route,
           account: computed(() => AppState.account),
           tournaments: computed(() => AppState.activeTournament),
-          // myTournaments: computed(() => AppState.myTournaments),
           comments: computed(() => AppState.comments),
           myParticipations: computed(() => AppState.myParticipations),
           isCancelled: computed(() => AppState.activeTournament.isCancelled),
@@ -233,6 +232,10 @@ export default {
 .bg-filler {
   background-color: #49678e7b;
   box-shadow: 0 0 10px 3px #1f2937e3 inset;
+}
+
+.profile-card {
+  margin-top: 1rem;
 }
 
 .tournament-header {
