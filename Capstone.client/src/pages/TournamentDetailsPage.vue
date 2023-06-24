@@ -26,7 +26,7 @@
           </div>
         </div>
         <div v-if="tournamentStarted">
-          <h4 class="fw-normal fs-3 ms-3 mt-5">Tournament has begun</h4>
+          <h4 class="fw-normal fs-3 ms-3 mt-3">Tournament has begun</h4>
           <h5 class="fw-lighter ms-4">May the best player win</h5>
           <div class="container-img">
             <img class="game-img1" src="https://media3.giphy.com/media/iJK1WyehdOPqckc7Vp/giphy.gif?cid=ecf05e477xnlicx57705d2nz4jh7z7bx3x3ln3tldhb7ku2s&ep=v1_stickers_search&rid=giphy.gif&ct=s" alt="">
