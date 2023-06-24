@@ -2,30 +2,45 @@
 <template>
   <section class="container-fluid bg-details">
     <div class="row">
-      <div v-if="!tournament?.isCancelled" class="col-12 col-md-6 pt-5 text-light  details-top">
-        <p class="ms-5 mt-1 mb-0 my-0 text-uppercase" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{
+      <div v-if="!tournament?.isCancelled" class="col-12 col-md-6 pt-3 text-light  details-top">
+        <p class="ms-4 mt-1 mb-0 my-0 text-uppercase" style="font-size: 2.5rem; font-weight: 650; font-style: italic;">{{
           tournament?.name
         }} ({{ tournament?.type }}) </p>
         <div v-if="!started" class="row justify-content-center">
           <div class="col-12">
-            <p class="ms-5 ps-3 mt-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">@ {{
-              tournament?.location }} </p>
-            <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">BE THERE ON
+            <p class="ms-4 ps-3 mt-0 mb-0" style="font-size: 1.9rem; font-weight: 450; font-style: italic;">Location:
+              <span class="fw-light text-white fs-2"> {{
+                tournament?.location }}</span> </p>
+            <p class="ms-4 ps-3 mt-2 mb-0" style="font-size: 1.9rem; font-weight: 450; font-style: italic;">Date:
               {{ startDate }}
-              @ {{ startTime }}
+
             </p>
-            <div class="pb-5 countdown-area">
+            <p class="ms-4 ps-3 mt-2 mb-3" style="font-size: 1.9rem; font-weight: 450; font-style: italic;">
+
+              Time: {{ startTime }}
+            </p>
+            <div v-if="!tournamentStarted && !isFinished" class="pb-5 countdown-area">
               <TournamentCountdown :startDate="tournament?.startDate" />
             </div>
           </div>
         </div>
-        <div>
-          <h4 class="fw-normal ms-5">Tournament started by host</h4>
+        <div v-if="tournamentStarted">
+          <h4 class="fw-normal fs-3 ms-5">Tournament has begun</h4>
           <h5 class="fw-lighter ms-5">May the best player win</h5>
+        </div>
+        <div v-else-if="isFinished" class="text-center">
+          <h4 class="fw-bold fs-2 ms-0">WINNER</h4>
+          <h5 class="fw-lighter ms-4">Congratulations to <span class="text-white fw-bold fs-5"> {{ first.profile.gamerTag }}</span> for winning the tournament!</h5>
+        </div>
+        <div class="text-center">
+          <img class="winner" :src="first.profile.picture" alt="">
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
-        <img :src="tournament?.coverImg" :alt="tournament?.coverImg" class="img-fluid tournament-image">
+        <img :src="tournament?.coverImg" :alt="tournament?.coverImg" class=" tournament-image" style="">
+      </div>
+      <div>
+
       </div>
       <!-- <div class="row">
         <div class="col-12 pb-5">
@@ -51,7 +66,8 @@
               <p class="pending" style="font-style: italic;">Tournament Pending</p>
             </div>
           </div>
-          <div v-else-if="started" class="bg-active d-flex justify-content-center align-items-center">
+          <div v-else-if="started && !isFinished || tournamentStarted"
+            class="bg-active d-flex justify-content-center align-items-center">
             <p style="font-style: italic;">Tournament live!</p>
           </div>
         </div>
@@ -63,7 +79,7 @@
         <div class="row bg-finished">
           <div class="col-12 d-flex justify-content-center align-items-center">
             <div v-if="tournament.isFinished">
-              <p class="finished" style="font-style: italic;">Tournament Finished</p>
+              <p class="finished" style="font-style: italic;">Congratulations {{ first.profile.gamerTag }}</p>
             </div>
           </div>
         </div>
@@ -78,68 +94,59 @@
     </section>
 
     <div class="row">
+
+      
       <!-- SECTION WHEN TOURNAMENT IS FINISHED SHOW THE WINNERS -->
-      <div v-if="isFinished" class="col-12 col-md-6 order-2 order-md-1">
-        <div class="row justify-content-around p-4">
-          <div class="col-md-12 text-center">
-            <h1>1st Place:</h1>
-            <!-- NOTE MAKE ICON FOR CURRENT LEADER BY THEIR USER IMAGE USING THE :TITLE V-BIND METHOD ON ACTIVE TOURNAMENT WHEN LESS TIRED -->
-            <i class="mdi mdi-account-circle top-player" style="font-size: 5rem;"></i>
-            <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Name</p>
-            <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Team</p>
-            <div class="row justify-content-center">
+      <div v-if="!isFinished" class="col-12 col-md-6 ">
+
+        <!-- SECTION SHOW CURRENT PLAYERS WHILE TOURNAMENT IS NOT FINISHED -->
+        <div v-if="isFinished" class="col-12">
+          <div class=" mb-3 row justify-content-center text-center">
+            <h1 class="">Active players</h1>
+            <div class="col-3 mx-2" v-for="p in activePlayers" :key="p.id">
+              <ParticipantCard :participant="p" />
+            </div>
+          </div>
+          <div class="row text-center mb-3">
+            <h1 class="fw-normal">Eliminated Players</h1>
+            <div class="col-3" v-for="p in eliminatedPlayers" :key="p.id">
+              <ParticipantCard :participant="p" />
+            </div>
+          </div>
+          <div class="row text-center ">
+            <h2 class="fw-normal ">Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
+
+            <div class="col-md-6 text-center">
             </div>
           </div>
 
-          <div>
-          </div>
-        </div>
-        <div class="col-md-6 text-center">
-          <h2>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
-        </div>
-        <div class="col-auto" v-for="p in participants" :key="p.id">
-          <ParticipantCard :participant="p" />
-        </div>
-      </div>
-      <!-- SECTION SHOW CURRENT PLAYERS WHILE TOURNAMENT IS NOT FINISHED -->
-      <div v-if="!isFinished" class="col-12 col-md-6">
-        <div class="row text-center">
-          <h1 class="fw-normal">Active players</h1>
-          <div class="col-3 mx-2" v-for="p in activePlayers" :key="p.id">
-            <ParticipantCard :participant="p" />
-          </div>
-        </div>
-        <div class="row text-center">
-          <h1 class="fw-normal">Eliminated Players</h1>
-          <div class="col-3" v-for="p in eliminatedPlayers" :key="p.id">
-            <ParticipantCard :participant="p" />
-          </div>
-        </div>
-        <div class="row text-center">
-          <h2 class="fw-normal">Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
-
-          <div class="col-md-6 text-center">
-          </div>
         </div>
 
       </div>
-      <div v-else>
-        <div class="col-3" v-for="p in eliminatedPlayers" :key="p.id">
-          <ParticipantCard :participant="p" />
+      <div v-else class="col-12 col-md-6 d-flex justify-content-around">
+        <div>
+          <p class="fs-3 text-center">Second place</p>
+          <img :src="second.profile.picture" alt="" class="winner2">
+          <p class="fs-3 text-center">{{ second.profile.gamerTag }}</p>
         </div>
-      </div>
+        <div>
+          <p class="fs-3 text-center">Third place</p>
+          <img :src="third.profile.picture" alt="" class="winner2">
+          <p class="fs-3 text-center">{{ third.profile.gamerTag }}</p>
+        </div>
 
+      </div>
 
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
         <img :src="tournament.gameImg" :alt="tournament.name" class="game-img rounded-2" style="" alt="">
 
-        <div v-if="user.isAuthenticated" class="d-flex justify-content-evenly">
+        <div v-if="user.isAuthenticated && !isFinished" class="d-flex justify-content-evenly">
           <div>
             <div v-if="!isParticipant">
               <RGBButton class="px-2 rgb-btn" aria-label="JoinTournamentButton" buttonText="Join the Tournament!"
                 @click="joinTournament" />
             </div>
-            <div v-else="">
+            <div v-else-if="tournamentStarted">
               <RGBButton class="px-2 rgb-btn" buttonText="Leave Tournament!" @click="leaveTournament" />
             </div>
           </div>
@@ -235,16 +242,18 @@
 
       </div>
     </div>
+  
 
     <!-- SECTION tournament management -->
 
-    <div v-if="isTournamentCreator" class="container">
+    <div v-if="isTournamentCreator && !isFinished" class="container">
       <div class="row">
         <div class="col-12">
           <h1 class="text-decoration-underline">Tournament Management</h1>
         </div>
       </div>
-      <div class="row ">
+      
+      <div class="row">
         <div class="col-7">
           <form>
             <div class="form-group" v-for="(participant, index) in participants" :key="participant.id">
@@ -259,28 +268,31 @@
                 <h1 v-else class="fs-5">{{ participant.profile.name }} - Tournament status - <span class="text-success">{{
                   participant.status }}</span></h1>
               </div>
-              <select class="mb-3 form-control" v-model="participant.status" aria-label="player status">
+              <select v-if="lastRound" class="mb-3 form-control" v-model="participant.status" aria-label="player status">
                 <option class="text-dark" value="active">Active</option>
                 <option class="text-dark" value="eliminated">Eliminated</option>
-                <option class="text-dark" value="firstPlace">First Place</option>
-                <option class="text-dark" value="secondPlace">Second Place</option>
-                <option class="text-dark" value="thirdPlace">Third Place</option>
+                <option class="text-dark" value="first">First Place</option>
+                <option class="text-dark" value="second">Second Place</option>
+                <option class="text-dark" value="third">Third Place</option>
               </select>
+              <label class="text-light">Distribute gpCoins</label>
               <div v-if="lastRound" class="input-group mb-2" aria-label="gp Coins">
-                <span class="input-group-text" id="gpPoints">gpPoints</span>
-                <input type="number" class="form-control" name="gpPoints" aria-label="Gp Coins" v-model="participant.gpCoins">
+                
+                <input type="number" min="0" class="form-control" name="gpPoints" aria-label="Gp Coins"
+                  v-model="participant.gpCoins">
               </div>
+              <label class="text-white">Select a badge</label>
               <div v-if="lastRound" class="input-group mb-2">
                 <select class="form-select" aria-label="badge awards" v-model="participant.badge">
-                  <option selected>Open this to select badge reward</option>
-                  <option value="1">1st place badge</option>
-                  <option value="2">2nd Place badge</option>
-                  <option value="3">3rd Place badge</option>
-                  <option value="3">Ruthless badge</option>
-                  <option value="3">team leader badge</option>
-                  <option value="3">Cold Blooded badge</option>
-                  <option value="3">Money Bags badge</option>
-                  <option value="3">Top Sponsors badge</option>
+                  <option value="">Select a badge to reward</option>
+                  <option value="firstPlaceBadge">1st place badge</option>
+                  <option value="secondPlaceBadge">2nd Place badge</option>
+                  <option value="thirdPlaceBadge">3rd Place badge</option>
+                  <option value="ruthlessBadge">Ruthless badge</option>
+                  <option value="teamleaderBadge">Team leader badge</option>
+                  <option value="coldBloodedBadge">Cold Blooded badge</option>
+                  <option value="moneyBagsBadge">Money Bags badge</option>
+                  <option value="topSponsorBadge">Top Sponsors badge</option>
                 </select>
               </div>
             </div>
@@ -302,7 +314,7 @@
     </div>
 
     <!-- SECTION Comments -->
-    <div class="row p-5 bg-dark justify-content-center">
+    <div class="row p-4 bg-dark justify-content-center">
       <h1 class="text-center pb-4">Tournament comments</h1>
       <div v-if="user.isAuthenticated" class="col-12 col-md-6 card p-1 px-3 rounded-3 elevation-5 comment-area"
         style="position: relative;">
@@ -310,8 +322,8 @@
           <div class="d-flex align-items-center mb-2">
             <img :src="account.picture" :alt="account.name"
               class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38"
-              style="position: absolute; top: -40px; box-shadow: 0px 0px 1px 1px white;">
-            <h3 style="position: absolute; top: -3px;left:100px;">{{ account.name }}</h3> <small
+              style="position: absolute; top: -46px; box-shadow: 0px 0px 1px 1px white;">
+            <h3 style="position: absolute; top: -5px;left:100px;">{{ account.name }}</h3> <small
               class="text-white fw-normal mobile-post-comment"
               style="text-shadow: 1px 1px 1px black;position: absolute; top: 8px;right: 57px;">join the
               conversation</small>
@@ -421,7 +433,15 @@ export default {
 
       lastRound: computed(() => AppState.activeTournament.currentRound === AppState.activeTournament.totalRounds),
       participants: computed(() => AppState.participants),
-
+      first: computed(() => {
+       return AppState.participants.find(p => p.status === 'first')
+      }),
+      second: computed(() => {
+        return AppState.participants.find(p => p.status === 'second')
+      }),
+      third: computed(() => {
+        return AppState.participants.find(p => p.status === 'third')
+      }),
       activePlayers: computed(() => {
         return AppState.participants.filter(p => p.status != 'eliminated')
       }),
@@ -495,6 +515,8 @@ export default {
         try {
           if (await Pop.confirm(`This will end the tournament and distribute tournament rewards to the top 3 players. Are your rewards assigned?`)) {
             await AppState.participants.forEach((p, i) => {
+              const participantUpdate = participantsService.updatePlayerStatus(p.id, { status: p.status })
+              logger.log(participantUpdate)
               if (p.status != 'eliminated' || 'active') {
                 const tempReward = {
                   tournamentId: AppState.activeTournament.id,
@@ -507,12 +529,13 @@ export default {
                 AppState.rewards.push(tempReward)
                 // FIXME take this tempReward obj and POST to the API
                 rewardsService.createReward(tempReward)
+                
 
               }
               logger.log(AppState.rewards, '[APPSTATE REWARDS]')
             });
             AppState.activeTournament.isFinished = true
-            const finishedTournament = await tournamentsService.editTournament(AppState.activeTournament.id, AppState.activeTournament)
+            const finishedTournament = await tournamentsService.editTournament(AppState.activeTournament.id, {isFinished: true})
             tournamentsService.setActiveTournament
             logger.log("[FINISHED TOURNAMENT DATA]", finishedTournament)
           }
@@ -535,6 +558,8 @@ export default {
     async function getParticipants() {
       try {
         await participantsService.getParticipants(route.params.tournamentId)
+        AppState.participants.forEach(p => p.badge = "");
+        AppState.participants.forEach(p => p.gpCoins = 0);
       } catch (error) {
         logger.log('[getting participants for this tournament]', error);
         Pop.error(error.message);
@@ -709,16 +734,32 @@ p {
   filter: brightness(1.2);
 
 }
-
+.winner{
+  aspect-ratio: 1/1;
+  min-width: 20rem;
+  min-height: 20rem;
+  max-width: 20rem;
+  max-height: 20rem;
+  border-radius: 3%;
+}
+.winner2{
+  aspect-ratio: 1/1;
+  min-width: 15rem;
+  min-height: 15rem;
+  max-width: 15rem;
+  max-height: 15rem;
+  border-radius: 3%;
+}
 .tournament-image {
-  padding-left: 5rem;
-  padding-right: 5rem;
+  // padding-left: 5rem;
+  // padding-right: 5rem;
+  margin-left: auto;
   aspect-ratio: 1/1;
   min-height: 45vh;
   min-width: 40vw;
   max-height: 45vh;
   max-width: 40vw;
-  border-radius: 5%;
+  border-radius: 3%;
 }
 
 .tournament-image:hover {
@@ -880,6 +921,25 @@ p {
 }
 
 @media (max-width: 768px) {
+  .finished{
+    font-size: 40px;
+  }
+  .winner{
+  aspect-ratio: 1/1;
+  min-width: 15rem;
+  min-height: 15rem;
+  max-width: 15rem;
+  max-height: 15rem;
+  border-radius: 3%;
+}
+  .winner2{
+  aspect-ratio: 1/1;
+  min-width: 10rem;
+  min-height: 10rem;
+  max-width: 10rem;
+  max-height: 10rem;
+  border-radius: 3%;
+}
   .mobile-results {
     margin-bottom: 0rem;
     padding-top: 6rem;

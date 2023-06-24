@@ -142,7 +142,7 @@ img {
 .mobile-posted-name {
   position: absolute;
   top: 15px;
-  left: 80px;
+  left: 85px;
 
 }
 
