@@ -3,13 +3,16 @@
         <!--SECTION  * * * CARD IMAGE HEADER * * * ------------------------------>
         <div class="card card-custom border-white border-0" style="height: 500px">
           <div class="card-custom-img" :style="`background-image: url(${tournament.gameImg})`"></div>
+          <div v-if="tournament.creatorId == profile.id">
+            <h5 class="host-badge">HOST</h5>
+          </div>
           <div class="card-custom-avatar">
             <img class="img-fluid object-fit-cover" :src="tournament.creator.picture" :alt="tournament.creator.name" />
           </div>
           <!--SECTION * * * CARD BODY * * * ------------->
           <div class="card-body" style="overflow-y: auto">
             <h4 class="card-title"> {{ tournament.name }} </h4>
-            <p class="card-text">{{ tournament.category }}</p>
+            <p class="card-text"> {{ tournament.category }} </p>
             <p class="card-text text-end" style="font-weight: 650;">Spots Filled: {{ tournament.participantCount }} / {{ tournament.capacity }} </p>
             <p  v-if="tournament.description.length <= 20" class="card-text">Compete with the best gamers in the valley to take home your pride. And a cash prize!</p>
             <p class="card-text">{{ tournament.description }}</p>
@@ -52,7 +55,9 @@
 <script>
 
 
+import { AppState } from "../AppState.js";
 import { Tournament } from "../models/Tournament.js";
+import { computed } from "vue";
 
 export default {
 
@@ -63,6 +68,7 @@ export default {
   setup() {
 
     return {
+      profile: computed(() => AppState.activeProfile)
 
        
 
@@ -143,6 +149,39 @@ export default {
   left: 1.25rem;
   width: 100px;
   height: 100px;
+}
+
+.host-badge {
+  padding: .25rem;
+  text-align: center;
+  background-color: gold;
+  color: aliceblue;
+  text-shadow: 1px 1px 3px #000000;
+  border-radius: 3rem;
+  width: 5.25vw;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-image: linear-gradient(linear, left top, right top, color-stop(0%, #1e0a0a00), color-stop(25%, #1e0a0a00), color-stop(60%, #fff6b0d9), color-stop(100%, #1e0a0a00));
+  background-image: linear-gradient(120deg, #1e0a0a00 0%, #1e0a0a00 25%, #fff6b0d9 60%, #1e0a0a00 100%);
+  background-repeat: repeat-y;
+  background-position: -100px 0;
+  animation: goldShimmer 6s linear infinite;
+}
+
+@keyframes goldShimmer {
+
+  0% {
+    background-position: -800px 0
+  }
+
+  50% {
+    background-position: -200px 0
+  }
+
+  100% {
+    background-position: 100px 0
+  }
 }
 
 .card-custom:hover {
