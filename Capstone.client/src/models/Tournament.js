@@ -29,6 +29,7 @@ export class Tournament {
     this.updatedAt = data.updatedAt
     this.isCancelled = data.isCancelled
     this.isFinished = data.isFinished
+    this.started = false
     this.type = data.type
     this.gameSlug = data.gameSlug
     this.gameName = data.gameName

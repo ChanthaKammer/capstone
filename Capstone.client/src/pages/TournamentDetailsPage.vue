@@ -2,11 +2,11 @@
 <template>
   <section class="container-fluid bg-details">
     <div class="row">
-      <div v-if="!tournament?.isCancelled" class="col-12 col-md-6 pt-5 text-light text-uppercase details-top">
-        <p class="ms-5 mt-1 mb-0 my-0" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{
+      <div v-if="!tournament?.isCancelled" class="col-12 col-md-6 pt-5 text-light  details-top">
+        <p class="ms-5 mt-1 mb-0 my-0 text-uppercase" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{
           tournament?.name
         }} ({{ tournament?.type }}) </p>
-        <div class="row justify-content-center">
+        <div v-if="!started" class="row justify-content-center">
           <div class="col-12">
             <p class="ms-5 ps-3 mt-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">@ {{
               tournament?.location }} </p>
@@ -14,13 +14,14 @@
               {{ startDate }}
               @ {{ startTime }}
             </p>
-            <div v-if="!tournamentStarted" class="pb-5 countdown-area">
-              <TournamentCountdown :startDate="tournament?.startDate" />
-            </div>
-            <div v-else="tournamentStarted" class="pb-5 countdown-area">
+            <div class="pb-5 countdown-area">
               <TournamentCountdown :startDate="tournament?.startDate" />
             </div>
           </div>
+        </div>
+        <div>
+          <h4 class="fw-normal ms-5">Tournament started by host</h4>
+          <h5 class="fw-lighter ms-5">May the best player win</h5>
         </div>
       </div>
       <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
@@ -44,13 +45,13 @@
     <section>
       <div class="my-4">
         <div class="row ">
-          <div v-if="!tournamentStarted && !isCancelled && !isFinished"
+          <div v-if="!tournamentStarted && !isCancelled && !isFinished && !started"
             class="bg-pending col-12 d-flex justify-content-center align-items-center">
             <div>
               <p class="pending" style="font-style: italic;">Tournament Pending</p>
             </div>
           </div>
-          <div v-else-if="tournamentStarted" class="bg-active d-flex justify-content-center align-items-center">
+          <div v-else-if="started" class="bg-active d-flex justify-content-center align-items-center">
             <p style="font-style: italic;">Tournament live!</p>
           </div>
         </div>
@@ -104,7 +105,7 @@
       <div v-if="!isFinished" class="col-12 col-md-6">
         <div class="row text-center">
           <h1 class="fw-normal">Active players</h1>
-          <div class="col-3" v-for="p in activePlayers" :key="p.id">
+          <div class="col-3 mx-2" v-for="p in activePlayers" :key="p.id">
             <ParticipantCard :participant="p" />
           </div>
         </div>
@@ -121,6 +122,11 @@
           </div>
         </div>
 
+      </div>
+      <div v-else>
+        <div class="col-3" v-for="p in eliminatedPlayers" :key="p.id">
+          <ParticipantCard :participant="p" />
+        </div>
       </div>
 
 
@@ -238,7 +244,7 @@
           <h1 class="text-decoration-underline">Tournament Management</h1>
         </div>
       </div>
-      <div class="row">
+      <div class="row ">
         <div class="col-7">
           <form>
             <div class="form-group" v-for="(participant, index) in participants" :key="participant.id">
@@ -288,7 +294,6 @@
             Round</button>
           <button @click="finalizeTournament()" v-if="lastRound" type="button" class="m-1 btn btn-danger">Finalize
             Tournament</button>
-          <!-- SECTION FINISH TOURNAMENT INPUTS -->
           <div class="row">
 
           </div>
@@ -354,6 +359,7 @@ import { commentsService } from "../services/CommentsService.js";
 import { Modal } from 'bootstrap';
 import ParticipantCard from "../components/ParticipantCard.vue";
 import { Reward } from "../models/Reward.js";
+import { rewardsService } from "../services/RewardsService.js";
 // import isAuthenticated from '../services/AuthService'
 
 export default {
@@ -385,6 +391,10 @@ export default {
         const tournamentId = route.params.tournamentId
         logger.log('[ACTIVE TOURNAMENT ID]', tournamentId)
         await tournamentsService.setActiveTournament(tournamentId)
+        if (AppState.activeTournament.currentRound > 1) {
+          AppState.activeTournament.started = true
+
+        }
 
 
       } catch (error) {
@@ -403,9 +413,12 @@ export default {
       editable,
       rewards,
       // FIXME add computed for appstate.rewards
+      rewards: computed(() => AppState.rewards),
+      started: computed(() => AppState.activeTournament.started),
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
       tournament: computed(() => AppState.activeTournament),
+
       lastRound: computed(() => AppState.activeTournament.currentRound === AppState.activeTournament.totalRounds),
       participants: computed(() => AppState.participants),
 
@@ -480,27 +493,29 @@ export default {
       },
       async finalizeTournament() {
         try {
-          await AppState.participants.forEach((p, i) => {
-            if (p.status != 'eliminated' || 'active') {
-              const tempReward = {
-                tournamentId: AppState.activeTournament.id,
-                recipientId: p.id,
-                accountId: AppState.account.id,
-                name: p.status,
-                gpCoins: p.gpCoins,
-                badge: p.badge
+          if (await Pop.confirm(`This will end the tournament and distribute tournament rewards to the top 3 players. Are your rewards assigned?`)) {
+            await AppState.participants.forEach((p, i) => {
+              if (p.status != 'eliminated' || 'active') {
+                const tempReward = {
+                  tournamentId: AppState.activeTournament.id,
+                  recipientId: p.id,
+                  accountId: AppState.account.id,
+                  name: p.status,
+                  gpCoins: p.gpCoins,
+                  badge: p.badge
+                }
+                AppState.rewards.push(tempReward)
+                // FIXME take this tempReward obj and POST to the API
+                rewardsService.createReward(tempReward)
+
               }
-              // AppState.rewards.push(tempReward)
-              // FIXME take this tempReward obj and POST to the API
-            }
-            logger.log(AppState.rewards, '[APPSTATE REWARDS]')
-          });
-          // const firstPlace = AppState.participants.filter(p => p.status == 'firstPlace')
-          // const secondPlace = AppState.participants.filter(p => p.status == 'secondPlace')
-          // const thirdPlace = AppState.participants.filter(p => p.status == 'thirdPlace')
-          // const rewardFirst = new Reward()
-          // const rewardSecond = new Reward()
-          // const rewardThird = new Reward()
+              logger.log(AppState.rewards, '[APPSTATE REWARDS]')
+            });
+            AppState.activeTournament.isFinished = true
+            const finishedTournament = await tournamentsService.editTournament(AppState.activeTournament.id, AppState.activeTournament)
+            tournamentsService.setActiveTournament
+            logger.log("[FINISHED TOURNAMENT DATA]", finishedTournament)
+          }
         } catch (error) {
           logger.log(error);
         }
@@ -509,6 +524,7 @@ export default {
         try {
           const tournamentId = route.params.tournamentId;
           await tournamentsService.editTournament(tournamentId, editable.value)
+          logger.log(editable.value)
           Modal.getOrCreateInstance('#editTournamentModal').hide()
         } catch (error) {
           Pop.error(error)
@@ -696,7 +712,7 @@ p {
 
 .tournament-image {
   padding-left: 5rem;
-  padding-right: 10rem;
+  padding-right: 5rem;
   aspect-ratio: 1/1;
   min-height: 45vh;
   min-width: 40vw;
