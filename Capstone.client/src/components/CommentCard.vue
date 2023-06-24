@@ -36,7 +36,7 @@ import { Tournament } from "../models/Tournament.js"
 export default {
   props: {
     comment: { type: Comment, required: true },
-    tournament: { type: Tournament, required: true }
+    // tournament: { type: Tournament, required: true }
   },
   setup(props) {
     return {

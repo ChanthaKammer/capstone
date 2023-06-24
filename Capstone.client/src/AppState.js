@@ -30,6 +30,9 @@ export const AppState = reactive({
   activeGame: {},
   
   searchGames: [],
+
+  /** @type {import('./models/Reward.js').Reward} */
+  rewards:[],
   
   query: '',
 

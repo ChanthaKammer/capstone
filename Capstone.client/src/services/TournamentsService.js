@@ -37,8 +37,9 @@ class TournamentsService {
   async editTournament(tournamentId, editable){
     // logger.log(tournamentId, editable)
     const res = await api.put('api/tournaments/' + tournamentId, editable)
-    logger.log(res.data)
+    logger.log(res.data, '[EDITING TOURNEY]')
     AppState.activeTournament = res.data
+    return res.data
   }
 
   async cancelTournament(tournamentId) {

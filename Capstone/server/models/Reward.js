@@ -11,6 +11,7 @@ export const RewardSchema = new Schema({
 }, 
     {timestamps: true, toJSON: {virtuals: true}})
 
+    RewardSchema.index({ tournamentId: 1, accountId: 1}, { unique: true})
 
 RewardSchema.virtual('tournament', {
     localField: 'tournamentId',
