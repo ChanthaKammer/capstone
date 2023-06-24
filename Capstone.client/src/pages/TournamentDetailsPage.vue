@@ -260,9 +260,9 @@
                 <option class="text-dark" value="secondPlace">Second Place</option>
                 <option class="text-dark" value="thirdPlace">Third Place</option>
               </select>
-              <div v-if="lastRound" class="input-group mb-2" aria-label="gp points">
+              <div v-if="lastRound" class="input-group mb-2" aria-label="gp Coins">
                 <span class="input-group-text" id="gpPoints">gpPoints</span>
-                <input type="number" class="form-control" name="gpPoints" v-model="participant.gpCoins">
+                <input type="number" class="form-control" name="gpPoints" aria-label="Gp Coins" v-model="participant.gpCoins">
               </div>
               <div v-if="lastRound" class="input-group mb-2">
                 <select class="form-select" aria-label="badge awards" v-model="participant.badge">

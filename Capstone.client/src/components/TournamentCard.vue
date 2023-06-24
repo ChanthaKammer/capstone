@@ -40,7 +40,7 @@
             </div>
             <div class="col-6 ps-5 py-1">
               <router-link :to="{ name: 'TournamentDetails', params: { tournamentId: tournament.id } }">
-                <a href="#" class="btn btn-outline-primary">Battle</a>
+                <a href="#" aria-label="Go to Tournament Page" class="btn btn-outline-primary">Battle</a>
               </router-link>
             </div>
           </div>
