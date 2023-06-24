@@ -98,7 +98,7 @@
       <div v-if="!isFinished" class="col-12 col-md-6 ">
 
         <!-- SECTION SHOW CURRENT PLAYERS WHILE TOURNAMENT IS NOT FINISHED -->
-        <div v-if="isFinished" class="col-12">
+        <div  class="col-12">
           <div class=" mb-3 row justify-content-center text-center">
             <h1 class="">Active players</h1>
             <div class="col-3 mx-2" v-for="p in activePlayers" :key="p.id">
@@ -401,7 +401,7 @@ export default {
         const tournamentId = route.params.tournamentId
         logger.log('[ACTIVE TOURNAMENT ID]', tournamentId)
         await tournamentsService.setActiveTournament(tournamentId)
-        if (AppState.activeTournament.currentRound > 1) {
+        if (AppState.activeTournament.currentRound > 0) {
           AppState.activeTournament.started = true
 
         }

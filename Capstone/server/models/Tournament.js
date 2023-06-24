@@ -15,7 +15,8 @@ export const TournamentSchema = new Schema({
     type: { type: String, required: true, enum: ['local', 'online']},
     gameSlug: { type: String, required: true},
     gameName: { type: String, required: true},
-    gameImg: { type: String, required: true}
+    gameImg: { type: String, required: true},
+    started:{ type: Boolean, required: true, default: false}
 },
     { timestamps: true, toJSON: {virtuals: true}}
 )
