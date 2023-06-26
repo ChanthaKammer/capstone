@@ -2,30 +2,51 @@
 <template>
   <section class="container-fluid bg-details">
     <div class="row">
-      <div v-if="!tournament?.isCancelled" class="col-12 col-md-6 pt-5 text-light  details-top">
-        <p class="ms-5 mt-1 mb-0 my-0 text-uppercase" style="font-size: 2.5rem; font-weight: 750; font-style: italic;">{{
+      <div v-if="!tournament?.isCancelled" class="col-12 col-md-6 pt-3 text-light  details-top">
+        <p class="ms-4 mt-1 mb-0 my-0 text-uppercase" style="font-size: 2.5rem; font-weight: 650; font-style: italic;">{{
           tournament?.name
         }} ({{ tournament?.type }}) </p>
-        <div v-if="!started" class="row justify-content-center">
+        <div v-if="!tournamentStarted" class="row justify-content-center">
           <div class="col-12">
-            <p class="ms-5 ps-3 mt-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">@ {{
-              tournament?.location }} </p>
-            <p class="ms-5 ps-3 mt-2 mb-0" style="font-size: 2rem; font-weight: 450; font-style: italic;">BE THERE ON
-              {{ startDate }}
-              @ {{ startTime }}
+            <p class="ms-4 ps-3 mt-0 mb-0" style="font-size: 1.9rem; font-weight: 450; font-style: italic;">Location:
+              <span class="fw-light text-white fs-2"> {{
+                tournament?.location }}</span>
             </p>
-            <div class="pb-5 countdown-area">
+            <p class="ms-4 ps-3 mt-2 mb-0" style="font-size: 1.9rem; font-weight: 450; font-style: italic;">Date:
+              {{ startDate }}
+
+            </p>
+            <p class="ms-4 ps-3 mt-2 mb-3" style="font-size: 1.9rem; font-weight: 450; font-style: italic;">
+
+              Time: {{ startTime }}
+            </p>
+            <div v-if="!tournamentStarted && !isFinished" class="pb-5 countdown-area">
               <TournamentCountdown :startDate="tournament?.startDate" />
             </div>
           </div>
         </div>
-        <div>
-          <h4 class="fw-normal ms-5">Tournament started by host</h4>
-          <h5 class="fw-lighter ms-5">May the best player win</h5>
+        <div v-if="tournamentStarted">
+          <h4 class="fw-normal fs-3 ms-3 mt-3">Tournament has begun</h4>
+          <h5 class="fw-lighter ms-4">May the best player win</h5>
+          <div class="container-img">
+            <img class="game-img1" src="https://media3.giphy.com/media/iJK1WyehdOPqckc7Vp/giphy.gif?cid=ecf05e477xnlicx57705d2nz4jh7z7bx3x3ln3tldhb7ku2s&ep=v1_stickers_search&rid=giphy.gif&ct=s" alt="">
+
+          </div>
+        </div>
+        <div v-if="tournament.isFinished == true" class="text-center">
+          <h4 class="fw-bold fs-2 ms-0">WINNER</h4>
+          <h5 class="fw-lighter ms-4">Congratulations to <span class="text-white fw-bold fs-5"> {{
+            first?.profile?.gamerTag }}</span> for winning the tournament!</h5>
+        </div>
+        <div v-if="isFinished" class="text-center">
+          <img class="winner" :src="first?.profile?.picture" alt="">
         </div>
       </div>
-      <div class="col-12 col-md-6 pt-5 px-5 d-flex justify-content-end align-items-center">
-        <img :src="tournament?.coverImg" :alt="tournament?.coverImg" class="img-fluid tournament-image">
+      <div class="col-12 col-md-6 pt-2 px-5 d-flex  align-items-center">
+        <img :src="tournament?.coverImg" :alt="tournament?.coverImg" class=" tournament-image" style="">
+      </div>
+      <div>
+
       </div>
       <!-- <div class="row">
         <div class="col-12 pb-5">
@@ -45,13 +66,14 @@
     <section>
       <div class="my-4">
         <div class="row ">
-          <div v-if="!tournamentStarted && !isCancelled && !isFinished && !started"
+          <div v-if="!tournamentStarted && !isCancelled && !isFinished"
             class="bg-pending col-12 d-flex justify-content-center align-items-center">
             <div>
               <p class="pending" style="font-style: italic;">Tournament Pending</p>
             </div>
           </div>
-          <div v-else-if="started" class="bg-active d-flex justify-content-center align-items-center">
+          <div v-else-if="started && !isFinished || tournamentStarted"
+            class="bg-active d-flex justify-content-center align-items-center">
             <p style="font-style: italic;">Tournament live!</p>
           </div>
         </div>
@@ -63,7 +85,7 @@
         <div class="row bg-finished">
           <div class="col-12 d-flex justify-content-center align-items-center">
             <div v-if="tournament.isFinished">
-              <p class="finished" style="font-style: italic;">Tournament Finished</p>
+              <p class="finished" style="font-style: italic;">Congratulations {{ first?.profile?.gamerTag }}</p>
             </div>
           </div>
         </div>
@@ -77,232 +99,241 @@
       </div>
     </section>
 
+    <!-- SECTION WHEN TOURNAMENT IS FINISHED SHOW THE WINNERS -->
     <div class="row">
-      <!-- SECTION WHEN TOURNAMENT IS FINISHED SHOW THE WINNERS -->
-      <div v-if="isFinished" class="col-12 col-md-6 order-2 order-md-1">
-        <div class="row justify-content-around p-4">
-          <div class="col-md-12 text-center">
-            <h1>1st Place:</h1>
-            <!-- NOTE MAKE ICON FOR CURRENT LEADER BY THEIR USER IMAGE USING THE :TITLE V-BIND METHOD ON ACTIVE TOURNAMENT WHEN LESS TIRED -->
-            <i class="mdi mdi-account-circle top-player" style="font-size: 5rem;"></i>
-            <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Name</p>
-            <p style="font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px #000000;">Top Player Team</p>
-            <div class="row justify-content-center">
+      <div v-if="!isFinished" class="col-12 col-md-6 ">
+
+        <!-- SECTION SHOW CURRENT PLAYERS WHILE TOURNAMENT IS NOT FINISHED -->
+        <div class="col-12">
+          <div class=" mb-3 row justify-content-center text-center ">
+            <h1 class=" glass-container">Active players</h1>
+            <div class="col col-md-3 mx-2" v-for="p in activePlayers" :key="p.id">
+              <ParticipantCard :participant="p" />
+            </div>
+          </div>
+          <div v-if="eliminatedPlayers.length >= 1" class="row text-center mb-3">
+            <h1 class="fw-normal glass-container">Eliminated Players</h1>
+            <div class="col col-md-3 mx-2" v-for="p in eliminatedPlayers" :key="p.id">
+              <ParticipantCard :participant="p" />
+            </div>
+          </div>
+          <div class="row text-center ">
+            <h1 class="fw-normal glass-container">Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h1>
+
+            <div class="col-md-6 text-center">
             </div>
           </div>
 
-          <div>
-          </div>
-        </div>
-        <div class="col-md-6 text-center">
-          <h2>Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
-        </div>
-        <div class="col-auto" v-for="p in participants" :key="p.id">
-          <ParticipantCard :participant="p" />
-        </div>
-      </div>
-      <!-- SECTION SHOW CURRENT PLAYERS WHILE TOURNAMENT IS NOT FINISHED -->
-      <div v-if="!isFinished" class="col-12 col-md-6">
-        <div class="row text-center">
-          <h1 class="fw-normal">Active players</h1>
-          <div class="col-3 mx-2" v-for="p in activePlayers" :key="p.id">
-            <ParticipantCard :participant="p" />
-          </div>
-        </div>
-        <div class="row text-center">
-          <h1 class="fw-normal">Eliminated Players</h1>
-          <div class="col-3" v-for="p in eliminatedPlayers" :key="p.id">
-            <ParticipantCard :participant="p" />
-          </div>
-        </div>
-        <div class="row text-center">
-          <h2 class="fw-normal">Round {{ tournament.currentRound }} / {{ tournament.totalRounds }} </h2>
-
-          <div class="col-md-6 text-center">
-          </div>
         </div>
 
       </div>
-      <div v-else>
-        <div class="col-3" v-for="p in eliminatedPlayers" :key="p.id">
-          <ParticipantCard :participant="p" />
+      <div v-else class="col-12 col-md-6 d-flex justify-content-around">
+        <div>
+          <p class="fs-3 text-center">Second place</p>
+          <img :src="second?.profile?.picture" alt="" class="winner2">
+          <p class="fs-3 text-center">{{ second?.profile?.gamerTag }}</p>
         </div>
-      </div>
+        <div>
+          <p class="fs-3 text-center">Third place</p>
+          <img :src="third?.profile?.picture" alt="" class="winner2">
+          <p class="fs-3 text-center">{{ third?.profile?.gamerTag }}</p>
+        </div>
 
+      </div>
 
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" :alt="tournament.name" class="game-img rounded-2" style="">
+        <img :src="tournament.gameImg" :alt="tournament.name" class="game-img rounded-2" style="" alt="">
 
-        <div v-if="user.isAuthenticated" class="d-flex justify-content-evenly">
-          <div>
+        <!-- SECTION TOURNAMENT BUTTONS -->
+        <div v-if="user.isAuthenticated && !isFinished" class="d-flex justify-content-evenly"> 
             <div v-if="!isParticipant">
               <RGBButton class="px-2 rgb-btn" aria-label="JoinTournamentButton" buttonText="Join the Tournament!"
                 @click="joinTournament" />
             </div>
-            <div v-else>
+            <div v-else="">
               <RGBButton class="px-2 rgb-btn" buttonText="Leave Tournament!" @click="leaveTournament" />
             </div>
-          </div>
-          <div v-if="isTournamentCreator">
-            <RGBButton class="px-2 rgb-btn" buttonText="Cancel Tournament" @click="cancelTournament" />
-          </div>
-          <div v-if="isTournamentCreator">
-            <RGBButton class="px-2 rgb-btn" buttonText="Edit Tournament" data-bs-toggle="modal"
-              data-bs-target="#editTournamentModal" />
-            <div class="row justify-content-center">
+            
+        </div>
+<!-- !SECTION TOURNAMENT BUTTONS END -->
 
-              <!-- SECTION Tournament Edit Modal -->
-              <div class="modal fade" id="editTournamentModal" tabindex="-1" aria-labelledby="editTournamentModal"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="editTournamentLabel"></h1>
-                      <p class="m-0 fs-1 text-dark">Edit Tournament</p>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body justify-content-center">
-                      <form @submit.prevent="editTournament()" class="col-12">
-                        <label class="edit-labels" for="text">Tournament Name</label>
-                        <input class="form-control mb-3" type="text" placeholder="Tournament Name"
-                          aria-label="tournament Name" v-model="editable.name">
-                        <label class="edit-labels" for="text">Tournament Avatar Image</label>
-                        <input class="form-control mb-3" type="text" id="tournamentAvatarImg"
-                          aria-label="tournament Avatar" placeholder="Tournament Avatar Image"
-                          v-model="editable.coverImg">
-                        <label class="edit-labels" for="text">Tournament Cover Image</label>
-                        <input class="form-control mb-3" type="text" id="gameImg" placeholder="Tournament Cover Image"
-                          aria-label="tournament Cover Image" v-model="editable.gameImg">
-                        <label class="edit-labels" for="text">Start Date</label>
-                        <input type="datetime-local" name="startDate" class="form-control mb-3" placeholder="Start Date"
-                          aria-label="Start Date" v-model="editable.startDate">
-                        <label class="edit-labels" for="text">Location</label>
-                        <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Location"
-                          aria-label="Location" v-model="editable.location">
-                        <label class="edit-labels" for="text">Total Rounds</label>
-                        <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Total Rounds"
-                          aria-label="Total Rounds" v-model="editable.totalRounds">
-                        <label class="edit-labels" for="text">Capacity</label>
-                        <input class="form-control mb-3" type="text" id="capacity" placeholder="Capacity"
-                          aria-label="Capacity" v-model="editable.capacity">
-                        <label class="edit-labels" for="text">Match Type</label>
-                        <select class="form-select mb-3" aria-label="Tournament Type" v-model="editable.type"
-                          style="background-color: white;">
-                          <option class="text-dark" selected value="match" disabled>Match Type</option>
-                          <option class="text-dark" value="online">Online</option>
-                          <option class="text-dark" value="local">Local</option>
-                        </select>
-                        <label class="edit-labels" for="text">Tournament Description</label>
-                        <textarea class="form-control mb-3" id="tournamentDescription" rows="3"
-                          aria-label="tournament Description" placeholder="Tournament Description"
-                          v-model="editable.description"></textarea>
-                        <label class="edit-labels" for="text">Tournament Age Rating</label>
-                        <select class="form-select mb-3" aria-label="Tournament Age Rating" v-model="editable.ageRating"
-                          style="background-color: white;">
 
-                          <option class="text-dark" value="Everyone">Everyone</option>
-                          <option class="text-dark" value="Teen">Teen</option>
-                          <option class="text-dark" value="Adult">Adult</option>
-                        </select>
-                        <label class="edit-labels" for="text label-">Max Teams</label>
-                        <input class="form-control mb-3 bg-white" type="number" placeholder="Max Teams"
-                          aria-label="max Teams" min="1" v-model="editable.maxTeams">
-                        <label class="edit-labels" for="text">Tournament GP Prize</label>
-                        <input class="form-control mb-3 bg-white" type="text" id="tournamentMoney"
-                          placeholder="Tournament GP Prize" aria-label="Tournament Reward Coins"
-                          v-model="editable.reward">
-                        <label class="edit-labels" for="text">First Place Badge</label>
-                        <input class="form-control mb-3 bg-white" type="text" id="firstPlaceBadge"
-                          placeholder="First Place Badge" aria-label="First Place Badge"
-                          v-model="editable.firstPlaceBadge">
-                        <label class="edit-labels" for="text">Second Place Badge</label>
-                        <input class="form-control mb-3 bg-white" type="text" id="secondPlaceBadge"
-                          placeholder="Second Place Badge" aria-label="Second Place Badge"
-                          v-model="editable.secondPlaceBadge">
-                        <label class="edit-labels" for="text">Third Place Badge</label>
-                        <input class="form-control mb-3 bg-white" type="text" id="thirdPlaceBadge"
-                          placeholder="Third Place Badge" aria-label="Third Place Badge"
-                          v-model="editable.thirdPlaceBadge">
-                        <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+        <!-- SECTION Tournament Edit Modal -->
+        <div class="modal fade" id="editTournamentModal" tabindex="-1" aria-labelledby="editTournamentModal"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editTournamentLabel"></h1>
+                <p class="m-0 fs-1 text-dark">Edit Tournament</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body justify-content-center">
+                <form @submit.prevent="editTournament()" class="col-12">
+                  <label class="edit-labels" for="text">Tournament Name</label>
+                  <input class="form-control mb-3" type="text" placeholder="Tournament Name" aria-label="tournament Name"
+                    v-model="editable.name">
+                  <label class="edit-labels" for="text">Tournament Avatar Image</label>
+                  <input class="form-control mb-3" type="text" id="tournamentAvatarImg" aria-label="tournament Avatar"
+                    placeholder="Tournament Avatar Image" v-model="editable.coverImg">
+                  <label class="edit-labels" for="text">Tournament Cover Image</label>
+                  <input class="form-control mb-3" type="text" id="gameImg" placeholder="Tournament Cover Image"
+                    aria-label="tournament Cover Image" v-model="editable.gameImg">
+                  <label class="edit-labels" for="text">Start Date</label>
+                  <input type="datetime-local" name="startDate" class="form-control mb-3" placeholder="Start Date"
+                    aria-label="Start Date" v-model="editable.startDate">
+                  <label class="edit-labels" for="text">Location</label>
+                  <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Location"
+                    aria-label="Location" v-model="editable.location">
+                  <label class="edit-labels" for="text">Total Rounds</label>
+                  <input class="form-control mb-3" type="text" id="totalRounds" placeholder="Total Rounds"
+                    aria-label="Total Rounds" v-model="editable.totalRounds">
+                  <label class="edit-labels" for="text">Capacity</label>
+                  <input class="form-control mb-3" type="text" id="capacity" placeholder="Capacity" aria-label="Capacity"
+                    v-model="editable.capacity">
+                  <label class="edit-labels" for="text">Match Type</label>
+                  <select class="form-select mb-3" aria-label="Tournament Type" v-model="editable.type"
+                    style="background-color: white;">
+                    <option class="text-dark" selected value="match" disabled>Match Type</option>
+                    <option class="text-dark" value="online">Online</option>
+                    <option class="text-dark" value="local">Local</option>
+                  </select>
+                  <label class="edit-labels" for="text">Tournament Description</label>
+                  <textarea class="form-control mb-3" id="tournamentDescription" rows="3"
+                    aria-label="tournament Description" placeholder="Tournament Description"
+                    v-model="editable.description"></textarea>
+                  <label class="edit-labels" for="text">Tournament Age Rating</label>
+                  <select class="form-select mb-3" aria-label="Tournament Age Rating" v-model="editable.ageRating"
+                    style="background-color: white;">
+
+                    <option class="text-dark" value="Everyone">Everyone</option>
+                    <option class="text-dark" value="Teen">Teen</option>
+                    <option class="text-dark" value="Adult">Adult</option>
+                  </select>
+                  <label class="edit-labels" for="text label-">Max Teams</label>
+                  <input class="form-control mb-3 bg-white" type="number" placeholder="Max Teams" aria-label="max Teams"
+                    min="1" v-model="editable.maxTeams">
+                  <label class="edit-labels" for="text">Tournament GP Prize</label>
+                  <input class="form-control mb-3 bg-white" type="text" id="tournamentMoney"
+                    placeholder="Tournament GP Prize" aria-label="Tournament Reward Coins" v-model="editable.reward">
+                  <label class="edit-labels" for="text">First Place Badge</label>
+                  <input class="form-control mb-3 bg-white" type="text" id="firstPlaceBadge"
+                    placeholder="First Place Badge" aria-label="First Place Badge" v-model="editable.firstPlaceBadge">
+                  <label class="edit-labels" for="text">Second Place Badge</label>
+                  <input class="form-control mb-3 bg-white" type="text" id="secondPlaceBadge"
+                    placeholder="Second Place Badge" aria-label="Second Place Badge" v-model="editable.secondPlaceBadge">
+                  <label class="edit-labels" for="text">Third Place Badge</label>
+                  <input class="form-control mb-3 bg-white" type="text" id="thirdPlaceBadge"
+                    placeholder="Third Place Badge" aria-label="Third Place Badge" v-model="editable.thirdPlaceBadge">
+                  <button class="btn btn-success text-end" type="submit" role="button">Save Edits</button>
+                </form>
               </div>
             </div>
           </div>
         </div>
+        <!-- !SECTION -->
+
+
 
       </div>
     </div>
 
+
     <!-- SECTION tournament management -->
 
-    <div v-if="isTournamentCreator" class="container">
+    <div v-if="isTournamentCreator && !isFinished" class="container">
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 text-center glass-container">
           <h1 class="text-decoration-underline">Tournament Management</h1>
+          <h1 class="fw-light">Round {{ tournament?.currentRound }} of {{ tournament?.totalRounds }}</h1>
         </div>
       </div>
-      <div class="row ">
-        <div class="col-7">
+
+      <div class="row justify-content-between">
+        <div class="col-12 col-md-6 py-1 my-1 glass-container">
+
           <form>
-            <div class="form-group" v-for="(participant, index) in participants" :key="participant.id">
-              <div>
-                <img v-if="participant.status != 'eliminated'" class="img-fluid pfp-manage"
-                  :src="participant.profile.picture" alt="">
-                <img v-else class="img-fluid pfp-manage player-eliminated" :src="participant.profile.picture" alt="">
-                <h1 v-if="participant.status == 'active'" class="fs-5">{{ participant.profile.name }} - Tournament status
-                  - <span class="text-success">{{ participant.status }}</span></h1>
-                <h1 v-else-if="participant.status == 'eliminated'" class="fs-5">{{ participant.profile.name }} -
-                  Tournament status - <span class="text-danger">{{ participant.status }}</span></h1>
-                <h1 v-else class="fs-5">{{ participant.profile.name }} - Tournament status - <span class="text-success">{{
-                  participant.status }}</span></h1>
+            <div class="form-group" v-for="(activePlayers, index) in activePlayers" :key="activePlayers.id">
+              <div class="d-flex">
+                <img class="img-fluid pfp-manage" :class="{ 'player-eliminated': activePlayers.status === 'eliminated' }"
+                  :src="activePlayers.profile.picture" alt="">
+                <div class="ps-1 my-1">
+
+                  <h1 class="fs-5">{{ activePlayers.profile.name }}</h1>
+                  <p class="fs-4 fw-light m-0 mt-3">Tournament status -
+                    <span class="fs-5 fw-normal"
+                      :class="{ 'text-success': activePlayers.status !== 'eliminated', 'text-danger': activePlayers.status === 'eliminated' }">
+                      {{ activePlayers.status }}
+                    </span>
+                  </p>
+                </div>
               </div>
-              <select class="mb-3 form-control" v-model="participant.status" aria-label="player status">
+              <select class="mb-3 form-select custom-select" v-model="activePlayers.status" aria-label="player status">
                 <option class="text-dark" value="active">Active</option>
                 <option class="text-dark" value="eliminated">Eliminated</option>
-                <option class="text-dark" value="firstPlace">First Place</option>
-                <option class="text-dark" value="secondPlace">Second Place</option>
-                <option class="text-dark" value="thirdPlace">Third Place</option>
+                <option v-if="lastRound" class="text-dark" value="first">First Place</option>
+                <option v-if="lastRound" class="text-dark" value="second">Second Place</option>
+                <option v-if="lastRound" class="text-dark" value="third">Third Place</option>
               </select>
+              <label v-if="lastRound" class="text-light">Distribute gpCoins</label>
               <div v-if="lastRound" class="input-group mb-2" aria-label="gp Coins">
-                <span class="input-group-text" id="gpPoints">gpPoints</span>
-                <input type="number" class="form-control" name="gpPoints" aria-label="Gp Coins" v-model="participant.gpCoins">
+
+                <input type="number" min="0" class="form-control" name="gpPoints" aria-label="Gp Coins"
+                  v-model="activePlayers.gpCoins">
               </div>
+              <label v-if="lastRound" class="text-white">Select a badge</label>
               <div v-if="lastRound" class="input-group mb-2">
-                <select class="form-select" aria-label="badge awards" v-model="participant.badge">
-                  <option selected>Open this to select badge reward</option>
-                  <option value="1">1st place badge</option>
-                  <option value="2">2nd Place badge</option>
-                  <option value="3">3rd Place badge</option>
-                  <option value="3">Ruthless badge</option>
-                  <option value="3">team leader badge</option>
-                  <option value="3">Cold Blooded badge</option>
-                  <option value="3">Money Bags badge</option>
-                  <option value="3">Top Sponsors badge</option>
+                <select class="form-select custom-select" aria-label="badge awards" v-model="activePlayers.badge">
+                  <option value="">Select a badge to reward</option>
+                  <option value="firstPlaceBadge">1st place badge</option>
+                  <option value="secondPlaceBadge">2nd Place badge</option>
+                  <option value="thirdPlaceBadge">3rd Place badge</option>
+                  <option disabled>-----------------------</option>
+                  <option value="ruthlessBadge">Ruthless badge</option>
+                  <option value="teamleaderBadge">Team leader badge</option>
+                  <option value="coldBloodedBadge">Cold Blooded badge</option>
+                  <option value="moneyBagsBadge">Money Bags badge</option>
+                  <option value="topSponsorBadge">Top Sponsors badge</option>
                 </select>
               </div>
             </div>
           </form>
         </div>
-        <div class="col-5">
-          <div>
-            <h1>Round {{ tournament?.currentRound }} of {{ tournament?.totalRounds }}</h1>
-          </div>
-          <button @click="finalizeRound()" v-if="!lastRound" type="button" class="m-1 btn btn-success">Finalize
-            Round</button>
-          <button @click="finalizeTournament()" v-if="lastRound" type="button" class="m-1 btn btn-danger">Finalize
-            Tournament</button>
-          <div class="row">
+        <div class="col-12 col-md-6 py-1 my-1 glass-container">
 
+
+          <div class="row">
+            <div class="form-group" v-for="(eliminatedPlayers, index) in eliminatedPlayers" :key="eliminatedPlayers.id">
+              <img class="m-1 img-fluid pfp-manage"
+                :class="{ 'player-eliminated': eliminatedPlayers.status === 'eliminated' }"
+                :src="eliminatedPlayers.profile.picture" alt="">
+              <select class="mb-3 form-select custom-select" v-model="eliminatedPlayers.status"
+                aria-label="player status">
+                <option class="text-dark" value="active">Active</option>
+                <option class="text-dark" value="eliminated">Eliminated</option>
+              </select>
+            </div>
+          </div>
+          <div class="">
+            
+            <RGBButton @click="finalizeRound()" v-if="!lastRound" buttonText="Finalize Round" class=" text-success px-2 rgb-btn" />
+            <RGBButton @click="finalizeTournament()" v-if="lastRound" buttonText="Finalize Tournament" class="text-danger px-2 rgb-btn" />
+            <RGBButton class="px-2 rgb-btn" buttonText="Cancel Tournament" @click="cancelTournament" />
+            
+              <RGBButton class="px-2 rgb-btn" buttonText="Edit Tournament" data-bs-toggle="modal"
+                data-bs-target="#editTournamentModal" />
+              <div class="row justify-content-center">
+              </div>
+            
           </div>
         </div>
       </div>
     </div>
+    <!-- !SECTION  -->
+
 
     <!-- SECTION Comments -->
-    <div class="row p-5 bg-dark justify-content-center">
+    <div class="row p-4 bg-dark justify-content-center">
       <h1 class="text-center pb-4">Tournament comments</h1>
       <div v-if="user.isAuthenticated" class="col-12 col-md-6 card p-1 px-3 rounded-3 elevation-5 comment-area"
         style="position: relative;">
@@ -310,8 +341,8 @@
           <div class="d-flex align-items-center mb-2">
             <img :src="account.picture" :alt="account.name"
               class="img-fluid img-responsive object-fit-cover rounded-circle me-2 pfp" width="38"
-              style="position: absolute; top: -40px; box-shadow: 0px 0px 1px 1px white;">
-            <h3 style="position: absolute; top: -3px;left:100px;">{{ account.name }}</h3> <small
+              style="position: absolute; top: -46px; box-shadow: 0px 0px 1px 1px white;">
+            <h3 style="position: absolute; top: -5px;left:100px;">{{ account.name }}</h3> <small
               class="text-white fw-normal mobile-post-comment"
               style="text-shadow: 1px 1px 1px black;position: absolute; top: 8px;right: 57px;">join the
               conversation</small>
@@ -391,7 +422,7 @@ export default {
         const tournamentId = route.params.tournamentId
         logger.log('[ACTIVE TOURNAMENT ID]', tournamentId)
         await tournamentsService.setActiveTournament(tournamentId)
-        if (AppState.activeTournament.currentRound > 1) {
+        if (AppState.activeTournament.currentRound > 0) {
           AppState.activeTournament.started = true
 
         }
@@ -413,6 +444,7 @@ export default {
       editable,
       rewards,
       // FIXME add computed for appstate.rewards
+      rewards: computed(() => AppState.rewards),
       started: computed(() => AppState.activeTournament.started),
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
@@ -420,7 +452,15 @@ export default {
 
       lastRound: computed(() => AppState.activeTournament.currentRound === AppState.activeTournament.totalRounds),
       participants: computed(() => AppState.participants),
-
+      first: computed(() => {
+        return AppState.participants.find(p => p.status === 'first')
+      }),
+      second: computed(() => {
+        return AppState.participants.find(p => p.status === 'second')
+      }),
+      third: computed(() => {
+        return AppState.participants.find(p => p.status === 'third')
+      }),
       activePlayers: computed(() => {
         return AppState.participants.filter(p => p.status != 'eliminated')
       }),
@@ -494,6 +534,8 @@ export default {
         try {
           if (await Pop.confirm(`This will end the tournament and distribute tournament rewards to the top 3 players. Are your rewards assigned?`)) {
             await AppState.participants.forEach((p, i) => {
+              const participantUpdate = participantsService.updatePlayerStatus(p.id, { status: p.status })
+              logger.log(participantUpdate)
               if (p.status != 'eliminated' || 'active') {
                 const tempReward = {
                   tournamentId: AppState.activeTournament.id,
@@ -507,11 +549,12 @@ export default {
                 // FIXME take this tempReward obj and POST to the API
                 rewardsService.createReward(tempReward)
 
+
               }
               logger.log(AppState.rewards, '[APPSTATE REWARDS]')
             });
             AppState.activeTournament.isFinished = true
-            const finishedTournament = await tournamentsService.editTournament(AppState.activeTournament.id, AppState.activeTournament)
+            const finishedTournament = await tournamentsService.editTournament(AppState.activeTournament.id, { isFinished: true })
             tournamentsService.setActiveTournament
             logger.log("[FINISHED TOURNAMENT DATA]", finishedTournament)
           }
@@ -519,6 +562,7 @@ export default {
           logger.log(error);
         }
       },
+      //!SECTION
       async editTournament() {
         try {
           const tournamentId = route.params.tournamentId;
@@ -534,6 +578,8 @@ export default {
     async function getParticipants() {
       try {
         await participantsService.getParticipants(route.params.tournamentId)
+        AppState.participants.forEach(p => p.badge = "");
+        AppState.participants.forEach(p => p.gpCoins = 0);
       } catch (error) {
         logger.log('[getting participants for this tournament]', error);
         Pop.error(error.message);
@@ -602,6 +648,40 @@ function formatDateAndTime(dateString) {
 
 
 <style scoped lang="scss">
+// SECTION  INPUT CLASSES
+.custom-select {
+  appearance: none;
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 0.375rem 0.75rem;
+  height: auto;
+  min-height: 30px;
+  line-height: 1.5;
+  color: #495057;
+  cursor: pointer;
+}
+
+.custom-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.custom-select option {
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+// !SECTION END INPUT CLASSES
+.glass-container {
+  background: rgba(17, 25, 39, 0.62);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.8px);
+  -webkit-backdrop-filter: blur(4.8px);
+  border: 1px solid rgba(17, 25, 39, 0.3);
+}
+
 .bg-background {
   background-color: #4a70e196;
 }
@@ -622,6 +702,8 @@ function formatDateAndTime(dateString) {
 }
 
 // SECTION management classes
+
+//!SECTION
 .pfp {
   aspect-ratio: 1/1;
   min-width: 4rem;
@@ -709,30 +791,72 @@ p {
 
 }
 
-.tournament-image {
-  padding-left: 5rem;
-  padding-right: 5rem;
+.winner {
   aspect-ratio: 1/1;
-  min-height: 45vh;
-  min-width: 40vw;
-  max-height: 45vh;
-  max-width: 40vw;
-  border-radius: 5%;
+  min-width: 20rem;
+  min-height: 20rem;
+  max-width: 20rem;
+  max-height: 20rem;
+  border-radius: 3%;
 }
 
-.tournament-image:hover {
-  filter: brightness(1.2);
-  transition: 0.5s;
-  box-shadow: 0px 0px 10px 10px #10a5a548;
+.winner2 {
+  aspect-ratio: 1/1;
+  min-width: 15rem;
+  min-height: 15rem;
+  max-width: 15rem;
+  max-height: 15rem;
+  border-radius: 3%;
+}
+
+.tournament-image {
+  // padding-left: 5rem;
+  // padding-right: 5rem;
+  margin-left: auto;
+  aspect-ratio: 1/1;
+  min-height: 40vh;
+  min-width: 40vw;
+  max-height: 40vh;
+  max-width: 40vw;
+  border-radius: 3%;
+}
+
+// .tournament-image:hover {
+//   filter: brightness(1.2);
+//   transition: 0.5s;
+//   box-shadow: 0px 0px 10px 10px #10a5a548;
+// }
+
+.container-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  /* Adjust the height of the container as needed */
+  /* Add any other styling for the container */
+}
+
+.container-img img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .game-img {
-  margin-left: 4rem;
+  // margin-left: 4rem;
   aspect-ratio: 1/1;
   min-height: 45vh;
   min-width: 40vw;
   max-height: 45vh;
   max-width: 40vw;
+}
+.game-img1 {
+  // margin-left: 4rem;
+  aspect-ratio: 1/1;
+  min-height: 35vh;
+  min-width: 35vw;
+  max-height: 35vh;
+  max-width: 35vw;
+  margin-bottom: 5rem;
 }
 
 .game-img:hover {
@@ -870,8 +994,8 @@ p {
 }
 
 .rgb-btn {
-  width: 10vw;
-  height: 3rem;
+  width: auto;
+  // height: 3rem;
 }
 
 .edit-labels {
@@ -879,6 +1003,28 @@ p {
 }
 
 @media (max-width: 768px) {
+  .finished {
+    font-size: 40px;
+  }
+
+  .winner {
+    aspect-ratio: 1/1;
+    min-width: 15rem;
+    min-height: 15rem;
+    max-width: 15rem;
+    max-height: 15rem;
+    border-radius: 3%;
+  }
+
+  .winner2 {
+    aspect-ratio: 1/1;
+    min-width: 10rem;
+    min-height: 10rem;
+    max-width: 10rem;
+    max-height: 10rem;
+    border-radius: 3%;
+  }
+
   .mobile-results {
     margin-bottom: 0rem;
     padding-top: 6rem;
@@ -892,7 +1038,7 @@ p {
     margin-left: auto;
     aspect-ratio: 1/1;
     min-height: 30vh;
-    min-width: 90vw;
+    min-width: 40vw;
     max-height: 45vh;
     max-width: 40vw;
   }
