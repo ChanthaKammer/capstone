@@ -1,9 +1,9 @@
 <template>
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
   <div class="row media-adjust justify-content-center align-items-center ms-4">
-    <div class="col-md-12">
+    <!-- <div class="col col-md-12"> -->
       <p class="text-center count-title">Tournament Countdown</p>
-    </div>
+    <!-- </div> -->
     <div class="time__box d-flex justify-content-center mb-5">
       <div class="col-md-3">
         <p class="text-center"> {{ days }} </p>
@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-</div>
+<!-- </div> -->
 
 </template>
 
@@ -94,9 +94,9 @@ span {
   color: #ffffff;
 
   font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   letter-spacing: 2px;
-  margin-top: 4rem;
+  margin-top: 1rem;
   margin-bottom: -5rem;
 }
 
@@ -104,7 +104,7 @@ span {
   width: 100%;
   max-width: 100%;
   margin-bottom: 2rem;
-  padding: 1em;
+  padding: em;
   background-color: #0811124f;
   filter: drop-shadow(0 0 10px #000);
   border-radius: 5px;
@@ -133,6 +133,7 @@ span {
 
   .time__box p {
     width: 20vw;
+    font-size: 45px;
   }
 }
 

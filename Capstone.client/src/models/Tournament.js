@@ -29,7 +29,7 @@ export class Tournament {
     this.updatedAt = data.updatedAt
     this.isCancelled = data.isCancelled
     this.isFinished = data.isFinished
-    this.started = false
+    this.started = this.currentRound > 1 || new Date(data.startDate) < new Date();
     this.type = data.type
     this.gameSlug = data.gameSlug
     this.gameName = data.gameName
