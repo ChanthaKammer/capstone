@@ -1,8 +1,6 @@
 <template>
 
    <section class="container-fluid bg-main">
-
-      <button class="btn neon-button" style="max-width: 6vw; position: absolute; top: 6rem; right: 1rem;">Edit Profile</button>
       
       <div class="row">
          <div class="col-12 d-flex justify-content-center align-items-center">
@@ -13,7 +11,7 @@
       <div class="row">
          <div class="col-3 d-flex align-items-center ms-5">
             <div class="card profile-card bg-filler p-1 mt-4" style="border: none; width: 12rem;">
-               <img :src="activeProfile.picture" :alt="activeProfile.name" class="card-img-top profile-img">
+               <img :src="activeProfile.picture" :alt="activeProfile.name" class="card-img-top profile-img" style="height: 12rem;">
                <div class="d-flex flex-column justify-content-center align-items-center" style="line-height: 35px;">
                  <p class="name-query my-0" style="text-shadow: 1px 1px 2px #000000; color: aliceblue; font-weight: 550;"> {{ activeProfile.name }} </p>
                  <p class="tag-query list-group-item small mb-3 fs-6"  style="line-height: 5px; font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ activeProfile.gamerTag }} </p>
@@ -167,14 +165,14 @@ import { rewardsService } from '../services/RewardsService.js'
    background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
-   max-height: 75vh;
+   height: 75vh;
    width: 100vw;
 }
 .profile-card {
    position: absolute;
-   top: 41rem;
+   top: 31rem;
    left: 1rem;
-   max-width: 10rem;
+   width: 10rem;
    aspect-ratio: 1/1;
    border: 2px double slateblue;
    border-radius: .5rem;
@@ -251,7 +249,7 @@ import { rewardsService } from '../services/RewardsService.js'
    color: aliceblue;
    text-shadow: 2px 2px 2px #010000;
    position: absolute;
-   top: 48.5rem;
+   top: 41rem;
    right: 1rem;
    border-radius: .5rem;
  }
@@ -297,7 +295,8 @@ import { rewardsService } from '../services/RewardsService.js'
    }
    .profile-img {
      margin-top: .25rem !important;
-     height: 5rem;
+     min-height: 5rem;
+     max-height: 5rem;
      position: absolute;
    }
    .neon-button {
