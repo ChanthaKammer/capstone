@@ -131,7 +131,7 @@
 
 
       <div class="col-12 col-md-6 p-4 order-1 order-md-2">
-        <img :src="tournament.gameImg" :alt="tournament.name" class="game-img rounded-2" style="" alt="">
+        <img :src="tournament.gameImg" :alt="tournament.name" class="game-img rounded-2" style="">
 
         <div v-if="user.isAuthenticated" class="d-flex justify-content-evenly">
           <div>
@@ -139,7 +139,7 @@
               <RGBButton class="px-2 rgb-btn" aria-label="JoinTournamentButton" buttonText="Join the Tournament!"
                 @click="joinTournament" />
             </div>
-            <div v-else="">
+            <div v-else>
               <RGBButton class="px-2 rgb-btn" buttonText="Leave Tournament!" @click="leaveTournament" />
             </div>
           </div>
@@ -413,7 +413,6 @@ export default {
       editable,
       rewards,
       // FIXME add computed for appstate.rewards
-      rewards: computed(() => AppState.rewards),
       started: computed(() => AppState.activeTournament.started),
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
