@@ -52,7 +52,7 @@
          <p class="col-12 d-flex justify-content-center align-items-center fs-3" style="color: aliceblue; text-shadow: 1px 1px 3px black;">Active Tournaments</p>
       </div>
 
-      <div class="row bg-dark py-3 justify-content-center align-items-center">
+      <div class="row bg-dark p-3 justify-content-center align-items-center">
          <div class="col-12 col-md-3 m-3" v-for="t in profileTournaments" :key="t.id">
             <TournamentCard :tournament="t" />
          </div>
@@ -287,11 +287,15 @@ import { rewardsService } from '../services/RewardsService.js'
      border-radius: .5rem;
      
    }
+   .profile-coverImg {
+    height: 50vh;
+   }
    .profile-card {
      max-width: 25vw;
      max-height: 21vh;
      position: absolute;
-     top: 20rem;
+     top: 29rem;
+     left: .5rem;
    }
    .profile-img {
      margin-top: .25rem !important;
@@ -303,14 +307,23 @@ import { rewardsService } from '../services/RewardsService.js'
      font-size: .75rem;
      position: absolute;
      top: 12rem !important;
-
      min-width: 20vw;
    }
    .tag-query {
      font-size: .55rem !important;
+     top: 2rem;
+     left: 6rem;
    }
    .name-query {
-     font-size: .85rem;
+     font-size: .75rem;
+     position: relative;
+     top: 2.5rem;
+     left: 6rem;
+   }
+   .social-tab {
+    position: absolute;
+    top: 31rem;
+    right: .25rem;
    }
  }
  
@@ -320,7 +333,7 @@ import { rewardsService } from '../services/RewardsService.js'
    }
    .profile-card {
      max-width: 25vw !important;
-     margin-top: 13rem !important;
+     margin-top: 8.5rem !important;
    }
    .neon-button {
      margin-top: 8rem !important;
@@ -330,6 +343,9 @@ import { rewardsService } from '../services/RewardsService.js'
      margin-left: 2rem;
      margin-top: 3rem;
      white-space: nowrap;
+   }
+   .social-tab {
+    top: 38.5rem;
    }
  }
  

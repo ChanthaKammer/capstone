@@ -202,4 +202,10 @@ i.sub-member:hover {
   transition: 1s ease-in-out;
 }
 
+@media screen and (max-width: 768px) {
+  .host-badge {
+    width: 20vw;
+  }
+}
+
 </style>

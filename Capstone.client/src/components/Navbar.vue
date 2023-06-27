@@ -28,15 +28,15 @@
   <div class="container-fluid p-3 bg-dark d-md-none">
     <div class="d-flex justify-content-between align-items-center">
       <form class="d-flex w-50" role="search" @submit.prevent="searchGames()">
-          <input class="form-control me-2" type="search" :placeholder="searchTerm || 'Search'" aria-label="Search" v-model="editable">
-          <button class="btn btn-success" type="submit">Search</button>
-        </form>
-        <div v-if="user.isAuthenticated" class="">
-          <div class="fs-4 gp-balance text-white" style="font-style: normal;"><img src="../assets/img/coin.png" style="height: 40px" class="img-fluid"> {{ account.gpBalance }} </div>
-        </div>
-        <div class="align-self-center">
-          <Login/>
-        </div>
+        <input class="form-control me-2" type="search" :placeholder="searchTerm || 'Search'" aria-label="Search" v-model="editable">
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
+      <div v-if="user.isAuthenticated" class="">
+        <div class="fs-4 gp-balance text-white" style="font-style: normal;"><img src="../assets/img/coin.png" style="height: 40px" class="img-fluid"> {{ account.gpBalance }} </div>
+      </div>
+      <div class="align-self-center">
+        <Login/>
+      </div>
     </div>
   </div>
   <!-- <nav class="navbar navbar-expand-lg bg-navbar">
@@ -112,6 +112,17 @@ export default {
   color: white;
   text-decoration: none;
   font-size: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .gp-balance {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+  }
+  form {
+    width: 70vw !important;
+  }
 }
 
 
