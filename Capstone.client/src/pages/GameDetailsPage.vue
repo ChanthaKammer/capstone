@@ -62,7 +62,7 @@
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
 import { computed, onMounted } from "vue";
-import NewTournamentForm from "../components/NewTournamentForm.vue"
+import NewTournamentForm from "../components/NewTournamentForm.vue";
 import { rawgService } from "../services/RawgService.js";
 import { useRoute } from "vue-router";
 

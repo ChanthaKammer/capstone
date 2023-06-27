@@ -11,7 +11,7 @@
                   <div class="media align-items-end profile-header">
                     <div class="profile pt-5" style="margin-right: 25vw;">
                       <div class="row media-body pt-5 text-white">
-                        <div class="col-3" style="position: absolute; top: 22rem;">
+                        <div class="col-3" style="position: absolute; top: 18rem;">
 
                           <div class="card profile-card bg-filler p-1" style="border: none; width: 15rem;">
                             <img :src="account.picture" :alt="account.name" class="card-img-top profile-img">
@@ -142,7 +142,8 @@ import MyJoinedTournamentsCard from '../components/MyJoinedTournamentsCard.vue';
 import Pop from '../utils/Pop.js';
 import { accountService } from '../services/AccountService.js';
 import { useRoute } from "vue-router";
-import CommentCard from '../components/CommentCard.vue'
+import CommentCard from '../components/CommentCard.vue';
+import { Modal } from "bootstrap";
 
 export default {
 
@@ -196,7 +197,8 @@ export default {
             try {
               logger.log(editable.value)
               await accountService.updateAccountInfo(editable.value)
-              } catch (error) {
+              Modal.getInstance(document.getElementById('accountModal')).hide()
+            } catch (error) {
                 Pop.error(error)
               }
             }
@@ -235,7 +237,7 @@ export default {
 }
 
 .profile-card {
-  margin-top: 1rem;
+  
 }
 
 .tournament-header {
@@ -319,8 +321,8 @@ export default {
   }
   .profile-card {
     max-width: 25vw;
-    max-height: 21vh;
-    margin-top: 6rem;
+    height: 10rem;
+    top: 9.5rem;
   }
   .profile-img {
     margin-top: .25rem !important;
@@ -345,7 +347,7 @@ export default {
   }
   .profile-card {
     max-width: 25vw !important;
-    margin-top: 13rem !important;
+    margin-top: 7.5rem !important;
   }
   .neon-button {
     margin-top: 8rem !important;
