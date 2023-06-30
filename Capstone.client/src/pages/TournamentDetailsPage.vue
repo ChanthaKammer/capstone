@@ -25,7 +25,7 @@
             </div>
           </div>
         </div>
-        <div v-if="tournamentStarted">
+        <div v-if="tournamentStarted && !isFinished">
           <h4 class="fw-normal fs-3 ms-3 mt-3">Tournament has begun</h4>
           <h5 class="fw-lighter ms-4">May the best player win</h5>
           <div class="container-img">
@@ -72,16 +72,12 @@
               <p class="pending" style="font-style: italic;">Tournament Pending</p>
             </div>
           </div>
-          <div v-else-if="started && !isFinished || tournamentStarted"
+          <div v-else-if="started && !isFinished"
             class="bg-active d-flex justify-content-center align-items-center">
             <p style="font-style: italic;">Tournament live!</p>
           </div>
         </div>
-        <!-- <div class="row bg-active">
-          <div class="col-12 d-flex justify-content-center align-items-center">
-
-          </div>
-        </div> -->
+    
         <div class="row bg-finished">
           <div class="col-12 d-flex justify-content-center align-items-center">
             <div v-if="tournament.isFinished">
