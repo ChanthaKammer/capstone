@@ -1,4 +1,5 @@
 This App is designed for Video Game Tournament Management. Online and In Person/Local. 
+Members can sign up and become a host, a participant or both.
 
 In this App you will be able to search a Video Game from over 800k games. 
 
@@ -18,7 +19,17 @@ Anyone visiting the App can click on a participant and see that players profile.
 
 Members logged in can visit their account page and see which Tournament they joined, badges won and comments that were posted on a Tournament they are hosting.
 
-Members in the account page will be able to edit their profile info. 
+Members in their account page will be able to edit their profile info.
+
+
+>GAME PURSUIT was Created by Quentin Mick, Chantha Kammer, Steven Pogue, Phil Egleston, and Aj Vancattenburch. 
+
+>API- RAWG.io  is a large video game Database!
+
+>Frontend framework in VUE, backend used Node.js with mongoDb.
+
+>Special Thanks to CodeWorks Staff for guiding us in making the App.  We had lots of questions and they didn't get sick of us!
+
 
 CodeWorks Vue Starter
 =====================
