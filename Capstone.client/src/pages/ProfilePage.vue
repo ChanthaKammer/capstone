@@ -345,9 +345,20 @@ import { rewardsService } from '../services/RewardsService.js'
      width: 20vw !important;
    }
    .name-tag {
-     margin-left: 3rem;
+     margin-left: 2rem;
      margin-top: 3rem;
      white-space: nowrap;
+   }
+   .tag-query {
+      font-size: .55rem !important;
+      top: 1.5rem;
+      left: 6rem;
+   }
+   .name-query {
+      font-size: .75rem;
+      position: relative;
+      top: 1.25rem;
+      left: 5.75rem;
    }
    .social-tab {
     top: 38.5rem;
