@@ -10,9 +10,9 @@
 
       <div class="row">
          <div class="col-3 d-flex align-items-center ms-5">
-            <div class="card profile-card bg-filler p-1 mt-4" style="border: none; width: 12rem;">
+            <div class="card profile-card bg-filler p-1 mt-5" style="border: none; width: 12rem;">
                <img :src="activeProfile.picture" :alt="activeProfile.name" class="card-img-top profile-img" style="height: 12rem;">
-               <div class="d-flex flex-column justify-content-center align-items-center" style="line-height: 35px;">
+               <div class="d-flex flex-column justify-content-center align-items-center tag-box" style="line-height: 35px;">
                  <p class="name-query my-0" style="text-shadow: 1px 1px 2px #000000; color: aliceblue; font-weight: 550;"> {{ activeProfile.name }} </p>
                  <p class="tag-query list-group-item small mb-3 fs-6"  style="line-height: 5px; font-weight: 550; font-style: italic; color: gold;"> <i class="mdi mdi-tag fs-5" style="color: gold;"></i> {{ activeProfile.gamerTag }} </p>
                </div>
@@ -21,7 +21,7 @@
       </div>
 
       <div class="d-flex justify-content-end text-center">
-         <ul class="list-inline social-tab mb-0 mt-4 p-4 bg-filler" style="">
+         <ul class="list-inline social-tab mb-0 mt-5 p-4 bg-filler" style="">
            <li class="list-inline-item">
              <h5 class="font-weight-bold mb-0 d-block"> {{ profileTournaments.length }} </h5><small class=""> <i class="mdi mdi-controller me-1"></i>Tournaments</small>
             </li>
@@ -311,19 +311,24 @@ import { rewardsService } from '../services/RewardsService.js'
    }
    .tag-query {
      font-size: .55rem !important;
-     top: 2rem;
-     left: 6rem;
+     top: 1.5rem;
+     left: 5rem;
    }
    .name-query {
      font-size: .75rem;
      position: relative;
-     top: 2.5rem;
-     left: 6rem;
+     top: 1.25rem;
+     left: 5rem;
    }
    .social-tab {
     position: absolute;
     top: 31rem;
     right: .25rem;
+   }
+   .tag-box {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
    }
  }
  
@@ -340,7 +345,7 @@ import { rewardsService } from '../services/RewardsService.js'
      width: 20vw !important;
    }
    .name-tag {
-     margin-left: 2rem;
+     margin-left: 3rem;
      margin-top: 3rem;
      white-space: nowrap;
    }
