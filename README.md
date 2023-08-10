@@ -30,7 +30,7 @@ Join us in our pursuit to redefine the gaming experience. Let's connect, collabo
          object-fit: contain; 
          object-position: center;"
          >
-  <img src="https://i.ibb.co/7W1x7dB/Game-Pursuit-Image.jpg" alt="Game-Pursuit-Image-1" style="width: 300px; height: auto;">
-  <img src="https://i.ibb.co/NCKFYTm/Game-Pursuit-Image-3.jpg" alt="Game-Pursuit-Image-2" style="width: 300px; height: auto;">
-  <img src="https://i.ibb.co/ctXWbR4/Game-Pursuit-Image-5.jpg" alt="Game-Pursuit-Image-3" style="width: 300px; height: auto;">
+  <img src="https://i.ibb.co/7W1x7dB/Game-Pursuit-Image.jpg" alt="Game-Pursuit-Image-1" style="width: 300px; height: auto; margin: auto;">
+  <img src="https://i.ibb.co/NCKFYTm/Game-Pursuit-Image-3.jpg" alt="Game-Pursuit-Image-2" style="width: 300px; height: auto; margin: auto;">
+  <img src="https://i.ibb.co/ctXWbR4/Game-Pursuit-Image-5.jpg" alt="Game-Pursuit-Image-3" style="width: 300px; height: auto; margin: auto;">
 </div>
