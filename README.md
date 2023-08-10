@@ -24,14 +24,18 @@ Join us in our pursuit to redefine the gaming experience. Let's connect, collabo
 
 ...
 
-<div style="display: flex; justify-content: center; align-items: flex-start;">
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="https://i.ibb.co/Kh5TvnY/Game-Pursuit-Image-4.jpg" alt="Left Tall Image" style="width: 150px; height: auto; margin-bottom: 10px;">
-    <div style="display: flex; flex-direction: row; align-items:center">  
-      <img src="https://i.ibb.co/pZrHWNY/Game-Pursuit-Image-5.jpg" alt="Center Top Image" style="width: 150px; height: auto;">
-      <img src="https://i.ibb.co/hs5g6PB/Game-Pursuit-Image-2.jpg" alt="Center Middle Image" style="width: 150px; height: auto;">
-      <img src="https://i.ibb.co/LR10pNJ/Game-Pursuit-Image-3.jpg" alt="Center Bottom Image" style="width: 150px; height: auto;">
+<div style="display: flex; flex-direction: row;">
+  <div style="display: flex; justify-content: center;">
+    <div style="display: flex; flex-direction: column; align-items: flex-start">
+      <img src="https://i.ibb.co/Kh5TvnY/Game-Pursuit-Image-4.jpg" alt="Left Tall Image" style="width: 150px; height: auto; margin-bottom: 10px;">
+      <div style="display: flex; flex-direction: column; align-items: center;">  
+        <img src="https://i.ibb.co/pZrHWNY/Game-Pursuit-Image-5.jpg" alt="Center Top Image" style="width: 150px; height: auto;">
+        <img src="https://i.ibb.co/hs5g6PB/Game-Pursuit-Image-2.jpg" alt="Center Middle Image" style="width: 150px; height: auto;">
+        <img src="https://i.ibb.co/LR10pNJ/Game-Pursuit-Image-3.jpg" alt="Center Bottom Image" style="width: 150px; height: auto;">
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: flex-end;">
+      <img src="https://i.ibb.co/T8gDzxJ/Game-Pursuit-Image.jpg" alt="Right Tall Image" style="width: 150px; height: auto;">
+      </div>
     </div>
-    <img src="https://i.ibb.co/T8gDzxJ/Game-Pursuit-Image.jpg" alt="Right Tall Image" style="width: 150px; height: auto;">
   </div>
 </div>
