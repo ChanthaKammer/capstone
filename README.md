@@ -27,7 +27,7 @@ Join us in our pursuit to redefine the gaming experience. Let's connect, collabo
   style="display: flex; 
          justify-content: center; 
          align-items: center; 
-         object-fit: cover; 
+         object-fit: contain; 
          object-position: center;
          columns: 12;"
          >
