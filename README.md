@@ -26,6 +26,6 @@ Join us in our pursuit to redefine the gaming experience. Let's connect, collabo
 
 <div style="display: flex; justify-content: center;">
   <img src="https://i.ibb.co/T8gDzxJ/Game-Pursuit-Image.jpg" alt="Image 1" style="width: 300px; height: auto; margin: 0 10px;">
+</div>
   <img src="https://i.ibb.co/hs5g6PB/Game-Pursuit-Image-2.jpg" alt="Image 2" style="width: 300px; height: auto; margin: 0 10px;">
   <img src="https://i.ibb.co/LR10pNJ/Game-Pursuit-Image-3.jpg" alt="Image 3" style="width: 300px; height: auto; margin: 0 10px;">
-</div>
