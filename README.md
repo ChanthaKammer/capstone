@@ -40,19 +40,3 @@ Join us in our pursuit to redefine the gaming experience. Let's connect, collabo
     <img src="https://i.ibb.co/T8gDzxJ/Game-Pursuit-Image.jpg" alt="Right Tall Image" style="width: 150px; height: auto;">
   </div>
 </div>
-
-<div style="display: flex; justify-content: center; align-items: flex-start;">
-  <div style="display: flex; flex-direction: column; align-items: center; margin: 0 20px;">
-    <img src="" alt="Image 1" style="width: 300px; height: auto; margin-bottom: 10px;">
-    <img src="" alt="Image 2" style="width: 300px; height: auto;">
-  </div>
-  
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="" alt="Tall Image" style="width: 300px; height: auto;">
-  </div>
-  
-  <div style="display: flex; flex-direction: column; align-items: center; margin: 0 20px;">
-    <img src="image3.jpg" alt="Image 3" style="width: 300px; height: auto; margin-bottom: 10px;">
-    <img src="" alt="Image 4" style="width: 300px; height: auto;">
-  </div>
-</div>
