@@ -28,7 +28,8 @@ Join us in our pursuit to redefine the gaming experience. Let's connect, collabo
          justify-content: center; 
          align-items: center; 
          object-fit: cover; 
-         object-position: center;"
+         object-position: center;
+         margin: auto;"
          >
   <img src="https://i.ibb.co/7W1x7dB/Game-Pursuit-Image.jpg" alt="Game-Pursuit-Image-1" style="width: 300px; height: auto;">
   <img src="https://i.ibb.co/rkPQjCx/Game-Pursuit-Image-2.jpg" alt="Game-Pursuit-Image-2" style="width: 300px; height: auto;">
