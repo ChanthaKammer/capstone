@@ -23,8 +23,32 @@ Together, we've woven the essence of collaboration and innovation into Game Purs
 Join us in our pursuit to redefine the gaming experience. Let's connect, collaborate, and celebrate the realm where passion and technology collide.
 
 ---
-
-## **Project Showcase**
-
 ![Game Pursuit](https://i.ibb.co/7W1x7dB/Game-Pursuit-Image.jpg)
 ![Game_Pursuit__2](https://i.ibb.co/rkPQjCx/Game-Pursuit-Image-2.jpg)
+
+
+<div style="display: flex; overflow-x: scroll;">
+  <img src="https://i.ibb.co/7W1x7dB/Game-Pursuit-Image.jpg" alt="Game-Pursuit-Image-1" style="width: 300px; height: auto;">
+  <img src="https://i.ibb.co/rkPQjCx/Game-Pursuit-Image-2.jpg" alt="Game-Pursuit-Image-2" style="width: 300px; height: auto;">
+  <img src="https://i.ibb.co/NCKFYTm/Game-Pursuit-Image-3.jpg" alt="Game-Pursuit-Image-3" style="width: 300px; height: auto;">
+  <img src="https://i.ibb.co/sRg8Y7h/Game-Pursuit-Image-4.jpg" alt="Game-Pursuit-Image-4" style="width: 300px; height: auto;">
+  <img src="https://i.ibb.co/ctXWbR4/Game-Pursuit-Image-5.jpg" alt="Game-Pursuit-Image-5" style="width: 300px; height: auto;">
+</div>
+
+<!-- Replace 'image1.jpg', 'image2.jpg', ... with your actual image sources. -->
+
+<script>
+  // JavaScript code for sliding carousel
+  const carousel = document.querySelector('div');
+  let scrollCounter = 0;
+  const scrollAmount = 320; // Adjust this value based on image width + spacing
+
+  carousel.addEventListener('click', () => {
+    scrollCounter++;
+    carousel.scroll(scrollAmount * scrollCounter, 0);
+    if (scrollCounter > 1) {
+      scrollCounter = 0;
+      carousel.scroll(0, 0);
+    }
+  });
+</script>
