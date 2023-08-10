@@ -31,8 +31,7 @@ Join us in our pursuit to redefine the gaming experience. Let's connect, collabo
   <img src="https://i.ibb.co/ctXWbR4/Game-Pursuit-Image-5.jpg" alt="Game-Pursuit-Image-5" style="width: 300px; height: auto;">
 </div>
 
-<!-- Replace 'image1.jpg', 'image2.jpg', ... with your actual image sources. -->
-
+...js
 <script>
   // JavaScript code for sliding carousel
   const carousel = document.querySelector('div');
