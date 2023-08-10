@@ -27,3 +27,4 @@ Join us in our pursuit to redefine the gaming experience. Let's connect, collabo
 ## **Project Showcase**
 
 ![Game Pursuit](https://i.ibb.co/7W1x7dB/Game-Pursuit-Image.jpg)
+![Game_Pursuit__2](https://i.ibb.co/rkPQjCx/Game-Pursuit-Image-2.jpg)
