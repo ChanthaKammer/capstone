@@ -29,11 +29,11 @@ Join us in our pursuit to redefine the gaming experience. Let's connect, collabo
          align-items: center; 
          object-fit: cover; 
          object-position: center;
-         margin: auto;"
+         columns: 12;"
          >
-  <img src="https://i.ibb.co/7W1x7dB/Game-Pursuit-Image.jpg" alt="Game-Pursuit-Image-1" style="width: 300px; height: auto;">
-  <img src="https://i.ibb.co/rkPQjCx/Game-Pursuit-Image-2.jpg" alt="Game-Pursuit-Image-2" style="width: 300px; height: auto;">
-  <img src="https://i.ibb.co/NCKFYTm/Game-Pursuit-Image-3.jpg" alt="Game-Pursuit-Image-3" style="width: 300px; height: auto;">
-  <img src="https://i.ibb.co/sRg8Y7h/Game-Pursuit-Image-4.jpg" alt="Game-Pursuit-Image-4" style="width: 300px; height: auto;">
-  <img src="https://i.ibb.co/ctXWbR4/Game-Pursuit-Image-5.jpg" alt="Game-Pursuit-Image-5" style="width: 300px; height: auto;">
+  <img src="https://i.ibb.co/7W1x7dB/Game-Pursuit-Image.jpg" alt="Game-Pursuit-Image-1" style="width: 300px; height: auto; columns: 4;">
+  <img src="https://i.ibb.co/rkPQjCx/Game-Pursuit-Image-2.jpg" alt="Game-Pursuit-Image-2" style="width: 300px; height: auto; columns: 4;">
+  <img src="https://i.ibb.co/NCKFYTm/Game-Pursuit-Image-3.jpg" alt="Game-Pursuit-Image-3" style="width: 300px; height: auto; columns: 4;">
+  <img src="https://i.ibb.co/sRg8Y7h/Game-Pursuit-Image-4.jpg" alt="Game-Pursuit-Image-4" style="width: 300px; height: auto; columns: 4;">
+  <img src="https://i.ibb.co/ctXWbR4/Game-Pursuit-Image-5.jpg" alt="Game-Pursuit-Image-5" style="width: 300px; height: auto; columns: 4;">
 </div>
