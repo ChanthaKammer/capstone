@@ -23,6 +23,9 @@ Together, we've woven the essence of collaboration and innovation into Game Purs
 Join us in our pursuit to redefine the gaming experience. Let's connect, collaborate, and celebrate the realm where passion and technology collide.
 
 ...
-<p align="center">
-  <a href="https://ibb.co/7W1x7dB"><img src="https://i.ibb.co/T8gDzxJ/Game-Pursuit-Image.jpg" alt="Game-Pursuit-Image" border="0" width="50%"></a>
-</p>
+
+<div style="display: flex; justify-content: center;">
+  <img src="https://i.ibb.co/T8gDzxJ/Game-Pursuit-Image.jpg" alt="Image 1" style="width: 300px; height: auto; margin: 0 10px;">
+  <img src="https://i.ibb.co/hs5g6PB/Game-Pursuit-Image-2.jpg" alt="Image 2" style="width: 300px; height: auto; margin: 0 10px;">
+  <img src="https://i.ibb.co/LR10pNJ/Game-Pursuit-Image-3.jpg"" alt="Image 3" style="width: 300px; height: auto; margin: 0 10px;">
+</div>
