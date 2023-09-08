@@ -1,49 +1,37 @@
-This App is designed for Video Game Tournament Management. Online and In Person/Local. 
-Members can sign up and become a host, a participant or both.
+# About Game Pursuit
 
-In this App you will be able to search a Video Game from over 800k games. 
+## Welcome to Game Pursuit!
 
-When you find a game you can click on the details to see if that game is right for you.
+🎮 At Game Pursuit, we're a collective of passionate minds brought together by our shared love for gaming. Our mission? To create an immersive platform that celebrates gamers' skills and passion through exhilarating competitions.
 
-In the game details page you will be able to create a Tournament. Add a Tournament name, a start date and time, where the location for said Tournament will be held. Also, choose if it will ba an Online or Local/in person Tournament.
+## **Crafting the Experience**
 
-Each Tournament will have a max player capacity and multiple round chosen by the Tournament creator/host.
+Our journey began with a vision: to redefine how players connect and engage within the gaming realm. Fueled by a diverse set of skills and experiences, our team harnessed the power of Vue.js and Express to architect a user-friendly hub for gamers to register, flaunt their prowess, and initiate exhilarating tournaments.
 
-Hosts of a Tournament will have a Management section to Cancel their Tournament, Edit their Tournament, Advance rounds, eliminate a player, and assign winners and rewards.
+Meticulous attention to detail shaped our interfaces, resonating with the gaming community. Vue.js empowered us to infuse real-time updates, dynamic elements, and captivating animations into our platform, creating an immersive environment that mirrors the excitement of gaming itself.
 
-Logged in members can choose a Tournament to Join or leave if they wish.
+## **Tokens, Tournaments, and Thrills**
 
-All logged in members will be able to comment on a Tournament and delete their post if they didn't like their thoughts.
+The heart of Game Pursuit lies in its **token-based system**, where users earn tokens for their achievements and skills. These tokens fuel the initiation of thrilling tournaments, fostering a sense of camaraderie and competition that resonates with every player.
 
-Anyone visiting the App can click on a participant and see that players profile. It will have Tournaments they will be participating in, as well as badges won.
+**Node.js** powers our backend, ensuring seamless communication between the front-end and rawg gaming API. This technology synergy allows us to provide a comprehensive gaming experience that's smooth, seamless, and engaging.
 
-Members logged in can visit their account page and see which Tournament they joined, badges won and comments that were posted on a Tournament they are hosting.
+## **Join the Pursuit**
 
-Members in their account page will be able to edit their profile info.
+Together, we've woven the essence of collaboration and innovation into Game Pursuit, making it not just a project, but a testament to what can be achieved when passionate minds converge. Our shared journey in creating this platform reflects our dedication to pushing boundaries, designing user-centric interfaces, and crafting a space where gaming aspirations are celebrated.
 
+Join us in our pursuit to redefine the gaming experience. Let's connect, collaborate, and celebrate the realm where passion and technology collide.
 
->GAME PURSUIT was Created by Quentin Mick, Chantha Kammer, Steven Pogue, Phil Egleston, and Aj Vancattenburch. 
+...
 
->API- RAWG.io  is a large video game Database!
+# Image Showcase
 
->Frontend framework in VUE, backend used Node.js with mongoDb.
-
->Special Thanks to CodeWorks Staff for guiding us in making the App.  We had lots of questions and they didn't get sick of us!
-
-
-CodeWorks Vue Starter
-=====================
-This template is designed to help get students started building vue applications
-
-## Legal Overview
-
-The content under the CodeWorks®, LLC Organization and all of the individual repos are solely intended for use by CodeWorks Instruction to deliver Educational content to CodeWorks Students.
-
----
-
-## Copyright
-
-© CodeWorks® LLC, 2021. Unauthorized use and/or duplication of this material without express and written permission from CodeWorks, LLC is strictly prohibited.
-
-
-<img src="https://bcw.blob.core.windows.net/public/img/7815839041305055" width="125">
+<div style="display: flex; justify-content: center; align-items: flex-start;">
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <img src="https://i.ibb.co/LR10pNJ/Game-Pursuit-Image-3.jpg" alt="Center Bottom Image" style="width: 300px; height: auto;">
+    <img src="https://i.ibb.co/pZrHWNY/Game-Pursuit-Image-5.jpg" alt="Center Top Image" style="width: 300px; height: auto;">
+    <img src="https://i.ibb.co/hs5g6PB/Game-Pursuit-Image-2.jpg" alt="Center Middle Image" style="width: 300px; height: auto">
+    <img src="https://i.ibb.co/Kh5TvnY/Game-Pursuit-Image-4.jpg" alt="Left Tall Image" style="width: 300px; height: auto">
+    <img src="https://i.ibb.co/T8gDzxJ/Game-Pursuit-Image.jpg" alt="Right Tall Image" style="width: 300px; height: auto;">
+  </div>
+</div>

@@ -10,7 +10,7 @@
 </main>
 
 
-  <footer class="row bg-black g-0 sticky-bottom footy" style="width: 100%;">
+  <footer class="row bg-black g-0 footy" style="width: 100%;">
     <marquee behavior="scroll" direction="right" scrollamount="10" class="text-light" style="width: 100vw; font-size: 2rem; font-weight: 650; font-style: italic;">
       <img src="https://media.giphy.com/media/pjb1HPZ41i5BS/source.gif" class="img-fluid" style="max-height: 80px; margin-top" alt="mario">
       <img src="https://walking-link.neocities.org/running.gif" class="img-fluid" style="max-height: 80px; margin-top" alt="mario">
